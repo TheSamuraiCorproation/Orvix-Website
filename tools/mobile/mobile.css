@@ -1,0 +1,150 @@
+/* Mobile refinements. Injected into every page by tools/mobile/apply.py.
+   Edit this file and re-run; never edit the copy inside a page.
+
+   Every selector below came from measuring all 54 English pages at 390px and
+   320px with tools/mobile/audit.mjs, not from guesswork. Everything except the
+   text-size-adjust line sits inside a max-width query, so desktop rendering is
+   byte-identical.
+
+   What the audit found, and what each part fixes:
+     1. type as small as 9px on a phone            -> floored at 12px
+     2. controls as small as 30px, the menu at 34  -> 44px minimum
+     3. contact fields at 15px, which makes iOS
+        zoom the page on focus, and 34px tall      -> 16px and 48px
+     4. two headings whose text genuinely clipped  -> allowed to wrap
+   The decorative bleed the audit also reported (.wm watermarks, .plane and
+   .lay texture layers, the "atmosphere only" .field) is intentional and is
+   left alone. */
+
+/* iOS inflates body text after a rotate unless this is pinned. */
+html{-webkit-text-size-adjust:100%}
+
+/* ---- 0. no sideways drag, whatever the device --------------------------
+   Measured at 320/360/390/414/428/540/768/900/1024/1121/1280/1440 in both
+   languages, with the menu open and closed and with a real scrollbar, nothing
+   in this export overflows. A phone can still differ from that: if the Google
+   font fails to load the fallback metrics are wider, and a long unbroken
+   string (a URL, an ISO reference) can push a column out.
+
+   This makes that impossible rather than unlikely. It does not hide a layout
+   bug from the tooling -- scrollWidth still reports the real content width, so
+   audit.mjs keeps catching genuine overflow. */
+@media (max-width:900px){
+  html,body{overflow-x:hidden;max-width:100%}
+  img,svg,video,iframe,canvas{max-width:100%;height:auto}
+  table{max-width:100%}
+  /* break a long unbroken token rather than let it set the column width */
+  p,li,dd,dt,td,th,figcaption,blockquote,
+  h1,h2,h3,h4,h5,h6,.lede,.sub,.small,.lead{overflow-wrap:anywhere}
+}
+
+@media (max-width:640px){
+
+/* ---- 1. type floor ---------------------------------------------------
+   The 9-11.5px micro-labels read fine on a desktop at arm's length and sit
+   under the comfortable floor on a phone. Tracking is pulled in slightly on
+   the uppercase ones so they still fit the rows they sit in at 12px. */
+.lbl,.eyebrow,.slbl,.mono,.chip,.pill,.label,.out,.go,.cnt,.hint,.tl,
+.zone,.pnum,.pz,.sub,.slot,.flag,.stg2,.loc,.tag,.k,.ph,.n,
+.cvg-key,.cvg-hint,.ph__brief,.xlab,.lead-mark__t,.ctafoot,
+.lvn,.mnext,.qreset,.jb,.ev,.num,
+.fgrid h4,.foot__grid h4,#mob h5,
+.brief b,.brief em,.hero-note b,.meta b,.note .slot,b .slot,
+.srow i,.here i,.form label,.cvg-tab span,.cvg-n span,
+.bhud span,.hud span,.k span,.cap .n,
+.mleg .s,.mleg .l,.mleg .c,.st .hint,.btab .k,
+#qdone,#qlv,
+table.clock th,table.offers th,
+.facts span b,.meta span b,.hero-note b,.lst .k span,.bhud span,
+.qs2 .bs button,.bs button.y,.bs button.m,.cvg-n span{font-size:12px!important}
+.qstick .hd span,.qp .hd span{font-size:12px!important}
+
+.lbl,.eyebrow,.slbl,.chip,.label,.fgrid h4,.foot__grid h4,
+.cvg-key,.xlab,.hero-note b,.mleg .s,.mleg .l,.mleg .c,
+.slbl{letter-spacing:.11em!important}
+
+/* the hero strip and the blast-radius legend are single rows of tracked
+   uppercase; at 12px they no longer fit a 320px column, so they wrap */
+/* the homepage hero is a flex row and the note strip, which is absolutely
+   positioned on desktop, becomes a flex sibling on mobile. Without a full-width
+   basis it sat beside the headline and ran off the right edge. */
+.hero{flex-wrap:wrap}
+.hero-note{flex:1 1 100%;width:100%;min-width:0}
+.hero-note .w{row-gap:8px;flex-wrap:wrap}
+/* a flex item defaults to min-width:auto, so these kept their full single-line
+   width and pushed the row past the column even though the row wraps */
+.hero-note b,.hero-note em{min-width:0;white-space:normal}
+.hero-note em{margin-left:0}
+/* the events filter pills sit in a div carrying an inline display:flex with
+   no wrap, so the row can only be reached through the parent */
+.cmp .band div:has(> .pill){flex-wrap:wrap;row-gap:8px}
+
+/* the events filter row is the same shape */
+.evbar,.evfilters,.sec .filters{flex-wrap:wrap;row-gap:10px}
+.evbar>*,.evfilters>*,.sec .filters>*{min-width:0}
+.mleg{flex-wrap:wrap;row-gap:8px}
+.bstick{min-width:0;overflow-x:auto}
+
+/* ---- 2. touch targets ------------------------------------------------
+   44px is the smallest reliable target on both platforms. The menu button is
+   the first thing a phone visitor touches and was 34x34. */
+.burger{width:44px!important;height:44px!important}
+.burger span{left:13px;right:13px}
+.burger span:nth-child(1){top:16px}
+.burger span:nth-child(2){top:21px}
+.burger span:nth-child(3){top:26px}
+.burger.x span:nth-child(1),.burger.x span:nth-child(3){top:21px}
+
+/* the wordmark keeps its drawn size; the link around it gets a full row */
+.brand{display:inline-flex!important;align-items:center;min-height:44px}
+
+/* controls that sit in normal flow: grow the box, leave the padding rhythm */
+button.y,button.m,button.n,button.yes,button.no,button.ev,button.jb,
+button.st,button.rng,button.btab,button.gbtn,button.qreset,button.mnext,
+button.cvg-tab,.cvg-tab,.btn--sm,a.btn--sm,button.btn--sm{min-height:44px!important}
+
+/* a standalone arrow link behaves as a button, so it gets a row too --
+   but one sitting inside prose must stay inline or it breaks the sentence */
+a.small{display:inline-flex;align-items:center;min-height:44px}
+.rsh .qi button,.wwd .mark button,.wwd .bs button{min-height:44px!important}
+p a.small,li a.small,span a.small{display:inline;min-height:0}
+
+/* diagram nodes are placed by transform and must keep their drawn size, so
+   the touch area is grown around them instead */
+.wwd .nd::before{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;
+transform:translate(-50%,-50%)}
+
+/* ---- 3. form fields --------------------------------------------------
+   Under 16px, iOS zooms the whole page when a field takes focus and does not
+   zoom back out. The subscribe form already used 16px; the contact form did
+   not. 48px is also a comfortable row to hit. */
+input,select,textarea{font-size:16px!important}
+.cmp .cform .cf,.cform .cf{height:48px!important;font-size:16px!important}
+.cmp .cform .cf--area,.cform .cf--area{font-size:16px!important;height:auto!important}
+
+/* ---- 4. headings that clipped ---------------------------------------
+   Two cases where text was genuinely lost, not decoration bleeding out. */
+
+/* "Orvix does two things." sets its lines nowrap. The longest needs 328px;
+   a 360px phone gives the column 312px and a 320px phone gives 272px. */
+.ox h2.two span{white-space:normal}
+
+/* the eight-copy storage stack is a grid item, and a grid item defaults to
+   min-width:auto, so its content set a track wider than the 272px column a
+   320px phone gives it and pushed the whole page sideways. Letting the item
+   shrink fixes the page; the dense stack itself then scrolls in its own box
+   rather than being silently cut. */
+.brwrap>*,.bpanel>*,.copies>*{min-width:0}
+.copies,.bpanel{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+
+/* the engagement breadcrumb ran 11px past a 272px column at 320px */
+.hero__copy .label,.hero__copy p.label{white-space:normal}
+
+}
+
+/* Narrow phones: the hero display sizes are set for a 390px column and the
+   longest single words in them do not fit a 320px one. */
+@media (max-width:380px){
+.cmp .band.ink h1,.cmp .band.ink.hero-ink h1{font-size:38px;line-height:41px}
+.ox h2.two .xline{font-size:1.35em}
+}

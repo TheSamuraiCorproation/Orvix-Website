@@ -1,0 +1,14 @@
+# Netlify response headers. Applied to every path; the site is static and
+# talks to nothing but itself and Google Fonts, so the policy can be tight.
+#
+# Inline <style> and <script> blocks are how this export is built (one file
+# per page), which is why 'unsafe-inline' is present. Everything else - any
+# other origin, frames, objects, form targets - is refused.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin

@@ -1,0 +1,265 @@
+ORVIX WEBSITE - PHOTOGRAPHY CREDITS AND LICENSING
+=================================================
+
+WHAT WAS REPLACED, AND WHY
+    The two photographs previously inlined in index.html (--ph-operate and
+    --ph-research) were iStock COMP images. Both carried a visible
+    "iStock / Credit: ..." watermark baked into the pixels and neither was
+    licensed for publication:
+
+        iStock 1522054856  - credit gorodenkoff  - was on --ph-operate
+        iStock 2172336543  - credit Dragos Condrea - was on --ph-research
+
+    They have been removed from the repository entirely. If Orvix holds or
+    buys an iStock licence for either, the clean versions can be dropped back
+    in over operate.jpg / research.jpg.
+
+LICENCE FOR EVERYTHING NOW IN THIS FOLDER
+    All photographs below are from Pexels, under the Pexels Licence:
+    free to use, commercial use permitted, no attribution required,
+    modification permitted. https://www.pexels.com/license/
+
+    Attribution is not required, so this file exists for provenance and
+    diligence rather than for display. Verify each ID before publication.
+
+    file                      pexels id   slot / brief it was chosen against
+    ------------------------  ----------  ----------------------------------
+    hero-home.jpg             4508751     --ph-hero (home) and --pg-hero on
+                                          what-we-do landing
+    stakes.jpg                16859956    --ph-stakes: "empty boardroom or
+                                          corridor, evening light, no people"
+    operate.jpg               7988742     --ph-operate: "two engineers at one
+                                          console, leaning toward the same
+                                          screen, neither looking at camera"
+    research.jpg              7735699     --ph-research: "a report open on a
+                                          table, one hand mid-annotation,
+                                          faceless, close, warm"
+    close-home.jpg            8171223     --ph-close: "a woman presenting to a
+                                          seated board, mid-sentence, room
+                                          attentive"
+    close.jpg                 18341554    --pg-close on all what-we-do pages
+    hero-infrastructure.jpg   1181316     Advanced Infrastructure pillar landing
+                                          (replaced pexels 17323801, a perforated
+                                          server-rack mesh - a dense regular grid is
+                                          the classic source of moire when a browser
+                                          rescales it)
+    hero-applied-ai.jpg       1148820     Applied AI & Data pillar+services
+    hero-cybersecurity.jpg    5380597     AI Cybersecurity pillar+services
+    hero-assurance.jpg        7433919     AI Assurance pillar+services
+    hero-research.jpg         20337902    --pg-hero: research landing + frameworks
+    hero-case-studies.jpg     1181335     --pg-hero: case studies index + 3 studies
+    hero-insights.jpg         8533085     --pg-hero: perspectives, briefings,
+                                          evaluations, subscribe
+    hero-industry.jpg         32845700    --pg-hero: the four industry pages
+    bento-interfaces.jpg      4486718     home bento card "Interfaces"
+    bento-identity.jpg        5380595     home bento card "Identity"
+    bento-data.jpg            6466141     home bento card "Data"
+    bento-agentic.jpg         17489163    home bento card "Agentic AI"
+    stage-1.jpg               5203849     --ph-stage-1 on the 12 service pages
+    stage-2.jpg               5473298     --ph-stage-2
+    stage-3.jpg               6466141     --ph-stage-3
+    stage-4.jpg               19317897    --ph-stage-4
+
+
+    SERVICE PAGE HEROES (one per service, also used as that service's
+    card thumbnail wherever it is linked from a .pcard)
+
+    svc-network-as-a-service.jpg        442150    patching network cables
+    svc-storage-and-resilience.jpg      5203849   storage racks
+    svc-infrastructure-design.jpg       1181341   engineer with tablet at racks
+    svc-agentic-ai.jpg                  18471441  robotic cell, arms in a line
+    svc-ai-control.jpg                  8438977   single robotic arm, controlled
+    svc-data-organization.jpg           34293526  labelled binders in order
+    svc-managed-detection-response.jpg  8102700   two analysts, dark SOC
+    svc-human-risk.jpg                  7414034   briefing colleagues
+    svc-ot-security.jpg                 32845663  plant technician at a control panel
+    svc-governance.jpg                  8872667   records room
+    svc-independent-evaluation.jpg      132700    test and measurement instruments
+    svc-audit-readiness.jpg             6549926   archive hall, drawers indexed
+
+    orvix-logo.png            Orvix       extracted from the base64 that was
+                                          inlined twice per page
+
+    Source URL for any of the above:  https://www.pexels.com/photo/<id>/
+
+STILL OPEN
+    --ph-close carried the note "Commission rather than license." The slot is
+    filled with a licensed stand-in so the page is not empty; the intent to
+    commission a regional shot is unchanged.
+
+    None of these are Middle East / GCC specific except hero-research.jpg
+    (Sharjah waterfront). The BUILD NOTES call for regional, contemporary,
+    unposed photography. Treat this set as a working placeholder that is
+    safe to publish, not as the final art direction.
+
+PROCESSING
+    Each file was cropped to the aspect its slot renders at, resized, and
+    saved as progressive JPEG at quality 68-80. stakes.jpg was cropped to a
+    wide strip because that panel renders roughly 4:1 and background-size is
+    cover.
+
+--------------------------------------------------------------------
+ADDED 1 SEPTEMBER 2026 - RE-BRIEFED SERVICE AND RESEARCH PHOTOGRAPHY
+--------------------------------------------------------------------
+    Same Pexels Licence as everything above.
+
+    file                             pexels id   brief it was chosen against
+    -------------------------------  ----------  ---------------------------
+    svc-infrastructure-design.jpg    1181345     "a workflow being changed,
+                                                 still professional" - an
+                                                 architect at a whiteboard of
+                                                 system diagrams
+    svc-ai-control.jpg               4065748     "code, and a spacebar where
+                                                 you can stop it" - backlit
+                                                 keys, the stop within reach
+    svc-managed-detection-response.jpg 32529341  "a notification alert" - an
+                                                 operator facing a live
+                                                 alert wall
+    svc-human-risk.jpg               8867472     "team listening and looking
+                                                 at the monitor carefully" -
+                                                 two analysts in headsets
+    hero-maturity-model.jpg          28896667    five levels, read as an
+                                                 external stair
+    hero-assurance-index.jpg         7567445     measured data, no tickers
+    hero-readiness.jpg               7821686     a questionnaire being
+                                                 answered by hand
+    hero-rsh-financial.jpg           35400649    financial district at dusk
+    hero-rsh-government.jpg          3175761     institutional colonnade
+    hero-rsh-energy.jpg              189524      transmission grid at dusk
+    hero-rsh-telecom.jpg             33296715    carrier mast at dusk
+    hero-perspectives.jpg            97078       notebook, pen, one idea
+    hero-briefings.jpg               7580792     a printed briefing in hand
+    hero-evaluations.jpg             36682054    a method, drawn before the
+                                                 result
+    hero-subscribe.jpg               9247608     pages, published
+
+    REMOVED as orphans when the above replaced them:
+        hero-research.jpg, hero-industry.jpg, hero-insights.jpg
+        (each had been shared across three or four Research pages)
+        leader-ziad-darras.png, leader-daryl-simpson.png
+        (the PNG sources the JPEG portraits were derived from)
+
+--------------------------------------------------------------------
+FLAGS - images/flags/*.svg
+--------------------------------------------------------------------
+    17 national flags used by the coverage map on Company > About us.
+    Source: flag-icons by Panayiotis Lipiridis (lipis/flag-icons) on
+    GitHub, MIT Licence. https://github.com/lipis/flag-icons
+    Vendored locally so the page carries no third-party runtime
+    dependency. The MIT licence requires the copyright notice be kept
+    with the files; it is reproduced in images/flags/LICENCE.txt.
+
+--------------------------------------------------------------------
+MAP GEOMETRY - the coverage map on Company > About us
+--------------------------------------------------------------------
+    Country outlines are Natural Earth (naturalearthdata.com), public
+    domain, admin-0 countries at 1:110m for the world and 1:50m for the
+    Gulf inset. They were projected to Web Mercator and written into the
+    page as inline SVG paths, so the map needs no tile server, no API
+    key and no network at all.
+
+--------------------------------------------------------------------
+ICONS
+--------------------------------------------------------------------
+    The "read bio" mark on the About us leadership cards uses the
+    id-card glyph from Lucide (lucide.dev), ISC Licence. The path data
+    is inlined in company/about/index.html rather than loaded from a
+    CDN, so the page carries no runtime dependency.
+    Lucide is a fork of Feather Icons, (c) 2013-2022 Cole Bemis.
+
+--------------------------------------------------------------------
+REPLACED 8 SEPTEMBER 2026 - REGIONAL RE-SHOOT (PLACEHOLDER SET)
+--------------------------------------------------------------------
+    This closes the note left under STILL OPEN above: "None of these are
+    Middle East / GCC specific ... the BUILD NOTES call for regional,
+    contemporary photography."
+
+    All 43 photographs the site renders were replaced with Gulf / wider
+    Middle East imagery. Every file kept its existing name and its exact
+    pixel dimensions, so no HTML, no CSS and no layout changed - the 108
+    pages pick the new art up as-is. The 17 flags, the four leadership
+    portraits, orvix-logo.png and the 54 typographic Open Graph cards in
+    assets/img/og/ were NOT touched.
+
+    Licence is unchanged: all files below are Pexels, under the Pexels
+    Licence - free, commercial use permitted, no attribution required,
+    modification permitted. https://www.pexels.com/license/
+    Source URL for any of them:  https://www.pexels.com/photo/<id>/
+
+    The previous set was copied to, and can be restored from:
+        Orvix_Site_2/images_backup_2026-09-08/   (outside the site folder)
+
+    SHARED SLOTS - these carry most of the site's character
+    file              pexels id  subject
+    ----------------  ---------  ------------------------------------------
+    hero-home.jpg       4560325  Museum of the Future, Dubai, at night
+    stakes.jpg         30522277  Doha waterfront, sun low over the bay
+    operate.jpg         7109095  three colleagues at one screen
+    research.jpg       29079520  dip pen resting on an Arabic manuscript
+    close.jpg          17914739  Dubai at night, road light-trails
+    close-home.jpg      8154928  a woman leading a meeting, team seated
+    boundary.jpg       15127415  Louvre Abu Dhabi, the dome lattice
+
+    HOME BENTO CARDS
+    bento-interfaces.jpg    12041208  Museum of the Future, calligraphy skin
+    bento-identity.jpg      10347162  portrait in profile
+    bento-data.jpg          37730212  data-centre racks
+    bento-agentic.jpg       18471441  robotic cell
+
+    PILLAR LANDINGS
+    hero-infrastructure.jpg 28406821  Abu Dhabi skyline at night
+    hero-applied-ai.jpg     32778341  robotics in a laboratory
+    hero-cybersecurity.jpg  17489163  a single server, blue-lit
+    hero-assurance.jpg       1883409  Sheikh Zayed Grand Mosque, dome in arch
+
+    THE FOUR PROCESS STAGES (24 service and engagement pages)
+    stage-1.jpg             32312787  geometric residential facade, Dubai
+    stage-2.jpg             10969676  Burj Khalifa, looking up
+    stage-3.jpg             15667695  Emirates Towers, crescent moon
+    stage-4.jpg              9637056  Downtown Dubai from above
+
+    RESEARCH
+    hero-case-studies.jpg   18678847  Dubai Creek, dhows against the towers
+    hero-assurance-index.jpg 19965889 Abu Dhabi skyline from the water
+    hero-maturity-model.jpg 21038758  stepped towers, monochrome
+    hero-perspectives.jpg    5387236  a notebook, a pen, one idea
+    hero-readiness.jpg       8424482  a return being answered by hand
+    hero-briefings.jpg      18280159  a printed paper being read
+    hero-subscribe.jpg      29556470  Arabic newsprint, published
+    hero-evaluations.jpg    18471567  an instrument, before the result
+    hero-rsh-financial.jpg  19756825  Business Bay, Dubai, at night
+    hero-rsh-government.jpg 18051839  an institutional colonnade
+    hero-rsh-energy.jpg     29079236  transmission line, desert, dusk
+    hero-rsh-telecom.jpg     4249270  a carrier mast against dusk cloud
+
+    THE TWELVE SERVICES
+    svc-network-as-a-service.jpg         4508751  a hall of racks
+    svc-storage-and-resilience.jpg      17489150  storage hardware, lit
+    svc-infrastructure-design.jpg        5584052  hands over a schematic
+    svc-agentic-ai.jpg                  34207359  robot arm, line in motion
+    svc-ai-control.jpg                  34194567  one arm, at rest, controlled
+    svc-data-organization.jpg           32201000  a binder, indexed
+    svc-managed-detection-response.jpg  11783119  an operator facing the wall
+    svc-human-risk.jpg                   7869059  briefing colleagues
+    svc-ot-security.jpg                 32357268  tank farm, desert, aerial
+    svc-governance.jpg                   6549926  a records room
+    svc-independent-evaluation.jpg      34007243  test and measurement bench
+    svc-audit-readiness.jpg             12030028  an archive hall
+
+    NOTES ON THE SELECTION
+    Every photograph is rendered under a deep navy wash (rgba(3,7,44) at
+    .74 to .96), so the set was chosen for silhouette and for dusk or
+    night light, which survive that treatment; detail-heavy interiors do
+    not. Religious subject matter was deliberately held to three slots and
+    to architecture only - the mosque colonnades and dome read as civic
+    landmarks, which is how they are used in secular UAE material. No
+    scripture, and no devotional object, is used anywhere as decoration.
+
+    STILL OPEN
+    The four leadership portraits are unchanged. They are photographs
+    attached to four named people, and swapping in different faces is a
+    decision for Orvix, not a photo-library exercise.
+
+    --ph-close still carries its original note: commission rather than
+    license. That intent is unchanged; close.jpg and close-home.jpg remain
+    licensed stand-ins.

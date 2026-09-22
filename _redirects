@@ -1,0 +1,6 @@
+# Netlify. Build tooling and working notes live in the publish folder and
+# would otherwise be served to anyone who guessed the path.
+/tools/*             /404.html  404
+/README.txt          /404.html  404
+/BUILD_NOTES.txt     /404.html  404
+/images/CREDITS.txt  /404.html  404

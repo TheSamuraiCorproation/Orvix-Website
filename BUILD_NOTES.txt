@@ -1,0 +1,17 @@
+ORVIX - BUILD NOTES
+===================
+This block was carried as a comment at the top of 64 pages. It is
+kept here once, out of the shipped HTML, by tools/nav.
+
+=========================================================
+     ORVIX  |  What we do  |  static export
+     BUILD NOTES - remove before publishing
+     1. FEE BANDS: every service page carries [FEE BAND - pending sign-off].
+     2. VENDORS: partner blocks carry [VENDOR - confirm]. Graphiant is named on
+        Network as a Service only and needs written permission.
+     3. BOUNDARY: pillars 01 and 04 assess; pillars 02 and 03 deliver and carry
+        the reciprocal boundary. Deliberate - do not harmonise the four.
+     4. REGULATORY: SA review required before go-live. MDR page has an open
+        question on NCA services licensing.
+     5. Photo slots declared in :root. Drop licensed JPGs into /images.
+     =========================================================

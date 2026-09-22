@@ -1,0 +1,128 @@
+/* Orvix — right-to-left layout, applied only when the document is in Arabic.
+   Nothing here affects the English site: every rule is scoped to [dir="rtl"]. */
+
+html[dir="rtl"] body,
+html[dir="rtl"] input,
+html[dir="rtl"] select,
+html[dir="rtl"] textarea,
+html[dir="rtl"] button {
+  font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+/* Arabic is a joined script: letter-spacing breaks the joins, so it goes.
+   The site leans on tracked-out mono labels, which is exactly what must not
+   happen here. */
+html[dir="rtl"] * { letter-spacing: normal !important; }
+
+/* the mono labels keep their size and colour, but not a Latin monospace face */
+html[dir="rtl"] .mono,
+html[dir="rtl"] .lbl,
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .k,
+html[dir="rtl"] .n,
+html[dir="rtl"] .facts,
+html[dir="rtl"] .meta,
+html[dir="rtl"] .bcr,
+html[dir="rtl"] .crumb {
+  font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+/* ---- navigation ---------------------------------------------------- */
+html[dir="rtl"] .dd { left: auto; right: -18px; }
+html[dir="rtl"] .dd.mega { left: 0; right: 0; }
+html[dir="rtl"] .burger span { left: 8px; right: 8px; }
+
+/* ---- rules that hang off the left edge ------------------------------ */
+html[dir="rtl"] .rsh .big,
+html[dir="rtl"] .wwd .dec p,
+html[dir="rtl"] .cont,
+html[dir="rtl"] .loop,
+html[dir="rtl"] .gcopy .note,
+html[dir="rtl"] .relief,
+html[dir="rtl"] .mfoot,
+html[dir="rtl"] .srow > div,
+html[dir="rtl"] .cvg-hint,
+html[dir="rtl"] .lead-pending,
+html[dir="rtl"] .lk.on {
+  border-left: 0;
+  border-right: 2px solid var(--cyan);
+  padding-left: 0;
+  padding-right: 16px;
+}
+html[dir="rtl"] .rsh .big + p { padding-left: 0; padding-right: clamp(18px, 2vw, 30px); }
+
+/* ---- the maturity stepper ------------------------------------------ */
+html[dir="rtl"] .rsh .mrow::before { left: auto; right: 13px; }
+html[dir="rtl"] .rsh .mpane { border-left: 0; border-right: 1px solid rgba(255, 255, 255, .11); }
+
+/* ---- the coverage map stays left-to-right --------------------------- */
+/* A map is geography, not text. Mirroring it would put New Jersey east of
+   Dubai, so the component keeps its direction and only its copy flips. */
+html[dir="rtl"] #coverage { direction: ltr; }
+html[dir="rtl"] #coverage .cvg-head,
+html[dir="rtl"] #coverage .cvg-card { direction: rtl; }
+
+/* ---- leadership cards ---------------------------------------------- */
+html[dir="rtl"] .cmp .lead-mark { justify-content: flex-start; padding: 0 0 14px 14px; }
+html[dir="rtl"] .cmp .lead-mark__wash {
+  background: radial-gradient(96% 96% at 0% 100%,
+    rgba(72, 226, 226, .52) 0%, rgba(6, 75, 238, .34) 36%, rgba(3, 7, 44, 0) 70%);
+}
+html[dir="rtl"] .cmp .lead-row { direction: rtl; }
+
+/* ---- tables and lists ---------------------------------------------- */
+html[dir="rtl"] th,
+html[dir="rtl"] td { text-align: right; }
+html[dir="rtl"] .rsh .lst .go { text-align: left; }
+html[dir="rtl"] .pain li { padding: 11px 26px 11px 0; }
+html[dir="rtl"] .pain li::before { left: auto; right: 0; }
+
+/* ---- forms ---------------------------------------------------------- */
+html[dir="rtl"] .cf,
+html[dir="rtl"] .cf--area { text-align: right; }
+html[dir="rtl"] .cf-chip { flex-direction: row-reverse; }
+
+/* ---- arrows ---------------------------------------------------------
+   Never mirror a whole element that contains words: scaleX(-1) on .go turned
+   "READ" into "QA3R". Only a bare arrow glyph may be flipped. */
+html[dir="rtl"] .mnext span[aria-hidden],
+html[dir="rtl"] .lead-mark__ic { display: inline-block; transform: scaleX(-1); }
+
+/* ---- mixed English / Arabic ----------------------------------------
+   Only the shell is translated so far. A paragraph still in English sitting
+   inside an RTL page has its trailing full stop dragged to the front by the
+   bidi algorithm ("...covered countries" becomes ".covered countries").
+   unicode-bidi:plaintext resolves each block from its own first strong
+   character, so English blocks stay left-to-right and Arabic blocks flip. */
+html[dir="rtl"] p,
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3,
+html[dir="rtl"] h4, html[dir="rtl"] h5, html[dir="rtl"] h6,
+html[dir="rtl"] li, html[dir="rtl"] td, html[dir="rtl"] th,
+html[dir="rtl"] summary, html[dir="rtl"] blockquote, html[dir="rtl"] figcaption,
+html[dir="rtl"] .lbl, html[dir="rtl"] .eyebrow, html[dir="rtl"] .lead,
+html[dir="rtl"] .sub, html[dir="rtl"] .small, html[dir="rtl"] .k,
+html[dir="rtl"] .n, html[dir="rtl"] .g, html[dir="rtl"] .q,
+html[dir="rtl"] .mq, html[dir="rtl"] .big, html[dir="rtl"] .loc,
+html[dir="rtl"] .fact, html[dir="rtl"] .cvg-hint, html[dir="rtl"] .cvg-lede {
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+
+/* ---- blocks that are still English --------------------------------
+   dir="auto" makes each block resolve its own direction from its first
+   strong character. :dir(ltr) then catches the ones still in English and
+   anchors them to the left edge, so an English heading with a max-width
+   does not hang off the right side of an Arabic page. */
+html[dir="rtl"] h1:dir(ltr),
+html[dir="rtl"] h2:dir(ltr),
+html[dir="rtl"] h3:dir(ltr),
+html[dir="rtl"] h4:dir(ltr),
+html[dir="rtl"] p:dir(ltr),
+html[dir="rtl"] ul:dir(ltr),
+html[dir="rtl"] ol:dir(ltr),
+html[dir="rtl"] .lst:dir(ltr),
+html[dir="rtl"] .pts:dir(ltr) {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}

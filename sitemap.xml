@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://orvixnet.com/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/about/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/about/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/about/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/about/leadership/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/about/leadership/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/about/leadership/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/about/leadership/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/careers/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/careers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/careers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/careers/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/contact/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/contact/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/events/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/events/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/events/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/events/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/company/partners/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/partners/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/partners/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/ai-estate-inventory/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/ai-estate-inventory/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/ai-estate-inventory/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/ai-estate-inventory/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/api-discovery-and-governance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/api-discovery-and-governance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/api-discovery-and-governance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/api-discovery-and-governance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/assurance-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/assurance-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/assurance-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/assurance-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/data-residency-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/data-residency-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/data-residency-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/data-residency-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/human-risk-and-impersonation-defense/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/human-risk-and-impersonation-defense/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/human-risk-and-impersonation-defense/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/human-risk-and-impersonation-defense/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/infrastructure-design-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/infrastructure-design-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/infrastructure-design-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/infrastructure-design-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/managed-detection-and-response/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/managed-detection-and-response/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/managed-detection-and-response/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/managed-detection-and-response/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/engagements/model-evaluation-and-red-team/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/model-evaluation-and-red-team/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/model-evaluation-and-red-team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/model-evaluation-and-red-team/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/energy-utilities/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/energy-utilities/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/financial-services/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/financial-services/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/government-public-sector/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/government-public-sector/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/government-public-sector/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/government-public-sector/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/healthcare-life-sciences/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/healthcare-life-sciences/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/healthcare-life-sciences/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/healthcare-life-sciences/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/industrial-manufacturing/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/industrial-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/industrial-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/industrial-manufacturing/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/retail-hospitality-real-estate/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/retail-hospitality-real-estate/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/retail-hospitality-real-estate/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/retail-hospitality-real-estate/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/telecommunications/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/telecommunications/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/telecommunications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/telecommunications/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/industries/transport-logistics/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/transport-logistics/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/transport-logistics/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/transport-logistics/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/case-studies/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/case-studies/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/industry/energy-utilities/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/energy-utilities/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/industry/financial-services/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/financial-services/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/industry/government/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/government/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/government/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/government/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/industry/telecom/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/telecom/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/telecom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/telecom/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/maturity-model/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/maturity-model/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/maturity-model/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/maturity-model/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/research/readiness-assessment/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/readiness-assessment/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/readiness-assessment/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/readiness-assessment/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/advanced-infrastructure/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/advanced-infrastructure/infrastructure-design/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/advanced-infrastructure/network-as-a-service/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/advanced-infrastructure/storage-and-resilience/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-assurance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-assurance/audit-readiness/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/audit-readiness/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/audit-readiness/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/audit-readiness/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-assurance/governance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/governance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/governance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/governance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-assurance/independent-evaluation/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/independent-evaluation/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/independent-evaluation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/independent-evaluation/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-cybersecurity/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-cybersecurity/human-risk/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/human-risk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/human-risk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/human-risk/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-cybersecurity/managed-detection-response/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/ai-cybersecurity/ot-security/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/ot-security/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/ot-security/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/ot-security/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/applied-ai-and-data/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/applied-ai-and-data/agentic-ai/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/agentic-ai/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/agentic-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/agentic-ai/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/applied-ai-and-data/ai-control/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/ai-control/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/ai-control/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/ai-control/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/ar/what-we-do/applied-ai-and-data/data-organization/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/data-organization/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/data-organization/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/data-organization/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/about/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/about/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/about/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/about/leadership/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/about/leadership/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/about/leadership/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/about/leadership/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/careers/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/careers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/careers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/careers/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/contact/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/contact/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/events/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/events/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/events/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/events/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/company/partners/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/company/partners/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/company/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/company/partners/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/ai-estate-inventory/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/ai-estate-inventory/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/ai-estate-inventory/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/ai-estate-inventory/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/api-discovery-and-governance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/api-discovery-and-governance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/api-discovery-and-governance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/api-discovery-and-governance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/assurance-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/assurance-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/assurance-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/assurance-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/data-residency-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/data-residency-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/data-residency-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/data-residency-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/human-risk-and-impersonation-defense/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/human-risk-and-impersonation-defense/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/human-risk-and-impersonation-defense/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/human-risk-and-impersonation-defense/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/infrastructure-design-review/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/infrastructure-design-review/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/infrastructure-design-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/infrastructure-design-review/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/managed-detection-and-response/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/managed-detection-and-response/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/managed-detection-and-response/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/managed-detection-and-response/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/engagements/model-evaluation-and-red-team/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/engagements/model-evaluation-and-red-team/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/engagements/model-evaluation-and-red-team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/engagements/model-evaluation-and-red-team/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/energy-utilities/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/energy-utilities/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/financial-services/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/financial-services/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/government-public-sector/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/government-public-sector/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/government-public-sector/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/government-public-sector/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/healthcare-life-sciences/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/healthcare-life-sciences/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/healthcare-life-sciences/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/healthcare-life-sciences/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/industrial-manufacturing/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/industrial-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/industrial-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/industrial-manufacturing/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/retail-hospitality-real-estate/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/retail-hospitality-real-estate/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/retail-hospitality-real-estate/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/retail-hospitality-real-estate/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/telecommunications/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/telecommunications/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/telecommunications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/telecommunications/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/industries/transport-logistics/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/industries/transport-logistics/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/industries/transport-logistics/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/industries/transport-logistics/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/case-studies/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/case-studies/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/industry/energy-utilities/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/energy-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/energy-utilities/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/industry/financial-services/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/financial-services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/financial-services/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/industry/government/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/government/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/government/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/government/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/industry/telecom/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/industry/telecom/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/industry/telecom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/industry/telecom/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/maturity-model/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/maturity-model/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/maturity-model/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/maturity-model/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/research/readiness-assessment/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/research/readiness-assessment/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/research/readiness-assessment/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/research/readiness-assessment/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/advanced-infrastructure/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/advanced-infrastructure/infrastructure-design/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/infrastructure-design/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/advanced-infrastructure/network-as-a-service/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/network-as-a-service/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/advanced-infrastructure/storage-and-resilience/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/advanced-infrastructure/storage-and-resilience/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-assurance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-assurance/audit-readiness/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/audit-readiness/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/audit-readiness/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/audit-readiness/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-assurance/governance/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/governance/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/governance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/governance/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-assurance/independent-evaluation/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-assurance/independent-evaluation/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-assurance/independent-evaluation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-assurance/independent-evaluation/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-cybersecurity/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-cybersecurity/human-risk/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/human-risk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/human-risk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/human-risk/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-cybersecurity/managed-detection-response/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/managed-detection-response/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/ai-cybersecurity/ot-security/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/ai-cybersecurity/ot-security/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/ai-cybersecurity/ot-security/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/ai-cybersecurity/ot-security/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/applied-ai-and-data/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/applied-ai-and-data/agentic-ai/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/agentic-ai/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/agentic-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/agentic-ai/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/applied-ai-and-data/ai-control/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/ai-control/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/ai-control/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/ai-control/"/>
+  </url>
+  <url>
+    <loc>https://orvixnet.com/what-we-do/applied-ai-and-data/data-organization/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://orvixnet.com/what-we-do/applied-ai-and-data/data-organization/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://orvixnet.com/ar/what-we-do/applied-ai-and-data/data-organization/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orvixnet.com/what-we-do/applied-ai-and-data/data-organization/"/>
+  </url>
+</urlset>
