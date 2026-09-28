@@ -555,6 +555,29 @@ padding:calc(67px + clamp(26px,6vw,44px)) 0 clamp(32px,5vw,52px)}}
 .nav-l,.mob ul{margin:0;padding:0;list-style:none}
 .nav-l>li{list-style:none}
 /* navfont:end */
+/* mega:begin  mega-menu rules from index.html, tools/nav */
+.dd.mega{position:fixed;left:0;right:0;top:66px;min-width:0;border-left:none;border-right:none;padding:0}
+.mega-in{max-width:1460px;margin:0 auto;padding:34px var(--gut) 38px;
+display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(20px,3vw,52px)}
+.mcol>a.head{display:block;font-size:14px;font-weight:600;color:#fff;padding:0 0 10px;
+border-bottom:1px solid rgba(255,255,255,.18);margin-bottom:10px;letter-spacing:-.01em}
+.mcol>a.head:hover{color:var(--cyan)}
+.mcol>a.head i{font-style:normal;font-family:var(--m);font-size:11px;color:var(--cyan);margin-right:9px;letter-spacing:0}
+.mcol .sub{display:block;padding:7px 0;font-size:13px;line-height:19px;color:rgba(255,255,255,.66)}
+.mcol .sub:hover{color:var(--cyan)}
+.mega-foot{border-top:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03)}
+.mega-foot .w{padding:14px var(--gut);max-width:1460px;font-family:var(--m);font-size:11.5px;
+color:rgba(255,255,255,.5);display:flex;gap:10px;align-items:center}
+.mega-foot .w b{color:var(--cyan);font-weight:500}
+@media(max-width:1120px){.dd.mega{display:none}}
+.mcol .head.grouplbl{color:var(--cyan);font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:default}
+.mcol .head.grouplbl:hover{color:var(--cyan)}
+/* mega:end */
+
+/* navpanel:begin  tools/nav */
+.dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain}
+/* navpanel:end */
+
 </style>
 <script type="application/ld+json">
 {

@@ -193,6 +193,8 @@ font-size:clamp(14px,1.5vw,17px);line-height:1.5;color:rgba(255,255,255,.62);max
 .hero-note b i{font-style:normal;color:var(--cyan);margin-right:8px;font-family:var(--m);letter-spacing:0}
 .hero-note em{margin-left:auto;font-style:normal;font-family:var(--m);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.28)}
 @media(max-width:760px){.hero-note{position:static;border-top:none}.hero-note .w{padding-top:0}.hero-note em{display:none}}
+/* the strip runs from the far left of the screen, not the centred column */
+.hero-note .w{max-width:none;margin:0}
 
 /* 02 layers */
 .layers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--silver);border:1px solid var(--silver);margin-top:62px}
@@ -253,6 +255,7 @@ transition:padding .3s,background .3s}
 .en p{font-size:14px;line-height:22px}
 .en .out{margin-top:12px;font-family:var(--m);font-size:11px;line-height:18px;color:var(--blue);
 border-left:2px solid var(--cyan);padding-left:12px}
+.eng>.en:last-child:nth-child(odd){grid-column:1/-1}
 @media(max-width:820px){.eng{grid-template-columns:1fr}}
 
 /* 06 operate */
@@ -473,20 +476,12 @@ color:rgba(255,255,255,.5);display:flex;gap:10px;align-items:center}
 display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;
 background-image:var(--img,none);background-size:cover;background-position:center;
 transition:background-color .45s cubic-bezier(.22,1,.36,1)}
-.bx::before{content:"";position:absolute;inset:0;z-index:-2;opacity:.5;
-background-image:repeating-linear-gradient(45deg,rgba(72,226,226,.16) 0 1px,transparent 1px 14px);
-transition:opacity .45s,transform .6s cubic-bezier(.22,1,.36,1)}
 .bx::after{content:"";position:absolute;inset:0;z-index:-1;
 background:linear-gradient(180deg,rgba(3,7,44,.15) 0%,rgba(3,7,44,.82) 62%,rgba(3,7,44,.95) 100%);transition:background .45s}
 .bx:hover{background-color:#0B1666}
-.bx:hover::before{opacity:.9;transform:scale(1.08)}
 .bx:hover::after{background:linear-gradient(180deg,rgba(4,14,90,.25) 0%,rgba(3,10,70,.86) 55%,rgba(3,10,70,.96) 100%)}
 .bx .tag{position:absolute;top:clamp(16px,1.8vw,24px);right:clamp(16px,1.8vw,24px);
 font-family:var(--m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);opacity:.75}
-.bx .motif{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%) scale(1);
-width:min(46%,150px);opacity:.4;transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .45s;pointer-events:none}
-.bx:hover .motif{transform:translate(-50%,-64%) scale(1.14);opacity:.85}
-.bx .motif path,.bx .motif circle,.bx .motif rect,.bx .motif ellipse{fill:none;stroke:var(--cyan);stroke-width:2.2;vector-effect:non-scaling-stroke}
 .bx h4{position:relative;font-size:clamp(16px,1.65vw,21px);line-height:1.16;font-weight:600;color:#fff;letter-spacing:-.02em;max-width:16ch}
 .bx p{position:relative;font-size:13.5px;line-height:21px;color:rgba(255,255,255,.78);max-width:40ch;
 margin-top:0;max-height:0;opacity:0;overflow:hidden;
@@ -498,13 +493,12 @@ transition:max-height .45s cubic-bezier(.22,1,.36,1),opacity .35s,margin-top .45
 .bx.big2{grid-column:3/5;grid-row:2/4}
 .bx.s3{grid-column:1;grid-row:3}
 .bx.s4{grid-column:2;grid-row:3}
-.bx.big1 .motif,.bx.big2 .motif{width:min(34%,190px)}
 @media(max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(150px,auto)}
  .bx.big1,.bx.big2,.bx.s1,.bx.s2,.bx.s3,.bx.s4{grid-column:auto;grid-row:auto}
  .bx.big1,.bx.big2{grid-column:1/3}
  .bx p{max-height:200px;opacity:1;margin-top:12px}}
 @media(max-width:560px){.bento{grid-template-columns:1fr}.bx.big1,.bx.big2{grid-column:1}}
-@media(prefers-reduced-motion:reduce){.bx,.bx::before,.bx::after,.bx .motif,.bx p{transition:none}}
+@media(prefers-reduced-motion:reduce){.bx,.bx::after,.bx p{transition:none}}
 
 /* ===== methodology ring ===== */
 .method3{display:grid;grid-template-columns:1fr minmax(250px,360px) 1fr;
@@ -1276,7 +1270,6 @@ padding:22px clamp(18px,1.9vw,26px) 26px}
    printed "PHOTO SLOT --ph-stage-N" over a hatch for the same reason.
    Both are build aids; restore them by removing this block if a slot
    is ever emptied again. .ph briefs already self-hide via .filled. */
-.hero-note em{display:none}
 .wwd .st .img::after{content:none}
 
 /* --- stakes panel: let the photograph read ---------------------
@@ -1605,6 +1598,10 @@ input,select,textarea{font-size:16px!important}
 .ox h2.two .xline{font-size:1.35em}
 }
 /* mobile:end */
+/* navpanel:begin  tools/nav */
+.dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain}
+/* navpanel:end */
+
 </style>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1765,7 +1762,6 @@ input,select,textarea{font-size:16px!important}
   </div>
   <div class="hero-note"><div class="w">
     <b><i>01</i>البنية التحتية المتقدمة</b><b><i>02</i>الذكاء الاصطناعي التطبيقي والبيانات</b><b><i>03</i>الأمن السيبراني للذكاء الاصطناعي</b><b><i>04</i>ضمان الذكاء الاصطناعي</b>
-    <em>خانة صورة — اضبط ‎--ph-hero‎</em>
   </div></div>
 </header>
 
@@ -1774,7 +1770,6 @@ input,select,textarea{font-size:16px!important}
   <div class="wm" aria-hidden="true"><b>O</b>RVI<b>X</b></div>
   <div class="w">
     <div class="headwrap rv">
-      <p dir="auto" class="does">تقوم أورفكس بأمرين.</p>
       <h2 dir="auto" class="two">
         <span>نرسم حدود الثقة.</span>
         <span>ونحلّ</span>
@@ -1800,32 +1795,26 @@ input,select,textarea{font-size:16px!important}
     <div class="xlab rv">أين يكمن المجهول؟</div>
     <div class="bento rv">
       <div class="bx big1" style="--img:url('../images/hero-infrastructure.jpg')"><span class="tag">البنية التحتية</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><path d="M10 78 H110 M10 42 H110"/><rect x="26" y="42" width="26" height="36"/><rect x="68" y="42" width="26" height="36"/><path d="M52 60 H68"/><circle cx="18" cy="24" r="7"/><circle cx="102" cy="24" r="7"/><path d="M18 31 V42 M102 31 V42"/></svg>
         <h4 dir="auto">بنية تحتية بلا حدود</h4>
         <p dir="auto">لم تعد الحوسبة والتخزين والاتصال تقيم في مكان واحد، ولا بياناتك كذلك. نصمّم على هذا الأساس عن قصد — شبكة تُوفَّر كخدمة، وبيانات متسقة عبر المناطق، وموطن بيانات مُطبَّق حيث تستقر البيانات فعلًا.</p></div>
 
       <div class="bx s1" style="--img:url('../images/bento-interfaces.jpg')"><span class="tag">الواجهات</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><rect x="12" y="34" width="24" height="52"/><rect x="84" y="34" width="24" height="52"/><path d="M36 48 H84 M36 60 H84 M36 72 H84"/></svg>
         <h4 dir="auto">واجهات لم يُحصِها أحد</h4>
         <p dir="auto">فُتحت من أجل مشروع ولم تُغلق قط. نعثر على كل واحدة منها، ونصنّفها، ونُخضعها لسياسة مُطبَّقة لا محفوظة في الأدراج.</p></div>
 
       <div class="bx s2" style="--img:url('../images/bento-identity.jpg')"><span class="tag">الهوية</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><circle cx="42" cy="46" r="16"/><path d="M18 88 a24 24 0 0 1 48 0"/><path d="M78 34 L110 74 M110 34 L78 74"/></svg>
         <h4 dir="auto">وجوه غير حقيقية</h4>
         <p dir="auto">بات الصوت والفيديو يتجاوزان المعيار الذي بُنيت عليه موافقاتك. نضع فحوص التحقق من الحياة وأصالة المحتوى حيث تتحرك الأموال.</p></div>
 
       <div class="bx big2" style="--img:url('../images/bento-agentic.jpg')"><span class="tag">الذكاء الاصطناعي الوكيل</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><rect x="34" y="34" width="52" height="44"/><path d="M8 48 H34 M8 66 H34 M86 57 H112 M104 49 L112 57 L104 65"/><circle cx="60" cy="20" r="8"/><path d="M60 28 V34"/><path d="M48 52 H72 M48 62 H66"/></svg>
         <h4 dir="auto">وكلاء بلا ضوابط</h4>
         <p dir="auto">الوكلاء الذين يتصرفون أثمن بكثير من الوكلاء الذين يجيبون — وأصعب بكثير في الترخيص لهم. نبنيهم بنطاق محدد، وصلاحية كتابة ضيقة، وبوابة بشرية عند كل نقطة تتغير فيها حالة النظام.</p></div>
 
       <div class="bx s3" style="--img:url('../images/bento-data.jpg')"><span class="tag">البيانات</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><ellipse cx="60" cy="30" rx="34" ry="12"/><path d="M26 30 V90 a34 12 0 0 0 68 0 V30"/><path d="M26 60 a34 12 0 0 0 68 0"/></svg>
         <h4 dir="auto">بيانات بلا مالك</h4>
         <p dir="auto">تصل إليها الأنظمة الخطأ وتغيب عن الأنظمة الصحيحة. نصنّفها، ونسند ملكيتها، ونحدّد ما يُسمح لأي نموذج برؤيته.</p></div>
 
       <div class="bx s4" style="--img:url('../images/hero-assurance.jpg')"><span class="tag">الضمان</span>
-        <svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><rect x="30" y="24" width="60" height="72"/><path d="M44 44 H76 M44 58 H76 M44 72 H66"/><path d="M14 60 H30 M90 60 H106"/></svg>
         <h4 dir="auto">نماذج لا تستطيع التفسير</h4>
         <p dir="auto">الجزء الصعب في حوكمة الذكاء الاصطناعي هو الأدلة لا السياسات. نبني السجل وسجل التدقيق الذي يسنده.</p></div>
     </div>
@@ -2029,10 +2018,11 @@ input,select,textarea{font-size:16px!important}
       <div class="en"><div dir="auto" class="n">03</div><div><h3 dir="auto">تقييم النماذج والفريق الأحمر</h3><p dir="auto">اختبار عدائي للنماذج الإنتاجية بحثًا عن إساءة استخدام الأوامر وتسريب البيانات والتحيّز والانحراف.</p><div class="out">المخرَج — النتائج وخطة المعالجة · المدة</div></div></div>
       <div class="en"><div dir="auto" class="n">04</div><div><h3 dir="auto">المخاطر البشرية والدفاع ضد انتحال الهوية</h3><p dir="auto">السلسلة كاملة من التصيّد إلى التزييف العميق: قياس المخاطر السلوكية على مستوى القوى العاملة، إضافة إلى ضوابط التحقق من الحياة وأصالة المحتوى عند التسجيل ومراكز الاتصال واعتماد المدفوعات.</p><div class="out">المخرَج — خط الأساس للمخاطر وتصميم الضوابط والتجربة الاسترشادية · المدة</div></div></div>
       <div class="en"><div dir="auto" class="n">05</div><div><h3 dir="auto">اكتشاف وحوكمة واجهات البرمجة</h3><p dir="auto">العثور على كل واجهة، وتصنيفها بحسب حساسية البيانات، وإخضاعها لسياسة مُطبَّقة فعلًا.</p><div class="out">المخرَج — جرد واجهات البرمجة وتصميم البوابة · المدة</div></div></div>
-      <div class="en"><div dir="auto" class="n">06</div><div><h3 dir="auto">جرد التشفير</h3><p dir="auto">أين يوجد التشفير عبر المنظومة، وما المكشوف منه، وما الذي يجب ترحيله أولًا.</p><div class="out">المخرَج — قائمة مكوّنات التشفير · المدة</div></div></div>
+      <div class="en"><div dir="auto" class="n">06</div><div><h3 dir="auto">تقييم الوضع الأمني السحابي</h3><p dir="auto">تقييم بيئة Azure أو AWS أو Microsoft 365 أو بيئتك السحابية الرئيسية، عبر الهوية والإعدادات والتعرّض وحماية البيانات والسجلات والمرونة. تُحدَّد فجوات الثقة الصفرية وتُرتَّب المعالجة حسب الأولوية.</p><div class="out">المخرَج &#8212; نتائج الوضع الأمني وخارطة معالجة مرتّبة حسب الأولوية &#183; المدة</div></div></div>
       <div class="en"><div dir="auto" class="n">07</div><div><h3 dir="auto">مراجعة تصميم البنية التحتية</h3><p dir="auto">تقييم معمارية الشبكة والتخزين والاتصال وفق الطريقة التي تعمل بها المؤسسة فعلًا، مع التعامل مع موطن البيانات والمرونة بوصفهما متطلبَي تصميم لا قيدين متأخرين.</p><div class="out">المخرَج — المعمارية المستهدفة ومسار الترحيل · المدة</div></div></div>
       <div class="en"><div dir="auto" class="n">08</div><div><h3 dir="auto">الكشف والاستجابة المُدارة</h3><p dir="auto">مراقبة مستمرة بمحلل معيَّن بالاسم يعرف منظومتك، لا طابور تذاكر لا يعرفها.</p><div class="out">خدمة مستمرة · تهيئة خلال 30 يومًا</div></div></div>
-      <div class="en"><div dir="auto" class="n">09</div><div><h3 dir="auto">ضمان مستمر <span class="flag">سنوي</span></h3><p dir="auto">سجل يُحدَّث باستمرار، وضوابط تُعاد اختبارها دوريًا، وأدلة تبقى محدَّثة بين عمليات التدقيق. هذه هي المرحلة الرابعة من المنهجية، تُقدَّم كخدمة.</p><div class="out">خدمة مستمرة · سنوية بنقاط مراجعة ربع سنوية</div></div></div>
+      <div class="en"><div dir="auto" class="n">09</div><div><h3 dir="auto">تقييم نضج الأمن السيبراني والمخاطر</h3><p dir="auto">نقطة الانطلاق الأشمل: يُقاس برنامجك الأمني وفق NIST CSF 2.0 وC2M2 وضوابط CIS، ويُربط بالمتطلبات الإقليمية التي تنطبق عليك، ويُقيَّم بحيث يُثبَت التقدّم بدل أن يُدّعى.</p><div class="out">المخرَج &#8212; خط أساس للنضج وسجل مخاطر وخارطة طريق &#183; المدة</div></div></div>
+      <div class="en"><div dir="auto" class="n">10</div><div><h3 dir="auto">تقييم الأمن السيبراني للتقنيات التشغيلية والأنظمة الصناعية</h3><p dir="auto">للنفط والغاز والطاقة والتصنيع والبنية التحتية الحيوية: رؤية الأصول، والفصل بين تقنية المعلومات والتقنيات التشغيلية، والوصول عن بُعد والوصول المميّز، والتعرّض للثغرات، والأنظمة القديمة، والمراقبة، والجاهزية للحوادث، مقيَّمة وفق IEC 62443 والمتطلبات الإقليمية.</p><div class="out">المخرَج &#8212; نتائج التعرّض في التقنيات التشغيلية وتحليل الفجوات وفق IEC 62443 &#183; المدة</div></div></div>
     </div>
 
     <div class="method rv">
@@ -2230,4 +2220,5 @@ draw();})();
 
 </script>
 </body>
+      <p dir="auto" class="does">تقوم أورفكس بأمرين.</p>
 </html>

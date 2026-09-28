@@ -168,12 +168,6 @@ background-image:var(--ph-hero);background-size:cover;background-position:center
 .kicker{margin-top:clamp(26px,4vh,38px);padding-top:20px;border-top:1px solid rgba(255,255,255,.16);
 font-size:clamp(14px,1.5vw,17px);line-height:1.5;color:rgba(255,255,255,.62);max-width:46ch;font-weight:300}
 .kicker span{color:var(--cyan);font-weight:500}
-.hero-note{position:absolute;bottom:0;left:0;right:0;z-index:2;border-top:1px solid rgba(255,255,255,.13)}
-.hero-note .w{padding:16px var(--gut);display:flex;gap:clamp(16px,3vw,44px);align-items:center;flex-wrap:wrap}
-.hero-note b{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.7)}
-.hero-note b i{font-style:normal;color:var(--cyan);margin-right:8px;font-family:var(--m);letter-spacing:0}
-.hero-note em{margin-left:auto;font-style:normal;font-family:var(--m);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.28)}
-@media(max-width:760px){.hero-note{position:static;border-top:none}.hero-note .w{padding-top:0}.hero-note em{display:none}}
 
 /* 02 layers */
 .layers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--silver);border:1px solid var(--silver);margin-top:62px}
@@ -1257,7 +1251,6 @@ padding:22px clamp(18px,1.9vw,26px) 26px}
    printed "PHOTO SLOT --ph-stage-N" over a hatch for the same reason.
    Both are build aids; restore them by removing this block if a slot
    is ever emptied again. .ph briefs already self-hide via .filled. */
-.hero-note em{display:none}
 .wwd .st .img::after{content:none}
 
 /* --- stakes panel: let the photograph read ---------------------
@@ -1573,6 +1566,10 @@ input,select,textarea{font-size:16px!important}
 .ox h2.two .xline{font-size:1.35em}
 }
 /* mobile:end */
+/* navpanel:begin  tools/nav */
+.dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain}
+/* navpanel:end */
+
 </style>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1722,7 +1719,7 @@ input,select,textarea{font-size:16px!important}
 </div>
 
 <!-- 01 -->
-<div class="wwd rsh"><header class="hero nocrumb"><div class="w"><div class="lbl">Sector briefings</div><h1>One rule. What you must show.</h1><p class="sub">Each briefing takes a single obligation, states what it asks you to be able to show, and marks the artefacts most organisations in that sector do not currently hold.</p></div></header><section class=""><div class="w rv"><div class="lbl" style="color:var(--blue);margin-bottom:20px">In preparation</div><h2>Four briefings.</h2><p class="lede" style="margin-top:20px">Every regulatory reference is reviewed before publication. Where a position is contested or still moving, the briefing says so rather than picking the confident reading.</p><div class="lst"><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Financial services</h3><p>What the CBUAE Guidance Note on responsible AI asks a licensed institution to be able to show, and which of those artefacts most firms do not hold.</p></div><div class="go soon">DRAFT</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Government &amp; public sector</h3><p>Supplier obligations that travel with the contract rather than with the organisation.</p></div><div class="go soon">DRAFT</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Energy &amp; utilities</h3><p>Why availability constraints change what a security recommendation is allowed to say.</p></div><div class="go soon">DRAFT</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Telecommunications</h3><p>Residency as a routing property rather than a storage one.</p></div><div class="go soon">DRAFT</div></div></div></div></section><section class="strip"><div class="w rv"><div><h3>Want one for a sector that is not listed?</h3><p>Tell us which obligation is causing the argument and we will say whether a briefing is planned.</p></div><a class="btn" href="../../company/contact/index.html">Get in touch</a></div></section></div>
+<div class="wwd rsh"><header class="hero nocrumb"><div class="w"><div class="lbl">Sector briefings</div><h1>One rule. What you must show.</h1><p class="sub">Each briefing takes a single obligation, states what it asks you to be able to show, and marks the artefacts most organisations in that sector do not currently hold.</p></div></header><section class=""><div class="w rv"><div class="lbl" style="color:var(--blue);margin-bottom:20px">Latest</div><h2>Four briefings.</h2><p class="lede" style="margin-top:20px">Every regulatory reference is reviewed before publication. Where a position is contested or still moving, the briefing says so rather than picking the confident reading.</p><div class="lst"><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Financial services</h3><p>What the CBUAE Guidance Note on responsible AI asks a licensed institution to be able to show, and which of those artefacts most firms do not hold.</p></div><div class="go soon">COMING SOON</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Government &amp; public sector</h3><p>Supplier obligations that travel with the contract rather than with the organisation.</p></div><div class="go soon">COMING SOON</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Energy &amp; utilities</h3><p>Why availability constraints change what a security recommendation is allowed to say.</p></div><div class="go soon">COMING SOON</div></div><div class="row"><div class="k">SECTOR BRIEFING</div><div><h3>Telecommunications</h3><p>Residency as a routing property rather than a storage one.</p></div><div class="go soon">COMING SOON</div></div></div></div></section><section class="strip"><div class="w rv"><div><h3>Want one for a sector that is not listed?</h3><p>Tell us which obligation is causing the argument and we will say whether a briefing is planned.</p></div><a class="btn" href="../../company/contact/index.html">Get in touch</a></div></section></div>
 <footer>
   <div class="w">
     <div class="fgrid">

@@ -83,6 +83,37 @@ NAVIGATION - assets/nav.js and tools/nav/
     that used to ship on every page. tools/unify now calls it for the script
     tag rather than transplanting an inline copy.
 
+    It also gives the engagement pages the mega-menu rules (read from
+    index.html at run time) that tools/unify never carried over - without
+    them "What we do" and "Research" fell back to a narrow list that ran off
+    the bottom of a laptop screen - and lets every menu panel scroll inside
+    itself when the window is shorter than the panel.
+
+THE BOUNDARY BAND - assets/boundary.js and tools/boundary/
+    The three-move selector on the 32 What we do pages. It steps through
+    01 -> 02 -> 03 on its own every 5 seconds, with a bar on the active tab
+    counting down. It advances only while the band is on screen, pauses under
+    the pointer or keyboard focus, restarts the count when a move is picked,
+    and stays still for prefers-reduced-motion. The ORVIX mark behind it is
+    large and anchored bottom centre.
+
+        python -m tools.boundary [--check]
+
+INSIGHTS LISTINGS - tools/insights/
+    Perspectives, Sector briefings and Technology evaluations are rendered
+    from one file, tools/insights/articles.py. Put a piece's address next to
+    its title - a WordPress post or a page in this site - and run
+
+        python -m tools.insights [--check]
+
+    That row becomes a link reading "Read now"; rows without an address read
+    "Coming soon". The Arabic listings follow automatically, and new strings
+    are registered in assets/ar-dictionary.json.
+
+    The three listing pages are still noindex (tools/seo/pages.py) because
+    nothing is published. When the first piece goes live, change their robots
+    value there and run python -m tools.seo build.
+
 HOSTING AND SECURITY - Netlify
     The live site is Netlify behind Cloudflare. Three files in the site root
     are read by Netlify on every deploy (drag-and-drop included):

@@ -168,12 +168,6 @@ background-image:var(--ph-hero);background-size:cover;background-position:center
 .kicker{margin-top:clamp(26px,4vh,38px);padding-top:20px;border-top:1px solid rgba(255,255,255,.16);
 font-size:clamp(14px,1.5vw,17px);line-height:1.5;color:rgba(255,255,255,.62);max-width:46ch;font-weight:300}
 .kicker span{color:var(--cyan);font-weight:500}
-.hero-note{position:absolute;bottom:0;left:0;right:0;z-index:2;border-top:1px solid rgba(255,255,255,.13)}
-.hero-note .w{padding:16px var(--gut);display:flex;gap:clamp(16px,3vw,44px);align-items:center;flex-wrap:wrap}
-.hero-note b{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.7)}
-.hero-note b i{font-style:normal;color:var(--cyan);margin-right:8px;font-family:var(--m);letter-spacing:0}
-.hero-note em{margin-left:auto;font-style:normal;font-family:var(--m);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.28)}
-@media(max-width:760px){.hero-note{position:static;border-top:none}.hero-note .w{padding-top:0}.hero-note em{display:none}}
 
 /* 02 layers */
 .layers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--silver);border:1px solid var(--silver);margin-top:62px}
@@ -1257,7 +1251,6 @@ padding:22px clamp(18px,1.9vw,26px) 26px}
    printed "PHOTO SLOT --ph-stage-N" over a hatch for the same reason.
    Both are build aids; restore them by removing this block if a slot
    is ever emptied again. .ph briefs already self-hide via .filled. */
-.hero-note em{display:none}
 .wwd .st .img::after{content:none}
 
 /* --- stakes panel: let the photograph read ---------------------
@@ -1573,6 +1566,10 @@ input,select,textarea{font-size:16px!important}
 .ox h2.two .xline{font-size:1.35em}
 }
 /* mobile:end */
+/* navpanel:begin  tools/nav */
+.dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain}
+/* navpanel:end */
+
 </style>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1722,7 +1719,7 @@ input,select,textarea{font-size:16px!important}
 </div>
 
 <!-- 01 -->
-<div class="wwd rsh"><header class="hero nocrumb"><div class="w"><div dir="auto" class="lbl">وجهات نظر</div><h1 dir="auto">ثمانمائة كلمة. وبلا نموذج تملؤه.</h1><p dir="auto" class="sub">ثمانمائة كلمة، وفكرة واحدة، وبلا تنزيل مشروط. فالمقالة التي تحتاج إلى نموذج أمامها لم تكن تستحق القراءة.</p></div></header><section class=""><div class="w rv"><div dir="auto" class="lbl" style="color:var(--blue);margin-bottom:20px">قيد الإعداد</div><h2 dir="auto">أربع مسودات، لم يُنشر منها شيء بعد.</h2><p dir="auto" class="lede" style="margin-top:20px">العناوين والحجج مستقرة. ولا يُنشر شيء قبل مراجعته، فهذه القائمة هي ما هو قادم لا ما هو متاح.</p><div dir="auto" class="lst"><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">النسخ المتماثل ليس نسخة احتياطية</h3><p dir="auto">لماذا قد تشترك أربع نسخ من مجموعة بيانات في مصير واحد، وما يعنيه ذلك لالتزام استرداد قطعته على نفسك أمام الخارج.</p></div><div dir="auto" class="go soon">مسودة</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">زمن الموافقة هو الضابط</h3><p dir="auto">إذا مُنحت الموافقات في ثوانٍ وبأعداد كبيرة، فقد هُجرت البوابة عمليًا وإن ظلت قائمة على الورق.</p></div><div dir="auto" class="go soon">مسودة</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">لا ينبغي لأحد أن يدقّق منظومته بنفسه</h3><p dir="auto">حجة الاستقلالية، مطبَّقة على الشركة التي تسوقها.</p></div><div dir="auto" class="go soon">مسودة</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">الجرد ناقص دائمًا</h3><p dir="auto">يصل الذكاء الاصطناعي بوصفه خاصية ضمن شيء اشتُري سلفًا. ويعمل طويلًا قبل أن يظهر في أي سجل.</p></div><div dir="auto" class="go soon">مسودة</div></div></div></div></section><section class="strip"><div class="w rv"><div><h3 dir="auto">اعلم بها فور صدورها.</h3><p dir="auto">متفرّقة، وعنوان واحد، وإلغاء الاشتراك بنقرة واحدة.</p></div><a class="btn" href="../../research/subscribe/index.html">اشترك</a></div></section></div>
+<div class="wwd rsh"><header class="hero nocrumb"><div class="w"><div dir="auto" class="lbl">وجهات نظر</div><h1 dir="auto">ثمانمائة كلمة. وبلا نموذج تملؤه.</h1><p dir="auto" class="sub">ثمانمائة كلمة، وفكرة واحدة، وبلا تنزيل مشروط. فالمقالة التي تحتاج إلى نموذج أمامها لم تكن تستحق القراءة.</p></div></header><section class=""><div class="w rv"><div dir="auto" class="lbl" style="color:var(--blue);margin-bottom:20px">الأحدث</div><h2 dir="auto">أربع مقالات، لكلٍّ منها فكرة واحدة.</h2><p dir="auto" class="lede" style="margin-top:20px">العناوين والحجج مستقرة. وتُتاح كل مقالة هنا فور مراجعتها.</p><div dir="auto" class="lst"><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">النسخ المتماثل ليس نسخة احتياطية</h3><p dir="auto">لماذا قد تشترك أربع نسخ من مجموعة بيانات في مصير واحد، وما يعنيه ذلك لالتزام استرداد قطعته على نفسك أمام الخارج.</p></div><div dir="auto" class="go soon">قريبًا</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">زمن الموافقة هو الضابط</h3><p dir="auto">إذا مُنحت الموافقات في ثوانٍ وبأعداد كبيرة، فقد هُجرت البوابة عمليًا وإن ظلت قائمة على الورق.</p></div><div dir="auto" class="go soon">قريبًا</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">لا ينبغي لأحد أن يدقّق منظومته بنفسه</h3><p dir="auto">حجة الاستقلالية، مطبَّقة على الشركة التي تسوقها.</p></div><div dir="auto" class="go soon">قريبًا</div></div><div class="row"><div dir="auto" class="k">وجهة نظر</div><div><h3 dir="auto">الجرد ناقص دائمًا</h3><p dir="auto">يصل الذكاء الاصطناعي بوصفه خاصية ضمن شيء اشتُري سلفًا. ويعمل طويلًا قبل أن يظهر في أي سجل.</p></div><div dir="auto" class="go soon">قريبًا</div></div></div></div></section><section class="strip"><div class="w rv"><div><h3 dir="auto">اعلم بها فور صدورها.</h3><p dir="auto">متفرّقة، وعنوان واحد، وإلغاء الاشتراك بنقرة واحدة.</p></div><a class="btn" href="../../research/subscribe/index.html">اشترك</a></div></section></div>
 <footer>
   <div class="w">
     <div class="fgrid">

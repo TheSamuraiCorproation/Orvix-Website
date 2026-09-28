@@ -28,6 +28,8 @@ What this does, idempotently, to every page:
   5. archives the identical BUILD NOTES comment into BUILD_NOTES.txt once and
      strips it, and strips the "ADD YOUR PHOTOGRAPHS HERE" how-to comment,
      both of which shipped on every page
+  6. gives the engagement pages the mega-menu rules they never had, and lets
+     every panel scroll inside itself on a short screen
 
     python -m tools.nav            # apply
     python -m tools.nav --check    # report what would change, write nothing
@@ -110,8 +112,13 @@ def script_tag(rel: str) -> str:
 
 
 def ensure_script(s: str, rel: str) -> str:
-    """Exactly one nav.js tag, just before </head>."""
+    """Exactly one nav.js tag in <head>. A correct tag is left where it is, so
+    this never reorders against other tools that also add to <head>."""
     tag = script_tag(rel)
+    found = SCRIPT_RE.findall(s)
+    head_end = s.lower().rfind("</head>")
+    if len(found) == 1 and found[0].strip() == tag and s.find(tag) < head_end:
+        return s
     s = SCRIPT_RE.sub("", s)
     i = s.lower().rfind("</head>")
     if i < 0:
@@ -154,6 +161,67 @@ def strip_comments(s: str, archive: bool) -> str:
     return R_PHOTO_HOWTO.sub("", s)
 
 
+# ---- 6. mega-menu css -------------------------------------------------------
+# The engagement template was given the nav CSS by tools/unify but never the
+# mega-menu rules, so on those 16 pages "What we do" and "Research" rendered
+# as a 262px stacked list instead of the full-width panel - and on a laptop
+# screen the last links ran off the bottom where they could not be reached.
+# The rules are read from the homepage at run time, never copied by hand.
+
+MEGA_DONOR = "index.html"
+MEGA_FROM = "/* ===== mega menu ===== */"
+MEGA_TO = "@media(max-width:1120px){.dd.mega{display:none}}"
+R_GROUPLBL = re.compile(r"\.mcol \.head\.grouplbl(?::hover)?\{[^}]*\}")
+MEGA_BEGIN = "/* mega:begin  mega-menu rules from index.html, tools/nav */"
+MEGA_END = "/* mega:end */"
+R_MEGA_BLOCK = re.compile(re.escape(MEGA_BEGIN) + r".*?" + re.escape(MEGA_END) + r"\n?", re.S)
+
+# Every panel scrolls inside itself when the window is shorter than it is.
+PANEL_BEGIN = "/* navpanel:begin  tools/nav */"
+PANEL_END = "/* navpanel:end */"
+PANEL_CSS = (".dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);"
+             "overflow-y:auto;overscroll-behavior:contain}")
+R_PANEL_BLOCK = re.compile(re.escape(PANEL_BEGIN) + r".*?" + re.escape(PANEL_END) + r"\n?", re.S)
+
+_mega_cache: dict[str, str] = {}
+
+
+def mega_css(root: pathlib.Path) -> str:
+    if "css" not in _mega_cache:
+        s = (root / MEGA_DONOR).read_text(encoding="utf-8")
+        a, b = s.find(MEGA_FROM), s.find(MEGA_TO)
+        if a < 0 or b < 0:
+            raise ValueError(f"{MEGA_DONOR}: mega-menu markers not found")
+        rules = s[a + len(MEGA_FROM):b + len(MEGA_TO)].strip()
+        rules += "\n" + "\n".join(dict.fromkeys(R_GROUPLBL.findall(s)))
+        _mega_cache["css"] = rules
+    return _mega_cache["css"]
+
+
+def _before_head_style_end(s: str, blk: str) -> str:
+    head_end = s.lower().find("</head>")
+    i = s.lower().rfind("</style>", 0, head_end)
+    if i < 0:
+        return s
+    return s[:i] + blk + "\n" + s[i:]
+
+
+def ensure_mega_css(s: str, root: pathlib.Path) -> str:
+    blk = f"{MEGA_BEGIN}\n{mega_css(root)}\n{MEGA_END}\n"
+    if R_MEGA_BLOCK.search(s):
+        return R_MEGA_BLOCK.sub(lambda _: blk, s, count=1)
+    if ".dd.mega{" in s:
+        return s  # the page carries the rules natively
+    return _before_head_style_end(s, blk)
+
+
+def ensure_panel_css(s: str) -> str:
+    blk = f"{PANEL_BEGIN}\n{PANEL_CSS}\n{PANEL_END}\n"
+    if R_PANEL_BLOCK.search(s):
+        return R_PANEL_BLOCK.sub(lambda _: blk, s, count=1)
+    return _before_head_style_end(s, blk)
+
+
 def process(root: pathlib.Path, rel: str, check: bool) -> list[str]:
     p = root / rel
     s0 = p.read_text(encoding="utf-8")
@@ -162,6 +230,8 @@ def process(root: pathlib.Path, rel: str, check: bool) -> list[str]:
 
     steps = [
         ("css",       lambda x: fix_css(x)),
+        ("mega",      lambda x: ensure_mega_css(x, root)),
+        ("panel",     lambda x: ensure_panel_css(x)),
         ("script",    lambda x: ensure_script(strip_old_js(x), rel)),
         ("notice",    lambda x: drop_notice(x)),
         ("operate",   lambda x: fix_operate(x, rel)),

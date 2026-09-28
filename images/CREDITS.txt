@@ -263,3 +263,42 @@ REPLACED 8 SEPTEMBER 2026 - REGIONAL RE-SHOOT (PLACEHOLDER SET)
     --ph-close still carries its original note: commission rather than
     license. That intent is unchanged; close.jpg and close-home.jpg remain
     licensed stand-ins.
+
+--------------------------------------------------------------------
+REPLACED 28 SEPTEMBER 2026 - NO RELIGIOUS SUBJECT MATTER
+--------------------------------------------------------------------
+    Direction from Orvix: no image on the site should signal a religious
+    preference. Every photograph was reviewed; eight were replaced.
+    Same file names, same pixel sizes, Pexels Licence as above.
+
+    file                      pexels id  replaces                    now
+    ------------------------  ---------  --------------------------  ----------------------------------
+    hero-assurance.jpg         15127414  mosque dome in an arch      Louvre Abu Dhabi on the water
+    hero-rsh-government.jpg     5045849  mosque colonnade            Qasr Al Hosn civic complex, Abu Dhabi
+    bento-identity.jpg         18535939  woman in hijab, profile     half-lit face
+    close-home.jpg              9034221  women in hijab, meeting     woman presenting to a team
+    hero-briefings.jpg          9052805  woman in hijab reading      man reading printed papers
+    svc-human-risk.jpg         18935245  team incl. hijab            team briefing
+    research.jpg                7654166  pen on Arabic manuscript    hand writing in a notebook
+                                         (read as scripture)
+    stage-3.jpg                 4201659  towers under a crescent     Dubai high-rises at night
+
+    operate.jpg (pexels 7109095, three colleagues at one screen) was
+    replaced and then restored at Orvix's request; it stays.
+
+    Deliberately kept: the Museum of the Future calligraphy (hero-home,
+    bento-interfaces) is secular poetry; Qasr Al Watan was considered for
+    the government slot and rejected because its domes read as a mosque.
+
+    The previous versions are in Orvix_Site_2/images_backup_2026-09-28/.
+    The sections above that describe mosque imagery as "held to three slots"
+    are superseded by this one.
+
+--------------------------------------------------------------------
+PARTNER LOGOS - assets/img/partners/
+--------------------------------------------------------------------
+    graphiant.svg   taken from the header of graphiant.com
+    expel.png       expel.com theme asset expel-logo-dark_nw.png
+    Both are the partners' trademarks, shown on Company > Partners (both
+    languages). Use is subject to each partner's brand guidelines; see
+    BUILD_NOTES.txt item 2 on written permission.
