@@ -9,7 +9,7 @@ it touches, and nothing else:
   * the hero <h2> on the six company pages, promoted to <h1> (section 6 fails
     a page whose H1 count is not exactly 1, and those six had none)
 
-The hand-written <style>, the BUILD NOTES comments, the existing Service /
+Stylesheets, the BUILD NOTES comments, the existing Service /
 FAQPage / BreadcrumbList graphs and all body copy are left alone.
 """
 
@@ -39,12 +39,8 @@ LEGACY = [
 # Company pages whose hero heading is an <h2> and which therefore ship no H1.
 NEEDS_H1 = [k for k in PAGES if k.startswith("company/")]
 
-H1_CSS = """
-/* h1 matches the band h2 it was promoted from, so the hero renders identically */
-.cmp .band h1{font-size:34px;line-height:37px;letter-spacing:-.015em;font-weight:600;color:var(--ink);margin-bottom:14px}
-.cmp .band.ink h1{color:var(--paper)}"""
-
-H1_CSS_MARK = ".cmp .band h1{"
+# The rules that make the promoted h1 render like the h2 it replaced live in
+# assets/css/company.css (".cmp .band h1").
 
 
 def _split_head(s: str) -> tuple[int, int]:
@@ -172,17 +168,6 @@ def promote_h1(s: str) -> str:
     return s[:a] + f"<h1{m.group(1)}>{m.group(2)}</h1>" + s[b:]
 
 
-def add_h1_css(s: str) -> str:
-    if H1_CSS_MARK in s:
-        return s
-    anchor = ".cmp .band.ink h2{color:var(--paper)}"
-    i = s.find(anchor)
-    if i < 0:
-        return s
-    j = i + len(anchor)
-    return s[:j] + H1_CSS + s[j:]
-
-
 # ---- driver ---------------------------------------------------------------
 
 def page_meta(rel: str, s: str, page: dict) -> tuple[str, str]:
@@ -214,7 +199,6 @@ def process(root: pathlib.Path, rel: str) -> dict:
 
     if rel in NEEDS_H1 or (rel.startswith("ar/") and rel[3:] in NEEDS_H1):
         s = promote_h1(s)
-        s = add_h1_css(s)
 
     s = strip_legacy(s)
 

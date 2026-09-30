@@ -1,8 +1,9 @@
-"""Pull the canonical nav out of the what-we-do template.
+"""Pull the canonical nav markup out of the what-we-do template.
 
-Nothing is hardcoded here: the markup and the CSS are read
-from the donor page at run time, so this stays in step with the template
-instead of drifting from a copy pasted once.
+Nothing is hardcoded here: the markup is read from the donor page at run
+time, so this stays in step with the template instead of drifting from a
+copy pasted once. The nav CSS is not transplanted any more: it lives in
+assets/css/ (see README.txt, STYLESHEETS).
 
 The English donor is what-we-do/ai-assurance/index.html and the Arabic donor is
 its twin. Both sit at the same link depth as every engagement and industry page
@@ -17,12 +18,6 @@ import re
 EN_DONOR = "what-we-do/ai-assurance/index.html"
 AR_DONOR = "ar/what-we-do/ai-assurance/index.html"
 
-CSS_FROM = "/* wordmark (interim, typographic) */"
-CSS_TO = "@media(max-width:520px){.nav-cta{display:none}}"
-
-# markers so an injected block can be found and replaced on a later run
-CSS_BEGIN = "/* nav:begin  transplanted from the what-we-do template by tools/unify */"
-CSS_END = "/* nav:end */"
 # legacy: the toggle script lives in assets/nav.js now and tools/nav removes
 # any transplanted inline copy. Kept so old markers can still be recognised.
 JS_BEGIN = "<!-- nav:js:begin  tools/unify -->"
@@ -65,26 +60,17 @@ class Donor:
         self.rel = rel
         s = (root / rel).read_text(encoding="utf-8")
 
-        a = s.find(CSS_FROM)
-        b = s.find(CSS_TO)
-        if a < 0 or b < 0:
-            raise ValueError(f"{rel}: nav CSS markers not found")
-        self.css = s[a:b + len(CSS_TO)].strip()
-
         body = s[s.lower().find("<body"):]
         self.nav = _slice(body, r'<nav id="nav">', "nav")
         self.mob = _slice(body, r'<div class="mob" id="mob">', "div")
 
-
-    def css_block(self) -> str:
-        return f"{CSS_BEGIN}\n{self.css}\n{CSS_END}"
-
     def nav_for(self, rel: str) -> str:
         """The nav with its language toggle pointed at this page's own twin."""
+        page = rel[:-len("index.html")] if rel.endswith("index.html") else rel
         if self.lang == "en":
-            href = "../../ar/" + rel
+            href = "../../ar/" + page
         else:
             # an Arabic page links back to its English twin from inside ar/
-            href = "../../../" + rel[3:]
+            href = "../../../" + page[3:]
         return re.sub(r'(<a class="nav-ar" href=")[^"]*(")',
                       lambda m: m.group(1) + href + m.group(2), self.nav, count=1)

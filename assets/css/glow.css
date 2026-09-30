@@ -1,0 +1,46 @@
+/* The animated glow ring on the "Talk to our team" nav button. Loaded on
+   every page that uses main.css. */
+
+/* ============================================================
+   GLOW BORDER - "Talk to our team"
+   Vanilla port of the Originkit component. That component spun a conic
+   gradient behind a masked frame with a rAF loop; the same result here
+   needs no JS, because the button is a fixed size: a conic-gradient
+   square large enough to cover the box at every rotation, spun by a CSS
+   animation, with an inset ink fill punched over the middle so only the
+   1px ring shows.
+
+   The square is 200px against the button's 141px diagonal. The component
+   notes why that margin matters: a square sized to exactly the diagonal
+   puts its edge on the corners, and shaves them at the rotations where
+   that edge runs closest.
+
+   Stops follow the component's comet() maths at tailLength 60, single
+   tail: glow 0, tail 61, base 122, base 157, tail 289, glow 360 - which
+   also means both ends land on glowColor, so there is no hard step at the
+   wrap. baseColor is the button's original border tone, so at rest it
+   reads exactly as before.
+   ============================================================ */
+.nav-cta{position:relative;isolation:isolate;overflow:hidden;border-color:transparent}
+.nav-cta::before{content:"";position:absolute;left:50%;top:50%;
+width:200px;height:200px;margin:-100px 0 0 -100px;z-index:-2;
+background:conic-gradient(from 0deg at 50% 50%,
+  #48E2E2 0deg,
+  rgba(72,226,226,.45) 61deg,
+  rgba(255,255,255,.34) 122deg,
+  rgba(255,255,255,.34) 157deg,
+  rgba(72,226,226,.45) 289deg,
+  #48E2E2 360deg);
+animation:navGlowSpin 6s linear infinite;will-change:transform}
+/* the fill that leaves only the ring showing */
+.nav-cta::after{content:"";position:absolute;inset:1px;z-index:-1;background:var(--ink)}
+.nav-cta:hover::before{animation-duration:1.5s}
+.nav-cta:hover::after{background:var(--signal)}
+.nav-cta:hover{background:transparent;border-color:transparent}
+@keyframes navGlowSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+  .nav-cta::before{animation:none}
+}
+
+/* what-we-do heroes run without a breadcrumb: restore the air the crumb used to hold */
+.wwd .hero.nocrumb{padding-top:clamp(48px,5vw,78px)}

@@ -1,0 +1,28 @@
+# Release gate. Runs the site's own validators on every push and pull request;
+# a red run means something would ship broken. Netlify does the deploy itself.
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: SEO build gate
+        run: python -m tools.seo validate
+      - name: Generated markup has not drifted
+        run: |
+          python -m tools.nav --check
+          python -m tools.boundary --check
+          python -m tools.insights --check
+          python -m tools.unify --check
+          python -m tools.images --check
+      - name: No broken internal links, assets or anchors
+        run: python -m tools.linkcheck

@@ -1,7 +1,9 @@
 ORVIX WEBSITE - static export
 ============================
 
-16 pages, one file each, in the production folder shape.
+108 pages (54 English, 54 Arabic under ar/), one HTML file each, styled by
+shared stylesheets in assets/css/ (see STYLESHEETS). No build step: the repo
+root is the site.
 The "What we do", "Engagements", "Industries" and "Research" top-level nav
 items are menus with no landing page of their own. They open on click or tap,
 and on hover for mouse users. See NAVIGATION below.
@@ -16,6 +18,10 @@ and on hover for mouse users. See NAVIGATION below.
     research/perspectives/ sector-briefings/
       technology-evaluations/ subscribe/                  Listing pages
     research/industry/<sector>/                           Research by sector (x4)
+    engagements/<slug>/index.html                         Engagement page  (x8)
+    industries/<sector>/index.html                        Industry page    (x8)
+    company/<page>/index.html                             About, Leadership, Careers,
+                                                          Contact, Events, Partners
 
 RESEARCH — WHAT IS REAL AND WHAT IS A SLOT
     Real and ready: the Trust Maturity Model (five levels, written out in full), the
@@ -30,17 +36,51 @@ RESEARCH — WHAT IS REAL AND WHAT IS A SLOT
     Perspectives, briefings and evaluations are listed as DRAFT / PLANNED rather than
     linked, because the pieces do not exist yet.
 
-HOW TO VIEW
-    Open index.html in a browser and click through. Links between the 18 pages are
-    relative, so this works straight off the filesystem and from any static host as
-    long as the folder shape is preserved.
+HOW TO VIEW (LOCALHOST)
+    From the repo root:
+
+        python -m http.server 8080          then open http://localhost:8080
+
+    Use a server, not a double-click. Links are directory URLs (../about/,
+    not ../about/index.html) and the photo variables are root-relative
+    (/images/...); a server resolves both, a file:// window resolves
+    neither. The photo rule is a browser one: a relative url() inside a CSS
+    variable resolves from the stylesheet that uses it (assets/css/), not
+    from the page.
+
+    A plain local server ignores _headers and _redirects, so the security
+    headers and the 301s from the old addresses only apply on Netlify. For a
+    Netlify-exact preview:
+
+        npx netlify-cli dev --dir .
+
+CHECKS BEFORE A RELEASE
+        python -m tools.seo validate        exit 1 = do not ship
+        python -m tools.nav --check
+        python -m tools.boundary --check
+        python -m tools.insights --check
+        python -m tools.unify --check
+        python -m tools.images --check      every photo reference uses the .webp
+        python -m tools.linkcheck           every internal link, asset, #anchor
+
+    .github/workflows/checks.yml runs the same seven on every push and pull
+    request to main. Needs Python 3.10+, standard library only.
 
 LINKS
-    Every link between pages is relative, so the site works straight off the
-    filesystem and from any static host as long as the folder shape is kept.
-    Netlify's "Pretty URLs" post-processing rewrites them to root-absolute
-    clean URLs on deploy (and lower-cases the engagement paths); both forms
-    resolve. The click interceptor that the first export used to show
+    One address per page. Every page is <folder>/index.html, served at its
+    directory URL, and every internal link is relative and in that same
+    directory form - exactly the URL the canonical, sitemap and hreflang tags
+    declare. Never link to .../index.html: it works, but it is a second
+    address for the same page. Netlify post-processing is switched off in
+    netlify.toml, so what is in the repo is exactly what is served.
+
+    Engagement and industry pages used to sit at
+    engagement/<Folder>/<Folder>.html and industries/<x>/<x>.html. _redirects
+    sends those old addresses to the new ones with a 301, so old bookmarks,
+    search results and external links keep working. If a page is ever moved
+    again, add its old address there the same way.
+
+    The click interceptor that the first export used to show
     "page not in this export" for absolute links is gone - on the live site
     it was swallowing every navigation click on 74 pages.
 
@@ -51,9 +91,67 @@ BEFORE PUBLISHING
     and photography.
 
 PHOTOGRAPHY
-    Every page declares its photo slots as CSS variables in :root and every
-    slot is filled from images/. Provenance and licence for each file is in
-    images/CREDITS.txt; the set was re-shot for the region on 8 Sept 2026.
+    Every page declares its photo slots as CSS variables (--ph-*, --pg-*) in
+    the small :root block in its own <head>, and every slot is filled from
+    images/. The same goes for the per-element style="--img:url(...)" on
+    cards. Write every one root-relative, url('/images/x.jpg'): see HOW TO
+    VIEW for why a relative path breaks.
+
+    Pages with a hero photograph carry a <link rel="preload" as="image">
+    for it, right above the :root block, so the browser fetches the hero
+    first (phone LCP roughly halved). Change the hero variable and the
+    preload together; tools/linkcheck fails the build if they disagree.
+
+    Photos further down the page wait until the visitor scrolls, taps or
+    types, or 2.5s after load (see "photo deferral" in assets/css/main.css
+    and the one-line script in each page's head). With JavaScript off they
+    load as normal.
+
+    Pages reference .webp copies. images/*.jpg are the masters: drop a new
+    JPEG in, reference it by its .jpg name, then run
+
+        python -m tools.images         # make the .webp, switch references
+
+PERFORMANCE AND MOTION
+    fonts     IBM Plex is self-hosted in assets/fonts/ with assets/css/fonts.css
+              (python -m tools.fonts regenerates both). Each family has a
+              size-matched local fallback, so text does not jump when the web
+              font arrives. English pages never load the Arabic font or
+              assets/rtl.css; Arabic pages load both.
+    reveal    Blocks with class="rv" fade up the first time they scroll into
+              view (assets/reveal.js). The hidden state only applies once
+              <html> has class "js", set by a one-line script in the head, so
+              with JavaScript off everything is visible; prefers-reduced-motion
+              gets no movement.
+    headings  Each hero's small label sits inside its <h1> as a <span>, so the
+              heading carries the page topic for search while looking the same. Provenance and licence for each file is in images/CREDITS.txt;
+    the set was re-shot for the region on 8 Sept 2026.
+
+STYLESHEETS - assets/css/
+    Every page links the shared stylesheets for its template. The only CSS
+    left inside a page is its photo variables and, on a few pages, a handful
+    of rules no other page uses. To change the look of the site, edit the
+    file here; never paste CSS into a page.
+
+        main.css            home, What we do, Research, Company (76 pages):
+                            brand tokens, layout, components
+        company.css         Company pages, after main.css
+        glow.css            the glow ring on the "Talk to our team" button
+        engagement.css      engagement pages (16)
+        industry.css        industry pages (16)
+        mobile.css          phone refinements, every page
+        engagement-nav.css  nav, hero geometry and nav type that match the
+        industry-nav.css      engagement / industry pages to What we do
+        nav-panel.css       menu panels scroll inside a short window
+        boundary.css        the Boundary band on the What we do pages
+
+    Order matters and is the order the rules had when they were inline:
+    template stylesheet(s), the page's own <style>, then mobile.css, the
+    *-nav.css file, nav-panel.css and boundary.css. assets/rtl.css comes
+    after all of them on every page.
+
+    The nav rules exist in main.css and again in engagement-nav.css and
+    industry-nav.css. A change to the nav bar goes in all three.
 
 
 NAVIGATION - assets/nav.js and tools/nav/
@@ -83,11 +181,11 @@ NAVIGATION - assets/nav.js and tools/nav/
     that used to ship on every page. tools/unify now calls it for the script
     tag rather than transplanting an inline copy.
 
-    It also gives the engagement pages the mega-menu rules (read from
-    index.html at run time) that tools/unify never carried over - without
-    them "What we do" and "Research" fell back to a narrow list that ran off
-    the bottom of a laptop screen - and lets every menu panel scroll inside
-    itself when the window is shorter than the panel.
+    The menu CSS lives in assets/css/: main.css, plus engagement-nav.css
+    (which includes the mega-menu rules the engagement pages once lacked -
+    without them "What we do" and "Research" ran off the bottom of a laptop
+    screen) and nav-panel.css, which lets every panel scroll inside itself
+    when the window is shorter than the panel.
 
 THE BOUNDARY BAND - assets/boundary.js and tools/boundary/
     The three-move selector on the 32 What we do pages. It steps through
@@ -95,9 +193,9 @@ THE BOUNDARY BAND - assets/boundary.js and tools/boundary/
     counting down. It advances only while the band is on screen, pauses under
     the pointer or keyboard focus, restarts the count when a move is picked,
     and stays still for prefers-reduced-motion. The ORVIX mark behind it is
-    large and anchored bottom centre.
+    large and anchored bottom centre. Styles: assets/css/boundary.css.
 
-        python -m tools.boundary [--check]
+        python -m tools.boundary [--check]   script tag and stylesheet link
 
 INSIGHTS LISTINGS - tools/insights/
     Perspectives, Sector briefings and Technology evaluations are rendered
@@ -115,25 +213,59 @@ INSIGHTS LISTINGS - tools/insights/
     value there and run python -m tools.seo build.
 
 HOSTING AND SECURITY - Netlify
-    The live site is Netlify behind Cloudflare. Three files in the site root
-    are read by Netlify on every deploy (drag-and-drop included):
+    Hosting is Netlify; the domain (orvixnet.com) is registered and its DNS
+    is managed at Namecheap. See DEPLOYMENT below. These files in the site
+    root are read by Netlify on every deploy (drag-and-drop included):
 
         _headers      Content-Security-Policy, X-Frame-Options DENY,
                       nosniff, Referrer-Policy, Permissions-Policy, HSTS,
                       COOP. The CSP allows only this origin plus Google
                       Fonts; inline style and script are permitted because
                       that is how the export is built.
-        _redirects    /tools/*, README.txt, BUILD_NOTES.txt and
-                      images/CREDITS.txt answer 404. They are in the publish
-                      folder and were being served to anyone who asked.
+        _redirects    /tools/*, README.txt, BUILD_NOTES.txt,
+                      images/CREDITS.txt, assets/ar-dictionary.json,
+                      netlify.toml and /.github/* answer 404. The rules are
+                      forced (404!): unforced, Netlify serves a file that
+                      exists in preference to the rule, which is what was
+                      happening. Also the 301s from the old page addresses (see LINKS).
+                      Caching: images keep a browser copy for a week; HTML,
+                      CSS and JS revalidate on every visit so a page and its
+                      stylesheets always match.
+        netlify.toml  publish folder = repo root, no build command,
+                      post-processing off.
         404.html      Netlify serves it for any missing path.
 
     Every page also carries <meta name="referrer"> from tools/seo, so the
     referrer policy holds on a host that ignores _headers.
 
-    Netlify's "Pretty URLs" asset optimisation (Site settings > Build &
-    deploy > Post processing) is what rewrites the links on deploy. It is
-    harmless, but it can be switched off: the links are already correct.
+DEPLOYMENT - Netlify + Namecheap DNS
+    1. Netlify > Add new site > Import from Git > this GitHub repo, branch
+       main. netlify.toml supplies the settings (publish ".", no build), so
+       leave the build fields empty. Every push to main then deploys, and
+       every pull request gets a preview URL. (Drag-and-drop of the folder
+       also works, but then nothing redeploys on push.)
+    2. Netlify > Domain management > Add domain: orvixnet.com, and let it
+       add www.orvixnet.com. Keep orvixnet.com (no www) as primary: every
+       canonical URL uses it.
+    3. DNS, pick one:
+         a. Keep DNS at Namecheap (Advanced DNS tab):
+              A      @    75.2.60.5
+              CNAME  www  <site-name>.netlify.app.
+            Delete Namecheap's default parking CNAME / URL-redirect records
+            for @ and www first.
+         b. Or move DNS to Netlify: Netlify > Domains > Set up Netlify DNS,
+            then Namecheap > Domain > Nameservers > Custom DNS and paste the
+            four dns*.p0*.nsone.net names Netlify shows. Recreate any mail
+            (MX/TXT) records in Netlify first or email to info@orvixnet.com
+            stops.
+       Check the IP and records against what Netlify's domain screen shows
+       at the time; it is the authority.
+    4. Netlify > Domain management > HTTPS: wait for the Let's Encrypt
+       certificate (minutes to a few hours after DNS resolves), then leave
+       "Force HTTPS" on. _headers sends HSTS, so do not serve the site on
+       plain http once it is live.
+    5. Smoke-test live: /, /ar/, /engagements/assurance-review/,
+       /README.txt (must 404), and the response headers (securityheaders.com).
 
 ARABIC MIRROR - ar/
     ar/ holds a full Arabic copy of every page, in the same folder shape, so
@@ -209,27 +341,26 @@ TEMPLATE UNIFICATION - tools/unify/
     the wordmark as text because they never loaded IBM Plex Sans, and why the
     industry nav was missing Research and relabelled half its links.
 
-        python -m tools.unify
+        python -m tools.unify           # apply
+        python -m tools.unify --check   # report drift, write nothing
 
-    It transplants the nav, drawer, nav CSS and toggle script from
+    It transplants the nav, drawer and toggle script from
     what-we-do/ai-assurance (and its Arabic twin) onto the engagement and
-    industry pages, drops the breadcrumbs those two carried, strips the hero
-    line-art from every template so the hero is photograph plus scrim only,
-    fills the --ph-hero slot, and matches hero spacing to what-we-do.
+    industry pages, drops the breadcrumbs those two carried, and strips the
+    hero line-art from the photo-hero templates so the hero is photograph
+    plus scrim only.
 
     Nothing is hardcoded: the markup is read from the donor page each run, so
-    editing the what-we-do nav and re-running updates all 32 pages.
-
-    Four industry pages still have no hero photograph, because images/ has no
-    matching asset: healthcare-life-sciences, industrial-manufacturing,
-    retail-hospitality-real-estate, transport-logistics. Drop a file in and add
-    it to HERO_PHOTO in tools/unify/apply.py.
+    editing the what-we-do nav and re-running updates all 32 pages. The CSS
+    that goes with it (nav, hero spacing matched to what-we-do, pinned nav
+    typography) is in assets/css/engagement-nav.css and industry-nav.css.
 
     Also handled by tools/unify, site-wide rather than per template:
-      * nav typography is pinned. The bar's rule uses `font:inherit`, and the
-        engagement stylesheet sets body to weight 400 where every other
-        template sets 300, so the nav read heavier there. It also never reset
-        list padding, which pushed the bar 40px right.
+      * nav typography is pinned (in the *-nav.css files). The bar's rule
+        uses `font:inherit`, and the engagement stylesheet sets body to weight
+        400 where every other template sets 300, so the nav read heavier
+        there. It also never reset list padding, which pushed the bar 40px
+        right.
       * Leadership is removed from the header nav, the mobile drawer and the
         footer. The page itself is untouched -- same URL, still in the sitemap,
         reached from the "Read bio" card on each leadership portrait.
@@ -241,9 +372,8 @@ TEMPLATE UNIFICATION - tools/unify/
         top of the picture was what had to go.
 
 
-MOBILE - tools/mobile/
+MOBILE - assets/css/mobile.css, measured with tools/mobile/
         node tools/mobile/audit.mjs 390 en    measure; writes _audit-390.json
-        python -m tools.mobile                inject tools/mobile/mobile.css
 
     Every rule in mobile.css came from measuring all 108 pages at 320/360/390/
     430px, not from guesswork. It fixes type down to 9.5px, controls down to
@@ -251,8 +381,8 @@ MOBILE - tools/mobile/
     focus, and a handful of rows that overflowed a narrow column.
 
     Everything except one text-size-adjust line sits inside a max-width query,
-    so desktop rendering is untouched. Edit mobile.css and re-run; never edit
-    the copy inside a page.
+    so desktop rendering is untouched. Every page links the one file; edit it
+    there.
 
     Current state, both languages, 320-430px: no page scrolls sideways, nothing
     reaches past the viewport edge, no text under 12px, no control under 44px.

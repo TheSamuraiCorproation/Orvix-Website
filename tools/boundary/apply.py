@@ -3,8 +3,9 @@
     * the selector script, which was pasted inline into each of the 32 pages,
       now lives once in assets/boundary.js; that version also steps through
       the three moves on its own (see the file for the rules)
-    * the ORVIX watermark behind the band is set large and anchored to the
-      bottom centre instead of floating small in the middle
+    * the band's styles (the large bottom-centre ORVIX watermark and the
+      auto-advance progress bar) live in assets/css/boundary.css; this makes
+      sure each band page links it once
 
 Idempotent, like the other tools.
 
@@ -27,26 +28,7 @@ R_INLINE = re.compile(
     r".*?</script>\n?", re.S)
 R_TAG = re.compile(r'<script src="(?:\.\./)*assets/boundary\.js" defer></script>\n?')
 
-CSS_BEGIN = "/* boundary:begin  tools/boundary */"
-CSS_END = "/* boundary:end */"
-R_CSS = re.compile(re.escape(CSS_BEGIN) + r".*?" + re.escape(CSS_END) + r"\n?", re.S)
-CSS = """\
-/* the watermark: large, bottom centre, cropped by the band's lower edge.
-   position is restated because .sec.dark.bnd>* {position:relative} outranks
-   the base .wm rule, which had left the mark in the flow at the top */
-.wwd .sec.dark.bnd-sel .wm{position:absolute;z-index:0;left:50%;top:auto;bottom:0;transform:translate(-50%,21%);
-font-size:clamp(170px,27vw,440px);color:rgba(255,255,255,.045)}
-.wwd .sec.dark.bnd-sel .wm b{color:rgba(72,226,226,.085)}
-/* auto-advance: a bar on the active tab runs down the time to the next move */
-.wwd .btab{position:relative;overflow:hidden}
-.wwd .btab .pg{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cyan);
-transform:scaleX(0);transform-origin:left center;pointer-events:none}
-[dir="rtl"] .wwd .btab .pg{transform-origin:right center}
-.wwd .btab.alt .pg{background:var(--steel)}
-.wwd .bauto .btab.on .pg{animation:bstep var(--bstep,5000ms) linear forwards}
-.wwd .bpause .btab.on .pg{animation-play-state:paused}
-@keyframes bstep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media(prefers-reduced-motion:reduce){.wwd .btab .pg{display:none}}"""
+R_CSS_LINK = re.compile(r'\n?<link rel="stylesheet" href="(?:\.\./)*assets/css/boundary\.css">')
 
 
 def has_band(s: str) -> bool:
@@ -64,13 +46,19 @@ def ensure_tag(s: str, rel: str) -> str:
     return s[:i] + tag + "\n" + s[i:]
 
 
-def ensure_css(s: str) -> str:
-    blk = f"{CSS_BEGIN}\n{CSS}\n{CSS_END}\n"
-    if R_CSS.search(s):
-        return R_CSS.sub(lambda _: blk, s, count=1)
-    head_end = s.lower().find("</head>")
-    i = s.lower().rfind("</style>", 0, head_end)
-    return s[:i] + blk + "\n" + s[i:]
+def ensure_css_link(s: str, rel: str) -> str:
+    """Exactly one boundary.css link, right after nav-panel.css: the place its
+    rules held when they were inline, so the cascade is unchanged."""
+    tag = f'<link rel="stylesheet" href="{up(rel)}assets/css/boundary.css">'
+    anchor = f'<link rel="stylesheet" href="{up(rel)}assets/css/nav-panel.css">'
+    if s.count("assets/css/boundary.css") == 1 and anchor + "\n" + tag in s:
+        return s
+    s = R_CSS_LINK.sub("", s)
+    i = s.find(anchor)
+    if i < 0:
+        raise ValueError(f"{rel}: no nav-panel.css link to place boundary.css after")
+    i += len(anchor)
+    return s[:i] + "\n" + tag + s[i:]
 
 
 def process(root: pathlib.Path, rel: str, check: bool) -> list[str]:
@@ -80,7 +68,7 @@ def process(root: pathlib.Path, rel: str, check: bool) -> list[str]:
         return []
     s, did = s0, []
     for name, fn in (("script", lambda x: ensure_tag(R_INLINE.sub("", x), rel)),
-                     ("css", ensure_css)):
+                     ("css", lambda x: ensure_css_link(x, rel))):
         before = s
         s = fn(s)
         if s != before:

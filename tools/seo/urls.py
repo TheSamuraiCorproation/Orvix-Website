@@ -1,9 +1,10 @@
 """Export path <-> production URL.
 
-The export on disk is not shaped like the live site. Engagement and industry
-pages sit in a folder named after themselves; in production they are served as
-directory URLs. The canonicals already written into the engagement pages assume
-that mapping, so it is made explicit here rather than inferred per page.
+Every page is <folder>/index.html and is served at the directory URL, so the
+path on disk and the URL are the same shape. (Engagement and industry pages
+used to be <section>/<Folder>/<Folder>.html behind rewrites; they were moved
+to engagements/<slug>/ and industries/<sector>/, and _redirects sends the old
+addresses there with a 301.)
 
 One convention site-wide (SEO brief section 1.2):
     absolute, https, no www, directory URLs, one trailing slash, no .html
@@ -12,24 +13,8 @@ One convention site-wide (SEO brief section 1.2):
 from __future__ import annotations
 
 import pathlib
-import re
 
 ORIGIN = "https://orvixnet.com"
-
-# Folders whose page file is named after the folder rather than index.html,
-# and the URL segment that folder is published under.
-NAMED_FILE_SECTIONS = {
-    "engagement": "engagements",  # /engagement/X/X.html  -> /engagements/<slug>/
-    "industries": "industries",   # /industries/X/X.html  -> /industries/X/
-}
-
-
-def slugify(name: str) -> str:
-    """AI_Estate_Inventory -> ai-estate-inventory."""
-    s = name.replace("_", "-").replace(" ", "-")
-    s = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "-", s)
-    s = re.sub(r"-+", "-", s)
-    return s.lower().strip("-")
 
 
 def to_url_path(rel: str) -> str:
@@ -39,27 +24,12 @@ def to_url_path(rel: str) -> str:
     '/'
     >>> to_url_path("what-we-do/ai-assurance/index.html")
     '/what-we-do/ai-assurance/'
-    >>> to_url_path("engagement/AI_Estate_Inventory/AI_Estate_Inventory.html")
-    '/engagements/ai-estate-inventory/'
-    >>> to_url_path("ar/industries/telecommunications/telecommunications.html")
-    '/ar/industries/telecommunications/'
+    >>> to_url_path("ar/engagements/ai-estate-inventory/index.html")
+    '/ar/engagements/ai-estate-inventory/'
     """
-    parts = rel.split("/")
-    prefix = ""
-    if parts[0] == "ar":
-        prefix = "/ar"
-        parts = parts[1:]
-
-    if parts[-1] == "index.html":
-        parts = parts[:-1]
-        return (prefix + "/" + "/".join(parts)).replace("//", "/").rstrip("/") + "/"
-
-    # <section>/<Folder>/<Folder>.html
-    if len(parts) == 3 and parts[0] in NAMED_FILE_SECTIONS:
-        section = NAMED_FILE_SECTIONS[parts[0]]
-        return f"{prefix}/{section}/{slugify(parts[1])}/"
-
-    raise ValueError(f"no URL rule for export path: {rel}")
+    if rel != "index.html" and not rel.endswith("/index.html"):
+        raise ValueError(f"no URL rule for export path: {rel} (pages are <folder>/index.html)")
+    return "/" + rel[:-len("index.html")]
 
 
 def to_url(rel: str) -> str:

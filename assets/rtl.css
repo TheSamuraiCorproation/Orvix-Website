@@ -6,7 +6,7 @@ html[dir="rtl"] input,
 html[dir="rtl"] select,
 html[dir="rtl"] textarea,
 html[dir="rtl"] button {
-  font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+  font-family: 'IBM Plex Sans Arabic','Plex Arabic Fallback', 'IBM Plex Sans','Plex Sans Fallback', system-ui, sans-serif;
 }
 
 /* Arabic is a joined script: letter-spacing breaks the joins, so it goes.
@@ -24,7 +24,7 @@ html[dir="rtl"] .facts,
 html[dir="rtl"] .meta,
 html[dir="rtl"] .bcr,
 html[dir="rtl"] .crumb {
-  font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+  font-family: 'IBM Plex Sans Arabic','Plex Arabic Fallback', 'IBM Plex Sans','Plex Sans Fallback', system-ui, sans-serif;
 }
 
 /* ---- navigation ---------------------------------------------------- */
@@ -88,41 +88,109 @@ html[dir="rtl"] .cf-chip { flex-direction: row-reverse; }
 html[dir="rtl"] .mnext span[aria-hidden],
 html[dir="rtl"] .lead-mark__ic { display: inline-block; transform: scaleX(-1); }
 
-/* ---- mixed English / Arabic ----------------------------------------
-   Only the shell is translated so far. A paragraph still in English sitting
-   inside an RTL page has its trailing full stop dragged to the front by the
-   bidi algorithm ("...covered countries" becomes ".covered countries").
-   unicode-bidi:plaintext resolves each block from its own first strong
-   character, so English blocks stay left-to-right and Arabic blocks flip. */
-html[dir="rtl"] p,
-html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3,
-html[dir="rtl"] h4, html[dir="rtl"] h5, html[dir="rtl"] h6,
-html[dir="rtl"] li, html[dir="rtl"] td, html[dir="rtl"] th,
-html[dir="rtl"] summary, html[dir="rtl"] blockquote, html[dir="rtl"] figcaption,
-html[dir="rtl"] .lbl, html[dir="rtl"] .eyebrow, html[dir="rtl"] .lead,
-html[dir="rtl"] .sub, html[dir="rtl"] .small, html[dir="rtl"] .k,
-html[dir="rtl"] .n, html[dir="rtl"] .g, html[dir="rtl"] .q,
-html[dir="rtl"] .mq, html[dir="rtl"] .big, html[dir="rtl"] .loc,
-html[dir="rtl"] .fact, html[dir="rtl"] .cvg-hint, html[dir="rtl"] .cvg-lede {
-  unicode-bidi: plaintext;
-  text-align: start;
+/* ---- mixed English / Arabic -------------------------------------- */
+/* Mixed Arabic and English. Every box on an Arabic page lays out right to
+   left, and every run of text works out its own reading direction from its
+   first letter (unicode-bidi:plaintext), so an English sentence or a
+   standard's name keeps its punctuation in the right place without turning
+   its container left-to-right. Alignment comes from the column
+   (match-parent), so an English line or a bare number like "01" lines up
+   with the Arabic around it instead of hugging the left edge.
+   dir="auto" on an element used to do the second job, but it also flipped
+   that element's box: a grid of cards whose first text was "01", or a note
+   whose first word was English, laid out left-to-right and looked lopsided.
+   direction:rtl here undoes that; both rules have zero specificity, so a
+   rule that sets direction or alignment on purpose still wins, and text
+   centred by its parent stays centred. (Two earlier rules forced
+   text-align:start on every paragraph and heading, which un-centred
+   centred headings, and pinned English blocks to the left edge.) */
+:where(html[dir="rtl"] [dir="auto"]){direction:rtl}
+:where(html[dir="rtl"] body *:not(svg):not(svg *):not(input):not(textarea):not(select):not(bdo)){unicode-bidi:plaintext;
+  text-align:match-parent;text-align:-webkit-match-parent}
+
+/* Arabic sets more characters per ch than English, so the same caps are a
+   little tighter here to land on a similar number of words per line. */
+html[dir="rtl"] .fqd p,
+html[dir="rtl"] .hero__sub,
+html[dir="rtl"] .gcopy p { max-width: 50ch; }
+
+/* Buttons and steppers whose English rule says text-align:left: mirrored.
+   (A physical "left" does not flip by itself, which kept "STAGE 01" and the
+   step tabs on the left edge of an Arabic page.) */
+html[dir="rtl"] .wwd .st,
+html[dir="rtl"] .wwd .st .cap,
+html[dir="rtl"] .wwd .rng,
+html[dir="rtl"] .wwd .btab,
+html[dir="rtl"] .rsh .lv,
+html[dir="rtl"] .pk,
+html[dir="rtl"] .nav-l > li > button.has { text-align: right; }
+
+/* ---- monospace labels ----------------------------------------------
+   IBM Plex Mono has no Arabic, so Arabic in a mono label fell through to the
+   system monospace face (spaced out, badly formed). Latin digits and codes
+   keep the mono face; Arabic letters fall through to Plex Sans Arabic. */
+html[dir="rtl"] {
+  --m: 'IBM Plex Mono', 'IBM Plex Sans Arabic', 'Plex Arabic Fallback', monospace;
+  --mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', 'Plex Arabic Fallback', monospace;
+}
+html[dir="rtl"] .mono,
+html[dir="rtl"] .chip,
+html[dir="rtl"] .mega em,
+html[dir="rtl"] .hero-art .dlab { font-family: var(--m); }
+
+/* ---- photo and art layers that face the text ------------------------ */
+/* the dark side of each scrim sits behind the copy, which is on the right */
+html[dir="rtl"] .wwd .hero::after { background: linear-gradient(270deg, var(--ink) 30%, rgba(3,7,44,.45) 100%); }
+html[dir="rtl"] .wwd .cta::after  { background: linear-gradient(270deg, var(--ink) 26%, rgba(3,7,44,.45) 100%); }
+html[dir="rtl"] .close::after     { background: linear-gradient(270deg, var(--ink) 24%, rgba(3,7,44,.4) 100%); }
+html[dir="rtl"] .hero__scrim {
+  background: linear-gradient(270deg, rgba(3,7,44,.90) 0%, rgba(3,7,44,.62) 48%, rgba(3,7,44,.22) 100%);
+}
+/* engagement hero line art (no text in it) moves out from under the headline */
+html[dir="rtl"] .hero .art { transform: scaleX(-1); }
+
+/* ---- FAQ: the open/close mark sits at the far end of the question ---- */
+html[dir="rtl"] .faq summary { padding: calc(var(--u)*3) 0 calc(var(--u)*3) calc(var(--u)*6); }
+html[dir="rtl"] .faq summary::after { right: auto; left: 6px; }
+html[dir="rtl"] .wwd .faq summary { padding: 24px 0 24px 44px; }
+html[dir="rtl"] .fqd summary { padding: 20px 0 20px 42px; }
+html[dir="rtl"] .fqd summary::after { right: auto; left: 8px; }
+
+/* ---- accent bars beside right-aligned text -------------------------- */
+html[dir="rtl"] .wwd .bverd,
+html[dir="rtl"] .wwd .stp .kick { border-left: 0; border-right: 2px solid var(--cyan); padding-left: 0; padding-right: 16px; }
+html[dir="rtl"] .wwd .bverd.idle { border-right-color: rgba(255,255,255,.2); }
+html[dir="rtl"] .wwd .faq .a,
+html[dir="rtl"] .wwd .verdict { border-left: 0; border-right: 2px solid var(--cyan); padding-left: 0; padding-right: 18px; }
+html[dir="rtl"] .xnote { border-left: 0; border-right: 2px solid var(--silver); padding-left: 0; padding-right: 16px; }
+html[dir="rtl"] .pq { border-left: 0; border-right: 2px solid var(--cyan); padding-left: 0; padding-right: clamp(20px, 3vw, 32px); }
+
+/* ---- attack-path rail: dots and line on the same side as the labels --- */
+html[dir="rtl"] .wwd .pst .bod { padding-left: 0; padding-right: 26px; }
+html[dir="rtl"] .wwd .pst .bod::before { left: auto; right: 0; }
+html[dir="rtl"] .wwd .pst .bod::after { left: auto; right: 5px; }
+
+/* ---- small pieces that never flipped -------------------------------- */
+html[dir="rtl"] .rsh .mrow { text-align: right; }
+html[dir="rtl"] .hero-note b i { margin-right: 0; margin-left: 8px; }
+html[dir="rtl"] .mcol > a.head i { margin-right: 0; margin-left: 9px; }
+html[dir="rtl"] .wwd .st .hint { right: auto; left: 14px; }
+html[dir="rtl"] .dl.pop { transform: translateX(-9px); }
+html[dir="rtl"] .wwd .btab:hover { transform: translateX(-3px); }
+html[dir="rtl"] .toggle button + button { border-left: 0; border-right: 1px solid var(--line); }
+@media (min-width: 901px) {
+  html[dir="rtl"] .cmp .chamfer { clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%, 0 40px); }
 }
 
-/* ---- blocks that are still English --------------------------------
-   dir="auto" makes each block resolve its own direction from its first
-   strong character. :dir(ltr) then catches the ones still in English and
-   anchors them to the left edge, so an English heading with a max-width
-   does not hang off the right side of an Arabic page. */
-html[dir="rtl"] h1:dir(ltr),
-html[dir="rtl"] h2:dir(ltr),
-html[dir="rtl"] h3:dir(ltr),
-html[dir="rtl"] h4:dir(ltr),
-html[dir="rtl"] p:dir(ltr),
-html[dir="rtl"] ul:dir(ltr),
-html[dir="rtl"] ol:dir(ltr),
-html[dir="rtl"] .lst:dir(ltr),
-html[dir="rtl"] .pts:dir(ltr) {
-  margin-left: 0;
-  margin-right: auto;
-  text-align: left;
+/* button arrows point the way Arabic reads, and nudge that way on hover */
+html[dir="rtl"] .arrow { transform: scaleX(-1); }
+html[dir="rtl"] a:hover .arrow,
+html[dir="rtl"] .btn:hover .arrow { transform: translateX(-4px) scaleX(-1); }
+
+/* Contact: the dark band's wide padding lines its copy up with the page
+   edge. The page rule puts it on the left; on Arabic the band sits on the
+   right, so the wide side swaps. */
+html[dir="rtl"] .cmp > div > .band.chamfer {
+  padding-right: max(var(--gut), calc((100vw - var(--sbw, 15px) - var(--max)) / 2 + var(--gut))) !important;
+  padding-left: max(var(--gut), calc((100% - var(--max)) / 2 + var(--gut))) !important;
 }

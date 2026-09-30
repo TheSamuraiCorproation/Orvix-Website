@@ -1,0 +1,317 @@
+/* Engagement pages (engagement/<Name>/<Name>.html, 16 pages). A few
+   pages keep extra hero-art rules of their own inline. */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ORVIX — engagement page stylesheet, dark surface.
+   Palette sampled from the live site and reconciled to Brand Guidelines v2.3:
+     surface  Ink        #03072C     elevated  Graphite #1B2233
+     primary  Signal Blue#064BEE     eyebrow   Orvix Blue #031D96
+     accent   Aura Cyan  #48E2E2     heading   Paper    #FFFFFF
+     body     #C3C8D2                muted     Steel    #8A93A6
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#03072C;
+  --graphite:#1B2233;
+  --raise:#111538;
+  --blue:#031D96;
+  --signal:#064BEE;
+  --cyan:#48E2E2;
+  --paper:#FFFFFF;
+  --body:#C3C8D2;
+  --steel:#8A93A6;
+  --slate:#4A5468;
+  --line:rgba(217,222,231,.13);
+  --line2:rgba(217,222,231,.07);
+  --u:8px;
+  --maxw:1320px;
+  --gut:calc(var(--u)*6);
+  --nav:74px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--ink)}
+body{
+  margin:0;background:var(--ink);color:var(--body);
+  font-family:"IBM Plex Sans",'Plex Sans Fallback',"Helvetica Neue",Arial,sans-serif;
+  font-size:15px;line-height:25px;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;color:var(--paper);font-weight:600;letter-spacing:-0.025em}
+p{margin:0}
+a{color:var(--paper);text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+svg{display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.label{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+.label--blue{color:#2C57E8}
+.mono{font-family:"IBM Plex Mono",'Plex Mono Fallback',"SFMono-Regular",Consolas,monospace}
+
+/* ─────────────────────────────── buttons ─────────────────────────────── */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;font-size:14px;
+  font-weight:600;line-height:1;padding:15px 26px;border:1px solid transparent;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s}
+.btn--signal{background:var(--signal);color:var(--paper)}
+.btn--signal:hover{background:#0A57FF}
+.btn--line{background:transparent;color:var(--paper);border-color:rgba(217,222,231,.28)}
+.btn--line:hover{border-color:var(--paper);background:rgba(255,255,255,.04)}
+.btn--sm{padding:11px 18px;font-size:13px}
+.arrow{transition:transform .18s}
+a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
+.tlink{font-weight:600;color:var(--paper);display:inline-flex;align-items:center;gap:9px;font-size:14px}
+.tlink:hover{color:var(--cyan)}
+
+/* ─────────────────────────────────  nav  ─────────────────────────────── */
+.nav{position:sticky;top:0;z-index:80;background:var(--ink);border-bottom:1px solid var(--line2)}
+.nav__in{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);height:var(--nav);
+  display:flex;align-items:center;gap:calc(var(--u)*4)}
+/* Wordmark is a typographic stand-in. Replace with the vector master when it exists;
+   the .brand element is sized to take an SVG at 116×26 without reflow. */
+.brand{display:flex;align-items:flex-start;gap:2px;margin-right:calc(var(--u)*3)}
+.brand__word{font-size:23px;font-weight:700;letter-spacing:.02em;color:var(--paper);line-height:1}
+.brand__word i{font-style:normal;color:var(--cyan)}
+.brand__tm{font-size:9px;color:var(--steel);margin-top:2px}
+.menu{display:flex;align-items:center;gap:calc(var(--u)*4)}
+.menu__item{position:relative}
+.menu__top{display:inline-flex;align-items:center;gap:7px;color:var(--body);font-size:15px;
+  background:none;border:0;font-family:inherit;cursor:pointer;padding:calc(var(--u)*3.5) 0}
+.menu__top:hover{color:var(--paper)}
+.menu__item--on .menu__top{color:var(--cyan)}
+.menu__chev{width:11px;height:11px;transition:transform .2s}
+.menu__item[data-open="true"] .menu__chev{transform:rotate(180deg)}
+.mega{position:absolute;top:var(--nav);left:calc(var(--u)*-4);min-width:302px;background:var(--ink);
+  border:1px solid var(--line2);border-top:0;padding:calc(var(--u)*3) 0;
+  opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
+.menu__item[data-open="true"] .mega{opacity:1;visibility:visible;transform:none}
+.mega a{display:flex;gap:calc(var(--u)*2.5);padding:11px calc(var(--u)*4);color:var(--body);font-size:15px;line-height:21px}
+.mega a:hover{background:var(--raise);color:var(--paper)}
+.mega a[aria-current]{color:var(--cyan)}
+.mega em{font-style:normal;font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:12px;color:var(--steel);padding-top:3px}
+.nav__end{display:flex;align-items:center;gap:calc(var(--u)*2);margin-left:auto}
+.navtoggle{display:none}
+
+/* ───────────────────────── photo regions ─────────────────────────────
+   Placing a shot:   .ph--hero{ --ph-hero:url("/media/…/hero.jpg"); }
+   then delete that region's <p class="ph__brief">. Nothing reflows.
+   The hero still accepts --ph-hero; only its caption has been removed, so
+   the brief for that shot now lives in the content document rather than
+   on the page.                                                          */
+.ph{position:relative;background-size:cover;background-position:center;
+  background-color:rgba(255,255,255,.018);overflow:hidden}
+.ph::before{content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 1px,transparent 1px 26px);opacity:.05}
+p.ph__brief{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);max-width:34ch;
+  font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:11px;line-height:18px;color:#424560;text-align:right}
+/* The briefs ("PHOTO SLOT - ...") are art direction for the photographer,
+   not copy: they stay in the markup as the shot list but are never shown,
+   the same as on every other template. */
+p.ph__brief,p.start__brief{display:none}
+.ph--hero{--img:var(--ph-hero)}
+
+/* drifting 45° field — atmosphere only */
+.field{position:absolute;inset:-40%;
+  background-image:repeating-linear-gradient(45deg,var(--cyan) 0 1px,transparent 1px 32px);
+  opacity:.10;animation:drift 46s linear infinite;pointer-events:none}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-45px,45px,0)}}
+
+/* ── hero art ──────────────────────────────────────────────────────────
+   A single figure per engagement, in the language of the Industries pages:
+   large radial line geometry, low opacity, sitting right of the copy and
+   cropped by the edge of the section. The figure and its motion are emitted
+   per page in the block after this stylesheet.                            */
+/* Full-bleed scene. Nothing expressive is drawn left of 900/1600 in the
+   viewBox, which is where the copy sits, so the headline stays the loudest
+   thing on the surface without needing a scrim over the figure. */
+.art{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.art__glow{position:absolute;inset:-25%;animation:glow 22s ease-in-out infinite alternate}
+@keyframes glow{from{transform:scale(1);opacity:.62}
+  to{transform:scale(1.09) translate(-1.5%,1.5%);opacity:.88}}
+.art__scene{position:absolute;inset:0;width:100%;height:100%}
+
+/* ─────────────────────────────── hero ────────────────────────────────── */
+.hero{position:relative;overflow:hidden;background-image:var(--ph-hero,none);
+  background-size:cover;background-position:center;min-height:600px;display:flex;align-items:center;
+  padding:calc(var(--u)*13) 0 calc(var(--u)*11);border-bottom:1px solid var(--line2)}
+.hero__scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(3,7,44,.90) 0%,rgba(3,7,44,.62) 48%,rgba(3,7,44,.22) 100%)}
+.hero__in{position:relative;z-index:3;width:100%}
+.hero__copy{max-width:min(58%,748px)}
+.crumb{font-size:12px;color:var(--steel);margin-bottom:calc(var(--u)*4)}
+.crumb a{color:var(--steel)}
+.crumb a:hover{color:var(--cyan)}
+.hero h1{font-size:clamp(28px,2.72vw,41px);line-height:1.12;letter-spacing:-0.03em;
+  max-width:none;margin:calc(var(--u)*2.5) 0 calc(var(--u)*3)}
+.hero__sub{color:var(--body);font-size:17px;line-height:28px;max-width:100%;margin-bottom:calc(var(--u)*4)}
+.hero__meta{display:flex;gap:calc(var(--u)*1.5);flex-wrap:wrap;margin-bottom:calc(var(--u)*5)}
+.chip{font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);border:1px solid var(--line);padding:8px 13px}
+
+/* ─────────────────────────────── sections ────────────────────────────── */
+.sec{padding:calc(var(--u)*14) 0;position:relative}
+.sec--raise{background:var(--graphite)}
+.sec--line{border-top:1px solid var(--line2)}
+.sec__head{display:flex;align-items:flex-end;justify-content:space-between;gap:calc(var(--u)*4);
+  margin-bottom:calc(var(--u)*6);padding-bottom:calc(var(--u)*3);border-bottom:1px solid var(--line)}
+.sec h2{font-size:38px;line-height:44px;max-width:28ch;text-wrap:pretty}
+.split{display:grid;grid-template-columns:1.02fr .98fr;gap:calc(var(--u)*9);align-items:center}
+.split--flip{grid-template-columns:.98fr 1.02fr}
+.split--flip .split__media{order:2}
+.split__media{aspect-ratio:4/3}
+.split__copy{max-width:100%}
+.split__copy p{font-size:17px;line-height:29px;max-width:62ch}
+
+/* ────────────────────────── interactive: self-check ──────────────────── */
+.check{border:1px solid var(--line)}
+.check__hd{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u)*3);
+  padding:calc(var(--u)*2.5) calc(var(--u)*4);border-bottom:1px solid var(--line)}
+.check__q{display:grid;grid-template-columns:1fr auto;gap:calc(var(--u)*3);align-items:center;
+  padding:calc(var(--u)*3) calc(var(--u)*4);border-bottom:1px solid var(--line)}
+.check__q p{font-size:16px;line-height:25px;color:var(--paper)}
+.toggle{display:flex;width:max-content;justify-self:start;align-self:start;
+  border:1px solid var(--line)}
+.toggle button{appearance:none;background:transparent;border:0;cursor:pointer;font-family:inherit;
+  font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);
+  padding:11px 17px;transition:background .15s,color .15s}
+.toggle button + button{border-left:1px solid var(--line)}
+.toggle button:hover{background:rgba(255,255,255,.05);color:var(--paper)}
+.toggle button[aria-pressed="true"]{background:var(--signal);color:var(--paper)}
+.check__out{padding:calc(var(--u)*4);background:var(--raise);position:relative;overflow:hidden}
+.check__bar{height:3px;background:rgba(217,222,231,.14);margin:calc(var(--u)*2) 0 calc(var(--u)*2.5)}
+.check__fill{height:100%;width:0;background:var(--cyan);transition:width .5s cubic-bezier(.22,1,.36,1)}
+.check__verdict{font-size:22px;line-height:30px;color:var(--paper);font-weight:600;letter-spacing:-0.02em}
+.check__note{margin-top:9px;font-size:15px;line-height:24px;color:var(--body);max-width:72ch}
+.check__count{font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:12px;color:var(--steel);letter-spacing:.1em}
+
+/* ───────────────────────────── deliverables ──────────────────────────── */
+.dlist{border-top:1px solid var(--line2)}
+.dl{position:relative;display:grid;grid-template-columns:46px 1fr;gap:calc(var(--u)*3);
+  padding:calc(var(--u)*3) 0 calc(var(--u)*3) calc(var(--u)*2);
+  border-bottom:1px solid var(--line2);
+  transition:transform .5s cubic-bezier(.22,1,.36,1),background .5s}
+.dl::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:2px;background:var(--cyan);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.dl.pop{transform:translateX(9px);background:rgba(255,255,255,.028)}
+.dl.pop::before{transform:scaleY(1)}
+.dl.pop .dl__n{color:var(--cyan)}
+.dl__n{transition:color .4s}
+.dl__n{font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:12px;color:var(--steel);letter-spacing:.1em;padding-top:4px}
+.dl h3{font-size:18px;line-height:25px;margin-bottom:4px}
+.dl p{font-size:14px;line-height:22px;color:var(--steel)}
+
+/* ──────────────────────────────── faq ────────────────────────────────── */
+.faq details{border-bottom:1px solid var(--line2)}
+.faq summary{list-style:none;cursor:pointer;padding:calc(var(--u)*3) calc(var(--u)*6) calc(var(--u)*3) 0;
+  position:relative;font-size:19px;line-height:27px;color:var(--paper);font-weight:600;letter-spacing:-0.015em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;
+  border-right:1.5px solid var(--cyan);border-bottom:1.5px solid var(--cyan);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-20%) rotate(225deg)}
+.faq summary:hover{color:var(--cyan)}
+.faq__a{padding:0 calc(var(--u)*8) calc(var(--u)*4) 0;font-size:16px;line-height:27px;max-width:80ch;color:var(--body)}
+
+/* ─── a light section, for the one place the page steps out of the dark ─── */
+.sec--paper{background:var(--paper)}
+.sec--paper h2{color:var(--ink)}
+.sec--paper .label{color:var(--slate)}
+.sec--paper .sec__head{border-bottom:0;padding-bottom:0}
+.sec--paper .check{border-color:#D9DEE7}
+.sec--paper .check__hd,.sec--paper .check__q{border-bottom-color:#D9DEE7}
+.sec--paper .check__q p{color:var(--ink)}
+.sec--paper .check__count{color:var(--slate)}
+.sec--paper .toggle{border-color:#D9DEE7}
+.sec--paper .toggle button{color:#4A5468}
+.sec--paper .toggle button + button{border-left-color:#D9DEE7}
+.sec--paper .toggle button:hover{background:#F2F4F8;color:var(--ink)}
+.sec--paper .toggle button[aria-pressed="true"]{background:var(--signal);color:var(--paper)}
+.sec--paper .rel a{border-color:#D9DEE7}
+.sec--paper .rel a:hover{border-color:var(--ink);background:#F2F4F8}
+.sec--paper .rel h3{color:var(--ink)}
+.sec--paper .rel p{color:#4A5468}
+.sec--paper .rel .label--blue{color:var(--blue)}
+
+/* ────────────────────────────── related ──────────────────────────────── */
+.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*2)}
+.rel a{display:block;border:1px solid var(--line);padding:calc(var(--u)*4);
+  transition:border-color .18s,transform .18s,background .18s}
+.rel a:hover{border-color:rgba(72,226,226,.5);transform:translateY(-3px);background:rgba(255,255,255,.03)}
+.rel h3{font-size:19px;line-height:26px;margin:calc(var(--u)*1.5) 0 7px}
+.rel p{font-size:14px;line-height:22px;color:var(--steel)}
+
+/* ───────────────────────────── start here ────────────────────────────── */
+.start{position:relative;overflow:hidden;background-image:var(--ph-close,none);background-size:cover;
+  background-position:center;padding:calc(var(--u)*15) 0 calc(var(--u)*14)}
+.start__in{position:relative;z-index:3}
+.start h2{font-size:52px;line-height:1.08;letter-spacing:-0.035em;
+  margin:calc(var(--u)*2) 0 calc(var(--u)*3);max-width:12ch}
+.start p{font-size:17px;line-height:29px;color:var(--body);max-width:54ch}
+.start .btn{margin-top:calc(var(--u)*5)}
+.start__rule{margin:calc(var(--u)*6) 0 calc(var(--u)*4);height:1px;background:var(--line);max-width:690px}
+.start__quiet{font-size:19px;line-height:29px;color:var(--steel);max-width:66ch}
+p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:34ch;z-index:3;max-width:34ch;
+  font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:11px;line-height:18px;color:#424560;text-align:right}
+
+/* ────────────────────────────── footer ───────────────────────────────── */
+.foot{background:var(--graphite);padding:calc(var(--u)*9) 0 calc(var(--u)*5)}
+.foot__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:calc(var(--u)*6)}
+.foot__about p{margin-top:calc(var(--u)*3);font-size:14px;line-height:23px;color:#767D91;max-width:34ch}
+.foot h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);
+  font-weight:600;margin-bottom:calc(var(--u)*2.5)}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{margin-bottom:11px}
+.foot li a{color:#8A93A6;font-size:14px}
+.foot li a:hover{color:var(--cyan)}
+.foot__bar{margin-top:calc(var(--u)*8);padding-top:calc(var(--u)*3);border-top:1px solid rgba(217,222,231,.09);
+  display:flex;justify-content:space-between;gap:calc(var(--u)*4);flex-wrap:wrap}
+.foot__bar p{font-size:13px;color:var(--slate)}
+
+/* ─────────────────────────── scroll reveal ───────────────────────────── */
+.js .rv{opacity:0;transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ───────────────────────────── responsive ────────────────────────────── */
+@media (max-width:1180px){
+  .menu{display:none}
+  .navtoggle{display:inline-flex}
+  .foot__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:1080px){
+  .hero__copy{max-width:100%}
+  .art{opacity:.5}
+}
+@media (max-width:1000px){
+  .split,.split--flip{grid-template-columns:1fr;gap:calc(var(--u)*5)}
+  .split--flip .split__media{order:0}
+  .split__copy{max-width:58ch}
+  .rel{grid-template-columns:1fr}
+  .sec{padding:calc(var(--u)*10) 0}
+}
+@media (max-width:720px){
+  /* the page carries its own CTAs; the nav one is the first thing to go */
+  .nav__cta{display:none}
+}
+@media (max-width:860px){
+  :root{--gut:calc(var(--u)*3)}
+  .hero h1{font-size:32px;line-height:38px}
+  p.start__brief{display:none}
+  .sec h2{font-size:27px;line-height:34px}
+  .start h2{font-size:32px;line-height:38px;max-width:none}
+  .check__q{grid-template-columns:1fr;gap:calc(var(--u)*2)}
+  .foot__grid{grid-template-columns:1fr}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+
+/* hero label inside the h1: displayed as the separate label was. The h1's
+   top margin (calc(var(--u)*2.5), see .hero h1) used to sit between label and
+   heading; the negative margin cancels it above the label and puts it back
+   below, so both land where they did. */
+.hero h1 .label{display:block;margin:calc(var(--u)*-2.5) 0 calc(var(--u)*2.5)}
+
+/* readable line length on wide screens (was up to ~145 characters a line) */
+.hero__sub{max-width:58ch}
+.foot__bar p{max-width:80ch}

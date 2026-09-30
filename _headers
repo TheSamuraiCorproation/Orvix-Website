@@ -1,14 +1,29 @@
 # Netlify response headers. Applied to every path; the site is static and
-# talks to nothing but itself and Google Fonts, so the policy can be tight.
+# talks to nothing but itself (fonts are self-hosted) and the Calendly embed
+# on Contact, so the policy can be tight.
 #
 # Inline <style> and <script> blocks are how this export is built (one file
 # per page), which is why 'unsafe-inline' is present. Everything else - any
 # other origin, frames, objects, form targets - is refused.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self'; connect-src 'self'; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Cross-Origin-Opener-Policy: same-origin
+
+# Caching. Netlify's CDN caches everything at the edge and purges it on each
+# deploy; these lines only set how long a visitor's browser keeps a copy.
+# File names are not fingerprinted, so nothing is "immutable": a changed
+# image can take up to a week to reach a returning visitor. Rename the file
+# if a change has to show at once.
+#
+# HTML, CSS and JS keep Netlify's default (revalidate on every visit, a cheap
+# 304 when unchanged). They must move together: a fresh page with yesterday's
+# assets/css/main.css from the browser cache would render broken.
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400

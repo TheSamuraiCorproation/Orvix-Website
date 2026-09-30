@@ -147,49 +147,49 @@ PAGES: dict[str, dict] = {
     # ---- engagements --------------------------------------------------
     # Descriptions here are the existing ones: all eight already sat inside
     # 140-160 and read better than anything a template would produce.
-    "engagement/AI_Estate_Inventory/AI_Estate_Inventory.html": _p(
+    "engagements/ai-estate-inventory/index.html": _p(
         "engagement",
         "AI Estate Inventory: Find Every AI System | Orvix",
         "A 3–5 week engagement that finds, classifies and risk-ranks every AI "
         "system you run, including the undeclared ones, and leaves a live register.",
     ),
-    "engagement/API_Discovery_and_Governance/API_Discovery_and_Governance.html": _p(
+    "engagements/api-discovery-and-governance/index.html": _p(
         "engagement",
         "API Discovery and Governance: Full Inventory | Orvix",
         "A 4–6 week engagement that finds the APIs actually running, classifies "
         "them by data sensitivity and assesses them against the OWASP API Top 10.",
     ),
-    "engagement/Assurance_Review/Assurance_Review.html": _p(
+    "engagements/assurance-review/index.html": _p(
         "engagement",
         "AI Assurance Review: ISO 42001 Evidence | Orvix",
         "A 6-week independent control assessment against ISO/IEC 42001 and NIST AI "
         "RMF, producing an evidence ledger and a date-sequenced closure plan.",
     ),
-    "engagement/Data_Residency_Review/Data_Residency_Review.html": _p(
+    "engagements/data-residency-review/index.html": _p(
         "engagement",
         "Data Residency Review: Where Your Data Goes | Orvix",
         "A 3–4 week engagement that maps where regulated data is stored, "
         "processed, supported and backed up, against what your own regulator expects.",
     ),
-    "engagement/Human_Risk_and_Impersonation_Defense/Human_Risk_and_Impersonation_Defense.html": _p(
+    "engagements/human-risk-and-impersonation-defense/index.html": _p(
         "engagement",
         "Impersonation Defence: Deepfake Review | Orvix",
         "A 4-week engagement that maps the approvals relying on recognizing a "
         "person, tests them under controlled conditions, and documents the result.",
     ),
-    "engagement/Infrastructure_Design_Review/Infrastructure_Design_Review.html": _p(
+    "engagements/infrastructure-design-review/index.html": _p(
         "engagement",
         "Infrastructure Design Review: Test It Early | Orvix",
         "A 4–6 week review of a design against residency, resilience, AI-readiness "
         "and cryptographic posture, layer by layer, with a migration sequence.",
     ),
-    "engagement/Managed_Detection_and_Response/Managed_Detection_and_Response.html": _p(
+    "engagements/managed-detection-and-response/index.html": _p(
         "engagement",
         "Managed Detection and Response: 24/7 MDR | Orvix",
         "24/7 detection and response, with a residency track matched to each "
         "workload, detection engineering, and an agreed authority to contain a threat.",
     ),
-    "engagement/Model_Evaluation_and_Red_Team/Model_Evaluation_and_Red_Team.html": _p(
+    "engagements/model-evaluation-and-red-team/index.html": _p(
         "engagement",
         "Model Evaluation and AI Red Team | Orvix",
         "A 4–6 week engagement that measures an AI system against its stated "
@@ -199,49 +199,49 @@ PAGES: dict[str, dict] = {
     # ---- industries ---------------------------------------------------
     # Five of these eight shipped the same 172-char description. All rewritten
     # to be unique and inside the range.
-    "industries/financial-services/financial-services.html": _p(
+    "industries/financial-services/index.html": _p(
         "industry",
         "AI and Cryptographic Assurance for GCC Banks | Orvix",
         "Independent assurance for GCC banks: cryptographic discovery, AI "
         "governance and identity control reviews against dated CBUAE obligations now.",
     ),
-    "industries/telecommunications/telecommunications.html": _p(
+    "industries/telecommunications/index.html": _p(
         "industry",
         "Network and AI Assurance for GCC Telecom | Orvix",
         "Independent assurance for GCC telecom operators: network trust, change "
         "evidence, supply-chain accreditation and AI governance, against dates.",
     ),
-    "industries/government-public-sector/government-public-sector.html": _p(
+    "industries/government-public-sector/index.html": _p(
         "industry",
         "Independent Assurance for GCC Government | Orvix",
         "Independent assurance for UAE and GCC public-sector programmes: AI "
         "governance, cryptographic readiness, and what a supplier can be asked to show.",
     ),
-    "industries/energy-utilities/energy-utilities.html": _p(
+    "industries/energy-utilities/index.html": _p(
         "industry",
         "AI and OT Assurance for Energy and Utilities | Orvix",
         "Independent assurance for energy and utility operators: the corporate to "
         "operational boundary, OT visibility, and evidence a regulator accepts.",
     ),
-    "industries/healthcare-life-sciences/healthcare-life-sciences.html": _p(
+    "industries/healthcare-life-sciences/index.html": _p(
         "industry",
         "AI Assurance for GCC Healthcare | Orvix",
         "Independent assurance for GCC healthcare providers: which models touch a "
         "clinical decision, what the record shows, and how data residency holds.",
     ),
-    "industries/industrial-manufacturing/industrial-manufacturing.html": _p(
+    "industries/industrial-manufacturing/index.html": _p(
         "industry",
         "OT and AI Assurance for Manufacturing | Orvix",
         "Independent assurance for manufacturers: every path into the production "
         "systems, the change record behind it, and what an outage would cost.",
     ),
-    "industries/retail-hospitality-real-estate/retail-hospitality-real-estate.html": _p(
+    "industries/retail-hospitality-real-estate/index.html": _p(
         "industry",
         "AI and Data Assurance for Retail and Hospitality | Orvix",
         "Independent assurance for retail, hospitality and real estate: where each "
         "copy of a customer record lives, who reaches it, and what evidence says.",
     ),
-    "industries/transport-logistics/transport-logistics.html": _p(
+    "industries/transport-logistics/index.html": _p(
         "industry",
         "AI and OT Assurance for Transport and Logistics | Orvix",
         "Independent assurance for transport and logistics operators: whether the "

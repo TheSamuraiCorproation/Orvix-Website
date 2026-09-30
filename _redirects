@@ -1,6 +1,66 @@
 # Netlify. Build tooling and working notes live in the publish folder and
 # would otherwise be served to anyone who guessed the path.
-/tools/*             /404.html  404
-/README.txt          /404.html  404
-/BUILD_NOTES.txt     /404.html  404
-/images/CREDITS.txt  /404.html  404
+#
+# The trailing "!" forces the rule. Without it Netlify serves a file that
+# exists at the path in preference to the rule (shadowing), so none of
+# these were actually hidden.
+/tools/*                    /404.html  404!
+/README.txt                 /404.html  404!
+/BUILD_NOTES.txt            /404.html  404!
+/images/CREDITS.txt         /404.html  404!
+/assets/ar-dictionary.json  /404.html  404!
+/netlify.toml               /404.html  404!
+/.github/*                  /404.html  404!
+
+# Old addresses. Engagement and industry pages used to live at
+# <section>/<Folder>/<Folder>.html; they are now <folder>/index.html at the
+# clean URL. These send the old addresses (bookmarks, search results, links
+# elsewhere) to the new ones permanently.
+/engagement/AI_Estate_Inventory/AI_Estate_Inventory.html                                       /engagements/ai-estate-inventory/  301
+/engagement/AI_Estate_Inventory/                                                               /engagements/ai-estate-inventory/  301
+/engagement/API_Discovery_and_Governance/API_Discovery_and_Governance.html                     /engagements/api-discovery-and-governance/  301
+/engagement/API_Discovery_and_Governance/                                                      /engagements/api-discovery-and-governance/  301
+/engagement/Assurance_Review/Assurance_Review.html                                             /engagements/assurance-review/  301
+/engagement/Assurance_Review/                                                                  /engagements/assurance-review/  301
+/engagement/Data_Residency_Review/Data_Residency_Review.html                                   /engagements/data-residency-review/  301
+/engagement/Data_Residency_Review/                                                             /engagements/data-residency-review/  301
+/engagement/Human_Risk_and_Impersonation_Defense/Human_Risk_and_Impersonation_Defense.html     /engagements/human-risk-and-impersonation-defense/  301
+/engagement/Human_Risk_and_Impersonation_Defense/                                              /engagements/human-risk-and-impersonation-defense/  301
+/engagement/Infrastructure_Design_Review/Infrastructure_Design_Review.html                     /engagements/infrastructure-design-review/  301
+/engagement/Infrastructure_Design_Review/                                                      /engagements/infrastructure-design-review/  301
+/engagement/Managed_Detection_and_Response/Managed_Detection_and_Response.html                 /engagements/managed-detection-and-response/  301
+/engagement/Managed_Detection_and_Response/                                                    /engagements/managed-detection-and-response/  301
+/engagement/Model_Evaluation_and_Red_Team/Model_Evaluation_and_Red_Team.html                   /engagements/model-evaluation-and-red-team/  301
+/engagement/Model_Evaluation_and_Red_Team/                                                     /engagements/model-evaluation-and-red-team/  301
+/ar/engagement/AI_Estate_Inventory/AI_Estate_Inventory.html                                    /ar/engagements/ai-estate-inventory/  301
+/ar/engagement/AI_Estate_Inventory/                                                            /ar/engagements/ai-estate-inventory/  301
+/ar/engagement/API_Discovery_and_Governance/API_Discovery_and_Governance.html                  /ar/engagements/api-discovery-and-governance/  301
+/ar/engagement/API_Discovery_and_Governance/                                                   /ar/engagements/api-discovery-and-governance/  301
+/ar/engagement/Assurance_Review/Assurance_Review.html                                          /ar/engagements/assurance-review/  301
+/ar/engagement/Assurance_Review/                                                               /ar/engagements/assurance-review/  301
+/ar/engagement/Data_Residency_Review/Data_Residency_Review.html                                /ar/engagements/data-residency-review/  301
+/ar/engagement/Data_Residency_Review/                                                          /ar/engagements/data-residency-review/  301
+/ar/engagement/Human_Risk_and_Impersonation_Defense/Human_Risk_and_Impersonation_Defense.html  /ar/engagements/human-risk-and-impersonation-defense/  301
+/ar/engagement/Human_Risk_and_Impersonation_Defense/                                           /ar/engagements/human-risk-and-impersonation-defense/  301
+/ar/engagement/Infrastructure_Design_Review/Infrastructure_Design_Review.html                  /ar/engagements/infrastructure-design-review/  301
+/ar/engagement/Infrastructure_Design_Review/                                                   /ar/engagements/infrastructure-design-review/  301
+/ar/engagement/Managed_Detection_and_Response/Managed_Detection_and_Response.html              /ar/engagements/managed-detection-and-response/  301
+/ar/engagement/Managed_Detection_and_Response/                                                 /ar/engagements/managed-detection-and-response/  301
+/ar/engagement/Model_Evaluation_and_Red_Team/Model_Evaluation_and_Red_Team.html                /ar/engagements/model-evaluation-and-red-team/  301
+/ar/engagement/Model_Evaluation_and_Red_Team/                                                  /ar/engagements/model-evaluation-and-red-team/  301
+/industries/energy-utilities/energy-utilities.html                                             /industries/energy-utilities/  301
+/industries/financial-services/financial-services.html                                         /industries/financial-services/  301
+/industries/government-public-sector/government-public-sector.html                             /industries/government-public-sector/  301
+/industries/healthcare-life-sciences/healthcare-life-sciences.html                             /industries/healthcare-life-sciences/  301
+/industries/industrial-manufacturing/industrial-manufacturing.html                             /industries/industrial-manufacturing/  301
+/industries/retail-hospitality-real-estate/retail-hospitality-real-estate.html                 /industries/retail-hospitality-real-estate/  301
+/industries/telecommunications/telecommunications.html                                         /industries/telecommunications/  301
+/industries/transport-logistics/transport-logistics.html                                       /industries/transport-logistics/  301
+/ar/industries/energy-utilities/energy-utilities.html                                          /ar/industries/energy-utilities/  301
+/ar/industries/financial-services/financial-services.html                                      /ar/industries/financial-services/  301
+/ar/industries/government-public-sector/government-public-sector.html                          /ar/industries/government-public-sector/  301
+/ar/industries/healthcare-life-sciences/healthcare-life-sciences.html                          /ar/industries/healthcare-life-sciences/  301
+/ar/industries/industrial-manufacturing/industrial-manufacturing.html                          /ar/industries/industrial-manufacturing/  301
+/ar/industries/retail-hospitality-real-estate/retail-hospitality-real-estate.html              /ar/industries/retail-hospitality-real-estate/  301
+/ar/industries/telecommunications/telecommunications.html                                      /ar/industries/telecommunications/  301
+/ar/industries/transport-logistics/transport-logistics.html                                    /ar/industries/transport-logistics/  301

@@ -18,6 +18,10 @@ from . import assets, ogcards, sitemap, validate
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
+# Reports contain Arabic; a Windows console defaults to cp1252 and crashes on it.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 
 def cmd_assets() -> int:
     r = assets.extract(ROOT)

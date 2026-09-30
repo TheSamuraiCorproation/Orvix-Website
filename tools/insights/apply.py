@@ -113,10 +113,9 @@ def href_for(title: str, lang: str, rel: str) -> str:
         v = v.get(lang) or v.get("en", "")
     v = (v or "").strip()
     if v.startswith("/"):
-        # a page inside this site: make it relative so it works off disk too
-        v = "../" * rel.count("/") + v.lstrip("/")
-        if v.endswith("/"):
-            v += "index.html"
+        # a page inside this site: relative, and in directory form like
+        # every other internal link (the canonical URL, never .../index.html)
+        v = "../" * rel.count("/") + v.lstrip("/") or "./"
     return v
 
 

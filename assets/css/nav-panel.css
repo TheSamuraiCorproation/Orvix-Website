@@ -1,0 +1,4 @@
+/* Every nav panel scrolls inside itself when the window is shorter than
+   it is. Loaded on every page. */
+
+.dd{max-height:calc(100vh - 66px);max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain}

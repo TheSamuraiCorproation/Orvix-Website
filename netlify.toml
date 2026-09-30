@@ -1,0 +1,12 @@
+# Netlify site config. The site is pre-built static HTML: nothing to compile,
+# the repo root is the publish folder. Headers and redirects stay in
+# _headers and _redirects so a drag-and-drop deploy behaves the same as a
+# Git deploy.
+[build]
+  publish = "."
+  command = ""
+
+# Stop Netlify rewriting links and re-minifying on deploy; the export is
+# already final and the links are already correct (see README.txt, LINKS).
+[build.processing]
+  skip_processing = true

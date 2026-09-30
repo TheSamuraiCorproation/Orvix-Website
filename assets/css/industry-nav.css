@@ -1,0 +1,73 @@
+/* Industry pages: the site nav, hero geometry and nav typography that
+   make these pages match the What we do template. Loaded after
+   mobile.css. */
+
+/* ---- nav bar: the same rules main.css carries ---- */
+/* wordmark (interim, typographic) */
+.brand{display:inline-block;line-height:0}
+.brand img{height:26px;width:auto;display:block}
+footer .brand img{height:30px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--ink);
+border-bottom:1px solid rgba(255,255,255,.13)}
+.nav-in{max-width:1460px;margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;
+gap:clamp(18px,2.4vw,38px);height:66px}
+.nav-l{display:flex;gap:clamp(14px,2vw,30px);align-items:center}
+.nav-l>li{list-style:none;position:relative;height:66px;display:flex;align-items:center}
+.nav-l>li>a,.nav-l>li>button.has{font-size:13.5px;color:rgba(255,255,255,.78);font-weight:400;display:flex;align-items:center;gap:7px}
+.nav-l>li>button.has{font:inherit;font-size:13.5px;background:none;border:0;padding:0;margin:0;height:66px;cursor:pointer;text-align:left}
+.nav-l>li>a:hover,.nav-l>li:hover>a,.nav-l>li:hover>button.has,.nav-l>li>button.has:focus-visible{color:var(--cyan)}
+.nav-l>li>.has::after{content:"";width:5px;height:5px;border-right:1px solid currentColor;
+border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.7}
+.dd{position:absolute;top:66px;left:-18px;min-width:262px;background:var(--ink);
+border:1px solid rgba(255,255,255,.15);padding:8px 0;opacity:0;visibility:hidden;
+transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
+/* menus: .open is set by assets/nav.js on click, and on hover where a
+   pointer exists; one panel at a time, the open one on top */
+.nav-l>li.open .dd{opacity:1;visibility:visible;transform:none}
+@media(hover:hover) and (pointer:fine){.nav-l>li:hover .dd{opacity:1;visibility:visible;transform:none}}
+.dd{z-index:1}.nav-l>li.open{z-index:2}
+.nav-l>li.open>button.has{color:var(--cyan)}
+.dd a{display:flex;gap:11px;padding:10px 20px;font-size:13px;color:rgba(255,255,255,.76);line-height:19px}
+.dd a:hover{background:rgba(255,255,255,.07);color:var(--cyan)}
+.dd a i{font-style:normal;font-family:var(--m);font-size:11px;color:var(--steel);padding-top:2px}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:14px}
+.nav-ar{font-size:13px;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.22);padding:6px 13px}
+.nav-ar:hover{color:var(--cyan);border-color:var(--cyan)}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;border:1px solid rgba(255,255,255,.34);padding:10px 18px;white-space:nowrap}
+.nav-cta:hover{background:var(--signal);border-color:var(--signal)}
+.burger{display:none;width:34px;height:34px;border:1px solid rgba(255,255,255,.28);background:none;
+cursor:pointer;padding:0;position:relative}
+.burger span{position:absolute;left:8px;right:8px;height:1px;background:#fff;transition:.2s}
+.burger span:nth-child(1){top:11px}.burger span:nth-child(2){top:16px}.burger span:nth-child(3){top:21px}
+.burger.x span:nth-child(1){top:16px;transform:rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){top:16px;transform:rotate(-45deg)}
+.mob{display:none;position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--ink);z-index:55;
+overflow-y:auto;padding:12px var(--gut) 40px}
+.mob.open{display:block}
+.mob h5{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);
+font-weight:600;margin:26px 0 10px}
+.mob a{display:block;padding:11px 0;font-size:16px;color:rgba(255,255,255,.82);
+border-bottom:1px solid rgba(255,255,255,.1)}
+.mob .cta{margin-top:28px;background:var(--signal);color:#fff;text-align:center;
+padding:15px;border:none;font-weight:500}
+@media(max-width:1120px){.nav-l,.nav-ar{display:none}.burger{display:block}}
+@media(max-width:520px){.nav-cta{display:none}}
+
+/* ---- hero geometry, matched to the what-we-do template ---- */
+.hero,.ehero{min-height:0;
+padding:clamp(64px,8vw,116px) 0 clamp(44px,5vw,72px)}
+@media(max-width:900px){.hero,.ehero{
+padding:calc(67px + clamp(26px,6vw,44px)) 0 clamp(32px,5vw,52px)}}
+
+/* ---- nav typography, pinned so it matches every template ---- */
+#nav,#nav .nav-in,.nav-l>li>a,.nav-l>li>button.has,.nav-ar,.dd a,
+.mob a,.mob h5{font-family:'IBM Plex Sans','Plex Sans Fallback',system-ui,sans-serif}
+.nav-l>li>a,.nav-l>li>button.has,.nav-ar,.dd a{font-weight:300}
+.nav-cta{font-weight:500}
+/* the engagement stylesheet never reset list padding, so the bar sat 40px
+   further right than on every other template */
+.nav-l,.mob ul{margin:0;padding:0;list-style:none}
+.nav-l>li{list-style:none}

@@ -1,0 +1,20 @@
+/* The Boundary band on the What we do pages (32 pages): the watermark
+   and the auto-advance progress bar. See assets/boundary.js;
+   tools/boundary keeps the link in place. */
+
+/* the watermark: large, bottom centre, cropped by the band's lower edge.
+   position is restated because .sec.dark.bnd>* {position:relative} outranks
+   the base .wm rule, which had left the mark in the flow at the top */
+.wwd .sec.dark.bnd-sel .wm{position:absolute;z-index:0;left:50%;top:auto;bottom:0;transform:translate(-50%,21%);
+font-size:clamp(170px,27vw,440px);color:rgba(255,255,255,.045)}
+.wwd .sec.dark.bnd-sel .wm b{color:rgba(72,226,226,.085)}
+/* auto-advance: a bar on the active tab runs down the time to the next move */
+.wwd .btab{position:relative;overflow:hidden}
+.wwd .btab .pg{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cyan);
+transform:scaleX(0);transform-origin:left center;pointer-events:none}
+[dir="rtl"] .wwd .btab .pg{transform-origin:right center}
+.wwd .btab.alt .pg{background:var(--steel)}
+.wwd .bauto .btab.on .pg{animation:bstep var(--bstep,5000ms) linear forwards}
+.wwd .bpause .btab.on .pg{animation-play-state:paused}
+@keyframes bstep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.wwd .btab .pg{display:none}}

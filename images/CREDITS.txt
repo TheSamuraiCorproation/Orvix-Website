@@ -139,6 +139,14 @@ ADDED 1 SEPTEMBER 2026 - RE-BRIEFED SERVICE AND RESEARCH PHOTOGRAPHY
         leader-ziad-darras.png, leader-daryl-simpson.png
         (the PNG sources the JPEG portraits were derived from)
 
+    REMOVED 30 Sept 2026 at the client's request, pending new portraits:
+        leader-ziad-darras.jpg, leader-daryl-simpson.jpg,
+        leader-rimoshka-nabil.jpg, leader-marwan-jaffal.jpg
+        The About and Leadership pages load these names if they exist and
+        show the "to commission" placeholder if they do not, so saving the
+        new portraits under the same names brings them back with no code
+        change. The old files are in git history.
+
 --------------------------------------------------------------------
 FLAGS - images/flags/*.svg
 --------------------------------------------------------------------

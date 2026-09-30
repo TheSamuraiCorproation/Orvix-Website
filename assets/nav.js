@@ -110,10 +110,24 @@
 
   /* ---- photo slots ------------------------------------------------------ */
 
-  var ph = doc.querySelectorAll('.ph');
-  for (var k = 0; k < ph.length; k++) {
-    if (getComputedStyle(ph[k]).backgroundImage !== 'none') ph[k].classList.add('filled');
+  function fillSlots() {
+    var ph = doc.querySelectorAll('.ph:not(.filled)');
+    for (var k = 0; k < ph.length; k++) {
+      if (getComputedStyle(ph[k]).backgroundImage !== 'none') ph[k].classList.add('filled');
+    }
   }
+  fillSlots();
   var st = doc.querySelectorAll('[style*="--img"]');
   for (var m = 0; m < st.length; m++) st[m].classList.add('filled');
+
+  /* Below-the-fold photos are held back while <html> has .bgwait (see
+     "photo deferral" in assets/css/main.css), so those slots look empty on
+     the first pass. Check again the moment the class comes off. */
+  var root = doc.documentElement;
+  if (root.classList.contains('bgwait') && 'MutationObserver' in window) {
+    var mo = new MutationObserver(function () {
+      if (!root.classList.contains('bgwait')) { mo.disconnect(); fillSlots(); }
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
