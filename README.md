@@ -11,16 +11,12 @@ It's plain HTML, CSS and JavaScript. There's no framework and no build step: the
 ## Quick start
 
 ```bash
-python -m http.server 8080        # from the repo root, then open http://localhost:8080
+python -m tools.serve             # from the repo root, then open http://localhost:8080
 ```
 
-Use a local server, not a double-click. Links are directory URLs (`../about/`) and photo paths are root-relative (`/images/…`). A server resolves both; `file://` resolves neither.
+`tools/serve.py` behaves like Netlify for what this site uses. A missing address shows `404.html`, the 301s and forced 404s in `_redirects` apply, and the headers in `_headers` (including the security policy) are sent. It needs only the standard library.
 
-A plain server ignores `_headers` and `_redirects`. For a Netlify-exact preview, including headers and redirects:
-
-```bash
-npx netlify-cli dev --dir .
-```
+Use a server, not a double-click. Links are directory URLs (`../about/`) and photo paths are root-relative (`/images/…`). A server resolves both; `file://` resolves neither. The plain `python -m http.server` also works, but it shows Python's own error page for missing addresses and ignores `_redirects` and `_headers`.
 
 ## Checks before every release
 
@@ -130,6 +126,7 @@ Pages also carry small inline scripts for their own interactive pieces (maturity
 | `tools/unify` | Copies the nav and drawer markup from What we do onto engagement and industry pages |
 | `tools/insights` | Renders the Perspectives / Briefings / Evaluations listings from `tools/insights/articles.py`. Add a piece's URL next to its title and the row becomes a link |
 | `tools/boundary` | Keeps the Boundary band's script tag and stylesheet link on its 32 pages |
+| `tools/serve.py` | Local preview server that behaves like Netlify (404 page, redirects, headers) |
 | `tools/mobile/*.mjs` | Measurement scripts (Playwright) behind the rules in `mobile.css` |
 
 ---
