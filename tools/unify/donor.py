@@ -3,7 +3,7 @@
 Nothing is hardcoded here: the markup is read from the donor page at run
 time, so this stays in step with the template instead of drifting from a
 copy pasted once. The nav CSS is not transplanted any more: it lives in
-assets/css/ (see README.txt, STYLESHEETS).
+assets/css/ (see README.md, "Styles").
 
 The English donor is what-we-do/ai-assurance/index.html and the Arabic donor is
 its twin. Both sit at the same link depth as every engagement and industry page

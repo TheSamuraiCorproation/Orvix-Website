@@ -5,7 +5,7 @@
 # exists at the path in preference to the rule (shadowing), so none of
 # these were actually hidden.
 /tools/*                    /404.html  404!
-/README.txt                 /404.html  404!
+/README.md                  /404.html  404!
 /BUILD_NOTES.txt            /404.html  404!
 /images/CREDITS.txt         /404.html  404!
 /assets/ar-dictionary.json  /404.html  404!

@@ -10,7 +10,8 @@ JPEG into images/, reference it by its .jpg name, run this, done.
 
 The leadership portraits (images/leader-*.jpg) are looked up by name at run
 time and may not exist yet, so data-photo attributes are left alone.
-Needs Pillow (only to run this, not to serve the site).
+Converting needs Pillow; --check needs only the standard library, which is
+what CI has.
 """
 
 from __future__ import annotations
@@ -19,7 +20,6 @@ import pathlib
 import re
 import sys
 
-from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 IMAGES = ROOT / "images"
@@ -28,6 +28,7 @@ REF = re.compile(r"""(?<!data-photo=")((?:\.\./)*|/)?images/([a-z0-9-]+)\.jpe?g"
 
 
 def convert() -> list[str]:
+    from PIL import Image  # only converting needs Pillow; --check runs on plain Python (CI)
     made = []
     for jpg in sorted(IMAGES.glob("*.jp*g")):
         webp = jpg.with_suffix(".webp")

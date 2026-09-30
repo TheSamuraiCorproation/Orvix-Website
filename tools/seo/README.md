@@ -68,7 +68,7 @@ Brief 3 says never emit `areaServed` beyond the six GCC states, so
 
 The site says otherwise. The homepage description says "US, Middle East and
 North Africa", `/company/about/` carries a coverage map of five offices and
-fifteen countries including a US office, and `README.txt` describes the same
+fifteen countries including a US office, and `README.md` describes the same
 footprint. The structured data now under-claims the markets the copy claims.
 
 If the rule was about not over-claiming a *local* presence, this is right. If

@@ -7,7 +7,7 @@ any copy, for one file that could be cached once.
 
 References are written relative rather than as a root-absolute /assets/img/
 path, because the export has to keep opening from the filesystem (see
-README.txt). Every page's disk depth and production URL depth agree, so
+README.md). Every page's disk depth and production URL depth agree, so
 "../../assets/img/x.png" resolves to /assets/img/x.png in production and to the
 right file locally. og:image, which cannot be relative, is emitted absolute by
 head.py.

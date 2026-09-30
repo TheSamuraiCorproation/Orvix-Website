@@ -7,6 +7,6 @@
   command = ""
 
 # Stop Netlify rewriting links and re-minifying on deploy; the export is
-# already final and the links are already correct (see README.txt, LINKS).
+# already final and the links are already correct (see README.md, "URLs and links").
 [build.processing]
   skip_processing = true
