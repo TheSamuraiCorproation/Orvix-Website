@@ -56,6 +56,7 @@
 <link rel="stylesheet" href="../assets/css/fonts.css">
 <link rel="stylesheet" href="../assets/css/main.css">
 <link rel="stylesheet" href="../assets/css/newsletter.css">
+<link rel="stylesheet" href="../assets/css/home-motion.css">
 <style>
 /* main.css gives .bx a photo layer; the homepage boxes have none */
 .bx::before{content:none}
@@ -103,6 +104,7 @@ letter-spacing:-.022em;margin-bottom:14px}
 <link rel="stylesheet" href="../assets/rtl.css">
 <script src="../assets/nav.js" defer></script>
 <script src="../assets/subscribe.js" defer></script>
+<script src="../assets/home.js" defer></script>
 <script src="../assets/reveal.js" defer></script>
 </head>
 <body>
@@ -265,7 +267,7 @@ letter-spacing:-.022em;margin-bottom:14px}
       <h2 dir="auto" class="two">
         <span>نرسم حدود الثقة.</span>
         <span>ونحلّ</span>
-        <span class="xline"><em>X</em>.</span>
+        <span class="xline"><em>X</em></span>
       </h2>
     </div>
 
@@ -294,11 +296,11 @@ letter-spacing:-.022em;margin-bottom:14px}
         <h4 dir="auto">واجهات لم يُحصِها أحد</h4>
         <p dir="auto">فُتحت من أجل مشروع ولم تُغلق قط. نعثر على كل واحدة منها، ونصنّفها، ونُخضعها لسياسة مُطبَّقة لا محفوظة في الأدراج.</p></div>
 
-      <div class="bx s2" style="--img:url('/images/bento-identity.webp')"><span class="tag">الهوية</span>
+      <div class="bx s2" style="--img:url('/images/bento-identity-v2.webp')"><span class="tag">الهوية</span>
         <h4 dir="auto">وجوه غير حقيقية</h4>
         <p dir="auto">بات الصوت والفيديو يتجاوزان المعيار الذي بُنيت عليه موافقاتك. نضع فحوص كشف الحيوية وأصالة المحتوى حيث تتحرك الأموال.</p></div>
 
-      <div class="bx big2" style="--img:url('/images/bento-agentic.webp')"><span class="tag">الذكاء الاصطناعي الوكيل</span>
+      <div class="bx big2" style="--img:url('/images/bento-agentic-v2.webp')"><span class="tag">الذكاء الاصطناعي الوكيل</span>
         <h4 dir="auto">وكلاء بلا ضوابط</h4>
         <p dir="auto">الوكلاء الذين ينفّذون أثمن بكثير من الوكلاء الذين يجيبون، وأصعب بكثير في منحهم الصلاحيات. نبنيهم بنطاق محدد، وصلاحية كتابة ضيقة، وبوابة بشرية عند كل نقطة تتغير فيها حالة النظام.</p></div>
 
@@ -453,8 +455,7 @@ letter-spacing:-.022em;margin-bottom:14px}
         </div>
       </div>
     </div>
-    <p dir="auto" class="loop rv" style="margin-top:clamp(30px,4vw,44px)">الضمان يُغلق الدائرة. وإثبات سلامة المنظومة هو ما يبرّر الاستثمار التالي فيها.</p>
-    <p dir="auto" class="entry rv">تبدأ معظم المؤسسات معنا عند <b>04</b>، لأنها الحلقة التي تُسأل عنها. وما نجده هناك يفسّر عادةً أهمية الحلقات من 01 إلى 03.</p>
+    <div class="closing rv"><p dir="auto" class="loop rv">الضمان يُغلق الدائرة. وإثبات سلامة المنظومة هو ما يبرّر الاستثمار التالي فيها.</p><p dir="auto" class="entry rv">تبدأ معظم المؤسسات معنا عند <b>04</b>، لأنها الحلقة التي تُسأل عنها. وما نجده هناك يفسّر عادةً أهمية الحلقات من 01 إلى 03.</p></div>
   </div>
 </section>
 
@@ -518,11 +519,31 @@ letter-spacing:-.022em;margin-bottom:14px}
       <div dir="auto" class="lbl">المنهجية المشتركة بينها جميعًا</div>
       <h3 dir="auto">أحصِ. افهم. أثبِت. حافظ.</h3>
       <p dir="auto">تمرّ كل مهمة بالمراحل الأربع نفسها، من جرد يستغرق ثلاثة أسابيع إلى خدمة مُشغَّلة على مدار الساعة. وهذا مقصود: فالمنهجية لا تنتج أدلة إلا إذا أنتجت <em>النوع نفسه</em> من الأدلة في كل مرة.</p>
-      <div class="msteps">
-        <div><div dir="auto" class="n">01</div><h4 dir="auto">أحصِ</h4><p dir="auto">اعثر على ما يعمل فعلًا، وهو غالبًا أكثر مما تُظهره الوثائق.</p></div>
-        <div><div dir="auto" class="n">02</div><h4 dir="auto">افهم</h4><p dir="auto">ماذا يفعل، ومن يملكه، وأي بيانات يمسّها، وأي قرارات تعتمد عليه.</p></div>
-        <div><div dir="auto" class="n">03</div><h4 dir="auto">أثبِت</h4><p dir="auto">اختبره وفق المعيار المنطبق، ودوّن ما أظهره الاختبار.</p></div>
-        <div><div dir="auto" class="n">04</div><h4 dir="auto">حافظ</h4><p dir="auto">أعد الفحص دوريًا. فالدليل الذي مضى عليه عامان ليس دليلًا.</p></div>
+      <svg class="mdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-estate" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="16" rx="2"/><path d="M12 27h8M16 22v5M9 12h6M9 16h10"/></symbol>
+<symbol id="i-count" viewBox="0 0 32 32"><rect x="5" y="5" width="9" height="9" rx="1.5"/><rect x="18" y="5" width="9" height="9" rx="1.5"/><rect x="5" y="18" width="9" height="9" rx="1.5"/><path d="M22.5 18.5v9M18 23h9"/></symbol>
+<symbol id="i-understand" viewBox="0 0 32 32"><circle cx="14" cy="14" r="8.5"/><path d="M20.5 20.5 27 27"/><circle cx="11" cy="12" r="1.4"/><circle cx="17" cy="12" r="1.4"/><circle cx="14" cy="17" r="1.4"/><path d="M11 12l3 5 3-5"/></symbol>
+<symbol id="i-prove" viewBox="0 0 32 32"><path d="M16 4l10 4v8c0 6-4.5 10-10 12C10.5 26 6 22 6 16V8z"/><path d="M11 16l3.5 3.5L21.5 12"/></symbol>
+<symbol id="i-hold" viewBox="0 0 32 32"><path d="M25 16a9 9 0 1 1-2.6-6.4"/><path d="M25 6v5h-5"/><circle cx="16" cy="16" r="2"/></symbol>
+</defs></svg>
+<div class="flow" aria-hidden="true"><div class="fl-chips"><span class="fl-chip" data-phase="0">أحصِ</span><span class="fl-chip" data-phase="1">افهم</span><span class="fl-chip" data-phase="2">أثبِت</span><span class="fl-chip" data-phase="3">حافظ</span></div><div class="fl-stage"><svg class="fl-lines" viewBox="0 0 1200 380" preserveAspectRatio="none" aria-hidden="true">
+  <path class="fl-dash" data-phase="0" d="M188 170 H250 C300 170 300 70 320 70"/>
+  <path class="fl-dash" data-phase="0" d="M188 170 H320"/>
+  <path class="fl-dash" data-phase="0" d="M188 170 H250 C300 170 300 270 320 270"/>
+  <path class="fl-dash" data-phase="1" d="M400 70 C440 70 470 170 522 170"/>
+  <path class="fl-dash" data-phase="1" d="M400 170 H522"/>
+  <path class="fl-dash" data-phase="1" d="M400 270 C440 270 470 170 522 170"/>
+  <path class="fl-solid" data-phase="2" d="M598 170 H772"/>
+  <path class="fl-solid" data-phase="3" d="M848 170 H1012"/>
+  <path class="fl-loop" data-phase="3" d="M1050 266 V340 H150 V276"/>
+  <path class="fl-arrow" data-phase="3" d="M140 290 L150 274 L160 290"/>
+  <circle class="fl-comet" r="5"><animateMotion dur="7s" repeatCount="indefinite" path="M188 170 H522 H772 H1012 M1050 266 V340 H150 V276"/></circle>
+</svg><span class="fl-node" data-phase="0" style="right:12.50%;top:44.74%"><span class="fl-dot"><svg><use href="#i-estate"/></svg></span><span class="fl-lab"><b>منظومتك</b><i>كل نظام تشغّله</i></span></span><span class="fl-pill" data-phase="0" style="right:30.00%;top:18.42%">الأنظمة</span><span class="fl-pill" data-phase="0" style="right:30.00%;top:44.74%">النماذج</span><span class="fl-pill" data-phase="0" style="right:30.00%;top:71.05%">الواجهات</span><span class="fl-node" data-phase="1" style="right:46.67%;top:44.74%"><span class="fl-dot"><svg><use href="#i-understand"/></svg></span><span class="fl-lab"><b>السجل</b><i>المالك · البيانات · القرارات</i></span></span><span class="fl-node" data-phase="2" style="right:67.50%;top:44.74%"><span class="fl-dot"><svg><use href="#i-prove"/></svg></span><span class="fl-lab"><b>الأدلة</b><i>تطبيق المعيار · تسجيل النتيجة</i></span></span><span class="fl-node" data-phase="3" style="right:87.50%;top:44.74%"><span class="fl-dot"><svg><use href="#i-hold"/></svg></span><span class="fl-lab"><b>مُحافَظ عليه</b><i>يُعاد فحصه دوريًا</i></span></span><span class="fl-tag" data-phase="2" style="right:57.08%;top:44.74%">اختبار</span><span class="fl-tag" data-phase="3" style="right:77.50%;top:44.74%">مُحافَظ عليه</span><span class="fl-tag fl-tag--loop" data-phase="3" style="right:50.00%;top:89.47%">إعادة الفحص دوريًا</span></div></div>
+<div class="msteps">
+        <div><div dir="auto" class="n">01</div><span class="ico" aria-hidden="true"><svg><use href="#i-count"/></svg></span><h4 dir="auto">أحصِ</h4><p dir="auto">اعثر على ما يعمل فعلًا، وهو غالبًا أكثر مما تُظهره الوثائق.</p></div>
+        <div><div dir="auto" class="n">02</div><span class="ico" aria-hidden="true"><svg><use href="#i-understand"/></svg></span><h4 dir="auto">افهم</h4><p dir="auto">ماذا يفعل، ومن يملكه، وأي بيانات يمسّها، وأي قرارات تعتمد عليه.</p></div>
+        <div><div dir="auto" class="n">03</div><span class="ico" aria-hidden="true"><svg><use href="#i-prove"/></svg></span><h4 dir="auto">أثبِت</h4><p dir="auto">اختبره وفق المعيار المنطبق، ودوّن ما أظهره الاختبار.</p></div>
+        <div><div dir="auto" class="n">04</div><span class="ico" aria-hidden="true"><svg><use href="#i-hold"/></svg></span><h4 dir="auto">حافظ</h4><p dir="auto">أعد الفحص دوريًا. فالدليل الذي مضى عليه عامان ليس دليلًا.</p></div>
       </div>
       <p dir="auto" class="mfoot">المرحلة الرابعة هي التي تتخطاها معظم التقييمات. وهي أيضًا التي تحوّل التقرير إلى ضمان مستمر، وهي السبب في بقاء نتائجنا قابلة للمقارنة من سنة إلى أخرى.</p>
     </div>
@@ -563,11 +584,11 @@ letter-spacing:-.022em;margin-bottom:14px}
       <p dir="auto">وهذا أهم مما كان عليه سابقًا. فئات جديدة تظهر وتُموَّل، ثم تنضج أو تختفي خلال ثمانية عشر شهرًا. ولا يستطيع أي فريق مؤسسي تقييم هذا التدفق وتشغيل منظومة في الوقت نفسه. فمشهد الموردين نفسه متغيّر.</p>
     </div>
     <div class="sel rv">
-      <div><div dir="auto" class="n">01</div><h3 dir="auto">نقيّم باستمرار</h3>
+      <div data-n="01"><div dir="auto" class="n">01</div><h3 dir="auto">نقيّم باستمرار</h3>
         <p dir="auto">تتبّع الفئات الناشئة عمل دائم لدينا. فحين يصلك المتطلب، تكون القائمة المختصرة جاهزة سلفًا.</p></div>
-      <div><div dir="auto" class="n">02</div><h3 dir="auto">نثبته قبل أن تلتزم</h3>
+      <div data-n="02"><div dir="auto" class="n">02</div><h3 dir="auto">نثبته قبل أن تلتزم</h3>
         <p dir="auto">إثبات مفهوم تقني وفق قيودك الفعلية (موطن البيانات، وزمن الاستجابة، والمنظومة القائمة، ونموذج التشغيل) قبل أن يوقّع أحد أي شيء.</p></div>
-      <div><div dir="auto" class="n">03</div><h3 dir="auto">نعرض المنطق</h3>
+      <div data-n="03"><div dir="auto" class="n">03</div><h3 dir="auto">نعرض المنطق</h3>
         <p dir="auto">تحصل على القائمة المختصرة ومعها المفاضلات، بما في ذلك الحالات التي يكون فيها الخيار الأفضل هو الإبقاء على ما تشغّله.</p></div>
     </div>
     <div class="cont rv">
@@ -656,12 +677,6 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 const rd=document.getElementById('rdraw');
 if(rd){new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){rd.classList.add('go');}}),
   {threshold:.4}).observe(rd.closest('section'));}
-document.querySelectorAll('.pill').forEach(lk=>lk.addEventListener('mouseenter',()=>{
-  document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));lk.classList.add('on');
-  document.querySelectorAll('.ring-hi,.node').forEach(a=>a.classList.remove('act'));
-  document.getElementById('a'+lk.dataset.a).classList.add('act');
-  document.getElementById('n'+lk.dataset.a).classList.add('act');
-}));
 // mark filled photo slots so the brief hides once a URL is set
 document.querySelectorAll('.ph').forEach(p=>{
   if(getComputedStyle(p).backgroundImage!=='none') p.classList.add('filled');

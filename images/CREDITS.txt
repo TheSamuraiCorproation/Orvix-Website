@@ -52,9 +52,9 @@ LICENCE FOR EVERYTHING NOW IN THIS FOLDER
                                           evaluations, subscribe
     hero-industry.jpg         32845700    --pg-hero: the four industry pages
     bento-interfaces.jpg      4486718     home bento card "Interfaces"
-    bento-identity.jpg        5380595     home bento card "Identity"
+    bento-identity-v2.jpg        5380595     home bento card "Identity"
     bento-data.jpg            6466141     home bento card "Data"
-    bento-agentic.jpg         17489163    home bento card "Agentic AI"
+    bento-agentic-v2.jpg         17489163    home bento card "Agentic AI"
     stage-1.jpg               5203849     --ph-stage-1 on the 12 service pages
     stage-2.jpg               5473298     --ph-stage-2
     stage-3.jpg               6466141     --ph-stage-3
@@ -210,9 +210,9 @@ REPLACED 8 SEPTEMBER 2026 - REGIONAL RE-SHOOT (PLACEHOLDER SET)
 
     HOME BENTO CARDS
     bento-interfaces.jpg    12041208  Museum of the Future, calligraphy skin
-    bento-identity.jpg      10347162  portrait in profile
+    bento-identity-v2.jpg      10347162  portrait in profile
     bento-data.jpg          37730212  data-centre racks
-    bento-agentic.jpg       18069696  action words projected on glass (Sense, Identify, Integrate) (picked by the site owner, 2026-10-01)
+    bento-agentic-v2.jpg       18069696  action words projected on glass (Sense, Identify, Integrate) (picked by the site owner, 2026-10-01)
 
     PILLAR LANDINGS
     hero-infrastructure.jpg 28406821  Abu Dhabi skyline at night
@@ -283,7 +283,7 @@ REPLACED 28 SEPTEMBER 2026 - NO RELIGIOUS SUBJECT MATTER
     ------------------------  ---------  --------------------------  ----------------------------------
     hero-assurance.jpg         15127414  mosque dome in an arch      Louvre Abu Dhabi on the water
     hero-rsh-government.jpg     5045849  mosque colonnade            Qasr Al Hosn civic complex, Abu Dhabi
-    bento-identity.jpg         5474036  face crossed by scan lines (picked by the site owner, 2026-10-01)
+    bento-identity-v2.jpg         5474036  face crossed by scan lines (picked by the site owner, 2026-10-01)
     close-home.jpg              9034221  women in hijab, meeting     woman presenting to a team
     hero-briefings.jpg          9052805  woman in hijab reading      man reading printed papers
     svc-human-risk.jpg         18935245  team incl. hijab            team briefing
