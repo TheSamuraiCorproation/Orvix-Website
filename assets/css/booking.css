@@ -1,0 +1,19 @@
+/* Contact: booking panel around the Calendly calendar */
+.cmp .book-lead{font-size:15px;line-height:24px;color:var(--slate);max-width:52ch;margin:0 0 16px}
+.cmp .book-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0}
+.cmp .book-facts li{font-family:var(--m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+  border:1px solid var(--silver);padding:6px 10px;line-height:1}
+.cmp .book-facts li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--cyan);margin-inline-end:8px;vertical-align:1px}
+.cmp .book-cal{position:relative;min-height:720px;margin-top:-8px}
+.cmp .book-cal::before{content:attr(data-loading);position:absolute;inset:0 0 auto;height:200px;display:grid;place-items:center;
+  font-size:13px;color:var(--steel)}
+.cmp .book-cal.ready::before{display:none}
+.cmp .book-cal.ready{min-height:0}
+.cmp .book-cal .calendly-inline-widget{position:relative;height:720px;min-width:280px;transition:height .2s}
+@media(min-width:1101px){.cmp .contact-grid{grid-template-columns:.62fr 1.38fr!important}}
+/* Calendly pads its card with ~60px above and centres it; trim that so the card lines up with the heading */
+@media(min-width:701px){.cmp .book-cal{max-width:760px;margin-top:-40px;margin-bottom:-36px;margin-inline-start:-40px}}
+.cmp .book-alt{font-size:13px;line-height:21px;color:var(--steel);margin-top:16px}
+.cmp .book-alt a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+@media(max-width:700px){.cmp .book-cal{min-height:760px;margin-inline:calc(var(--gut) * -1)}
+  .cmp .book-cal .calendly-inline-widget{height:760px}}

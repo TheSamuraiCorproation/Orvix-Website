@@ -2,9 +2,14 @@
 evaluations) from tools/insights/articles.py, English and Arabic.
 
 A row whose piece has an address becomes a link that reads "Read now"; a row
-without one reads "Coming soon". Nothing on these pages is called a draft.
-The section headings that described the list as unpublished drafts are
-reworded so they hold whether none, some or all of the pieces are out.
+without one reads "Notify me" and links to the home page newsletter sign-up.
+Nothing on these pages is called a draft.
+
+The list heading (the <h2 data-insights="heading"> above each list) is set
+from how many of that page's pieces are out: "Coming up" when none is,
+"Latest" when all are, and a mix of the two in between. The Arabic heading
+follows from HEADING below, so neither language ever counts pieces that are
+not published.
 
     python -m tools.insights            # apply
     python -m tools.insights --check    # report what would change
@@ -34,22 +39,27 @@ LISTINGS = [
 NEW_AR = {
     "READ NOW": "اقرأ الآن",
     "COMING SOON": "قريبًا",
-    "Latest": "الأحدث",
-    "Four pieces, one idea each.": "أربع مقالات، لكلٍّ منها فكرة واحدة.",
-    "Titles and arguments are settled. Each piece opens here the moment it has been reviewed.":
-        "العناوين والحجج مستقرة. وتُتاح كل مقالة هنا فور مراجعتها.",
 }
 
-# Section copy that described the list as unpublished drafts: (old, new) in
-# English. The Arabic pair is looked up from the dictionary, so both languages
-# move together. Matched between tags only, and a no-op once replaced.
+# The list heading, by how many of the page's pieces are published.
+HEADING = {
+    "en": {"none": "Coming up", "some": "Latest, and what is coming", "all": "Latest"},
+    "ar": {"none": "ما سيصدر قريبًا", "some": "الأحدث، وما سيصدر قريبًا", "all": "الأحدث"},
+}
+R_HEADING = re.compile(r'(<h2[^>]*data-insights="heading"[^>]*>)(.*?)(</h2>)', re.S)
+
+# Older section copy that counted unpublished pieces or described the review
+# process: (old, new) in English. The Arabic pair is looked up from the
+# dictionary when it holds one. Matched between tags only, and a no-op once
+# replaced.
 REWORD = [
-    ("In preparation", "Latest"),
-    ("Planned", "Latest"),
-    ("Four drafts, none published yet.", "Four pieces, one idea each."),
+    ("In preparation", "The series"),
+    ("Planned", "The series"),
     ("Titles and arguments are settled. Nothing goes up until it has been reviewed, "
      "so this list is what is coming rather than what is available.",
-     "Titles and arguments are settled. Each piece opens here the moment it has been reviewed."),
+     "One idea per piece, about 800 words, never behind a form. Select Notify me to hear when one is out."),
+    ("Titles and arguments are settled. Each piece opens here the moment it has been reviewed.",
+     "One idea per piece, about 800 words, never behind a form. Select Notify me to hear when one is out."),
 ]
 
 
@@ -92,13 +102,19 @@ def reword(s: str, pairs: list[tuple[str, str]]) -> str:
     return s
 
 
+def set_heading(s: str, lang: str, published: int, total: int) -> str:
+    state = "none" if not published else "all" if published >= total else "some"
+    text = html.escape(HEADING[lang][state], quote=False)
+    return R_HEADING.sub(lambda m: m.group(1) + text + m.group(3), s)
+
+
 LABEL = {
-    "en": {"read": "READ NOW &#8594;", "soon": "COMING SOON"},
-    "ar": {"read": NEW_AR["READ NOW"] + " &#8592;", "soon": NEW_AR["COMING SOON"]},
+    "en": {"read": "READ NOW &#8594;", "soon": "COMING SOON", "notify": "NOTIFY ME &#8594;"},
+    "ar": {"read": NEW_AR["READ NOW"] + " &#8592;", "soon": NEW_AR["COMING SOON"], "notify": "أبلغني عند النشر &#8592;"},
 }
 
 R_ROW = re.compile(
-    r'<(?P<tag>div|a) class="row"(?: href="[^"]*")?>(?P<body>.*?)'
+    r'<(?P<tag>div|a) class="row(?: notify)?"(?: href="[^"]*")?>(?P<body>.*?)'
     r'<div(?P<dir> dir="auto")? class="go[^"]*">[^<]*</div></(?P=tag)>', re.S)
 R_TITLE = re.compile(r"<h3[^>]*>(.*?)</h3>", re.S)
 
@@ -134,7 +150,10 @@ def render_rows(s: str, rel: str, en_titles: list[str]) -> tuple[str, int]:
             attrs = f' href="{html.escape(href, quote=True)}"'
             row = f'<a class="row"{attrs}>{body}<div{d} class="go">{LABEL[lang]["read"]}</div></a>'
         else:
-            row = f'<div class="row">{body}<div{d} class="go soon">{LABEL[lang]["soon"]}</div></div>'
+            # not published yet: the row asks to be told when it is (the home page sign-up)
+            home = "../" * rel.count("/") + ("ar/" if lang == "ar" else "")
+            row = (f'<a class="row notify" href="{home}#subscribe">{body}'
+                   f'<div{d} class="go">{LABEL[lang]["notify"]}</div></a>')
         out.append(s[last:m.start()])
         out.append(row)
         last = m.end()
@@ -161,8 +180,10 @@ def run(root: pathlib.Path, check: bool) -> tuple[list[str], list[str], int]:
             s0 = p.read_text(encoding="utf-8")
             s, _ = render_rows(s0, rel, titles)
             s = reword(s, pairs[lang_of(rel)])
+            out = sum(1 for t in titles if href_for(t, lang_of(rel), rel))
+            s = set_heading(s, lang_of(rel), out, len(titles))
             if rel == en:
-                published += sum(1 for t in titles if href_for(t, "en", rel))
+                published += out
             if s != s0:
                 changed.append(rel)
                 if not check:

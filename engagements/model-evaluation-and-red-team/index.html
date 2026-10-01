@@ -32,6 +32,8 @@
 
 <link rel="stylesheet" href="../../assets/css/engagement.css">
 <style>
+/* photographs for the two split regions (see "photo regions" in engagement.css) */
+:root{--ph-method:url('/images/eng-model-evaluation-1.webp');--ph-deliver:url('/images/eng-model-evaluation-2.webp')}
 .art__glow{background:radial-gradient(58%% 62%% at 70% 46%, rgba(3,29,150,.34), rgba(3,7,44,0) 70%)}
 .tc{opacity:.30;stroke-dasharray:56 250;animation-name:tc;animation-timing-function:linear;animation-iteration-count:infinite}@keyframes tc{from{stroke-dashoffset:306}to{stroke-dashoffset:0}}.rs{opacity:.07;animation-name:rs;animation-timing-function:linear;animation-iteration-count:infinite}@keyframes rs{0%,84%{opacity:.07}92%{opacity:.42}98%{opacity:.16}100%{opacity:.07}}
 </style>
@@ -96,7 +98,7 @@
           "name": "What is the difference between AI evaluation and AI red teaming?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Evaluation measures a system against its stated purpose under normal conditions — accuracy, consistency, behavior across populations, drift. Red teaming attacks the assumptions around it under hostile conditions — injection, exfiltration, leakage, and agent privilege escalation. A system can pass one and fail the other."
+            "text": "Evaluation measures a system against its stated purpose under normal conditions: accuracy, consistency, behavior across populations and drift. Red teaming attacks the assumptions around it under hostile conditions: injection, exfiltration, leakage and agent privilege escalation. A system can pass one and fail the other."
           }
         },
         {
@@ -179,6 +181,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/glow.css">
 <script src="../../assets/nav.js" defer></script>
 <script src="../../assets/reveal.js" defer></script>
 </head>
@@ -219,14 +222,14 @@
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="../../engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="../../engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="../../engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="../../engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -246,15 +249,11 @@
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="../../research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="../../research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="../../research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="../../research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="../../research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="../../research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="../../research/case-studies/">All case studies</a>
+          <a class="sub" href="../../research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -308,7 +307,6 @@
   <a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="../../research/maturity-model/">The Trust Maturity Model</a>
-  <a href="../../research/assurance-index/">The GCC Assurance Index</a>
   <a href="../../research/readiness-assessment/">Readiness self-assessment</a>
   <a href="../../research/case-studies/">Case studies</a>
   <a href="../../research/perspectives/">Perspectives</a>
@@ -321,7 +319,7 @@
   <a href="../../company/events/">Events</a>
   <a href="../../company/careers/">Careers</a>
   <a href="../../company/contact/">Contact</a>
-  <a href="../../ar/what-we-do/ai-assurance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+  <a href="../../ar/engagements/model-evaluation-and-red-team/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
   <a class="cta" href="../../company/contact/">Talk to our team</a>
 </div>
 
@@ -331,10 +329,10 @@
   <div class="wrap hero__in">
    <div class="hero__copy">
     
-    <h1><span class="label label--accent">Engagement 02 &nbsp;·&nbsp; Model Evaluation &amp; AI Red Team</span> It Must Work, Then It Must Hold.</h1>
+    <h1><span class="label label--accent">Engagement &nbsp;·&nbsp; Model Evaluation &amp; Red Team</span> It Must Work, Then It Must Hold.</h1>
     <p class="hero__sub">Does the system do what you promised it would do? And what happens when someone tries to make it do something else? Every finding arrives with the input, the configuration and the steps to reproduce it.</p>
-    <div class="hero__meta"><span class="chip">4–6 weeks</span><span class="chip">Assurance &amp; governance</span><span class="chip">Retest included</span></div>
-    <a class="btn btn--signal" href="../../company/contact/">Request a model evaluation <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <div class="hero__meta"><span class="chip">4–6 weeks</span><a class="chip" href="../../what-we-do/ai-assurance/">AI Assurance</a><span class="chip">Retest included</span></div>
+    <a class="btn btn--signal" href="../../company/contact/">Book Model Evaluation &amp; Red Team <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
    </div>
   </div>
 </section>
@@ -345,10 +343,9 @@
     <div class="split__copy rv">
       <p class="label label--blue">What this is</p>
       <h2 style="margin:18px 0 22px">Model Evaluation &amp; Red Team</h2>
-      <p>AI red teaming is adversarial testing of an AI application to find behavior its designers did not intend — prompt injection, jailbreaks, data exfiltration through connected tools, training data leakage, and privilege escalation by agents. It is paired with evaluation, which measures the same system against its stated purpose under normal conditions.</p>
+      <p>Model Evaluation &amp; Red Team pairs two kinds of testing. Evaluation measures an AI system against its stated purpose under normal conditions. Red teaming is adversarial testing of the application around it, looking for behavior its designers did not intend: prompt injection, jailbreaks, data exfiltration through connected tools, training data leakage and privilege escalation by agents.</p>
     </div>
-    <div class="ph split__media rv" data-delay="120">
-      <p class="ph__brief">PHOTO SLOT — An engineer at a console mid-task, reviewing output. Candid, unposed. Commission rather than license. Set --ph-method.</p>
+    <div class="ph ph--method split__media rv" data-delay="120">
     </div>
   </div></div>
 </section>
@@ -356,10 +353,10 @@
 <section class="sec sec--paper">
   <div class="wrap">
     <div class="sec__head rv"><h2>Where You Stand</h2><p class="label">Four statements · self-check</p></div>
-    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your position is unusually strong.", "n": "Four for four is rare. The remaining value is periodic retesting as the model and the tool surface change."}, "some": {"t": "There is a gap worth measuring.", "n": "Most serious findings sit in the application, not the model \u2014 an unbounded tool, or a gate that exists on paper and not in the request path."}, "many": {"t": "This is the engagement.", "n": "An untested application with tool access is an open permission boundary. Four to six weeks establishes what it actually does."}}'>
-      <div class="check__hd"><p class="label">Answer honestly. It runs in your browser.</p>
+    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your position is unusually strong.", "n": "Four for four is rare. Keep it that way with periodic retesting as the model and the tool surface change."}, "some": {"t": "There is a gap worth measuring.", "n": "Most serious findings sit in the application around the model: an unbounded tool, or a gate that exists on paper but not in the request path."}, "many": {"t": "This is the engagement.", "n": "An untested application with tool access is an open permission boundary. Four to six weeks establishes what it actually does."}}'>
+      <div class="check__hd"><p class="label">Answer honestly.</p>
         <span class="check__count">0 / 4 ANSWERED</span></div>
-      <div class="check__q"><p>Your AI application has been tested by someone outside the team that built it.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You have a documented boundary between instructions and retrieved data.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You know what the system can reach through its connected tools.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You could reconstruct how a specific decision was made six months ago.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
+      <div class="check__q"><p>Your AI application has been tested by a party independent of the team that built it.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You have a documented boundary between instructions and retrieved data.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You know what the system can reach through its connected tools.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You could reconstruct how a specific decision was made six months ago.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
       <div class="check__out"><div class="field"></div>
         <div style="position:relative;z-index:2">
           <p class="label">Reading</p>
@@ -374,13 +371,12 @@
 
 <section class="sec sec--line">
   <div class="wrap"><div class="split split--flip">
-    <div class="ph split__media rv">
-      <p class="ph__brief">PHOTO SLOT — A printed findings pack with tabs and annotations on a meeting table. Commission rather than license. Set --ph-deliver.</p>
+    <div class="ph ph--deliver split__media rv">
     </div>
     <div class="split__copy">
       <div class="rv"><p class="label label--blue">Deliverables</p>
         <h2 style="margin:18px 0 4px">What You Get</h2></div>
-      <div class="dlist" style="margin-top:26px" data-pop><div class="dl rv" data-delay="0"><div class="dl__n">01</div><div><h3>Evaluation Harness and Results</h3><p>The test set, the scoring method, and the measured result — handed over, not only reported.</p></div></div><div class="dl rv" data-delay="40"><div class="dl__n">02</div><div><h3>Adversarial Findings</h3><p>Each with input, configuration, observed behavior, and reproduction steps.</p></div></div><div class="dl rv" data-delay="80"><div class="dl__n">03</div><div><h3>Severity Ranking</h3><p>Ordered by consequence, with the reasoning recorded against each finding.</p></div></div><div class="dl rv" data-delay="120"><div class="dl__n">04</div><div><h3>Remediation Guidance</h3><p>Specific to the finding and to the architecture, not a list of general controls.</p></div></div><div class="dl rv" data-delay="160"><div class="dl__n">05</div><div><h3>Retest Record</h3><p>Failing cases rerun after remediation, with the result recorded in the same document.</p></div></div><div class="dl rv" data-delay="200"><div class="dl__n">06</div><div><h3>Risk Committee Pack</h3><p>A summary written for a governance audience, with the technical detail attached rather than removed.</p></div></div></div>
+      <div class="dlist" style="margin-top:26px" data-pop><div class="dl rv" data-delay="0"><div class="dl__n">01</div><div><h3>Evaluation Harness and Results</h3><p>The test set, the scoring method and the measured result, handed over so your team can rerun them.</p></div></div><div class="dl rv" data-delay="40"><div class="dl__n">02</div><div><h3>Adversarial Findings</h3><p>Each with input, configuration, observed behavior, and reproduction steps.</p></div></div><div class="dl rv" data-delay="80"><div class="dl__n">03</div><div><h3>Severity Ranking</h3><p>Ordered by consequence, with the reasoning recorded against each finding.</p></div></div><div class="dl rv" data-delay="120"><div class="dl__n">04</div><div><h3>Remediation Guidance</h3><p>Specific to the finding and to the architecture, not a list of general controls.</p></div></div><div class="dl rv" data-delay="160"><div class="dl__n">05</div><div><h3>Retest Record</h3><p>Failing cases rerun after remediation, with the result recorded in the same document.</p></div></div><div class="dl rv" data-delay="200"><div class="dl__n">06</div><div><h3>Risk Committee Pack</h3><p>A summary written for a governance audience, with the full technical detail attached.</p></div></div></div>
     </div>
   </div></div>
 </section>
@@ -388,7 +384,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec__head rv"><h2>Questions We Are Asked</h2></div>
-    <div class="faq rv"><details><summary>What is the difference between AI evaluation and AI red teaming?</summary><div class="faq__a">Evaluation measures a system against its stated purpose under normal conditions — accuracy, consistency, behavior across populations, drift. Red teaming attacks the assumptions around it under hostile conditions — injection, exfiltration, leakage, and agent privilege escalation. A system can pass one and fail the other.</div></details><details><summary>Do you test the model or the application?</summary><div class="faq__a">Both, with the boundary named in the scope. Most serious findings are not in the model. They are in the application around it: the absence of a boundary between instructions and data, a tool the model can reach that it should not, or a human gate that exists on paper and not in the request path.</div></details><details><summary>Will testing affect production systems?</summary><div class="faq__a">Testing runs against a non-production environment by default. Where a production test is necessary to produce a valid result, it is agreed in writing in advance, with defined limits, a defined window, and a named contact who can stop it.</div></details><details><summary>How is this different from a penetration test?</summary><div class="faq__a">A penetration test looks for vulnerabilities in infrastructure and application code against an established methodology. This engagement tests behavior: whether retrieved content can issue instructions, what the model can reach through its connected tools, and what an agent does when a human gate is slow or absent. The two are complementary, and neither substitutes for the other.</div></details><details><summary>Is the retest included?</summary><div class="faq__a">Yes. Failing cases are rerun after remediation within the engagement window and the result is recorded in the same deliverable. A report without a retest is a snapshot; the retest is what makes it evidence.</div></details></div>
+    <div class="faq rv"><details><summary>What is the difference between AI evaluation and AI red teaming?</summary><div class="faq__a">Evaluation measures a system against its stated purpose under normal conditions: accuracy, consistency, behavior across populations and drift. Red teaming attacks the assumptions around it under hostile conditions: injection, exfiltration, leakage and agent privilege escalation. A system can pass one and fail the other.</div></details><details><summary>Do you test the model or the application?</summary><div class="faq__a">Both, with the boundary named in the scope. Most serious findings are not in the model. They are in the application around it: the absence of a boundary between instructions and data, a tool the model can reach that it should not, or a human gate that exists on paper and not in the request path.</div></details><details><summary>Will testing affect production systems?</summary><div class="faq__a">Testing runs against a non-production environment by default. Where a production test is necessary to produce a valid result, it is agreed in writing in advance, with defined limits, a defined window, and a named contact who can stop it.</div></details><details><summary>How is this different from a penetration test?</summary><div class="faq__a">A penetration test looks for vulnerabilities in infrastructure and application code against an established methodology. This engagement tests behavior: whether retrieved content can issue instructions, what the model can reach through its connected tools, and what an agent does when a human gate is slow or absent. The two are complementary, and neither substitutes for the other.</div></details><details><summary>Is the retest included?</summary><div class="faq__a">Yes. Failing cases are rerun after remediation within the engagement window and the result is recorded in the same deliverable. A report without a retest is a snapshot; the retest is what makes it evidence.</div></details></div>
   </div>
 </section>
 
@@ -403,12 +399,11 @@
   <div class="wrap start__in rv">
     <p class="label label--blue">Start here</p>
     <h2>Start with the Test.</h2>
-    <p>A fixed-scope evaluation of one AI system against its stated purpose, followed by adversarial testing of the application around it. Reproducible findings, a severity ranking, and a retest inside the engagement. Defined price, defined duration, no obligation beyond it.</p>
-    <a class="btn btn--signal" href="../../company/contact/">Request a model evaluation</a>
+    <p>A fixed-scope evaluation of one AI system against its stated purpose, followed by adversarial testing of the application around it. Reproducible findings, a severity ranking and a retest inside the engagement. Fixed fee and fixed duration, agreed at scoping.</p>
+    <a class="btn btn--signal" href="../../company/contact/">Book Model Evaluation &amp; Red Team</a>
     <div class="start__rule"></div>
-    <p class="start__quiet">The people who bring us in are usually the ones who saw it coming.</p>
+    <p class="start__quiet">Find the failure in testing, before a customer finds it in production.</p>
   </div>
-  <p class="start__brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</p>
 </section>
 
 <footer class="foot"><div class="wrap">
@@ -433,7 +428,6 @@
       <li><a href="../../industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
       <li><a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
     <div><h4>Research &amp; Company</h4><ul>
-      <li><a href="../../research/assurance-index/">The GCC Assurance Index</a></li>
       <li><a href="../../research/maturity-model/">The Trust Maturity Model</a></li>
       <li><a href="../../research/case-studies/">Case studies</a></li>
       <li><a href="../../company/about/">About us</a></li>
@@ -445,7 +439,7 @@
   </div>
   <div class="foot__bar">
     <p>© 2026 Orvix. Sharjah Media City Free Zone, UAE.</p>
-    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</p>
+    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</p>
   </div>
 </div></footer>
 

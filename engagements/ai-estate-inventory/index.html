@@ -32,6 +32,8 @@
 
 <link rel="stylesheet" href="../../assets/css/engagement.css">
 <style>
+/* photographs for the two split regions (see "photo regions" in engagement.css) */
+:root{--ph-method:url('/images/eng-ai-estate-inventory-1.webp');--ph-deliver:url('/images/eng-ai-estate-inventory-2.webp')}
 .art__glow{background:radial-gradient(58%% 62%% at 74% 40%, rgba(3,29,150,.34), rgba(3,7,44,0) 70%)}
 .rw{opacity:0.086;animation:rw 15s ease-in-out infinite}@keyframes rw{0%,64%{opacity:0.086}74%{opacity:0.475}88%{opacity:0.086}}
 </style>
@@ -93,7 +95,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How long does an AI estate inventory take?",
+          "name": "How long does an AI Estate Inventory take?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Three to five weeks for a typical enterprise estate. The variable is access, not analysis. Where procurement records, SaaS administration, and egress logs are available in the first week, the engagement runs at the short end. Where access has to be requested system by system, it runs at the long end."
@@ -112,7 +114,7 @@
           "name": "Do you need access to production systems?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The engagement runs on configuration, logs, records, and interviews. We read; we do not deploy anything into your environment and we do not require production credentials."
+            "text": "Production access is not needed. The engagement runs on configuration, logs, records and interviews. We read only: nothing is deployed into your environment, and no production credentials are required."
           }
         },
         {
@@ -120,7 +122,7 @@
           "name": "How is this different from a software asset inventory?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A software asset inventory answers what you bought. An AI estate inventory answers what decides. The classification is built around decision impact, data class, and autonomy, which is what a governance framework and a supervisor actually ask about."
+            "text": "A software asset inventory answers what you bought. An AI Estate Inventory answers what decides. The classification is built around decision impact, data class, and autonomy, which is what a governance framework and a supervisor actually ask about."
           }
         },
         {
@@ -128,7 +130,7 @@
           "name": "What happens after the inventory?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most organizations move to one of two places: an Assurance Review, which tests the controls around the highest-ranked systems, or a Model Evaluation and Red Team engagement on the single system carrying the most decision weight."
+            "text": "Most organizations move to one of two places: an Assurance Review, which tests the controls around the highest-ranked systems, or Model Evaluation & Red Team on the single system carrying the most decision weight."
           }
         }
       ]
@@ -179,6 +181,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/glow.css">
 <script src="../../assets/nav.js" defer></script>
 <script src="../../assets/reveal.js" defer></script>
 </head>
@@ -219,14 +222,14 @@
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="../../engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="../../engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="../../engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="../../engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -246,15 +249,11 @@
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="../../research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="../../research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="../../research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="../../research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="../../research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="../../research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="../../research/case-studies/">All case studies</a>
+          <a class="sub" href="../../research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -308,7 +307,6 @@
   <a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="../../research/maturity-model/">The Trust Maturity Model</a>
-  <a href="../../research/assurance-index/">The GCC Assurance Index</a>
   <a href="../../research/readiness-assessment/">Readiness self-assessment</a>
   <a href="../../research/case-studies/">Case studies</a>
   <a href="../../research/perspectives/">Perspectives</a>
@@ -321,7 +319,7 @@
   <a href="../../company/events/">Events</a>
   <a href="../../company/careers/">Careers</a>
   <a href="../../company/contact/">Contact</a>
-  <a href="../../ar/what-we-do/ai-assurance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+  <a href="../../ar/engagements/ai-estate-inventory/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
   <a class="cta" href="../../company/contact/">Talk to our team</a>
 </div>
 
@@ -331,10 +329,10 @@
   <div class="wrap hero__in">
    <div class="hero__copy">
     
-    <h1><span class="label label--accent">Engagement 01 &nbsp;·&nbsp; AI Estate Inventory</span> You Govern Only What You Can List.</h1>
+    <h1><span class="label label--accent">Engagement &nbsp;·&nbsp; AI Estate Inventory</span> You Govern Only What You Can List.</h1>
     <p class="hero__sub">Most organizations still have to build theirs. We build it, classify it, and hand it over in a form your team can keep current. The register records who owns each system, what data it touches, and whether it decides or only drafts.</p>
-    <div class="hero__meta"><span class="chip">3–5 weeks</span><span class="chip">Assurance &amp; governance</span><span class="chip">No production access</span></div>
-    <a class="btn btn--signal" href="../../company/contact/">Request an AI estate inventory <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <div class="hero__meta"><span class="chip">3–5 weeks</span><a class="chip" href="../../what-we-do/ai-assurance/">AI Assurance</a><span class="chip">No production access</span></div>
+    <a class="btn btn--signal" href="../../company/contact/">Request an AI Estate Inventory <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
    </div>
   </div>
 </section>
@@ -345,10 +343,9 @@
     <div class="split__copy rv">
       <p class="label label--blue">What this is</p>
       <h2 style="margin:18px 0 22px">AI Estate Inventory</h2>
-      <p>An AI estate inventory is a structured discovery of every AI system an organization uses — including embedded model features in purchased software and tools adopted without approval — classified by owner, purpose, data class, decision impact, and autonomy level. It is the first artifact every AI governance framework assumes you already hold.</p>
+      <p>An AI Estate Inventory finds every AI system your organization uses across its estate, meaning all the systems you run, buy or subscribe to. That includes model features built into purchased software and tools adopted without approval. Each system is classified by owner, purpose, data class, decision impact and autonomy level. It is the first artifact every AI governance framework assumes you already hold.</p>
     </div>
-    <div class="ph split__media rv" data-delay="120">
-      <p class="ph__brief">PHOTO SLOT — A whiteboard or wall of printed system diagrams mid-working-session. Documentary. Commission rather than license. Set --ph-method.</p>
+    <div class="ph ph--method split__media rv" data-delay="120">
     </div>
   </div></div>
 </section>
@@ -356,8 +353,8 @@
 <section class="sec sec--paper">
   <div class="wrap">
     <div class="sec__head rv"><h2>Where You Stand</h2><p class="label">Four statements · self-check</p></div>
-    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "You may not need this engagement.", "n": "If all four hold, your inventory is ahead of most. An Assurance Review would be the better use of the budget."}, "some": {"t": "A scoped inventory would close the gap.", "n": "The list exists but will not survive an information request. Three to five weeks puts it on a footing you can maintain."}, "many": {"t": "Start here.", "n": "Most of the other engagements scope against a system list. Until that list exists, everything downstream is estimated."}}'>
-      <div class="check__hd"><p class="label">Answer honestly. It runs in your browser.</p>
+    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your inventory is ahead of most.", "n": "If all four hold, the next step is an Assurance Review, which tests the controls around the systems you have listed."}, "some": {"t": "A scoped inventory would close the gap.", "n": "The list exists but would not yet survive an information request. Three to five weeks puts it on a footing you can maintain."}, "many": {"t": "Start here.", "n": "Most other engagements are scoped against a system list. Build the list first, and everything downstream can be measured instead of estimated."}}'>
+      <div class="check__hd"><p class="label">Answer honestly.</p>
         <span class="check__count">0 / 4 ANSWERED</span></div>
       <div class="check__q"><p>You can produce a current list of every AI system in use, from one place.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Each entry records who owns it and which data classes it touches.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You know which systems make decisions rather than draft text.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Someone is accountable for updating the list when a vendor ships a feature.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
       <div class="check__out"><div class="field"></div>
@@ -374,8 +371,7 @@
 
 <section class="sec sec--line">
   <div class="wrap"><div class="split split--flip">
-    <div class="ph split__media rv">
-      <p class="ph__brief">PHOTO SLOT — Close on a printed register on a desk, annotated by hand. Screen content synthetic. Commission rather than license. Set --ph-deliver.</p>
+    <div class="ph ph--deliver split__media rv">
     </div>
     <div class="split__copy">
       <div class="rv"><p class="label label--blue">Deliverables</p>
@@ -388,7 +384,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec__head rv"><h2>Questions We Are Asked</h2></div>
-    <div class="faq rv"><details><summary>How long does an AI estate inventory take?</summary><div class="faq__a">Three to five weeks for a typical enterprise estate. The variable is access, not analysis. Where procurement records, SaaS administration, and egress logs are available in the first week, the engagement runs at the short end. Where access has to be requested system by system, it runs at the long end.</div></details><details><summary>What counts as an AI system for the inventory?</summary><div class="faq__a">Any system where a model contributes to an output that a person or a process relies on. That includes purchased software with model features enabled, internally built models, retrieval and agent applications, and vendor platforms running a model on your data. Rules engines and deterministic automation are recorded separately when they sit in the same decision path.</div></details><details><summary>Do you need access to production systems?</summary><div class="faq__a">No. The engagement runs on configuration, logs, records, and interviews. We read; we do not deploy anything into your environment and we do not require production credentials.</div></details><details><summary>How is this different from a software asset inventory?</summary><div class="faq__a">A software asset inventory answers what you bought. An AI estate inventory answers what decides. The classification is built around decision impact, data class, and autonomy, which is what a governance framework and a supervisor actually ask about.</div></details><details><summary>What happens after the inventory?</summary><div class="faq__a">Most organizations move to one of two places: an Assurance Review, which tests the controls around the highest-ranked systems, or a Model Evaluation and Red Team engagement on the single system carrying the most decision weight.</div></details></div>
+    <div class="faq rv"><details><summary>How long does an AI Estate Inventory take?</summary><div class="faq__a">Three to five weeks for a typical enterprise estate. The variable is access, not analysis. Where procurement records, SaaS administration, and egress logs are available in the first week, the engagement runs at the short end. Where access has to be requested system by system, it runs at the long end.</div></details><details><summary>What counts as an AI system for the inventory?</summary><div class="faq__a">Any system where a model contributes to an output that a person or a process relies on. That includes purchased software with model features enabled, internally built models, retrieval and agent applications, and vendor platforms running a model on your data. Rules engines and deterministic automation are recorded separately when they sit in the same decision path.</div></details><details><summary>Do you need access to production systems?</summary><div class="faq__a">Production access is not needed. The engagement runs on configuration, logs, records and interviews. We read only: nothing is deployed into your environment, and no production credentials are required.</div></details><details><summary>How is this different from a software asset inventory?</summary><div class="faq__a">A software asset inventory answers what you bought. An AI Estate Inventory answers what decides. The classification is built around decision impact, data class, and autonomy, which is what a governance framework and a supervisor actually ask about.</div></details><details><summary>What happens after the inventory?</summary><div class="faq__a">Most organizations move to one of two places: an Assurance Review, which tests the controls around the highest-ranked systems, or Model Evaluation &amp; Red Team on the single system carrying the most decision weight.</div></details></div>
   </div>
 </section>
 
@@ -403,12 +399,11 @@
   <div class="wrap start__in rv">
     <p class="label label--blue">Start here</p>
     <h2>Start with the List.</h2>
-    <p>A fixed-scope inventory of your AI estate — discovery, classification against the fields a governance framework asks for, and a register you can maintain after we leave. Defined price, defined duration, no obligation beyond it.</p>
-    <a class="btn btn--signal" href="../../company/contact/">Request an AI estate inventory</a>
+    <p>A fixed-scope inventory of your AI estate: discovery, classification against the fields a governance framework asks for, and a register your team can maintain after we leave. Fixed fee and a defined timeline, agreed before work starts.</p>
+    <a class="btn btn--signal" href="../../company/contact/">Request an AI Estate Inventory</a>
     <div class="start__rule"></div>
-    <p class="start__quiet">The people who bring us in are usually the ones who saw it coming.</p>
+    <p class="start__quiet">Every register starts with one honest list.</p>
   </div>
-  <p class="start__brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</p>
 </section>
 
 <footer class="foot"><div class="wrap">
@@ -433,7 +428,6 @@
       <li><a href="../../industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
       <li><a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
     <div><h4>Research &amp; Company</h4><ul>
-      <li><a href="../../research/assurance-index/">The GCC Assurance Index</a></li>
       <li><a href="../../research/maturity-model/">The Trust Maturity Model</a></li>
       <li><a href="../../research/case-studies/">Case studies</a></li>
       <li><a href="../../company/about/">About us</a></li>
@@ -445,7 +439,7 @@
   </div>
   <div class="foot__bar">
     <p>© 2026 Orvix. Sharjah Media City Free Zone, UAE.</p>
-    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</p>
+    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</p>
   </div>
 </div></footer>
 

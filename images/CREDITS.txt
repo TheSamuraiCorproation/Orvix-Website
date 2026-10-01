@@ -212,7 +212,7 @@ REPLACED 8 SEPTEMBER 2026 - REGIONAL RE-SHOOT (PLACEHOLDER SET)
     bento-interfaces.jpg    12041208  Museum of the Future, calligraphy skin
     bento-identity.jpg      10347162  portrait in profile
     bento-data.jpg          37730212  data-centre racks
-    bento-agentic.jpg       18471441  robotic cell
+    bento-agentic.jpg       18069696  action words projected on glass (Sense, Identify, Integrate) (picked by the site owner, 2026-10-01)
 
     PILLAR LANDINGS
     hero-infrastructure.jpg 28406821  Abu Dhabi skyline at night
@@ -283,7 +283,7 @@ REPLACED 28 SEPTEMBER 2026 - NO RELIGIOUS SUBJECT MATTER
     ------------------------  ---------  --------------------------  ----------------------------------
     hero-assurance.jpg         15127414  mosque dome in an arch      Louvre Abu Dhabi on the water
     hero-rsh-government.jpg     5045849  mosque colonnade            Qasr Al Hosn civic complex, Abu Dhabi
-    bento-identity.jpg         18535939  woman in hijab, profile     half-lit face
+    bento-identity.jpg         5474036  face crossed by scan lines (picked by the site owner, 2026-10-01)
     close-home.jpg              9034221  women in hijab, meeting     woman presenting to a team
     hero-briefings.jpg          9052805  woman in hijab reading      man reading printed papers
     svc-human-risk.jpg         18935245  team incl. hijab            team briefing
@@ -310,3 +310,42 @@ PARTNER LOGOS - assets/img/partners/
     Both are the partners' trademarks, shown on Company > Partners (both
     languages). Use is subject to each partner's brand guidelines; see
     BUILD_NOTES.txt item 2 on written permission.
+
+--------------------------------------------------------------------
+ADDED 1 OCTOBER 2026 - ENGAGEMENT, CAREERS AND EVENTS PHOTO SLOTS
+--------------------------------------------------------------------
+    Fills the empty photo slots on the eight engagement pages (two each,
+    --ph-method / --ph-deliver, set per page in its <style>), Company >
+    Careers (three culture tiles) and Company > Events (featured event
+    and four past-event tiles); the Arabic twins carry the same files.
+    Same Pexels Licence as above. Resized to 1600px wide, quality 82.
+    These are licensed stand-ins: several briefs say "commission rather
+    than license", and that intent is unchanged.
+
+    file                              pexels id  slot / brief
+    --------------------------------  ---------  ----------------------------------
+    eng-ai-estate-inventory-1.jpg       7869303  hands sketching system diagrams on a whiteboard (picked by the site owner, 2026-10-01)
+    eng-ai-estate-inventory-2.jpg       7567551  register printout, annotated (picked by the site owner, 2026-10-01)
+    eng-api-discovery-1.jpg             7988761  API Discovery & Governance, --ph-method: two engineers at one shared screen
+    eng-api-discovery-2.jpg            17065769  API Discovery & Governance, --ph-deliver: black binders, tabbed
+    eng-assurance-review-1.jpg          8353834  walkthrough at a workstation (picked by the site owner, 2026-10-01)
+    eng-assurance-review-2.jpg         9870226  files on a meeting table (picked by the site owner, 2026-10-01)
+    eng-data-residency-1.jpg           14313194  Data Residency Review, --ph-method: a map on a screen, low light, faceless
+    eng-data-residency-2.jpg            7947846  charts and map spread on a table (picked by the site owner, 2026-10-01)
+    eng-human-risk-1.jpg                5831706  Human Risk & Impersonation, --ph-method: two analysts reviewing, live charts behind
+    eng-human-risk-2.jpg                9870227  document review on a desk (picked by the site owner, 2026-10-01)
+    eng-infrastructure-design-1.jpg     7642088  technical drawing under review (picked by the site owner, 2026-10-01)
+    eng-infrastructure-design-2.jpg     7821731  Infrastructure Design Review, --ph-deliver: printed matrix, annotated, two hands
+    eng-mdr-1.jpg                       3862132  Managed Detection & Response, --ph-method: analyst at a console wall, from behind
+    eng-mdr-2.jpg                       669612  printed report on a desk (picked by the site owner, 2026-10-01)
+    eng-model-evaluation-1.jpg         37880101  Model Evaluation & Red Team, --ph-method: engineer reviewing code output, from behind
+    eng-model-evaluation-2.jpg         12585551  Model Evaluation & Red Team, --ph-deliver: a tabbed findings pack
+    careers-mid-task.jpg                6803543  engineers at work, mid-task (picked by the site owner, 2026-10-01)
+    careers-workshop.jpg                8134067  Careers culture 2 (workshop): a workshop at a flip chart
+    careers-cross-region.jpg            7644076  Careers culture 3 (cross-region): meeting table with a remote colleague on screen
+    events-featured.jpg                33543226  Events featured (Riyadh roundtable): roundtable detail: microphone, papers, hands
+    events-past-1.jpg                   6949416  panel discussion at a conference (picked by the site owner, 2026-10-01)
+    events-past-2.jpg                  15448072  Events past 2: audience in blue light
+    events-past-3.jpg                  29708260  Events past 3: a speaker on stage
+    events-past-4.jpg                   7648472  Events past 4: name badges being laid out
+

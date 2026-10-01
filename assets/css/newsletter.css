@@ -1,0 +1,46 @@
+/* Newsletter sign-up (assets/subscribe.js -> /api/subscribe -> Brevo).
+   .nl: the card on the home page and the Subscribe page. */
+
+/* newsletter card */
+.nl{background:var(--mist);padding:clamp(56px,7vw,96px) 0}
+.nl-card{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,64px);align-items:center;background:var(--ink);color:#fff;
+  border-radius:24px;padding:clamp(28px,4.5vw,56px);position:relative;overflow:hidden;box-shadow:0 30px 60px -24px rgba(3,7,44,.45)}
+.nl-card::after{content:"";position:absolute;width:420px;height:420px;inset:-180px -140px auto auto;border-radius:50%;
+  background:radial-gradient(circle,rgba(72,226,226,.22),rgba(72,226,226,0) 65%);pointer-events:none}
+[dir=rtl] .nl-card::after{inset:-180px auto auto -140px}
+.nl-main,.nl-prev{position:relative;z-index:1}
+.nl-form{margin-top:28px;max-width:480px}
+.nl-k{font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+[dir=rtl] .nl-k{letter-spacing:0}
+.nl-card h2{color:#fff;font-size:clamp(24px,2.6vw,34px);line-height:1.15}
+.nl-card p{color:#C9D0DE;font-size:15px;line-height:24px;margin-top:12px;max-width:46ch}
+.nl-row{display:flex;gap:8px;background:#fff;border-radius:14px;padding:6px}
+.nl-row input[type=email]{flex:1;min-width:0;border:0;background:transparent;font-family:var(--f);font-size:16px;color:var(--ink);padding:12px 14px;border-radius:10px}
+.nl-row input[type=email]:focus{outline:2px solid var(--signal);outline-offset:0}
+.nl-row button{flex:none;border:0;cursor:pointer;background:var(--cyan);color:var(--ink);font-family:var(--f);font-size:15px;font-weight:500;
+  padding:12px 22px;border-radius:10px;transition:background .2s}
+.nl-row button:hover{background:#7DEBEB}
+.nl-row button:disabled{opacity:.6;cursor:progress}
+.nl .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.nl-card .sub-msg{margin-top:12px;min-height:24px;font-size:14px;color:#C9D0DE}
+.nl-card .sub-msg[data-kind=ok]{color:var(--cyan)}
+.nl-card .sub-msg[data-kind=err]{color:#FFB4A9}
+@media(max-width:860px){.nl-card{grid-template-columns:1fr}.nl-prev{display:none}}
+@media(max-width:420px){.nl-row{flex-direction:column;background:transparent;padding:0}
+  .nl-row input[type=email]{background:#fff}.nl-row button{padding:14px}}
+/* the preview: what a subscriber receives */
+.nl-prev{display:flex;justify-content:center}
+.nl-mail{width:100%;max-width:320px;background:#fff;border-radius:14px;overflow:hidden;color:var(--ink);
+  box-shadow:0 24px 48px -12px rgba(0,0,0,.55);transform:rotate(2deg);transition:transform .3s}
+[dir=rtl] .nl-mail{transform:rotate(-2deg)}
+.nl-card:hover .nl-mail{transform:rotate(0)}
+.nl-mail-top{background:var(--ink);padding:14px 18px;border-bottom:1px solid #1C2448}
+.nl-mail-top img{display:block;width:72px;height:auto}
+.nl-mail-cover{height:120px;background:url('/images/hero-perspectives.webp') center/cover}
+.nl-mail-body{padding:18px 18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.nl-mail-k{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;color:var(--cyan);background:var(--ink);padding:4px 7px}
+[dir=rtl] .nl-mail-k{letter-spacing:0}
+.nl-mail-body b{font-size:17px;line-height:22px;font-weight:600}
+.nl-mail-s{font-size:12.5px;line-height:19px;color:var(--slate)}
+.nl-mail-btn{margin-top:6px;background:var(--cyan);color:var(--ink);font-size:12.5px;font-weight:500;padding:9px 14px;border-radius:6px}
+.nl-mail-foot{border-top:1px solid var(--mist);padding:10px 18px;font-size:10px;color:var(--steel)}

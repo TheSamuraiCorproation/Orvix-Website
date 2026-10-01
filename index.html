@@ -55,6 +55,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/newsletter.css">
 <style>
 /* main.css gives .bx a photo layer; the homepage boxes have none */
 .bx::before{content:none}
@@ -100,6 +101,7 @@ letter-spacing:-.022em;margin-bottom:14px}
 /* navpanel:end */
 </style>
 <script src="assets/nav.js" defer></script>
+<script src="assets/subscribe.js" defer></script>
 <script src="assets/reveal.js" defer></script>
 </head>
 <body>
@@ -138,14 +140,14 @@ letter-spacing:-.022em;margin-bottom:14px}
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -165,15 +167,11 @@ letter-spacing:-.022em;margin-bottom:14px}
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="research/case-studies/">All case studies</a>
+          <a class="sub" href="research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -227,7 +225,6 @@ letter-spacing:-.022em;margin-bottom:14px}
   <a href="industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="research/maturity-model/">The Trust Maturity Model</a>
-  <a href="research/assurance-index/">The GCC Assurance Index</a>
   <a href="research/readiness-assessment/">Readiness self-assessment</a>
   <a href="research/case-studies/">Case studies</a>
   <a href="research/perspectives/">Perspectives</a>
@@ -250,13 +247,12 @@ letter-spacing:-.022em;margin-bottom:14px}
 
   <div class="w">
     <h1>We engineer trust.<br>Then we prove it.</h1>
-    <p class="sub">Banks, governments and enterprises across the US, Middle East and North Africa run systems that have to be right. We start by proving whether they are &mdash; then build, secure and hold the ground underneath.</p>
+    <p class="sub">The systems you run have to be right. We start by proving whether they are, then build, secure and hold the ground underneath.</p>
+    <p class="sub" style="margin-top:14px;font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.7)">Orvix delivers AI assurance, cybersecurity, applied AI and infrastructure for banks, governments and enterprises across the GCC, wider MENA and the United States.</p>
     <div class="btns"><a class="b1" href="#close">Request an assurance review</a><a class="b2" href="#ox">What the name means</a></div>
-    <p class="kicker">Everything in your estate is either accounted for, or it isn&#8217;t. <span>We solve for X.</span></p>
+    <p class="kicker">Everything in your estate (every system, model and interface you run) is either accounted for, or it isn&#8217;t. <span>We solve for X.</span></p>
   </div>
-  <div class="hero-note"><div class="w">
-    <b><i>01</i>Advanced Infrastructure</b><b><i>02</i>Applied AI &amp; Data</b><b><i>03</i>AI Cybersecurity</b><b><i>04</i>AI Assurance</b>
-  </div></div>
+  <div class="hero-note"><div class="mq" role="navigation" aria-label="What we do"><div class="mq-track"><ul class="mq-list"><li class="p"><a href="what-we-do/advanced-infrastructure/"><i>01</i>Advanced Infrastructure</a></li><li><a href="what-we-do/advanced-infrastructure/network-as-a-service/">Network as a Service</a></li><li><a href="what-we-do/advanced-infrastructure/storage-and-resilience/">Storage &amp; Resilience</a></li><li><a href="what-we-do/advanced-infrastructure/infrastructure-design/">Infrastructure Design</a></li><li class="p"><a href="what-we-do/applied-ai-and-data/"><i>02</i>Applied AI &amp; Data</a></li><li><a href="what-we-do/applied-ai-and-data/agentic-ai/">Agentic AI</a></li><li><a href="what-we-do/applied-ai-and-data/ai-control/">AI Control</a></li><li><a href="what-we-do/applied-ai-and-data/data-organization/">Data Organization</a></li><li class="p"><a href="what-we-do/ai-cybersecurity/"><i>03</i>AI Cybersecurity</a></li><li><a href="what-we-do/ai-cybersecurity/managed-detection-response/">Managed Detection &amp; Response</a></li><li><a href="what-we-do/ai-cybersecurity/human-risk/">Human Risk Defense</a></li><li><a href="what-we-do/ai-cybersecurity/ot-security/">OT Security</a></li><li class="p"><a href="what-we-do/ai-assurance/"><i>04</i>AI Assurance</a></li><li><a href="what-we-do/ai-assurance/governance/">AI Governance</a></li><li><a href="what-we-do/ai-assurance/independent-evaluation/">Independent Evaluation</a></li><li><a href="what-we-do/ai-assurance/audit-readiness/">Audit Readiness</a></li></ul><ul class="mq-list" aria-hidden="true"><li class="p"><a tabindex="-1" href="what-we-do/advanced-infrastructure/"><i>01</i>Advanced Infrastructure</a></li><li><a tabindex="-1" href="what-we-do/advanced-infrastructure/network-as-a-service/">Network as a Service</a></li><li><a tabindex="-1" href="what-we-do/advanced-infrastructure/storage-and-resilience/">Storage &amp; Resilience</a></li><li><a tabindex="-1" href="what-we-do/advanced-infrastructure/infrastructure-design/">Infrastructure Design</a></li><li class="p"><a tabindex="-1" href="what-we-do/applied-ai-and-data/"><i>02</i>Applied AI &amp; Data</a></li><li><a tabindex="-1" href="what-we-do/applied-ai-and-data/agentic-ai/">Agentic AI</a></li><li><a tabindex="-1" href="what-we-do/applied-ai-and-data/ai-control/">AI Control</a></li><li><a tabindex="-1" href="what-we-do/applied-ai-and-data/data-organization/">Data Organization</a></li><li class="p"><a tabindex="-1" href="what-we-do/ai-cybersecurity/"><i>03</i>AI Cybersecurity</a></li><li><a tabindex="-1" href="what-we-do/ai-cybersecurity/managed-detection-response/">Managed Detection &amp; Response</a></li><li><a tabindex="-1" href="what-we-do/ai-cybersecurity/human-risk/">Human Risk Defense</a></li><li><a tabindex="-1" href="what-we-do/ai-cybersecurity/ot-security/">OT Security</a></li><li class="p"><a tabindex="-1" href="what-we-do/ai-assurance/"><i>04</i>AI Assurance</a></li><li><a tabindex="-1" href="what-we-do/ai-assurance/governance/">AI Governance</a></li><li><a tabindex="-1" href="what-we-do/ai-assurance/independent-evaluation/">Independent Evaluation</a></li><li><a tabindex="-1" href="what-we-do/ai-assurance/audit-readiness/">Audit Readiness</a></li></ul></div></div></div>
 </header>
 
 <!-- 02 O AND X -->
@@ -277,13 +273,13 @@ letter-spacing:-.022em;margin-bottom:14px}
     <div class="oxdef rv">
       <div class="o">
         <svg class="gl" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34"/></svg>
-        <h3>O &mdash; your circle of trust</h3>
-        <p><strong>Owned. Observed. Evidenced.</strong> Something inside the circle has a name against it, a signal you can watch, and a record that still stands up when somebody asks.</p>
+        <h3>O: your circle of trust</h3>
+        <p><strong>Owned. Observed. Evidenced.</strong> Something inside the circle has a name against it, a signal you can watch, and a record that still stands up when someone asks.</p>
       </div>
       <div class="x">
         <svg class="gl" viewBox="0 0 100 100" aria-hidden="true"><path d="M22 22 L78 78 M78 22 L22 78"/></svg>
-        <h3>X &mdash; the variable</h3>
-        <p><strong>Untapped technology. Unmeasured risk.</strong> A variable, not a constant &mdash; it changes value every time the estate does.</p>
+        <h3>X: the variable</h3>
+        <p><strong>Untapped technology. Unmeasured risk.</strong> A variable, not a constant. It changes value every time the estate does.</p>
       </div>
     </div>
 
@@ -291,7 +287,7 @@ letter-spacing:-.022em;margin-bottom:14px}
     <div class="bento rv">
       <div class="bx big1" style="--img:url('/images/hero-infrastructure.webp')"><span class="tag">Infrastructure</span>
         <h4>Infrastructure without borders</h4>
-        <p>Compute, storage and connectivity stopped living in one place, and so did your data. We design for that on purpose &mdash; network provisioned as a service, data coherent across regions, residency enforced where it lands.</p></div>
+        <p>Compute, storage and connectivity stopped living in one place, and so did your data. We design for that on purpose: network provisioned as a service, data coherent across regions, residency enforced where it lands.</p></div>
 
       <div class="bx s1" style="--img:url('/images/bento-interfaces.webp')"><span class="tag">Interfaces</span>
         <h4>Interfaces nobody counted</h4>
@@ -303,10 +299,10 @@ letter-spacing:-.022em;margin-bottom:14px}
 
       <div class="bx big2" style="--img:url('/images/bento-agentic.webp')"><span class="tag">Agentic AI</span>
         <h4>Agents without guardrails</h4>
-        <p>Agents that act are worth far more than agents that answer &mdash; and far harder to authorize. We build them scoped, with narrow write access and a human gate at every point where something changes state.</p></div>
+        <p>Agents that act are worth far more than agents that answer, and far harder to authorize. We build them scoped, with narrow write access and a human gate at every point where something changes state.</p></div>
 
       <div class="bx s3" style="--img:url('/images/bento-data.webp')"><span class="tag">Data</span>
-        <h4>Data nobody owns</h4>
+        <h4>Data without an owner</h4>
         <p>Reachable by the wrong systems, invisible to the right ones. We classify it, assign it, and scope what any model may see.</p></div>
 
       <div class="bx s4" style="--img:url('/images/hero-assurance.webp')"><span class="tag">Assurance</span>
@@ -332,7 +328,7 @@ letter-spacing:-.022em;margin-bottom:14px}
           <ul>
             <li>Map every circuit, cloud interconnect and data store that exists</li>
             <li>Provision connectivity as a service instead of static circuits</li>
-            <li>Enforce residency where the data lands, not in a policy document</li>
+            <li>Enforce residency where the data actually lands</li>
             <li>Design storage that survives a site, a region, or a bad day</li>
           </ul>
         </div>
@@ -342,7 +338,7 @@ letter-spacing:-.022em;margin-bottom:14px}
           <ul>
             <li>Build the register: every model, its owner, its data lineage</li>
             <li>Test against ISO/IEC 42001 and the NIST AI Risk Management Framework</li>
-            <li>Red-team production models for leakage, bias and prompt abuse</li>
+            <li>Red-team AI applications for leakage, prompt abuse and agent misuse</li>
             <li>Produce an evidence pack a board or a regulator can actually read</li>
           </ul>
         </div>
@@ -441,15 +437,15 @@ letter-spacing:-.022em;margin-bottom:14px}
             <li>Classify and assign ownership of the data any model can reach</li>
             <li>Route every model call through one governed path, and log it</li>
             <li>Deploy agents with narrow write access and a human gate at each one</li>
-            <li>Put AI on the processes that carry real cost, not on demos</li>
+            <li>Put AI on the processes that carry real cost</li>
           </ul>
         </div>
         <div class="pill" data-a="3">
           <div class="n">03</div><h3>AI Cybersecurity</h3>
           <div class="claim">Trust it under pressure</div>
           <ul>
-            <li>Monitor continuously with a named analyst who knows your estate</li>
-            <li>Score human risk across the workforce, not just phishing clicks</li>
+            <li>Monitor 24/7 with analysts who learn your environment</li>
+            <li>Test the approval steps that still trust a voice, a face or a signature</li>
             <li>Verify liveness and content authenticity where money moves</li>
             <li>Extend the same discipline into OT and critical infrastructure</li>
           </ul>
@@ -469,7 +465,6 @@ letter-spacing:-.022em;margin-bottom:14px}
       <h2>Some boards are solved. Yours is not.</h2>
     </div>
     <div class="stakes rv" style="background-color:#03072C;padding:clamp(28px,3.6vw,44px);border:none;overflow:hidden;position:relative">
-      <div class="stakebrief">PHOTO SLOT &mdash; empty boardroom or corridor, evening light, no people. Set --ph-stakes.</div>
       <div class="slbl">Sooner or later, someone asks you to prove it</div>
       <div class="srow">
         <div><b>Show me the evidence this control was working on the day it mattered.</b><i>the auditor</i></div>
@@ -487,12 +482,12 @@ letter-spacing:-.022em;margin-bottom:14px}
         <button class="gbtn" id="rs">Reset</button>
       </div>
       <div class="gcopy">
-        <h3>You won&#8217;t win this.</h3>
-        <p>And it has nothing to do with how clever you are. This board is <em>solved</em> &mdash; every position has a known move and a known counter, all of it written down decades ago. Play perfectly and the ceiling is a draw.</p>
-        <p>Technology is not that simple. When someone asks you to prove your estate is sound, there is no solved position to look up. There is only what somebody wrote down, and what nobody did.</p>
-        <p>The distance between those two is where every uncomfortable meeting happens &mdash; and it is almost never a failure of competence. It is what scale does to visibility.</p>
+        <h3>This game is solved. Your estate keeps moving.</h3>
+        <p>This board is <em>solved</em>: every position has a known move and a known counter, all of it written down decades ago. Play perfectly and the best result is a draw.</p>
+        <p>Technology is not that simple. When someone asks you to prove your estate is sound, there is no solved position to look up. There is only what was written down, and what was left undone.</p>
+        <p>The distance between those two is where uncomfortable meetings happen. It is rarely a failure of competence. It is what scale does to visibility.</p>
         <div class="relief">
-          <p class="big">You will never solve your estate. You can always be ready to answer for it.</p>
+          <p class="big">You can&#8217;t freeze your estate. You can always be ready to answer for it.</p>
         </div>
       </div>
     </div>
@@ -505,32 +500,30 @@ letter-spacing:-.022em;margin-bottom:14px}
     <div class="headwrap rv">
       <div class="lbl eyebrow">What we do</div>
       <h2>Defined engagements with a deliverable at the end.</h2>
-      <p class="lead">Weeks, not quarters. Scoped work with a stated duration and a written output, so you know what you are buying before you buy it — and so a decision does not wait on a procurement cycle.</p>
+      <p class="lead">Weeks, not quarters. Scoped work with a stated duration and a written output, so you know what you are buying before you buy it and a decision does not wait on a procurement cycle.</p>
     </div>
     <div class="eng rv">
-      <div class="en"><div class="n">01</div><div><h3>Assurance review <span class="flag">most common starting point</span></h3><p>Independent evaluation of an AI program against the frameworks that apply to you, with the written evidence package.</p><div class="out">Deliverable &mdash; evidence package &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">02</div><div><h3>AI estate inventory</h3><p>Find every model running in the business, who owns it, what data it touches and what it decides.</p><div class="out">Deliverable &mdash; AI register &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">03</div><div><h3>Model evaluation &amp; red team</h3><p>Adversarial testing of production models for prompt abuse, data leakage, bias and drift.</p><div class="out">Deliverable &mdash; findings &amp; remediation plan &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">04</div><div><h3>Human risk &amp; impersonation defense</h3><p>The full chain from phishing to deepfake: behavioral risk scoring across the workforce, plus liveness and content-authenticity controls on onboarding, call centers and payment approval.</p><div class="out">Deliverable &mdash; risk baseline, control design &amp; pilot &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">05</div><div><h3>API discovery &amp; governance</h3><p>Every interface found, classified by data sensitivity, and brought under a policy that is actually enforced.</p><div class="out">Deliverable &mdash; API inventory &amp; gateway design &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">06</div><div><h3>Cloud security posture assessment</h3><p>Azure, AWS, Microsoft 365 or your primary cloud, assessed across identity, configuration, exposure, data protection, logging and resilience. Zero Trust gaps named, remediation ranked.</p><div class="out">Deliverable &mdash; posture findings &amp; prioritized remediation roadmap &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">07</div><div><h3>Infrastructure design review</h3><p>Network, storage and connectivity architecture assessed against how the business actually runs, with residency and resilience treated as design requirements rather than late constraints.</p><div class="out">Deliverable &mdash; target architecture &amp; migration path &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">08</div><div><h3>Managed detection &amp; response</h3><p>Continuous monitoring with a named analyst who knows your estate, not a queue that does not.</p><div class="out">Ongoing service &middot; 30-day onboarding</div></div></div>
-      <div class="en"><div class="n">09</div><div><h3>Cybersecurity maturity &amp; risk assessment</h3><p>The broad entry point: your security program measured against NIST CSF 2.0, C2M2 and the CIS Controls, mapped to the regional requirements that apply, and scored so progress can be shown rather than asserted.</p><div class="out">Deliverable &mdash; maturity baseline, risk register &amp; roadmap &middot; DURATION</div></div></div>
-      <div class="en"><div class="n">10</div><div><h3>OT &amp; industrial cybersecurity assessment</h3><p>For oil and gas, energy, manufacturing and critical infrastructure. Asset visibility, IT/OT segmentation, remote and privileged access, vulnerability exposure, legacy systems, monitoring and incident readiness, assessed against IEC 62443 and regional requirements.</p><div class="out">Deliverable &mdash; OT exposure findings &amp; IEC 62443 gap assessment &middot; DURATION</div></div></div>
+      <a class="en" href="engagements/assurance-review/"><div class="n">01</div><div><h3>Assurance Review <span class="flag">most common starting point</span></h3><p>Independent assessment of the controls around your AI systems against ISO/IEC 42001, the NIST AI Risk Management Framework and the local requirements that apply. Each obligation is marked held, partial or absent.</p><div class="out">Deliverable: evidence ledger &amp; examiner-ready pack &middot; 6 weeks</div></div></a>
+      <a class="en" href="engagements/ai-estate-inventory/"><div class="n">02</div><div><h3>AI Estate Inventory</h3><p>Find every AI system in use, including features built into purchased software, and record who owns it, what data it touches and whether it decides or only drafts.</p><div class="out">Deliverable: AI system register &middot; 3&ndash;5 weeks</div></div></a>
+      <a class="en" href="engagements/model-evaluation-and-red-team/"><div class="n">03</div><div><h3>Model Evaluation &amp; Red Team</h3><p>Adversarial testing of an AI application for prompt injection, data leakage and agent misuse, paired with evaluation against its stated purpose. It runs in a controlled test environment, or in production under limits agreed in writing.</p><div class="out">Deliverable: findings, remediation guidance &amp; retest &middot; 4&ndash;6 weeks</div></div></a>
+      <a class="en" href="engagements/human-risk-and-impersonation-defense/"><div class="n">04</div><div><h3>Human Risk &amp; Impersonation Defense</h3><p>A review of the approval steps that rely on recognizing a person: payment release, vendor bank-detail changes, executive requests, onboarding and helpdesk resets. Each is tested under controlled deepfake and impersonation conditions.</p><div class="out">Deliverable: process map, gap analysis &amp; supervisor-ready pack &middot; 4 weeks</div></div></a>
+      <a class="en" href="engagements/api-discovery-and-governance/"><div class="n">05</div><div><h3>API Discovery &amp; Governance</h3><p>Every interface actually running is found, classified by data sensitivity, assessed against the OWASP API Security Top 10 and given an owner and a lifecycle.</p><div class="out">Deliverable: API inventory &amp; governance model &middot; 4&ndash;6 weeks</div></div></a>
+      <a class="en" href="engagements/data-residency-review/"><div class="n">06</div><div><h3>Data Residency Review</h3><p>Where your regulated data is stored, processed, supported, backed up and observed, tested against the obligations that apply. Each gap comes with remediation options and their cost.</p><div class="out">Deliverable: obligation matrix, flow map &amp; gap register &middot; 3&ndash;4 weeks</div></div></a>
+      <a class="en" href="engagements/infrastructure-design-review/"><div class="n">07</div><div><h3>Infrastructure Design Review</h3><p>A proposed or existing architecture tested for data residency, resilience, AI-readiness and cryptographic posture at every layer, before the design is committed.</p><div class="out">Deliverable: target-state options &amp; migration sequence &middot; 4&ndash;6 weeks</div></div></a>
+      <a class="en" href="engagements/managed-detection-and-response/"><div class="n">08</div><div><h3>Managed Detection &amp; Response</h3><p>24/7 monitoring, investigation and agreed containment, run on an in-region or a global track chosen per workload. What analysts may do in your environment is agreed in writing before go-live.</p><div class="out">Operated service &middot; 12-month term &middot; 30 to 45 days onboarding</div></div></a>
     </div>
 
     <div class="method rv">
       <div class="lbl">The method behind all of them</div>
       <h3>Count. Understand. Prove. Hold.</h3>
-      <p>Every engagement runs the same four stages, whether it takes four weeks or twelve. That is deliberate: a method only produces evidence if it produces the <em>same kind</em> of evidence every time.</p>
+      <p>Every engagement runs the same four stages, from a three-week inventory to a 24/7 operated service. That is deliberate: a method only produces evidence if it produces the <em>same kind</em> of evidence every time.</p>
       <div class="msteps">
-        <div><div class="n">01</div><h4>Count</h4><p>Find what is actually running &mdash; not what the documentation says is running.</p></div>
+        <div><div class="n">01</div><h4>Count</h4><p>Find what is actually running, which is often more than the documentation shows.</p></div>
         <div><div class="n">02</div><h4>Understand</h4><p>What it does, who owns it, what data it touches, what decisions depend on it.</p></div>
         <div><div class="n">03</div><h4>Prove</h4><p>Test it against the standard that applies, and write down what the test showed.</p></div>
         <div><div class="n">04</div><h4>Hold</h4><p>Re-check on a cycle. Evidence that is two years old is not evidence.</p></div>
       </div>
-      <p class="mfoot">The fourth stage is the one most assessments skip. It is also the one that turns a report into continuous assurance &mdash; and the reason our findings stay comparable from one year to the next.</p>
+      <p class="mfoot">The fourth stage is the one most assessments skip. It is also the one that turns a report into continuous assurance, and it is the reason our findings stay comparable from one year to the next.</p>
     </div>
   </div>
 </section>
@@ -553,7 +546,7 @@ letter-spacing:-.022em;margin-bottom:14px}
 <div class="us">
         <span class="lbl">Orvix</span>
         <h3>Both, from the same team</h3>
-        <p>We assess, we design and we implement &mdash; the same people, against the same evidence standard, from the first engagement through to the running estate.</p>
+        <p>We assess, design and implement, with the same people and one evidence standard from the first engagement through to the running estate. When a system we built needs an assurance opinion, an independent party gives it, so the opinion stays credible.</p>
         <p class="trade">No product of our own to defend.</p>
       </div>
 <div>
@@ -565,20 +558,20 @@ letter-spacing:-.022em;margin-bottom:14px}
 </div>
     <div class="indep rv">
       <h3>We have no product to defend.</h3>
-      <p>We do not sell a platform of our own, so nothing rides on which technology you choose. When we tell you something fits, the only thing behind that is the reasoning &mdash; which is why we show you the reasoning.</p>
+      <p>We do not sell a platform of our own, so nothing rides on which technology you choose. When we tell you something fits, the only thing behind that is the reasoning. That is why we show it to you.</p>
       <p>It matters more than it used to. New categories appear, get funded, and either mature or disappear inside eighteen months. No enterprise team can evaluate that flow and run an estate at the same time. The vendor landscape is itself a variable.</p>
     </div>
     <div class="sel rv">
       <div><div class="n">01</div><h3>We evaluate continuously</h3>
-        <p>Tracking emerging categories is standing work for us, not something we start when you ask. By the time a requirement reaches you, the shortlist already exists.</p></div>
+        <p>Tracking emerging categories is standing work for us. By the time a requirement reaches you, the shortlist already exists.</p></div>
       <div><div class="n">02</div><h3>We prove it before you commit</h3>
-        <p>Technical proof-of-concept against your actual constraints &mdash; residency, latency, existing estate, operating model &mdash; before anyone signs anything.</p></div>
+        <p>Technical proof-of-concept against your actual constraints (residency, latency, existing estate, operating model) before anyone signs anything.</p></div>
       <div><div class="n">03</div><h3>We show the reasoning</h3>
-        <p>You get the short list with the trade-offs attached, including the cases where the honest answer is that you do not need anything new.</p></div>
+        <p>You get the short list with the trade-offs attached, including when the best answer is to keep what you already run.</p></div>
     </div>
     <div class="cont rv">
       <div class="lbl">Working with what you already run</div>
-      <p>Most of our engagements begin inside an established estate with significant prior investment. Continuity with the platforms you already operate is a design constraint we work to, not an obstacle we work around. We are not in the business of telling you to replace things that are working.</p>
+      <p>Most of our engagements begin inside an established estate with significant prior investment. Continuity with the platforms you already operate is a design constraint we work to. We build on what is working and replace only what the evidence says must go.</p>
     </div>
   </div>
 </section>
@@ -589,49 +582,36 @@ letter-spacing:-.022em;margin-bottom:14px}
     <div class="headwrap rv">
       <div class="lbl eyebrow">How we operate</div>
       <h2>Regional market presence. Global engineering. Vendor-backed delivery.</h2>
-      <p class="lead" style="color:rgba(255,255,255,.74)">We say this plainly because it will be tested in due diligence, and because most of our competitors won&#8217;t.</p>
+      <p class="lead" style="color:rgba(255,255,255,.74)">Three commitments behind every engagement, from the first scoping call to the system in operation.</p>
     </div>
     <div class="op rv">
       <div class="three">
-        <div><h3>Regional market presence</h3><p>Named account ownership across the GCC and wider MENA. One accountable relationship, not a rotating cast.</p><p style="margin-top:12px">We work to the standards our clients are measured against &mdash; UAE Information Assurance Standard, DESC ISR, SAMA Cyber Security Framework, NCA ECC, and the CBUAE guidance that applies to regulated financial institutions.</p></div>
-        <div><h3>Global engineering</h3><p>Our engineering capability is distributed rather than local. That is what allows a scoped assessment at a price a large consultancy cannot match — and it is why we do not claim in-country delivery teams.</p></div>
-        <div><h3>Vendor-backed delivery</h3><p>Implementation is executed with named technology partners and, where a jurisdiction requires it, through licensed local providers &mdash; so the work happens inside the local framework rather than around it.</p></div>
+        <div><h3>Regional market presence</h3><p>Named account ownership across the GCC, wider MENA and the United States. One accountable relationship from start to finish.</p><p style="margin-top:12px">We work to the standards our clients are measured against: UAE Information Assurance Standard, DESC ISR, SAMA Cyber Security Framework, NCA ECC, and the CBUAE guidance that applies to regulated financial institutions.</p></div>
+        <div><h3>Global engineering</h3><p>Our engineering capability is distributed across regions, with senior engineers on every engagement. That is what allows a scoped assessment at a price a large consultancy cannot match.</p></div>
+        <div><h3>Vendor-backed delivery</h3><p>Implementation is executed with named technology partners and, where a jurisdiction requires it, through licensed local providers, so the work happens inside the local framework rather than around it.</p></div>
       </div>
-      <div class="ph"><div class="brief"><b>Photo slot</b>Two engineers at one console, leaning toward the same screen. Neither smiling, neither looking at camera. Regional, contemporary, unposed.<br><br><em>Search:</em> colleagues reviewing data one monitor · engineer site inspection hi-vis<br><em>Set:</em> --ph-operate</div></div>
+      <div class="ph"></div>
     </div>
     <div class="dontclaim rv">
-      <div class="lbl">What we don&#8217;t claim</div>
-      <h3>We are not an accredited auditor, and we are not certified by any regulator.</h3>
-      <p>Where our work aligns to a framework, we say aligned — never approved. We do not have in-country delivery teams and we do not pretend to. If a jurisdiction requires a licensed local provider, we work inside theirs rather than around it. Everything above will be checked in due diligence, so you may as well read it here first.</p>
+      <div class="lbl">Our standard</div>
+      <h3>Evidence over claims.</h3>
+      <p>Where our work maps to a framework, we show the mapping control by control, so your auditors and your regulator can verify it themselves. Where a jurisdiction requires a licensed local provider, we deliver through one, inside the local framework. Every engagement is built to stand up in due diligence.</p>
     </div>
   </div>
 </section>
 
-<!-- 08 RESEARCH -->
-<section class="mist" id="research">
-  <div class="w"><div class="res">
-    <div class="ph rv"><div class="brief"><b>Photo slot</b>A report open on a table, one hand resting on the page or mid-annotation. Faceless, close, warm. The document should look like ours.<br><br><em>Search:</em> hands annotating report close up · document review meeting table<br><em>Set:</em> --ph-research</div></div>
-    <div class="rv">
-      <div class="lbl eyebrow">Research</div>
-      <h2>The GCC AI and Cryptographic Assurance Index</h2>
-      <p class="lead" style="margin-top:20px">A readiness benchmark and sector analysis for the GCC and wider MENA. Built because nobody had assembled it, and maintained because the ground keeps moving.</p>
-      <div class="tags"><span class="tag c">SOURCED</span><span class="tag">DERIVED</span><span class="tag">ASSUMED</span></div>
-      <p style="font-size:14px;line-height:22px;margin-top:18px">Every figure carries its tag. Derived and assumed figures are our analysis, not measured fact, and we label them that way.</p>
-      <div class="btns" style="margin-top:32px"><a class="b1" href="#close">Read the Index</a></div>
-    </div>
-  </div></div>
-</section>
+<!-- 08 NEWSLETTER -->
+<section class="nl" id="subscribe"><div class="w"><div class="nl-card"><div class="nl-main"><div class="nl-copy"><div class="nl-k">Perspectives newsletter</div><h2>Hear about new research when it lands.</h2><p>Occasional emails, only when something is published. One address, unsubscribe in one click.</p></div><form class="nl-form" data-subscribe novalidate><div class="nl-row"><input name="email" type="email" required maxlength="254" placeholder="you@organisation.com" autocomplete="email" aria-label="Work email"><div class="hp" aria-hidden="true"><label>Company <input name="company" type="text" tabindex="-1" autocomplete="off"></label></div><button type="submit">Subscribe</button></div><p class="sub-msg" role="status" aria-live="polite"></p></form></div><div class="nl-prev" aria-hidden="true"><div class="nl-mail"><div class="nl-mail-top"><img src="/images/orvix-logo.png" alt="" width="88" height="25"></div><div class="nl-mail-cover"></div><div class="nl-mail-body"><span class="nl-mail-k">PERSPECTIVES</span><b>Approval latency is the control</b><span class="nl-mail-s">If approvals are granted in seconds at volume, the gate has been abandoned in practice.</span><span class="nl-mail-btn">Read the article</span></div><div class="nl-mail-foot">You're receiving this because you subscribed at orvixnet.com</div></div></div></div></div></section>
 
 <!-- 09 CLOSE -->
 <section class="close" id="close">
   <div class="w">
     <div class="lbl eyebrow">Start here</div>
     <h2>Start with the evidence.</h2>
-    <p>A fixed-scope assurance review of your AI estate — inventory, control mapping against the frameworks that apply to you, and a written evidence package your board and your regulator can read. Defined price, defined duration, no obligation beyond it.</p>
-    <div class="btns"><a class="b1" href="#top">Request an assurance review</a></div>
+    <p>A fixed-scope assurance review of your AI estate: inventory, control mapping against the frameworks that apply to you, and a written evidence package your board and your regulator can read. Fixed fee, six weeks, no obligation beyond it.</p>
+    <div class="btns"><a class="b1" href="company/contact/#book">Request an assurance review</a></div>
     <p class="ident">The people who bring us in are usually the ones who saw it coming.</p>
   </div>
-  <div class="close-brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</div>
 </section>
 
 
@@ -655,7 +635,6 @@ letter-spacing:-.022em;margin-bottom:14px}
         <li><a href="industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
         <li><a href="industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
       <div><h4>Research &amp; company</h4><ul>
-        <li><a href="research/assurance-index/">The GCC Assurance Index</a></li>
         <li><a href="research/maturity-model/">The Trust Maturity Model</a></li>
         <li><a href="research/case-studies/">Case studies</a></li>
         <li><a href="company/about/">About us</a></li>
@@ -667,7 +646,7 @@ letter-spacing:-.022em;margin-bottom:14px}
     
     </div>
     <div class="fbot"><span>&#169; 2026 Orvix. Sharjah Media City Free Zone, UAE.</span>
-      <span>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</span></div>
+      <span>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</span></div>
   </div>
 </footer>
 <script>

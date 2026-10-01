@@ -30,7 +30,7 @@ def pages() -> list[str]:
     out = []
     for p in sorted(ROOT.rglob("*.html")):
         rel = p.relative_to(ROOT).as_posix()
-        if rel.startswith(("tools/", ".github/", "node_modules/")):
+        if rel.startswith(("tools/", ".github/", "node_modules/", "admin/", "email/")):
             continue
         out.append(rel)
     return out
@@ -119,7 +119,7 @@ def main(argv: list[str]) -> int:
         head = s[:s.lower().find("</head>")]
         pre = re.findall(r'<link rel="preload" as="image" href="([^"]+)"', head)
         hero = re.findall(r"--p[hg]-hero:url\('([^']+)'\)", head)
-        if pre and pre[0] not in hero:
+        if pre and hero and pre[0] not in hero:  # only pages with a hero photo; articles preload their cover
             broken[rel].append(f"preload {pre[0]} is not the hero photo {hero or 'none'}")
 
     nb = sum(len(v) for v in broken.values())

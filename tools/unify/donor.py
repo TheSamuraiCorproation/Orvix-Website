@@ -64,13 +64,24 @@ class Donor:
         self.nav = _slice(body, r'<nav id="nav">', "nav")
         self.mob = _slice(body, r'<div class="mob" id="mob">', "div")
 
-    def nav_for(self, rel: str) -> str:
-        """The nav with its language toggle pointed at this page's own twin."""
+    def twin_href(self, rel: str) -> str:
+        """Link from this page to its other-language twin."""
         page = rel[:-len("index.html")] if rel.endswith("index.html") else rel
         if self.lang == "en":
-            href = "../../ar/" + page
-        else:
-            # an Arabic page links back to its English twin from inside ar/
-            href = "../../../" + page[3:]
+            return "../../ar/" + page
+        # an Arabic page links back to its English twin from inside ar/
+        return "../../../" + page[3:]
+
+    def nav_for(self, rel: str) -> str:
+        """The nav with its language toggle pointed at this page's own twin."""
+        href = self.twin_href(rel)
         return re.sub(r'(<a class="nav-ar" href=")[^"]*(")',
                       lambda m: m.group(1) + href + m.group(2), self.nav, count=1)
+
+    def mob_for(self, rel: str) -> str:
+        """The phone drawer, its language link pointed at this page's twin too
+        (it used to keep the donor page's address, so on a phone the toggle
+        opened the Arabic AI Assurance page from every engagement page)."""
+        href = self.twin_href(rel)
+        return re.sub(r'(<a href=")[^"]*(" lang="(?:ar|en)")',
+                      lambda m: m.group(1) + href + m.group(2), self.mob, count=1)

@@ -48,8 +48,8 @@ PAGES: dict[str, dict] = {
     "what-we-do/ai-cybersecurity/index.html": _p(
         "pillar",
         "AI Cybersecurity for Regulated Enterprises | Orvix",
-        "Detection, response and human-risk defence for estates that now include "
-        "AI models, operated by Orvix and measured on dwell time, not promises.",
+        "Detection, response and human-risk defense for estates that now include "
+        "AI models, operated by Orvix and measured by how fast threats are found and contained.",
     ),
     "what-we-do/applied-ai-and-data/index.html": _p(
         "pillar",
@@ -80,8 +80,8 @@ PAGES: dict[str, dict] = {
     "what-we-do/ai-cybersecurity/human-risk/index.html": _p(
         "service",
         "Human Risk Defence | AI Cybersecurity | Orvix",
-        "Defence against attacks that arrive as a convincing person rather than a "
-        "file, addressed by changing the approval path, not by training harder.",
+        "Defense against attacks that arrive as a convincing person rather than a "
+        "file, built into the approval path so every high-value request is verified first.",
     ),
     "what-we-do/ai-cybersecurity/ot-security/index.html": _p(
         "service",
@@ -256,18 +256,6 @@ PAGES: dict[str, dict] = {
         "tell which one you are standing on, and the single move that lifts you.",
         og_type="article",
     ),
-    "research/assurance-index/index.html": _p(
-        "research-item",
-        "GCC Assurance Index: Published Method | Orvix",
-        "What the region can actually evidence, measured the same way each year. "
-        "The method is published in advance; the first edition is in preparation.",
-        og_type="article",
-        robots=NOINDEX,
-        # Visible [DATE - confirm] slot in the body. Section 6 fails the build on
-        # a confirm slot on an indexable page. Set the first-edition date and
-        # flip this back to INDEX -- nothing else about the page has to change.
-        noindex_reason="visible [DATE - confirm] slot: first-edition date unset",
-    ),
     "research/readiness-assessment/index.html": _p(
         "research",
         "AI Readiness Self-Assessment | Orvix",
@@ -277,65 +265,38 @@ PAGES: dict[str, dict] = {
     "research/case-studies/index.html": _p(
         "listing",
         "AI Assurance Case Studies | Orvix",
-        "What we found, what changed, and what each client agreed we could say. "
-        "Published with consent or not published at all. Three written up here.",
-    ),
-    "research/case-studies/energy/index.html": _p(
-        "research-item",
-        "OT Network Visibility Case Study | Orvix",
-        "An operational estate where the independence of the corporate and "
-        "operational networks had been asserted for years and had never once been tested.",
-        og_type="article",
-        robots=NOINDEX,
-        noindex_reason="case study not cleared: client, sector and duration unconfirmed",
-    ),
-    "research/case-studies/financial-services/index.html": _p(
-        "research-item",
-        "AI Register Case Study: DIFC Institution | Orvix",
-        "A DIFC-licensed institution establishing what it was actually running on "
-        "personal data, and what it could evidence about each system it found.",
-        og_type="article",
-        robots=NOINDEX,
-        noindex_reason="case study not cleared: client, sector and duration unconfirmed",
-    ),
-    "research/case-studies/telecom/index.html": _p(
-        "research-item",
-        "Cross-Border Data Residency Case Study | Orvix",
-        "A carrier estate where residency was written as a storage clause and "
-        "quietly undone by a network re-route that nobody had ever thought to log.",
-        og_type="article",
-        robots=NOINDEX,
-        noindex_reason="case study not cleared: client, sector and duration unconfirmed",
+        "Orvix publishes case studies only with client consent. Ask us for a reference "
+        "call or a walkthrough of a past engagement comparable to the one you are planning.",
     ),
     "research/industry/financial-services/index.html": _p(
         "listing",
         "Financial Services AI Research | Orvix",
-        "Research for financial services: what we are watching, the briefings that "
-        "apply, and where the sector typically sits on the Trust Maturity Model.",
+        "Financial services AI research: the questions we put to every estate, the "
+        "obligations already due or coming in the GCC, and where to start assessing.",
     ),
     "research/industry/telecom/index.html": _p(
         "listing",
         "Telecom AI and Security Research | Orvix",
-        "Research for telecommunications: what we are watching, the briefings that "
-        "apply, and where the sector typically sits on the Trust Maturity Model.",
+        "Telecom AI and security research: the questions we put to every operator, the "
+        "UAE obligations already due or coming, and where to start assessing readiness.",
     ),
     "research/industry/government/index.html": _p(
         "listing",
         "Government AI Assurance Research | Orvix",
-        "Research for government and public sector: what we are watching, which "
-        "briefings apply, and where the sector sits on the Trust Maturity Model.",
+        "Government AI assurance research: the questions we put to every public estate, "
+        "the obligations in force across the UAE, KSA and Qatar, and where to start.",
     ),
     "research/industry/energy-utilities/index.html": _p(
         "listing",
         "Energy and Utilities Security Research | Orvix",
-        "Research for energy and utilities: what we are watching, the briefings "
-        "that apply, and where the sector sits on the Trust Maturity Model now.",
+        "Energy and utilities security research: the questions we put to every operator, "
+        "the obligations already due or coming, and where to start assessing readiness.",
     ),
     "research/perspectives/index.html": _p(
         "listing",
         "Perspectives on AI Assurance | Orvix",
-        "Short arguments about how assurance actually fails in practice, and what "
-        "to do instead. Eight hundred words at a time, with no form to fill in.",
+        "Short arguments about how assurance fails in practice, and what to do "
+        "instead. One idea per piece, about 800 words, and never behind a form.",
         robots=NOINDEX,
         noindex_reason="every item DRAFT/PLANNED: no piece published yet",
     ),
@@ -343,23 +304,23 @@ PAGES: dict[str, dict] = {
         "listing",
         "GCC Regulatory Sector Briefings | Orvix",
         "What a specific obligation asks a specific sector to be able to show, and "
-        "which of those artefacts most firms are found not to hold when asked.",
+        "which of those artifacts most organizations find hardest to produce on request.",
         robots=NOINDEX,
         noindex_reason="every item DRAFT/PLANNED: no briefing published yet",
     ),
     "research/technology-evaluations/index.html": _p(
         "listing",
         "Independent Technology Evaluations | Orvix",
-        "Scope and method published before the test is run, and results published "
-        "whichever way they go. Independent of what Orvix may also happen to sell.",
+        "Independent evaluations of security and AI technology: scope and method set "
+        "before the test, results published either way, any vendor relationship disclosed.",
         robots=NOINDEX,
         noindex_reason="every item DRAFT/PLANNED: no evaluation published yet",
     ),
     "research/subscribe/index.html": _p(
         "listing",
-        "Subscribe to Orvix Research | Orvix",
-        "An occasional email when something is published. One address, no "
-        "tracking, one-click unsubscribe, and nothing else is done with the address.",
+        "Subscribe to Orvix Perspectives | Orvix",
+        "Orvix Perspectives: an occasional email when new research is published. "
+        "Your address is used only to send it, with no tracking and a one-click unsubscribe.",
         robots=NOINDEX,
         noindex_reason="bare form page, and the form endpoint is not connected",
     ),
@@ -406,6 +367,28 @@ PAGES: dict[str, dict] = {
         "to pass before it enters the portfolio we are willing to put our name on.",
     ),
 }
+
+
+# ---- Perspectives articles written in the admin (content/posts/) ------------
+# One research-item per published post. The English title and summary come from
+# the post; the Arabic page, when there is one, inherits like every other Arabic
+# page (its title and description are read from the generated file). The share
+# image is the site's default card: posts have no generated card of their own.
+def _add_posts() -> None:
+    from ..blog.posts import published
+    ps = published()
+    for p in ps:
+        PAGES[f"research/perspectives/{p['slug']}/index.html"] = _p(
+            "research-item", f"{p['title']['en']} | Orvix", p["summary"]["en"],
+            og_type="article", published=p["published"],
+            og_image="https://orvixnet.com/assets/img/og/default.png")
+    if ps:  # the listing is no longer empty: let Google index it
+        listing = PAGES["research/perspectives/index.html"]
+        listing["robots"] = INDEX
+        listing.pop("noindex_reason", None)
+
+
+_add_posts()
 
 
 def for_path(rel: str) -> dict | None:

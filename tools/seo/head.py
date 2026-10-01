@@ -63,7 +63,7 @@ def render(rel: str, page: dict, *, title: str, description: str,
         A(f'<link rel="alternate" hreflang="ar" href="{urls.to_url(ar_rel)}">')
         A(f'<link rel="alternate" hreflang="x-default" href="{urls.to_url(en_rel)}">')
 
-    img = og_image_for(rel)
+    img = page.get("og_image") or og_image_for(rel)
     A(f'<meta property="og:type" content="{page.get("og_type", "website")}">')
     A(f'<meta property="og:title" content="{esc(title)}">')
     A(f'<meta property="og:description" content="{esc(description)}">')

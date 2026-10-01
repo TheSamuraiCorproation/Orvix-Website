@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perspectives admin | Orvix</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="same-origin">
+<meta name="theme-color" content="#03072C">
+<!-- Private staff page. Sign-in is by emailed link; the API checks the
+     session cookie on every call. This page only talks to /api/ on the same
+     origin. All behaviour lives in /admin/admin.js: no inline scripts or
+     handlers, so it runs under a strict CSP (script-src 'self'). -->
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/admin/admin.css">
+<script src="/admin/admin.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="/admin/">
+    <img src="/images/orvix-logo.png" width="440" height="125" alt="Orvix">
+    <span class="brand-sub">Perspectives admin</span>
+  </a>
+  <div class="who">
+    <span class="who-email" id="who-email" hidden></span>
+    <button type="button" class="signout" id="btn-signout" hidden>Sign out</button>
+  </div>
+</header>
+
+<main id="main" class="work" tabindex="-1">
+
+  <!-- Loading -->
+  <section id="view-loading" class="center-view">
+    <p class="muted" role="status">Loading&hellip;</p>
+  </section>
+
+  <!-- Signed out. The box below is moved into #auth-dlg when a session ends
+       mid-edit, so the editor (and its unsaved work) stays on the page. -->
+  <section id="view-signin" class="center-view" hidden>
+    <div class="panel narrow" id="signin-home">
+      <div id="signin-box">
+        <p class="lbl">Access</p>
+        <h1 class="h-panel" id="signin-heading">Sign in to Perspectives admin</h1>
+        <p class="notice" id="signin-expired" role="status" hidden>That sign-in link has expired or was already used. Request a new one.</p>
+        <p class="notice" id="signin-context" hidden>Your session has ended. Your unsaved changes are still here. Request a sign-in link, open it from your email (it opens in a new tab), then come back and press <strong>Retry</strong>.</p>
+        <form id="signin-form" class="signin-form" novalidate>
+          <div class="field">
+            <label for="signin-email" class="lbl">Work email</label>
+            <input type="email" id="signin-email" autocomplete="email" inputmode="email" spellcheck="false" autocapitalize="off" maxlength="254" aria-describedby="signin-hint">
+          </div>
+          <p class="form-error" id="signin-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary" id="signin-submit">Email me a sign-in link</button>
+          <p class="hint" id="signin-hint">Access is limited to approved addresses.</p>
+        </form>
+        <div id="signin-sent" hidden>
+          <p class="sent-text" id="signin-sent-text" role="status"></p>
+          <p><button type="button" class="linkbtn" id="signin-again">Use a different email</button></p>
+        </div>
+        <div class="actions-row retry-row" id="signin-retry-row" hidden>
+          <button type="button" class="btn btn-primary" id="signin-retry">Retry</button>
+          <button type="button" class="btn btn-ghost" id="signin-close">Keep editing</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API unreachable / unexpected error -->
+  <section id="view-error" class="center-view" hidden>
+    <div class="panel narrow">
+      <p class="lbl">Connection</p>
+      <h1 class="h-panel">The admin service is not reachable right now.</h1>
+      <p class="muted" id="error-detail">Check your connection and try again in a moment.</p>
+      <p class="actions-row"><button type="button" class="btn btn-primary" id="error-retry">Try again</button></p>
+    </div>
+  </section>
+
+  <!-- Post list -->
+  <section id="view-list" hidden>
+    <div class="list-head">
+      <div>
+        <p class="lbl">Perspectives</p>
+        <h1 class="h-page">All posts</h1>
+      </div>
+      <button type="button" class="btn btn-primary" id="btn-new">New post</button>
+    </div>
+    <div class="panel flush">
+      <p class="empty" id="list-empty" hidden>No posts yet. Use <strong>New post</strong> to write the first one.</p>
+      <table class="posts" id="posts-table" hidden>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Status</th>
+            <th scope="col">Published</th>
+            <th scope="col">Updated</th>
+            <th scope="col"><span class="sr">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="posts-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Editor -->
+  <section id="view-editor" hidden>
+    <div class="ed-head">
+      <button type="button" class="btn btn-ghost" id="btn-back">&larr; Back to all posts</button>
+      <div class="ed-title-row">
+        <h1 class="h-page" id="ed-heading">New post</h1>
+        <span class="pill" id="ed-status">Draft</span>
+        <a class="ed-live" id="ed-live" href="/" target="_blank" rel="noopener" hidden>View live &nearr;</a>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-ghost preview-toggle" id="btn-preview-toggle" aria-controls="preview-pane" aria-expanded="false">Show preview</button>
+
+    <div class="ed-grid" id="ed-grid">
+      <form class="ed-form" id="ed-form" novalidate>
+
+        <!-- Language content -->
+        <div class="panel">
+          <div class="tabs" role="tablist" aria-label="Language">
+            <button type="button" role="tab" id="tab-en" class="tab" aria-selected="true" aria-controls="panel-en" data-lang="en">English <span class="req">required</span></button>
+            <button type="button" role="tab" id="tab-ar" class="tab" aria-selected="false" aria-controls="panel-ar" tabindex="-1" data-lang="ar"><span lang="ar" dir="rtl" class="ar-font">العربية</span> <span class="req">optional</span></button>
+          </div>
+
+          <div role="tabpanel" id="panel-en" aria-labelledby="tab-en" class="tabpanel" data-lang="en">
+            <div class="field">
+              <label for="f-title-en" class="lbl">Title</label>
+              <input type="text" id="f-title-en" maxlength="120" autocomplete="off" data-counter="c-title-en">
+              <p class="hint"><span id="c-title-en">0</span>/120</p>
+            </div>
+            <div class="field">
+              <label for="f-summary-en" class="lbl">Summary</label>
+              <textarea id="f-summary-en" rows="3" maxlength="300" data-counter="c-summary-en" aria-describedby="h-summary-en"></textarea>
+              <p class="hint" id="h-summary-en"><span id="c-summary-en">0</span>/300. Shown on the Perspectives list and in Google results; 140-160 characters is ideal.</p>
+            </div>
+            <div class="field rte-field">
+              <span class="lbl" id="l-body-en">Article text</span>
+              <div class="toolbar" role="toolbar" aria-label="Formatting, English article text" aria-controls="f-body-en" data-target="f-body-en"></div>
+              <div id="f-body-en" class="rte" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="l-body-en" aria-describedby="h-body-en" data-placeholder="Start writing the article…" spellcheck="true"></div>
+              <p class="hint" id="h-body-en"><span id="wc-en">0 words</span> · <span id="rt-en">1 min read</span></p>
+              <div class="md-tools"><button type="button" class="btn btn-ghost btn-sm" data-md-import="en">Import .md file</button><button type="button" class="btn btn-ghost btn-sm" data-md-export="en">Download .md</button><input type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden data-md-file="en" aria-label="Markdown file to import"></div>
+            </div>
+            <div class="field">
+              <label for="f-alt-en" class="lbl">Cover alt text</label>
+              <input type="text" id="f-alt-en" maxlength="200" autocomplete="off" aria-describedby="h-alt-en">
+              <p class="hint" id="h-alt-en">Describe the photo for people who cannot see it.</p>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-ar" aria-labelledby="tab-ar" class="tabpanel" data-lang="ar" hidden>
+            <div class="field">
+              <label for="f-title-ar" class="lbl">Title (Arabic)</label>
+              <input type="text" id="f-title-ar" class="ar-font" dir="rtl" lang="ar" maxlength="120" autocomplete="off" data-counter="c-title-ar">
+              <p class="hint"><span id="c-title-ar">0</span>/120</p>
+            </div>
+            <div class="field">
+              <label for="f-summary-ar" class="lbl">Summary (Arabic)</label>
+              <textarea id="f-summary-ar" class="ar-font" dir="rtl" lang="ar" rows="3" maxlength="300" data-counter="c-summary-ar" aria-describedby="h-summary-ar"></textarea>
+              <p class="hint" id="h-summary-ar"><span id="c-summary-ar">0</span>/300. Shown on the Perspectives list and in Google results; 140-160 characters is ideal.</p>
+            </div>
+            <div class="field rte-field">
+              <span class="lbl" id="l-body-ar">Article text (Arabic)</span>
+              <div class="toolbar" role="toolbar" aria-label="Formatting, Arabic article text" aria-controls="f-body-ar" data-target="f-body-ar"></div>
+              <div id="f-body-ar" class="rte ar-font" dir="rtl" lang="ar" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="l-body-ar" aria-describedby="h-body-ar" data-placeholder="ابدأ كتابة المقال…" spellcheck="true"></div>
+              <p class="hint" id="h-body-ar"><span id="wc-ar">0 words</span> · <span id="rt-ar">1 min read</span>. Leave the Arabic tab empty to publish in English only. If you start it, title, summary and article text are all needed to publish.</p>
+              <div class="md-tools"><button type="button" class="btn btn-ghost btn-sm" data-md-import="ar">Import .md file</button><button type="button" class="btn btn-ghost btn-sm" data-md-export="ar">Download .md</button><input type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden data-md-file="ar" aria-label="Markdown file to import"></div>
+            </div>
+            <div class="field">
+              <label for="f-alt-ar" class="lbl">Cover alt text (Arabic)</label>
+              <input type="text" id="f-alt-ar" class="ar-font" dir="rtl" lang="ar" maxlength="200" autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+        <!-- Shared details -->
+        <div class="panel">
+          <p class="lbl panel-lbl">Details</p>
+          <div class="field">
+            <label for="f-slug" class="lbl">Address (slug)</label>
+            <input type="text" id="f-slug" class="mono" maxlength="80" autocomplete="off" spellcheck="false" autocapitalize="off" aria-describedby="h-slug n-slug">
+            <p class="hint url-hint" id="h-slug">orvixnet.com/research/perspectives/<b id="slug-preview">your-title</b>/</p>
+            <p class="hint note" id="n-slug" hidden>The address is fixed once a post has been published, so existing links keep working.</p>
+          </div>
+          <div class="field">
+            <label for="f-author" class="lbl">Author</label>
+            <input type="text" id="f-author" maxlength="80" autocomplete="off" value="Orvix">
+          </div>
+          <div class="field">
+            <span class="lbl" id="cover-lbl">Cover image</span>
+            <div class="drop" id="drop" role="group" aria-labelledby="cover-lbl">
+              <img class="drop-img" id="cover-img" alt="" hidden>
+              <div class="drop-text">
+                <p>Drag a photo here, or</p>
+                <label class="btn btn-ghost btn-sm" for="f-cover">Choose file</label>
+                <input type="file" id="f-cover" class="file-input" accept="image/jpeg,image/png,image/webp" aria-describedby="h-cover">
+                <p class="hint" id="h-cover">JPEG, PNG or WebP, up to 15 MB. It is resized to 1600px, converted to WebP and used as the article's banner background.</p>
+                <p class="hint cover-meta" id="cover-meta" aria-live="polite"></p>
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-cover-remove" hidden>Remove cover</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="ed-actions">
+          <button type="button" class="btn btn-ghost" id="btn-save">Save draft</button>
+          <button type="button" class="btn btn-primary" id="btn-publish">Publish</button>
+          <button type="button" class="btn btn-danger-ghost" id="btn-unpublish" hidden>Unpublish</button>
+        </div>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+      </form>
+
+      <!-- Live preview: same structure as the published article -->
+      <aside class="preview-pane" id="preview-pane" aria-label="Preview">
+        <div class="preview-bar">
+          <span class="lbl">Preview</span>
+          <span class="lbl muted" id="preview-lang">English</span>
+        </div>
+        <article class="preview" id="preview">
+          <header class="pv-banner" id="pv-banner">
+            <div class="pv-banner-bg" id="pv-banner-bg" aria-hidden="true"></div>
+            <div class="pv-banner-in">
+              <p class="pv-kicker" id="pv-kicker">Perspective</p>
+              <h1 class="pv-title" id="pv-title"></h1>
+              <p class="pv-summary" id="pv-summary"></p>
+              <p class="pv-meta" id="pv-meta"></p>
+            </div>
+          </header>
+          <div class="pv-body" id="pv-body"></div>
+        </article>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<!-- Link editor popover (moved next to whichever article editor is active) -->
+<div class="link-pop" id="link-pop" role="dialog" aria-modal="false" aria-labelledby="link-pop-lbl" hidden>
+  <label for="link-url" class="lbl" id="link-pop-lbl">Link address</label>
+  <input type="text" id="link-url" dir="ltr" inputmode="url" autocomplete="off" spellcheck="false" autocapitalize="off" placeholder="https://example.com or /research/" aria-describedby="link-err link-help">
+  <p class="hint" id="link-help">Start with https:// for another website, or / for a page on orvixnet.com.</p>
+  <p class="hint link-err" id="link-err" hidden></p>
+  <div class="link-pop-actions">
+    <button type="button" class="btn btn-primary btn-sm" id="link-apply">Apply</button>
+    <button type="button" class="btn btn-danger-ghost btn-sm" id="link-remove" hidden>Remove link</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="link-cancel">Cancel</button>
+  </div>
+</div>
+
+<!-- In-page confirm (window.confirm is not used) -->
+<dialog class="dlg" id="dlg" aria-labelledby="dlg-title" aria-describedby="dlg-text">
+  <h2 class="dlg-title" id="dlg-title"></h2>
+  <p class="dlg-text" id="dlg-text"></p>
+  <div class="dlg-actions">
+    <button type="button" class="btn btn-ghost" id="dlg-cancel">Cancel</button>
+    <button type="button" class="btn btn-primary" id="dlg-ok">OK</button>
+  </div>
+</dialog>
+
+<!-- Re-authentication while editing: holds #signin-box -->
+<dialog class="dlg dlg-auth" id="auth-dlg" aria-labelledby="signin-heading"></dialog>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+</body>
+</html>

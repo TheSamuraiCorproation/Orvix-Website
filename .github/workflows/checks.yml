@@ -15,8 +15,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: SEO build gate
-        run: python -m tools.seo validate
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Blog API tests
+        run: node --test "netlify/functions/*.test.mjs"
+      - name: Build blog pages, then the SEO gate
+        run: |
+          python -m tools.blog
+          python -m tools.seo build
       - name: Generated markup has not drifted
         run: |
           python -m tools.nav --check

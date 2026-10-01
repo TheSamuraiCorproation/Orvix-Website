@@ -81,7 +81,7 @@ def pages(root: pathlib.Path) -> list[str]:
     out = []
     for p in sorted(root.rglob("*.html")):
         rel = p.relative_to(root).as_posix()
-        if rel.startswith("tools/") or rel == "404.html":
+        if rel.startswith(("tools/", "admin/", "email/")) or rel == "404.html":  # admin/ is the blog dashboard, email/ newsletter templates
             continue
         out.append(rel)
     return out

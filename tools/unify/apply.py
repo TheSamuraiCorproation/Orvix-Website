@@ -99,10 +99,10 @@ def swap_nav(s: str, rel: str, d: Donor) -> str:
 
     if '<div class="mob" id="mob">' in s:
         i = s.find('<div class="mob" id="mob">')
-        s = s[:i] + d.mob + s[match_element(s, i, "div"):]
+        s = s[:i] + d.mob_for(rel) + s[match_element(s, i, "div"):]
     else:
         i = s.find("</nav>") + len("</nav>")
-        s = s[:i] + "\n" + d.mob + s[i:]
+        s = s[:i] + "\n" + d.mob_for(rel) + s[i:]
     return s
 
 

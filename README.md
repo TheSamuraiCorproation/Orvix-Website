@@ -105,6 +105,47 @@ Pages also carry small inline scripts for their own interactive pieces (maturity
 
 ---
 
+## Blog: Perspectives articles and the admin
+
+Staff write articles at **`/admin/`**. Each published post becomes a page at `/research/perspectives/<slug>/`, with an Arabic twin at `/ar/research/perspectives/<slug>/` when it has Arabic, and a row at the top of the Perspectives list.
+
+| Piece | Where |
+|---|---|
+| Dashboard (list, editor, cover upload, live preview, draft / publish) | `admin/` (static; no inline scripts, never cached or indexed) |
+| API, production | `netlify/functions/blog.mjs`, behind `/api/*`. Signs editors in by emailed link, checks the session and the email against `ADMIN_EMAILS` on every request, then commits the post to GitHub |
+| Posts | `content/posts/<slug>.json`, covers in `images/posts/<slug>.webp`. Never served as files (forced 404 in `_redirects`, drafts included) |
+| Pages | Generated on every deploy by `python -m tools.blog`, then `python -m tools.seo build` adds the SEO head, Article schema and sitemap entry. Generated pages are not committed (`.gitignore`) |
+| Text format | A small, safe markdown subset (`tools/blog/markdown.py`; the admin preview mirrors it). Everything is escaped, so a post cannot contain HTML or scripts |
+
+**Security layers:**
+
+1. **Sign-in by emailed link.** An editor types their email. If it's in `ADMIN_EMAILS`, they get a link (sent through Brevo) that works for 15 minutes. The response is identical for any email, so nobody can test which addresses are editors.
+2. **Session cookie.** The link sets an 8-hour signed session (HS256 with `SESSION_SECRET`) in an `HttpOnly; Secure; SameSite=Strict` cookie that page scripts can't read and other sites can't send.
+3. **Checked on every request.** Every API call re-checks the session and that the email is still on the list. Removing someone and redeploying locks them out at once, and the function fails closed if anything isn't configured.
+4. **Saves are protected** against cross-site forgery (a custom header, plus an origin check).
+5. **Uploads are size-checked** and must be real WebP files.
+6. **The GitHub token** can only write this repository's contents.
+
+**Try it locally.** Sign-in links print in the terminal instead of being emailed. Posts are written to `content/posts/`, and the pages rebuild on save:
+
+```bash
+python -m tools.serve --admin you@example.com,colleague@example.com   # then open http://localhost:8080/admin/
+python -m tools.blog clean                                             # remove generated pages before committing by hand
+```
+
+**Production setup** (once, after hosting is on Orvix's own Netlify):
+
+1. **Brevo:** create an API key, and verify the sending domain by adding Brevo's SPF and DKIM records in Namecheap, so sign-in emails don't land in spam.
+2. **Set the Netlify environment variables:**
+   - `SESSION_SECRET`: 32+ random characters. Generate it with `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`. Rotating it signs everyone out.
+   - `ADMIN_EMAILS`: the editors, comma-separated, any domain
+   - `SITE_URL`: `https://orvixnet.com`
+   - `BREVO_API_KEY` and `MAIL_FROM_EMAIL` (a verified sender), plus optionally `MAIL_FROM_NAME`
+   - `GITHUB_TOKEN` (fine-grained: this repo, Contents read and write) and `GITHUB_REPO`
+   - optionally `GITHUB_BRANCH` and `BLOG_COMMIT_EMAIL`
+
+Function tests: `node --test "netlify/functions/*.test.mjs"`.
+
 ## Arabic (`ar/`)
 
 - **Structure.** Each Arabic page is the twin of its English page, and the language link in the header points between them. `<html lang="ar" dir="rtl">` on every Arabic page.

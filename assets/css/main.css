@@ -1060,6 +1060,7 @@ padding:14px 16px;border:1px solid var(--silver);background:var(--paper);color:v
 .rsh .strip .btn{margin-top:0;white-space:nowrap}
 @media(max-width:760px){.rsh .strip .w{grid-template-columns:1fr;gap:22px}}
 
+
 /* ============================================================
    WHAT WE DO - COLOUR, TAKEN FROM THE HOME PAGE
    The dark sections here were already right. The light ones were

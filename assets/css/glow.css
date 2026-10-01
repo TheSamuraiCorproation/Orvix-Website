@@ -1,5 +1,5 @@
-/* The animated glow ring on the "Talk to our team" nav button. Loaded on
-   every page that uses main.css. */
+/* Motion shared by every page: the glow ring on the "Talk to our team" nav
+   button, the hover on clickable cards, and the home page's scrolling strip. */
 
 /* ============================================================
    GLOW BORDER - "Talk to our team"
@@ -44,3 +44,58 @@ animation:navGlowSpin 6s linear infinite;will-change:transform}
 
 /* what-we-do heroes run without a breadcrumb: restore the air the crumb used to hold */
 .wwd .hero.nocrumb{padding-top:clamp(48px,5vw,78px)}
+
+/* ============================================================
+   CLICKABLE CARDS - lift, a slight zoom, and a light that runs
+   along the top edge while the pointer is on the card.
+   ============================================================ */
+.pcard:not(.here),.rel a,.lead-card{position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .25s,background-color .25s}
+.pcard:not(.here):hover,.rel a:hover,.lead-card:hover{transform:translateY(-6px) scale(1.015);
+  box-shadow:0 24px 46px -22px rgba(3,7,44,.5),0 0 0 1px rgba(72,226,226,.4)}
+.pcard:not(.here)::after,.rel a::after,.lead-card::after{content:"";position:absolute;top:0;left:0;z-index:3;
+  width:45%;height:2px;pointer-events:none;opacity:0;transform:translateX(-110%);
+  background:linear-gradient(90deg,transparent,#48E2E2 50%,transparent);box-shadow:0 0 12px rgba(72,226,226,.7)}
+.pcard:not(.here):hover::after,.rel a:hover::after,.lead-card:hover::after{opacity:1;animation:cardSweep 1.8s cubic-bezier(.45,0,.55,1) infinite}
+[dir=rtl] .pcard:not(.here):hover::after,[dir=rtl] .rel a:hover::after,[dir=rtl] .lead-card:hover::after{animation-direction:reverse}
+@keyframes cardSweep{from{transform:translateX(-110%)}to{transform:translateX(330%)}}
+
+/* list rows (Perspectives, briefings, evaluations): a line draws across the top */
+.lst a.row{position:relative}
+.lst a.row::after{content:"";position:absolute;top:-1px;inset-inline-start:0;width:0;height:2px;
+  background:linear-gradient(90deg,var(--signal,#064BEE),#48E2E2);transition:width .5s cubic-bezier(.22,1,.36,1)}
+.lst a.row:hover::after{width:100%}
+.lst a.row h3{transition:transform .35s cubic-bezier(.22,1,.36,1),color .25s}
+.lst a.row:hover h3{transform:translateX(6px)}
+[dir=rtl] .lst a.row:hover h3{transform:translateX(-6px)}
+
+/* ============================================================
+   HOME - the strip under the hero scrolls slowly and loops.
+   The list is printed twice; the track moves by exactly one copy.
+   Pauses under the pointer; stands still for reduced motion.
+   ============================================================ */
+.hero-note .mq{overflow:hidden;padding:16px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.mq-track{display:flex;width:max-content;animation:mqScroll 70s linear infinite}
+.hero-note:hover .mq-track,.hero-note:focus-within .mq-track{animation-play-state:paused}
+.mq-list{display:flex;align-items:center;gap:clamp(24px,3vw,44px);padding-inline-end:clamp(24px,3vw,44px);margin:0;list-style:none}
+.mq-list a{display:inline-flex;align-items:center;white-space:nowrap;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:600;color:rgba(255,255,255,.5);transition:color .2s}
+.mq-list .p a{color:rgba(255,255,255,.88)}
+.mq-list a:hover{color:#fff}
+.mq-list i{font-style:normal;color:#48E2E2;margin-inline-end:8px;font-family:var(--m);letter-spacing:0}
+.mq-list li:not(.p) a::before{content:"";width:5px;height:5px;margin-inline-end:12px;background:#48E2E2;opacity:.55;transform:rotate(45deg)}
+[dir=rtl] .mq-list a{letter-spacing:0;font-size:12.5px}
+@keyframes mqScroll{to{transform:translateX(-50%)}}
+[dir=rtl] .mq-track{animation-name:mqScrollRtl}
+@keyframes mqScrollRtl{to{transform:translateX(50%)}}
+@media(max-width:760px){.hero-note .mq{padding:12px 0}}
+
+@media(prefers-reduced-motion:reduce){
+  .mq-track{animation:none}
+  .mq-list[aria-hidden]{display:none}
+  .hero-note .mq{overflow-x:auto}
+  .pcard:not(.here):hover,.rel a:hover,.lead-card:hover{transform:none}
+  .pcard:not(.here):hover::after,.rel a:hover::after,.lead-card:hover::after{animation:none;opacity:0}
+}

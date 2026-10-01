@@ -32,6 +32,8 @@
 
 <link rel="stylesheet" href="../../assets/css/engagement.css">
 <style>
+/* photographs for the two split regions (see "photo regions" in engagement.css) */
+:root{--ph-method:url('/images/eng-mdr-1.webp');--ph-deliver:url('/images/eng-mdr-2.webp')}
 .art__glow{background:radial-gradient(58%% 62%% at 66% 36%, rgba(3,29,150,.34), rgba(3,7,44,0) 70%)}
 .sweep{animation:sweep 20s linear infinite}@keyframes sweep{from{transform:rotate(0)}to{transform:rotate(360deg)}}.bl{opacity:0;animation:bl 20s linear infinite}@keyframes bl{0%{opacity:0.528}20%{opacity:0}100%{opacity:0}}
 </style>
@@ -104,7 +106,7 @@
           "name": "Can our data stay in-country?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Workloads with a residency obligation run on the in-region track, where telemetry, storage, and analyst access are constrained to the required jurisdiction. The classification is recorded per workload at onboarding, with the obligation that drives it, and reviewed when either changes."
+            "text": "Workloads with a residency obligation run on the in-region track, where telemetry, storage, and analyst access are constrained to the required jurisdiction. The classification is recorded per workload at onboarding, with the obligation that drives it, and reviewed when either changes. In markets where security operations require a license, the service runs through a licensed local partner under its own license, named in your contract."
           }
         },
         {
@@ -117,10 +119,10 @@
         },
         {
           "@type": "Question",
-          "name": "Will you audit the service you provide?",
+          "name": "Who audits the service you provide?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Independent assurance over a service Orvix operates is written by a party that does not report to the delivery team, and where the opinion needs external weight, by a third party entirely. Orvix will not sell delivery and assurance of the same function as one engagement."
+            "text": "An independent party, which is what makes the opinion worth having. Assurance over a service Orvix operates is written by a party that does not report to the delivery team, or by a fully independent third party when the opinion needs external weight. Delivery and assurance of the same function are always contracted separately."
           }
         },
         {
@@ -128,7 +130,7 @@
           "name": "How long does onboarding take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Thirty to forty-five days for a typical estate. That covers telemetry design and connection, workload residency classification, detection engineering for your environment, containment authority agreement, and a tested escalation path before the service goes live."
+            "text": "Thirty to forty-five days for a typical environment. That covers telemetry design and connection, workload residency classification, detection engineering for your environment, containment authority agreement, and a tested escalation path before the service goes live."
           }
         }
       ]
@@ -179,6 +181,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/glow.css">
 <script src="../../assets/nav.js" defer></script>
 <script src="../../assets/reveal.js" defer></script>
 </head>
@@ -219,14 +222,14 @@
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="../../engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="../../engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="../../engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="../../engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -246,15 +249,11 @@
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="../../research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="../../research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="../../research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="../../research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="../../research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="../../research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="../../research/case-studies/">All case studies</a>
+          <a class="sub" href="../../research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -308,7 +307,6 @@
   <a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="../../research/maturity-model/">The Trust Maturity Model</a>
-  <a href="../../research/assurance-index/">The GCC Assurance Index</a>
   <a href="../../research/readiness-assessment/">Readiness self-assessment</a>
   <a href="../../research/case-studies/">Case studies</a>
   <a href="../../research/perspectives/">Perspectives</a>
@@ -321,7 +319,7 @@
   <a href="../../company/events/">Events</a>
   <a href="../../company/careers/">Careers</a>
   <a href="../../company/contact/">Contact</a>
-  <a href="../../ar/what-we-do/ai-assurance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+  <a href="../../ar/engagements/managed-detection-and-response/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
   <a class="cta" href="../../company/contact/">Talk to our team</a>
 </div>
 
@@ -331,10 +329,10 @@
   <div class="wrap hero__in">
    <div class="hero__copy">
     
-    <h1><span class="label label--accent">Engagement 05 &nbsp;·&nbsp; Managed Detection &amp; Response</span> Someone Judges What Looks Wrong.</h1>
+    <h1><span class="label label--accent">Engagement &nbsp;·&nbsp; Managed Detection &amp; Response</span> Someone Judges What Looks Wrong.</h1>
     <p class="hero__sub">That judgment depends on your systems, your identity model and your processes, and it is made by people who are still watching at three in the morning. What an analyst may do in your environment is agreed in writing before the service goes live.</p>
-    <div class="hero__meta"><span class="chip">12-month term</span><span class="chip">Cybersecurity</span><span class="chip">Two residency tracks</span></div>
-    <a class="btn btn--signal" href="../../company/contact/">Talk to us about detection <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <div class="hero__meta"><span class="chip">12-month term</span><a class="chip" href="../../what-we-do/ai-cybersecurity/">AI Cybersecurity</a><span class="chip">Two residency tracks</span></div>
+    <a class="btn btn--signal" href="../../company/contact/">Talk to us about MDR <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
    </div>
   </div>
 </section>
@@ -345,10 +343,9 @@
     <div class="split__copy rv">
       <p class="label label--blue">What this is</p>
       <h2 style="margin:18px 0 22px">Managed Detection &amp; Response</h2>
-      <p>Managed detection and response is a subscription service that combines detection engineering, 24/7 monitoring, investigation, and agreed containment action. Orvix delivers it on two tracks: an in-region track for workloads with data residency obligations, and a global track for workloads without them, chosen per workload rather than per customer.</p>
+      <p>Managed Detection &amp; Response (MDR) is a 24/7 operated service on an annual term. It combines detection engineering, round-the-clock monitoring, investigation and agreed containment action. Orvix delivers it on two tracks: an in-region track for workloads with data residency obligations, and a global track for workloads without them, chosen per workload rather than per customer.</p>
     </div>
-    <div class="ph split__media rv" data-delay="120">
-      <p class="ph__brief">PHOTO SLOT — An analyst at a console mid-investigation, shot from behind. Commission rather than license. Set --ph-method.</p>
+    <div class="ph ph--method split__media rv" data-delay="120">
     </div>
   </div></div>
 </section>
@@ -356,8 +353,8 @@
 <section class="sec sec--paper">
   <div class="wrap">
     <div class="sec__head rv"><h2>Where You Stand</h2><p class="label">Four statements · self-check</p></div>
-    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your operating model is already disciplined.", "n": "Four for four suggests the question is coverage economics rather than capability."}, "some": {"t": "The gap is usually authority, not tooling.", "n": "Most organizations can say what is monitored and cannot say what an analyst is permitted to do at two in the morning."}, "many": {"t": "Start with classification, not procurement.", "n": "Which workload sits on which track is the decision that shapes the cost, the contract and the regulatory position."}}'>
-      <div class="check__hd"><p class="label">Answer honestly. It runs in your browser.</p>
+    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your operating model is already disciplined.", "n": "Four for four means the question is coverage economics. Managed Detection and Response can extend the team you have, around the clock."}, "some": {"t": "The gap is usually authority, not tooling.", "n": "Most organizations can say what is monitored and cannot yet say what an analyst is permitted to do at two in the morning."}, "many": {"t": "Start with classification, then procurement.", "n": "Which workload sits on which track is the decision that shapes the cost, the contract and the regulatory position."}}'>
+      <div class="check__hd"><p class="label">Answer honestly.</p>
         <span class="check__count">0 / 4 ANSWERED</span></div>
       <div class="check__q"><p>You know which of your workloads carry a data residency obligation.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Your monitoring covers analyst access and support paths, not only storage location.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>It is written down what an external analyst may do in your environment without asking.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You could produce a complete incident record for an examiner without rebuilding it.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
       <div class="check__out"><div class="field"></div>
@@ -374,8 +371,7 @@
 
 <section class="sec sec--line">
   <div class="wrap"><div class="split split--flip">
-    <div class="ph split__media rv">
-      <p class="ph__brief">PHOTO SLOT — A printed monthly report and an incident record on a table. Commission rather than license. Set --ph-deliver.</p>
+    <div class="ph ph--deliver split__media rv">
     </div>
     <div class="split__copy">
       <div class="rv"><p class="label label--blue">Deliverables</p>
@@ -388,7 +384,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec__head rv"><h2>Questions We Are Asked</h2></div>
-    <div class="faq rv"><details><summary>What is the difference between MDR and a SOC?</summary><div class="faq__a">A security operations center is an organizational function; managed detection and response is a service you buy. MDR provides the detection engineering, the 24/7 analyst coverage, the investigation, and an agreed level of containment action, without requiring you to staff and retain that capability yourself.</div></details><details><summary>Can our data stay in-country?</summary><div class="faq__a">Workloads with a residency obligation run on the in-region track, where telemetry, storage, and analyst access are constrained to the required jurisdiction. The classification is recorded per workload at onboarding, with the obligation that drives it, and reviewed when either changes.</div></details><details><summary>Who is allowed to take action in our environment?</summary><div class="faq__a">Only what you have agreed in writing. Containment authority is defined at onboarding as two lists: actions analysts may take without asking, and actions that always require your approval. There is no implicit authority and no standing administrative access beyond the agreed scope.</div></details><details><summary>Will you audit the service you provide?</summary><div class="faq__a">No. Independent assurance over a service Orvix operates is written by a party that does not report to the delivery team, and where the opinion needs external weight, by a third party entirely. Orvix will not sell delivery and assurance of the same function as one engagement.</div></details><details><summary>How long does onboarding take?</summary><div class="faq__a">Thirty to forty-five days for a typical estate. That covers telemetry design and connection, workload residency classification, detection engineering for your environment, containment authority agreement, and a tested escalation path before the service goes live.</div></details></div>
+    <div class="faq rv"><details><summary>What is the difference between MDR and a SOC?</summary><div class="faq__a">A security operations center is an organizational function; managed detection and response is a service you buy. MDR provides the detection engineering, the 24/7 analyst coverage, the investigation, and an agreed level of containment action, without requiring you to staff and retain that capability yourself.</div></details><details><summary>Can our data stay in-country?</summary><div class="faq__a">Workloads with a residency obligation run on the in-region track, where telemetry, storage, and analyst access are constrained to the required jurisdiction. The classification is recorded per workload at onboarding, with the obligation that drives it, and reviewed when either changes. In markets where security operations require a license, the service runs through a licensed local partner under its own license, named in your contract.</div></details><details><summary>Who is allowed to take action in our environment?</summary><div class="faq__a">Only what you have agreed in writing. Containment authority is defined at onboarding as two lists: actions analysts may take without asking, and actions that always require your approval. There is no implicit authority and no standing administrative access beyond the agreed scope.</div></details><details><summary>Who audits the service you provide?</summary><div class="faq__a">An independent party, which is what makes the opinion worth having. Assurance over a service Orvix operates is written by a party that does not report to the delivery team, or by a fully independent third party when the opinion needs external weight. Delivery and assurance of the same function are always contracted separately.</div></details><details><summary>How long does onboarding take?</summary><div class="faq__a">Thirty to forty-five days for a typical environment. That covers telemetry design and connection, workload residency classification, detection engineering for your environment, containment authority agreement, and a tested escalation path before the service goes live.</div></details></div>
   </div>
 </section>
 
@@ -404,11 +400,10 @@
     <p class="label label--blue">Start here</p>
     <h2>Start with the Classification.</h2>
     <p>Detection engineering and 24/7 monitoring, with every workload assigned to an in-region or global track and the obligation that drives the assignment recorded. Containment authority agreed in writing before go-live.</p>
-    <a class="btn btn--signal" href="../../company/contact/">Talk to us about detection</a>
+    <a class="btn btn--signal" href="../../company/contact/">Talk to us about MDR</a>
     <div class="start__rule"></div>
-    <p class="start__quiet">The people who bring us in are usually the ones who saw it coming.</p>
+    <p class="start__quiet">Agree the rules in daylight, so the night shift can act on them.</p>
   </div>
-  <p class="start__brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</p>
 </section>
 
 <footer class="foot"><div class="wrap">
@@ -433,7 +428,6 @@
       <li><a href="../../industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
       <li><a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
     <div><h4>Research &amp; Company</h4><ul>
-      <li><a href="../../research/assurance-index/">The GCC Assurance Index</a></li>
       <li><a href="../../research/maturity-model/">The Trust Maturity Model</a></li>
       <li><a href="../../research/case-studies/">Case studies</a></li>
       <li><a href="../../company/about/">About us</a></li>
@@ -445,7 +439,7 @@
   </div>
   <div class="foot__bar">
     <p>© 2026 Orvix. Sharjah Media City Free Zone, UAE.</p>
-    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</p>
+    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</p>
   </div>
 </div></footer>
 

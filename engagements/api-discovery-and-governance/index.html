@@ -32,6 +32,8 @@
 
 <link rel="stylesheet" href="../../assets/css/engagement.css">
 <style>
+/* photographs for the two split regions (see "photo regions" in engagement.css) */
+:root{--ph-method:url('/images/eng-api-discovery-1.webp');--ph-deliver:url('/images/eng-api-discovery-2.webp')}
 .art__glow{background:radial-gradient(58%% 62%% at 72% 42%, rgba(3,29,150,.34), rgba(3,7,44,0) 70%)}
 .pk{opacity:.26;stroke-dasharray:44 320;animation-name:pk;animation-timing-function:linear;animation-iteration-count:infinite}@keyframes pk{from{stroke-dashoffset:320}to{stroke-dashoffset:-44}}
 </style>
@@ -112,7 +114,7 @@
           "name": "Do you assess against OWASP API Security Top 10?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Findings are mapped to those categories, with weight given to the authorization failures that dominate real incidents — object-level, property-level, and function-level authorization — alongside unrestricted resource consumption and unrestricted access to sensitive business flows."
+            "text": "Yes. Findings are mapped to those categories, with weight given to the authorization failures that dominate real incidents (object-level, property-level and function-level authorization), alongside unrestricted resource consumption and unrestricted access to sensitive business flows."
           }
         },
         {
@@ -179,6 +181,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/glow.css">
 <script src="../../assets/nav.js" defer></script>
 <script src="../../assets/reveal.js" defer></script>
 </head>
@@ -219,14 +222,14 @@
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="../../engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="../../engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="../../engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="../../engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -246,15 +249,11 @@
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="../../research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="../../research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="../../research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="../../research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="../../research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="../../research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="../../research/case-studies/">All case studies</a>
+          <a class="sub" href="../../research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -308,7 +307,6 @@
   <a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="../../research/maturity-model/">The Trust Maturity Model</a>
-  <a href="../../research/assurance-index/">The GCC Assurance Index</a>
   <a href="../../research/readiness-assessment/">Readiness self-assessment</a>
   <a href="../../research/case-studies/">Case studies</a>
   <a href="../../research/perspectives/">Perspectives</a>
@@ -321,7 +319,7 @@
   <a href="../../company/events/">Events</a>
   <a href="../../company/careers/">Careers</a>
   <a href="../../company/contact/">Contact</a>
-  <a href="../../ar/what-we-do/ai-assurance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+  <a href="../../ar/engagements/api-discovery-and-governance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
   <a class="cta" href="../../company/contact/">Talk to our team</a>
 </div>
 
@@ -331,10 +329,10 @@
   <div class="wrap hero__in">
    <div class="hero__copy">
     
-    <h1><span class="label label--accent">Engagement 04 &nbsp;·&nbsp; API Discovery &amp; Governance</span> Every Interface Is a Door You Own.</h1>
-    <p class="hero__sub">You run more of them than your catalog shows, and each one has a lock that somebody else installed. Findings map to the OWASP API Security Top 10, with the authorization failures weighted first.</p>
-    <div class="hero__meta"><span class="chip">4–6 weeks</span><span class="chip">Applied AI &amp; data</span><span class="chip">OWASP API Top 10</span></div>
-    <a class="btn btn--signal" href="../../company/contact/">Request an API discovery <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <h1><span class="label label--accent">Engagement &nbsp;·&nbsp; API Discovery &amp; Governance</span> Every Interface Is a Door You Own.</h1>
+    <p class="hero__sub">You run more of them than your catalog shows, and each one has a lock that another team installed. Findings map to the OWASP API Security Top 10, with the authorization failures weighted first.</p>
+    <div class="hero__meta"><span class="chip">4–6 weeks</span><a class="chip" href="../../what-we-do/applied-ai-and-data/">Applied AI &amp; Data</a><span class="chip">OWASP API Top 10</span></div>
+    <a class="btn btn--signal" href="../../company/contact/">Request API Discovery &amp; Governance <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
    </div>
   </div>
 </section>
@@ -345,10 +343,9 @@
     <div class="split__copy rv">
       <p class="label label--blue">What this is</p>
       <h2 style="margin:18px 0 22px">API Discovery &amp; Governance</h2>
-      <p>API discovery finds the interfaces actually running in an environment — including undocumented, deprecated, and partner-facing endpoints that no inventory records. Governance is what follows: classifying each API by data sensitivity and regulatory exposure, assessing its controls, and assigning ownership, standards, and lifecycle gates.</p>
+      <p>API Discovery &amp; Governance starts by finding the interfaces (APIs) actually running in your environment, including undocumented, deprecated and partner-facing endpoints that no inventory records. Governance is what follows: classifying each API by data sensitivity and regulatory exposure, assessing its controls, and assigning ownership, standards, and lifecycle gates.</p>
     </div>
-    <div class="ph split__media rv" data-delay="120">
-      <p class="ph__brief">PHOTO SLOT — Two engineers at a shared screen reviewing a service map. Screen content synthetic. Commission rather than license. Set --ph-method.</p>
+    <div class="ph ph--method split__media rv" data-delay="120">
     </div>
   </div></div>
 </section>
@@ -356,8 +353,8 @@
 <section class="sec sec--paper">
   <div class="wrap">
     <div class="sec__head rv"><h2>Where You Stand</h2><p class="label">Four statements · self-check</p></div>
-    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your catalog is doing its job.", "n": "That is rare. The value here would be periodic rediscovery, since the gap reopens with every migration and acquisition."}, "some": {"t": "The map and the territory have drifted.", "n": "Deprecated versions kept alive for one partner, services exposed during a migration, endpoints from low-code platforms. Ordinary residue, material consequence."}, "many": {"t": "Your controls were designed against the wrong map.", "n": "Discovery routinely returns a surface materially larger than the catalog. That difference is where obligation and revenue are traveling unguarded."}}'>
-      <div class="check__hd"><p class="label">Answer honestly. It runs in your browser.</p>
+    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your catalog is doing its job.", "n": "That is rare. Keep it that way with periodic rediscovery, since the gap reopens with every migration and acquisition."}, "some": {"t": "The map and the territory have drifted.", "n": "Deprecated versions kept alive for one partner, services exposed during a migration, endpoints from low-code platforms. Ordinary residue, material consequence."}, "many": {"t": "Your controls need the real map.", "n": "Discovery routinely returns a surface materially larger than the catalog. That difference is where obligation and revenue are traveling unguarded, and where discovery pays for itself."}}'>
+      <div class="check__hd"><p class="label">Answer honestly.</p>
         <span class="check__count">0 / 4 ANSWERED</span></div>
       <div class="check__q"><p>Your API catalog matches what is actually reachable in production.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>You know which interfaces carry personal data across a border.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Every interface has a named owner and a specification.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>An AI agent with tool access could not reach an undocumented endpoint.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
       <div class="check__out"><div class="field"></div>
@@ -374,8 +371,7 @@
 
 <section class="sec sec--line">
   <div class="wrap"><div class="split split--flip">
-    <div class="ph split__media rv">
-      <p class="ph__brief">PHOTO SLOT — A printed interface register, tabbed and annotated. Commission rather than license. Set --ph-deliver.</p>
+    <div class="ph ph--deliver split__media rv">
     </div>
     <div class="split__copy">
       <div class="rv"><p class="label label--blue">Deliverables</p>
@@ -388,7 +384,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec__head rv"><h2>Questions We Are Asked</h2></div>
-    <div class="faq rv"><details><summary>What is a shadow API?</summary><div class="faq__a">An interface that is running and reachable but absent from the organization&#x27;s catalog. The common sources are deprecated versions kept alive for one partner, internal services exposed during a migration and never withdrawn, endpoints generated by low-code platforms, and interfaces inherited through acquisition.</div></details><details><summary>How do you discover APIs we don&#x27;t know about?</summary><div class="faq__a">By not relying on any single source. Gateway and DNS configuration, certificate records, traffic observation at the edge and between services, repository and specification scanning, cloud provider inventories, and partner integration contracts each surface a different subset, and the union is materially larger than any catalog.</div></details><details><summary>Do you assess against OWASP API Security Top 10?</summary><div class="faq__a">Yes. Findings are mapped to those categories, with weight given to the authorization failures that dominate real incidents — object-level, property-level, and function-level authorization — alongside unrestricted resource consumption and unrestricted access to sensitive business flows.</div></details><details><summary>Why is this an AI-related engagement?</summary><div class="faq__a">Because an AI agent is only as contained as the tools it can reach. Once a model is given tool access, the API surface becomes a permission boundary, and an undocumented endpoint with weak authorization becomes reachable by a system that will find it faster than a person.</div></details><details><summary>What do we get beyond a report?</summary><div class="faq__a">A governance operating model: named ownership, a specification standard, a lifecycle with a deprecation path, and review gates positioned in the delivery pipeline rather than in a policy document. The register is delivered in a form that can be maintained.</div></details></div>
+    <div class="faq rv"><details><summary>What is a shadow API?</summary><div class="faq__a">An interface that is running and reachable but absent from the organization&#x27;s catalog. The common sources are deprecated versions kept alive for one partner, internal services exposed during a migration and never withdrawn, endpoints generated by low-code platforms, and interfaces inherited through acquisition.</div></details><details><summary>How do you discover APIs we don&#x27;t know about?</summary><div class="faq__a">By not relying on any single source. Gateway and DNS configuration, certificate records, traffic observation at the edge and between services, repository and specification scanning, cloud provider inventories, and partner integration contracts each surface a different subset, and the union is materially larger than any catalog.</div></details><details><summary>Do you assess against OWASP API Security Top 10?</summary><div class="faq__a">Yes. Findings are mapped to those categories, with weight given to the authorization failures that dominate real incidents (object-level, property-level and function-level authorization), alongside unrestricted resource consumption and unrestricted access to sensitive business flows.</div></details><details><summary>Why is this an AI-related engagement?</summary><div class="faq__a">Because an AI agent is only as contained as the tools it can reach. Once a model is given tool access, the API surface becomes a permission boundary, and an undocumented endpoint with weak authorization becomes reachable by a system that will find it faster than a person.</div></details><details><summary>What do we get beyond a report?</summary><div class="faq__a">A governance operating model: named ownership, a specification standard, a lifecycle with a deprecation path, and review gates positioned in the delivery pipeline rather than in a policy document. The register is delivered in a form that can be maintained.</div></details></div>
   </div>
 </section>
 
@@ -403,12 +399,11 @@
   <div class="wrap start__in rv">
     <p class="label label--blue">Start here</p>
     <h2>Start with the Map.</h2>
-    <p>A fixed-scope discovery of the interfaces actually running, classified by data sensitivity and regulatory exposure, assessed against OWASP API Security Top 10, with a governance model attached. Defined price, defined duration, no obligation beyond it.</p>
-    <a class="btn btn--signal" href="../../company/contact/">Request an API discovery</a>
+    <p>A fixed-scope discovery of the interfaces actually running, classified by data sensitivity and regulatory exposure, assessed against the OWASP API Security Top 10, with a governance model attached. Scoped and priced up front, for a fixed fee.</p>
+    <a class="btn btn--signal" href="../../company/contact/">Request API Discovery &amp; Governance</a>
     <div class="start__rule"></div>
-    <p class="start__quiet">The people who bring us in are usually the ones who saw it coming.</p>
+    <p class="start__quiet">Govern the surface you actually run.</p>
   </div>
-  <p class="start__brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</p>
 </section>
 
 <footer class="foot"><div class="wrap">
@@ -433,7 +428,6 @@
       <li><a href="../../industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
       <li><a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
     <div><h4>Research &amp; Company</h4><ul>
-      <li><a href="../../research/assurance-index/">The GCC Assurance Index</a></li>
       <li><a href="../../research/maturity-model/">The Trust Maturity Model</a></li>
       <li><a href="../../research/case-studies/">Case studies</a></li>
       <li><a href="../../company/about/">About us</a></li>
@@ -445,7 +439,7 @@
   </div>
   <div class="foot__bar">
     <p>© 2026 Orvix. Sharjah Media City Free Zone, UAE.</p>
-    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</p>
+    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</p>
   </div>
 </div></footer>
 

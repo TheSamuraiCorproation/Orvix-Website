@@ -6,7 +6,7 @@
 # per page), which is why 'unsafe-inline' is present. Everything else - any
 # other origin, frames, objects, form targets - is refused.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self'; connect-src 'self'; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -27,3 +27,14 @@
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 /assets/img/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Blog admin. Editors sign in by emailed link (netlify/functions/blog.mjs); this adds a
+# stricter script policy (no inline scripts at all), no caching and no indexing.
+# Netlify sends both policies; the browser enforces the stricter of the two.
+/admin/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+/api/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow

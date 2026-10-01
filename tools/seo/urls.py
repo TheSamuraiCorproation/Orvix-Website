@@ -66,7 +66,7 @@ def discover(root: pathlib.Path) -> list[str]:
     out = []
     for p in sorted(root.rglob("*.html")):
         rel = p.relative_to(root).as_posix()
-        if rel.startswith("tools/") or rel == "404.html":
+        if rel.startswith(("tools/", "admin/", "email/")) or rel == "404.html":  # admin/ is the blog dashboard, email/ newsletter templates
             # 404.html is served by Netlify for any missing path; it has no
             # URL of its own and is not a page in the table
             continue

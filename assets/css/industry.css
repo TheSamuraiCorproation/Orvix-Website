@@ -937,6 +937,9 @@ font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);d
   .clock td::before,.offers td::before{content:attr(data-l);display:block;font-family:var(--m);
   font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
   .reviewed{margin-left:0;width:100%}
+  /* the fee table on a dark band: keep the cards dark so the white text stays readable */
+  .ondark .clock tr,.ondark .offers tr{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18)}
+  .ondark .clock td::before,.ondark .offers td::before{color:var(--cyan)}
 }
 
 /* all sectors grid */

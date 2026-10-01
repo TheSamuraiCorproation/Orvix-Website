@@ -32,6 +32,8 @@
 
 <link rel="stylesheet" href="../../assets/css/engagement.css">
 <style>
+/* photographs for the two split regions (see "photo regions" in engagement.css) */
+:root{--ph-method:url('/images/eng-human-risk-1.webp');--ph-deliver:url('/images/eng-human-risk-2.webp')}
 .art__glow{background:radial-gradient(58%% 62%% at 78% 34%, rgba(3,29,150,.34), rgba(3,7,44,0) 70%)}
 .pl{opacity:.13;animation:pl 13.0s linear infinite}@keyframes pl{0%{opacity:.13}3%{opacity:.52}26%{opacity:.28}48%{opacity:.13}100%{opacity:.13}}.pg{opacity:.30;stroke-dasharray:348;animation:pg 13.0s linear infinite}@keyframes pg{0%{stroke-dashoffset:348}42%{stroke-dashoffset:0}42.01%,100%{stroke-dashoffset:348}}.cn{opacity:.24;stroke-dasharray:110;animation:cn 13.0s linear infinite}@keyframes cn{0%,41%{stroke-dashoffset:110}50%,92%{stroke-dashoffset:0}92.01%,100%{stroke-dashoffset:110}}.cnh{opacity:0;animation:cnh 13.0s linear infinite}@keyframes cnh{0%,48%{opacity:0}50%,92%{opacity:.38}92.01%,100%{opacity:0}}
 </style>
@@ -96,7 +98,7 @@
           "name": "What is impersonation defense?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is the set of controls that keeps a business process working correctly when an attacker can convincingly imitate a person by voice, video, or document. The defense is mostly procedural — out-of-band verification, independent approval, and a fast escalation route — with detection technology used where the process cannot carry the load alone."
+            "text": "It is the set of controls that keeps a business process working correctly when an attacker can convincingly imitate a person by voice, video, or document. The defense is mostly procedural (out-of-band verification, independent approval and a fast escalation route), with detection technology used where the process cannot carry the load alone."
           }
         },
         {
@@ -179,6 +181,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/glow.css">
 <script src="../../assets/nav.js" defer></script>
 <script src="../../assets/reveal.js" defer></script>
 </head>
@@ -219,14 +222,14 @@
 
     <li><button type="button" class="has" aria-haspopup="true">Engagements</button>
       <div class="dd">
-        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI estate inventory</a>
-        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model evaluation &amp; red team</a>
-        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human risk &amp; impersonation defense</a>
-        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API discovery &amp; governance</a>
-        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed detection &amp; response</a>
-        <a href="../../engagements/data-residency-review/"><i>06</i>Data residency review</a>
-        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure design review</a>
-        <a href="../../engagements/assurance-review/"><i>08</i>Assurance review</a>
+        <a href="../../engagements/ai-estate-inventory/"><i>01</i>AI Estate Inventory</a>
+        <a href="../../engagements/model-evaluation-and-red-team/"><i>02</i>Model Evaluation &amp; Red Team</a>
+        <a href="../../engagements/human-risk-and-impersonation-defense/"><i>03</i>Human Risk &amp; Impersonation Defense</a>
+        <a href="../../engagements/api-discovery-and-governance/"><i>04</i>API Discovery &amp; Governance</a>
+        <a href="../../engagements/managed-detection-and-response/"><i>05</i>Managed Detection &amp; Response</a>
+        <a href="../../engagements/data-residency-review/"><i>06</i>Data Residency Review</a>
+        <a href="../../engagements/infrastructure-design-review/"><i>07</i>Infrastructure Design Review</a>
+        <a href="../../engagements/assurance-review/"><i>08</i>Assurance Review</a>
       </div></li>
 
     <li><button type="button" class="has" aria-haspopup="true">Industries</button>
@@ -246,15 +249,11 @@
         <div class="mcol">
           <span class="head grouplbl">Frameworks</span>
           <a class="sub" href="../../research/maturity-model/">The Trust Maturity Model</a>
-          <a class="sub" href="../../research/assurance-index/">The GCC Assurance Index</a>
           <a class="sub" href="../../research/readiness-assessment/">Readiness self-assessment</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Case studies</span>
-          <a class="sub" href="../../research/case-studies/financial-services/">Financial services &mdash; the AI register</a>
-          <a class="sub" href="../../research/case-studies/telecom/">Telecom &mdash; cross-border connectivity</a>
-          <a class="sub" href="../../research/case-studies/energy/">Energy &amp; utilities &mdash; OT visibility</a>
-          <a class="sub" href="../../research/case-studies/">All case studies</a>
+          <a class="sub" href="../../research/case-studies/">References on request</a>
         </div>
         <div class="mcol">
           <span class="head grouplbl">Insights</span>
@@ -308,7 +307,6 @@
   <a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a>
   <h5>Research</h5>
   <a href="../../research/maturity-model/">The Trust Maturity Model</a>
-  <a href="../../research/assurance-index/">The GCC Assurance Index</a>
   <a href="../../research/readiness-assessment/">Readiness self-assessment</a>
   <a href="../../research/case-studies/">Case studies</a>
   <a href="../../research/perspectives/">Perspectives</a>
@@ -321,7 +319,7 @@
   <a href="../../company/events/">Events</a>
   <a href="../../company/careers/">Careers</a>
   <a href="../../company/contact/">Contact</a>
-  <a href="../../ar/what-we-do/ai-assurance/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+  <a href="../../ar/engagements/human-risk-and-impersonation-defense/" lang="ar" hreflang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
   <a class="cta" href="../../company/contact/">Talk to our team</a>
 </div>
 
@@ -331,10 +329,10 @@
   <div class="wrap hero__in">
    <div class="hero__copy">
     
-    <h1><span class="label label--accent">Engagement 03 &nbsp;·&nbsp; Impersonation Defense</span> Your Controls Still Trust a Voice.</h1>
+    <h1><span class="label label--accent">Engagement &nbsp;·&nbsp; Human Risk &amp; Impersonation Defense</span> Your Controls Still Trust a Voice.</h1>
     <p class="hero__sub">They trust a face and a signature too, and all three can now be copied in minutes. We map the approval steps that rely on them, test them under written rules, and document what a supervisor will ask about.</p>
-    <div class="hero__meta"><span class="chip">4 weeks</span><span class="chip">Cybersecurity</span><span class="chip">Written rules of engagement</span></div>
-    <a class="btn btn--signal" href="../../company/contact/">Request a control review <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <div class="hero__meta"><span class="chip">4 weeks</span><a class="chip" href="../../what-we-do/ai-cybersecurity/">AI Cybersecurity</a><span class="chip">Written rules of engagement</span></div>
+    <a class="btn btn--signal" href="../../company/contact/">Book a scoping call <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
    </div>
   </div>
 </section>
@@ -345,10 +343,9 @@
     <div class="split__copy rv">
       <p class="label label--blue">What this is</p>
       <h2 style="margin:18px 0 22px">Human Risk &amp; Impersonation Defense</h2>
-      <p>A deepfake control review maps every business process that depends on recognizing a person — payment approval, vendor detail changes, executive requests, digital onboarding, helpdesk resets — tests those processes under controlled impersonation conditions, and documents the control gaps in a form a supervisor or auditor will accept.</p>
+      <p>Human Risk &amp; Impersonation Defense maps every business process that depends on recognizing a person: payment approval, vendor detail changes, executive requests, digital onboarding and helpdesk resets. It covers the full range of impersonation, from a convincing email to a cloned voice or video. We test those processes under controlled conditions and document the control gaps in a form a supervisor or auditor will accept.</p>
     </div>
-    <div class="ph split__media rv" data-delay="120">
-      <p class="ph__brief">PHOTO SLOT — A payments or fraud team at a shared screen, mid-review. Releases required. Commission rather than license. Set --ph-method.</p>
+    <div class="ph ph--method split__media rv" data-delay="120">
     </div>
   </div></div>
 </section>
@@ -356,8 +353,8 @@
 <section class="sec sec--paper">
   <div class="wrap">
     <div class="sec__head rv"><h2>Where You Stand</h2><p class="label">Four statements · self-check</p></div>
-    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your controls are ahead of the threat.", "n": "Four for four is uncommon. The remaining work is keeping the documentation current as the processes change."}, "some": {"t": "The exposure is narrow and specific.", "n": "In most organizations two or three processes carry nearly all of it. Four weeks identifies which, and what closes them."}, "many": {"t": "The processes have not been re-derived.", "n": "None of this is carelessness \u2014 each control was proportionate when impersonation was expensive. The cost has collapsed and the design has not moved."}}'>
-      <div class="check__hd"><p class="label">Answer honestly. It runs in your browser.</p>
+    <div class="check rv" data-check='{"pending": {"t": "Answer all four to see where you stand.", "n": "Nothing is sent anywhere. This runs entirely in your browser."}, "none": {"t": "Your controls are ahead of the threat.", "n": "Four for four is uncommon. The remaining work is keeping the documentation current as the processes change."}, "some": {"t": "The exposure is narrow and specific.", "n": "In most organizations two or three processes carry nearly all of it. Four weeks identifies which, and what closes them."}, "many": {"t": "The processes are due for a redesign.", "n": "Each control was proportionate when impersonation was expensive. That cost has collapsed, and four weeks brings the design up to date."}}'>
+      <div class="check__hd"><p class="label">Answer honestly.</p>
         <span class="check__count">0 / 4 ANSWERED</span></div>
       <div class="check__q"><p>A vendor bank-detail change requires verification on a number from your own records.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>A payment above threshold cannot be released on one authority.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Your onboarding liveness check has been assessed against injected video, and the assessment is written down.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div><div class="check__q"><p>Staff have a fast, blameless escalation route that is quicker than complying with the request.</p><div class="toggle" role="group" aria-label="Answer"><button type="button" class="yes" aria-pressed="false">Yes</button><button type="button" class="no" aria-pressed="false">No</button></div></div>
       <div class="check__out"><div class="field"></div>
@@ -374,13 +371,12 @@
 
 <section class="sec sec--line">
   <div class="wrap"><div class="split split--flip">
-    <div class="ph split__media rv">
-      <p class="ph__brief">PHOTO SLOT — A signed process document and a printed control map on a desk. Commission rather than license. Set --ph-deliver.</p>
+    <div class="ph ph--deliver split__media rv">
     </div>
     <div class="split__copy">
       <div class="rv"><p class="label label--blue">Deliverables</p>
         <h2 style="margin:18px 0 4px">What You Get</h2></div>
-      <div class="dlist" style="margin-top:26px" data-pop><div class="dl rv" data-delay="0"><div class="dl__n">01</div><div><h3>Trust-Dependent Process Map</h3><p>Every process where recognizing a person is the control, with the control point identified.</p></div></div><div class="dl rv" data-delay="40"><div class="dl__n">02</div><div><h3>Simulation Results</h3><p>What was attempted, what the control did, and where the process actually broke.</p></div></div><div class="dl rv" data-delay="80"><div class="dl__n">03</div><div><h3>Control Gap Analysis</h3><p>Procedural and technical gaps, ranked by exposure rather than by ease of fix.</p></div></div><div class="dl rv" data-delay="120"><div class="dl__n">04</div><div><h3>Supervisor-Facing Documentation Pack</h3><p>Scope, method, findings, decisions, and accepted risk with named owners.</p></div></div><div class="dl rv" data-delay="160"><div class="dl__n">05</div><div><h3>Awareness Brief</h3><p>A short, specific brief for the roles sitting inside the exposed processes — not a general training module.</p></div></div><div class="dl rv" data-delay="200"><div class="dl__n">06</div><div><h3>Detection Evaluation Criteria</h3><p>Written criteria for any tooling decision, produced before any vendor recommendation.</p></div></div></div>
+      <div class="dlist" style="margin-top:26px" data-pop><div class="dl rv" data-delay="0"><div class="dl__n">01</div><div><h3>Trust-Dependent Process Map</h3><p>Every process where recognizing a person is the control, with the control point identified.</p></div></div><div class="dl rv" data-delay="40"><div class="dl__n">02</div><div><h3>Simulation Results</h3><p>What was attempted, what the control did, and where the process actually broke.</p></div></div><div class="dl rv" data-delay="80"><div class="dl__n">03</div><div><h3>Control Gap Analysis</h3><p>Procedural and technical gaps, ranked by exposure rather than by ease of fix.</p></div></div><div class="dl rv" data-delay="120"><div class="dl__n">04</div><div><h3>Supervisor-Facing Documentation Pack</h3><p>Scope, method, findings, decisions, and accepted risk with named owners.</p></div></div><div class="dl rv" data-delay="160"><div class="dl__n">05</div><div><h3>Awareness Brief</h3><p>A short, specific brief for the roles inside the exposed processes, written around the decisions they actually make.</p></div></div><div class="dl rv" data-delay="200"><div class="dl__n">06</div><div><h3>Detection Evaluation Criteria</h3><p>Written criteria for any tooling decision, produced before any vendor recommendation.</p></div></div></div>
     </div>
   </div></div>
 </section>
@@ -388,7 +384,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec__head rv"><h2>Questions We Are Asked</h2></div>
-    <div class="faq rv"><details><summary>What is impersonation defense?</summary><div class="faq__a">It is the set of controls that keeps a business process working correctly when an attacker can convincingly imitate a person by voice, video, or document. The defense is mostly procedural — out-of-band verification, independent approval, and a fast escalation route — with detection technology used where the process cannot carry the load alone.</div></details><details><summary>Do you simulate deepfake attacks against our staff?</summary><div class="faq__a">Within written rules of engagement, yes. Named individuals are impersonated only with their written consent, no customer is targeted, and no live payment is moved. The objective is to observe whether the control operates, not to demonstrate that people can be fooled.</div></details><details><summary>Which processes are most exposed?</summary><div class="faq__a">In most organizations, vendor and payroll bank-detail changes, payment exception release, and helpdesk credential reset carry the majority of the exposure. Digital onboarding carries the regulatory exposure, because the assessment of injection attacks against liveness checks is frequently undocumented.</div></details><details><summary>Does this cover onboarding and eKYC?</summary><div class="faq__a">Yes, where remote identity verification is in scope. The engagement assesses how the process handles presentation attacks and injected video streams, and whether the assessment and its result are documented well enough to satisfy a supervisor.</div></details><details><summary>Do we need detection technology?</summary><div class="faq__a">Sometimes. The engagement produces evaluation criteria before it produces a recommendation, and several of the most valuable findings are procedural changes that cost nothing. Technology is proposed where a process cannot be made safe by design alone.</div></details></div>
+    <div class="faq rv"><details><summary>What is impersonation defense?</summary><div class="faq__a">It is the set of controls that keeps a business process working correctly when an attacker can convincingly imitate a person by voice, video, or document. The defense is mostly procedural (out-of-band verification, independent approval and a fast escalation route), with detection technology used where the process cannot carry the load alone.</div></details><details><summary>Do you simulate deepfake attacks against our staff?</summary><div class="faq__a">Within written rules of engagement, yes. Named individuals are impersonated only with their written consent, no customer is targeted, and no live payment is moved. The objective is to observe whether the control operates, not to demonstrate that people can be fooled.</div></details><details><summary>Which processes are most exposed?</summary><div class="faq__a">In most organizations, vendor and payroll bank-detail changes, payment exception release, and helpdesk credential reset carry the majority of the exposure. Digital onboarding carries the regulatory exposure, because the assessment of injection attacks against liveness checks is frequently undocumented.</div></details><details><summary>Does this cover onboarding and eKYC?</summary><div class="faq__a">Yes, where remote identity verification is in scope. The engagement assesses how the process handles presentation attacks and injected video streams, and whether the assessment and its result are documented well enough to satisfy a supervisor.</div></details><details><summary>Do we need detection technology?</summary><div class="faq__a">Sometimes. The engagement produces evaluation criteria before it produces a recommendation, and several of the most valuable findings are procedural changes that cost nothing. Technology is proposed where a process cannot be made safe by design alone.</div></details></div>
   </div>
 </section>
 
@@ -403,12 +399,11 @@
   <div class="wrap start__in rv">
     <p class="label label--blue">Start here</p>
     <h2>Start with the Process.</h2>
-    <p>A fixed-scope review of the approvals that depend on recognizing a person — mapped, tested under written rules of engagement, and documented in the form a supervisor will ask for. Defined price, defined duration, no obligation beyond it.</p>
-    <a class="btn btn--signal" href="../../company/contact/">Request a control review</a>
+    <p>A fixed-scope review of the approvals that depend on recognizing a person: mapped, tested under written rules of engagement, and documented in the form a supervisor will ask for. Four weeks, fixed fee, no commitment beyond it.</p>
+    <a class="btn btn--signal" href="../../company/contact/">Book a scoping call</a>
     <div class="start__rule"></div>
-    <p class="start__quiet">The people who bring us in are usually the ones who saw it coming.</p>
+    <p class="start__quiet">Make the right response the easy one.</p>
   </div>
-  <p class="start__brief">PHOTO SLOT — a woman presenting to a seated board, mid-sentence, room attentive. Regional, contemporary, unposed. Commission rather than license. Set --ph-close.</p>
 </section>
 
 <footer class="foot"><div class="wrap">
@@ -433,7 +428,6 @@
       <li><a href="../../industries/industrial-manufacturing/">Industrial &amp; Manufacturing</a></li>
       <li><a href="../../industries/retail-hospitality-real-estate/">Retail, Hospitality &amp; Real Estate</a></li></ul></div>
     <div><h4>Research &amp; Company</h4><ul>
-      <li><a href="../../research/assurance-index/">The GCC Assurance Index</a></li>
       <li><a href="../../research/maturity-model/">The Trust Maturity Model</a></li>
       <li><a href="../../research/case-studies/">Case studies</a></li>
       <li><a href="../../company/about/">About us</a></li>
@@ -445,7 +439,7 @@
   </div>
   <div class="foot__bar">
     <p>© 2026 Orvix. Sharjah Media City Free Zone, UAE.</p>
-    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001. We are not a regulator-certified auditor.</p>
+    <p>Our work aligns to UAE IA Standard, SAMA CSF and ISO/IEC 42001.</p>
   </div>
 </div></footer>
 

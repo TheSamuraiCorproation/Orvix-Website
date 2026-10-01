@@ -120,6 +120,10 @@
 .cmp .ph{border:none}
 .cmp .ph::before{content:none}
 .cmp .ph .brief{position:static;padding:0}
+/* A placeholder with a photograph: class="ph photo" and --img set inline.
+   The brief stays in the markup as the shot list but is not shown. */
+.cmp .ph.photo{background:var(--graphite) var(--img,none) center/cover no-repeat}
+.cmp .ph.photo .brief{display:none}
 .cmp .pill{cursor:auto}
 
 /* --- clearance for the fixed nav ---------------------------------------

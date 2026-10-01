@@ -74,9 +74,11 @@ def robots_txt() -> str:
          "",
          "User-agent: *",
          "Allow: /",
+         "Disallow: /admin/",
+         "Disallow: /api/",
          ""]
     for bot in AI_CRAWLERS:
-        L += [f"User-agent: {bot}", "Allow: /", ""]
+        L += [f"User-agent: {bot}", "Allow: /", "Disallow: /admin/", "Disallow: /api/", ""]
     L += [f"Sitemap: {urls.ORIGIN}/sitemap.xml", ""]
     return "\n".join(L)
 

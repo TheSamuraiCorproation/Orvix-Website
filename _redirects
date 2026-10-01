@@ -11,6 +11,13 @@
 /assets/ar-dictionary.json  /404.html  404!
 /netlify.toml               /404.html  404!
 /.github/*                  /404.html  404!
+/content/*                  /404.html  404!
+/netlify/*                  /404.html  404!
+/.env*                      /404.html  404!
+
+# The blog admin API (netlify/functions/blog.mjs). Posts in content/ are only
+# ever read through it, never served as files (hidden above): drafts included.
+/api/*                      /.netlify/functions/blog/:splat  200
 
 # Old addresses. Engagement and industry pages used to live at
 # <section>/<Folder>/<Folder>.html; they are now <folder>/index.html at the
@@ -64,3 +71,30 @@
 /ar/industries/retail-hospitality-real-estate/retail-hospitality-real-estate.html              /ar/industries/retail-hospitality-real-estate/  301
 /ar/industries/telecommunications/telecommunications.html                                      /ar/industries/telecommunications/  301
 /ar/industries/transport-logistics/transport-logistics.html                                    /ar/industries/transport-logistics/  301
+
+# The GCC Assurance Index was withdrawn (2026-10); its address goes to the Maturity Model.
+/research/assurance-index/*     /research/maturity-model/     301!
+/research/assurance-index       /research/maturity-model/     301!
+/ar/research/assurance-index/*  /ar/research/maturity-model/  301!
+/ar/research/assurance-index    /ar/research/maturity-model/  301!
+
+# The three case-study write-ups were withdrawn (2026-10) until a client clears one;
+# their addresses go to the case-studies page.
+/research/case-studies/energy/*                 /research/case-studies/     301!
+/research/case-studies/energy/                  /research/case-studies/     301!
+/research/case-studies/energy                   /research/case-studies/     301!
+/research/case-studies/financial-services/*     /research/case-studies/     301!
+/research/case-studies/financial-services/      /research/case-studies/     301!
+/research/case-studies/financial-services       /research/case-studies/     301!
+/research/case-studies/telecom/*                /research/case-studies/     301!
+/research/case-studies/telecom/                 /research/case-studies/     301!
+/research/case-studies/telecom                  /research/case-studies/     301!
+/ar/research/case-studies/energy/*              /ar/research/case-studies/  301!
+/ar/research/case-studies/energy/               /ar/research/case-studies/  301!
+/ar/research/case-studies/energy                /ar/research/case-studies/  301!
+/ar/research/case-studies/financial-services/*  /ar/research/case-studies/  301!
+/ar/research/case-studies/financial-services/   /ar/research/case-studies/  301!
+/ar/research/case-studies/financial-services    /ar/research/case-studies/  301!
+/ar/research/case-studies/telecom/*             /ar/research/case-studies/  301!
+/ar/research/case-studies/telecom/              /ar/research/case-studies/  301!
+/ar/research/case-studies/telecom               /ar/research/case-studies/  301!

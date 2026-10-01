@@ -4,8 +4,9 @@ To publish a piece, paste its address next to its title and run
 
     python -m tools.insights
 
-The row on the listing page turns into a link reading "Read now". Leave the
-address empty and the row reads "Coming soon". The Arabic listing follows the
+The row on the listing page turns into a link reading "Read now", and the
+list heading moves from "Coming up" to "Latest". Leave the address empty and
+the row reads "Notify me", linking to the newsletter sign-up. The Arabic listing follows the
 English one automatically; give a piece an "ar" address only if it has a
 separate Arabic article.
 
