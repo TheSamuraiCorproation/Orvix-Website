@@ -101,20 +101,11 @@ a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
   background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 1px,transparent 1px 26px);opacity:.05}
 p.ph__brief{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);max-width:34ch;
   font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:11px;line-height:18px;color:#424560;text-align:right}
-/* The briefs ("PHOTO SLOT - ...") are art direction for the photographer,
-   not copy: they stay in the markup as the shot list but are never shown,
-   the same as on every other template. */
 p.ph__brief,p.start__brief{display:none}
 .ph--hero{--img:var(--ph-hero)}
-/* The two split regions ("How it runs" and "What you get"). Each page sets
-   :root{--ph-method:url(...);--ph-deliver:url(...)} in its own <style>; a
-   page that sets neither keeps the hatched empty slot. assets/nav.js adds
-   .filled once a photo is showing, which drops the hatch. */
 .ph--method{background-image:var(--ph-method,none)}
 .ph--deliver{background-image:var(--ph-deliver,none)}
 .ph.filled::before{content:none}
-/* a light navy wash, so daylight interiors sit on the ink page the way the
-   rest of the site's photography does (there under a much heavier wash) */
 .ph--method.filled::after,.ph--deliver.filled::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(3,7,44,.10),rgba(3,7,44,.34));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 
@@ -124,14 +115,6 @@ p.ph__brief,p.start__brief{display:none}
   opacity:.10;animation:drift 46s linear infinite;pointer-events:none}
 @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-45px,45px,0)}}
 
-/* ── hero art ──────────────────────────────────────────────────────────
-   A single figure per engagement, in the language of the Industries pages:
-   large radial line geometry, low opacity, sitting right of the copy and
-   cropped by the edge of the section. The figure and its motion are emitted
-   per page in the block after this stylesheet.                            */
-/* Full-bleed scene. Nothing expressive is drawn left of 900/1600 in the
-   viewBox, which is where the copy sits, so the headline stays the loudest
-   thing on the surface without needing a scrim over the figure. */
 .art{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
 .art__glow{position:absolute;inset:-25%;animation:glow 22s ease-in-out infinite alternate}
 @keyframes glow{from{transform:scale(1);opacity:.62}
@@ -317,10 +300,6 @@ p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:
   .js .rv{opacity:1;transform:none}
 }
 
-/* hero label inside the h1: displayed as the separate label was. The h1's
-   top margin (calc(var(--u)*2.5), see .hero h1) used to sit between label and
-   heading; the negative margin cancels it above the label and puts it back
-   below, so both land where they did. */
 .hero h1 .label{display:block;margin:calc(var(--u)*-2.5) 0 calc(var(--u)*2.5)}
 
 /* readable line length on wide screens (was up to ~145 characters a line) */
