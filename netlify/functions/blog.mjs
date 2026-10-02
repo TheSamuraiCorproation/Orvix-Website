@@ -171,6 +171,8 @@ const MAX_LIST_FILES = 200;
 export const LOGIN_TTL_S = 15 * 60;
 export const SESSION_TTL_S = 8 * 60 * 60;
 export const SESSION_COOKIE = "__Host-orvix_admin";
+// Set when a sign-in link is requested; the link only works where this cookie is.
+export const LOGIN_COOKIE = "__Host-orvix_login";
 const CLOCK_SKEW_S = 60;
 const THROTTLE_MAX = 5;
 const THROTTLE_WINDOW_MS = 15 * 60 * 1000;
@@ -359,13 +361,24 @@ export function verifyToken(token, secret, expectedTyp, nowMs = Date.now()) {
   return { ...claims, email: claims.email.trim().toLowerCase() };
 }
 
-export function createLoginToken(email, secret, nowMs = Date.now()) {
+/** Hash of the browser-binding cookie that goes into the login token. */
+export function bindHash(bind) {
+  return crypto.createHash("sha256").update(String(bind)).digest("base64url");
+}
+
+export function createLoginToken(email, secret, nowMs = Date.now(), bind = "") {
   const iat = Math.floor(nowMs / 1000);
   return signToken(
-    { typ: "login", email, iat, exp: iat + LOGIN_TTL_S, nonce: crypto.randomBytes(16).toString("base64url") },
+    { typ: "login", email, iat, exp: iat + LOGIN_TTL_S, nonce: crypto.randomBytes(16).toString("base64url"), bind: bindHash(bind) },
     secret,
   );
 }
+
+export function loginCookie(bind) {
+  // Lax, not Strict: the link is opened from an email, a cross-site top-level navigation.
+  return `${LOGIN_COOKIE}=${bind}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${LOGIN_TTL_S}`;
+}
+const CLEAR_LOGIN_COOKIE = `${LOGIN_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
 
 export function createSessionToken(email, secret, nowMs = Date.now()) {
   const iat = Math.floor(nowMs / 1000);
@@ -888,7 +901,9 @@ async function handleLogin(req, context, cfg, { fetchImpl, nowMs, throttle }) {
   const body = await readJsonBody(req, MAX_LOGIN_BODY_BYTES);
   const raw = body && typeof body === "object" && typeof body.email === "string" ? body.email : "";
   const email = raw.trim().toLowerCase();
-  const ok = json(200, { ok: true });
+  // Every answer sets the binding cookie, so the response is the same for any address.
+  const bind = crypto.randomBytes(16).toString("base64url");
+  const ok = json(200, { ok: true }, { "Set-Cookie": loginCookie(bind) });
   if (!email || email.length > 254 || !EMAIL_RE.test(email)) return ok;
 
   // Count every request against both keys, allowed address or not.
@@ -902,7 +917,7 @@ async function handleLogin(req, context, cfg, { fetchImpl, nowMs, throttle }) {
     console.warn(`[blog] login throttled for ${email} (${ipOk ? "email" : "ip"} limit)`);
     return ok;
   }
-  const token = createLoginToken(email, cfg.secret, nowMs);
+  const token = createLoginToken(email, cfg.secret, nowMs, bind);
   const link = `${cfg.siteUrl}/api/login/verify?token=${encodeURIComponent(token)}`;
   const sending = sendLoginEmail(cfg, email, link, fetchImpl);
   // Where the runtime supports it, finish sending after responding so the
@@ -917,8 +932,18 @@ function handleVerify(req, cfg, nowMs) {
   try {
     const claims = verifyToken(token, cfg.secret, "login", nowMs);
     if (!cfg.admins.includes(claims.email)) throw new Error(`email not in ADMIN_EMAILS: ${claims.email}`);
+    // The link only works in the browser that requested it (a mail scanner or
+    // a forwarded email has no cookie, so it gets nothing).
+    const want = Buffer.from(String(claims.bind || ""));
+    const have = Buffer.from(bindHash(getCookie(req, LOGIN_COOKIE)));
+    if (!claims.bind || want.length !== have.length || !crypto.timingSafeEqual(want, have)) {
+      console.warn("[blog] sign-in link opened outside the browser that requested it");
+      return redirect("/admin/?signin=browser");
+    }
     const session = createSessionToken(claims.email, cfg.secret, nowMs);
-    return redirect("/admin/", { "Set-Cookie": sessionCookie(session) });
+    const res = redirect("/admin/", { "Set-Cookie": sessionCookie(session) });
+    res.headers.append("Set-Cookie", CLEAR_LOGIN_COOKIE);
+    return res;
   } catch (err) {
     console.warn(`[blog] sign-in link rejected: ${err?.message || err}`);
     return redirect("/admin/?signin=expired");

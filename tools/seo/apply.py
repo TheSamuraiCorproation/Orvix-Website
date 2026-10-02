@@ -228,7 +228,7 @@ def process(root: pathlib.Path, rel: str) -> dict:
 LEADERSHIP = [
     ("Ziad Darras", "Vice President", "ziad-darras"),
     ("Daryl Simpson", "Chief Technology Officer", "daryl-simpson"),
-    ("Rimoshka Nabil", "Chief Marketing Officer", "rimoshka-nabil"),
+    ("Ada Mazurek", "Chief Marketing Officer", "ada-mazurek"),
     ("Marwan Jaffal", "Chief Financial Officer", "marwan-jaffal"),
 ]
 

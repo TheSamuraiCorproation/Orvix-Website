@@ -212,6 +212,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return f"{head}.{body}.{sig}"
 
     @classmethod
+    def claims(cls, token: str) -> dict | None:
+        try:
+            body = token.split(".")[1]
+            return json.loads(base64.urlsafe_b64decode(body + "=" * (-len(body) % 4)))
+        except Exception:
+            return None
+
+    @classmethod
     def verify(cls, token: str, typ: str) -> str | None:
         try:
             head, body, sig = token.split(".")
@@ -249,9 +257,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     # ---- blog admin API (local) -------------------------------------------
 
-    def api_reply(self, code: int, obj: dict) -> bool:
+    def api_reply(self, code: int, obj: dict, cookie: str | None = None) -> bool:
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
+        if cookie:
+            self.send_header("Set-Cookie", cookie)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
@@ -286,20 +296,28 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 email = (json.loads(self.rfile.read(length) or b"{}").get("email") or "").strip().lower()
             except ValueError:
                 email = ""
+            # the link only works in the browser that asked (same rule as production)
+            bind = secrets.token_urlsafe(16)
             if email in self.admin_emails:
                 token = self.sign({"typ": "login", "email": email, "iat": int(time.time()),
-                                   "exp": int(time.time()) + 15 * 60, "nonce": secrets.token_urlsafe(16)})
+                                   "exp": int(time.time()) + 15 * 60, "nonce": secrets.token_urlsafe(16),
+                                   "bind": hashlib.sha256(bind.encode()).hexdigest()})
                 link = f"http://{self.headers.get('Host', '127.0.0.1')}/api/login/verify?token={token}"
                 sent = send_signin_email(email, link)
                 # locally the link is always printed too, so a held or slow email never locks you out
                 note = " - also emailed via Brevo" if sent else ""
                 print(f"\n  sign-in link for {email} (valid 15 minutes){note}:\n  {link}\n", flush=True)
-            return self.api_reply(200, {"ok": True})  # same answer for any email
+            return self.api_reply(200, {"ok": True}, f"orvix_login={bind}; Path=/; HttpOnly; SameSite=Lax; Max-Age=900")
         if parts == ["login", "verify"] and method == "GET":
             token = parse_qs(urlparse(self.path).query).get("token", [""])[0]
             email = self.verify(token, "login")
             if not email:
                 return self.redirect("/admin/?signin=expired")
+            cookies = dict(p.strip().split("=", 1) for p in self.headers.get("Cookie", "").split(";") if "=" in p)
+            want = (self.claims(token) or {}).get("bind", "")
+            have = hashlib.sha256(cookies.get("orvix_login", "").encode()).hexdigest()
+            if not want or not hmac.compare_digest(want, have):
+                return self.redirect("/admin/?signin=browser")
             session = self.sign({"typ": "session", "email": email, "iat": int(time.time()),
                                  "exp": int(time.time()) + 8 * 3600})
             return self.redirect("/admin/", f"{self.COOKIE}={session}; Path=/; HttpOnly; SameSite=Strict; Max-Age=28800")

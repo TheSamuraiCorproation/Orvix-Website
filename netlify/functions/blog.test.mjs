@@ -264,14 +264,15 @@ describe("login flow", () => {
 
   test("verify sets the session cookie and redirects to /admin/", async () => {
     const handler = createHandler({ env: ENV, now: () => NOW + 60_000 });
-    const t = createLoginToken("editor@orvixnet.com", SECRET, NOW);
-    const res = await handler(req(`/api/login/verify?token=${encodeURIComponent(t)}`, { token: null }));
+    const t = createLoginToken("editor@orvixnet.com", SECRET, NOW, "bind-abc");
+    const res = await handler(req(`/api/login/verify?token=${encodeURIComponent(t)}`, { token: null, headers: { cookie: "__Host-orvix_login=bind-abc" } }));
     assert.equal(res.status, 302);
     assert.equal(res.headers.get("location"), "/admin/");
     assert.equal(res.headers.get("cache-control"), "no-store");
-    const cookie = res.headers.get("set-cookie");
-    const m = /^__Host-orvix_admin=([^;]+); Path=\/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800$/.exec(cookie);
-    assert.ok(m, cookie);
+    const cookies = res.headers.getSetCookie();
+    const m = /^__Host-orvix_admin=([^;]+); Path=\/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800$/.exec(cookies[0]);
+    assert.ok(m, cookies[0]);
+    assert.match(cookies[1], /^__Host-orvix_login=; .*Max-Age=0$/); // the binding cookie is cleared
     assert.equal(verifyToken(m[1], SECRET, "session", NOW + 60_000).email, "editor@orvixnet.com");
     // The new cookie works on /api/me.
     const me = await handler(req("/api/me", { token: m[1] }));
@@ -286,6 +287,24 @@ describe("login flow", () => {
       assert.equal(res.status, 302);
       assert.equal(res.headers.get("location"), "/admin/?signin=expired");
       assert.equal(res.headers.get("set-cookie"), null);
+    }
+  });
+
+  test("a link opened in another browser (no binding cookie) -> /admin/?signin=browser, no session", async () => {
+    const handler = createHandler({ env: ENV, now: () => NOW });
+    const t = createLoginToken("editor@orvixnet.com", SECRET, NOW, "bind-abc");
+    for (const cookie of [undefined, "__Host-orvix_login=other", "__Host-orvix_login="]) {
+      const res = await handler(req(`/api/login/verify?token=${encodeURIComponent(t)}`, { token: null, headers: cookie ? { cookie } : {} }));
+      assert.equal(res.headers.get("location"), "/admin/?signin=browser");
+      assert.equal(res.headers.get("set-cookie"), null);
+    }
+  });
+
+  test("login sets the binding cookie, for any address", async () => {
+    const handler = createHandler({ env: ENV, now: () => NOW, fetchImpl: fakeBrevo().fetchImpl, throttle: new Map() });
+    for (const email of ["editor@orvixnet.com", "stranger@gmail.com"]) {
+      const res = await handler(loginReq(email));
+      assert.match(res.headers.get("set-cookie") || "", /^__Host-orvix_login=[A-Za-z0-9_-]{16,}; Path=\/; HttpOnly; Secure; SameSite=Lax; Max-Age=900$/);
     }
   });
 

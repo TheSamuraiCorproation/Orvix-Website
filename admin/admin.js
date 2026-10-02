@@ -582,7 +582,7 @@ function resetSignin(midEdit) {
   $('signin-submit').disabled = false;
   $('signin-context').hidden = !midEdit;
   $('signin-retry-row').hidden = !midEdit;
-  if (midEdit) $('signin-expired').hidden = true;
+  if (midEdit) { $('signin-expired').hidden = true; $('signin-browser').hidden = true; }
 }
 
 function showSigninView() {
@@ -630,6 +630,7 @@ async function submitSignin(e) {
     $('signin-form').hidden = true;
     $('signin-sent').hidden = false;
     $('signin-expired').hidden = true;
+    $('signin-browser').hidden = true;
     $('signin-again').focus();
   } catch (err) {
     errBox.textContent = err.kind === 'network'
@@ -1847,6 +1848,7 @@ function wire() {
   // Arriving from an expired / used sign-in link: say so, then clean the URL.
   const q = new URLSearchParams(location.search);
   if (q.get('signin') === 'expired') $('signin-expired').hidden = false;
+  if (q.get('signin') === 'browser') $('signin-browser').hidden = false;
   if (location.search) history.replaceState(null, '', location.pathname + location.hash);
 }
 
