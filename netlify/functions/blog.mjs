@@ -151,7 +151,12 @@ import { createNewsletterDrafts } from "../lib/newsletter.mjs";
 
 // Netlify: serve this function at /api/* directly (a /api/* -> function
 // rewrite in _redirects works as well; route parsing handles both).
-export const config = { path: "/api/*" };
+// Netlify's edge rate limit is the real guard: the in-memory throttles below
+// live per function instance and reset on every cold start.
+export const config = {
+  path: "/api/*",
+  rateLimit: { windowSize: 60, windowLimit: 30, aggregateBy: ["ip", "domain"] },
+};
 
 // ---------------------------------------------------------------- constants
 
@@ -420,13 +425,30 @@ export function throttleHit(store, key, nowMs, max = THROTTLE_MAX) {
 const escHtml = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
+/** The sign-in email, in the site's colours, with the wordmark on an ink band. */
+export function loginEmailHtml(cfg, safeLink) {
+  const logo = `${cfg.siteUrl}/images/orvix-logo.png`;
+  return (
+    '<!doctype html><html><body style="margin:0;background:#F2F4F8;font-family:IBM Plex Sans,Arial,Helvetica,sans-serif;color:#03072C">' +
+    '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#F2F4F8"><tr><td align="center" style="padding:32px 16px">' +
+    '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px;background:#ffffff;border-radius:12px;overflow:hidden">' +
+    `<tr><td style="background:#03072C;padding:22px 28px"><img src="${logo}" width="96" alt="Orvix" style="display:block;width:96px;height:auto;border:0"></td></tr>` +
+    '<tr><td style="padding:30px 28px 8px"><p style="margin:0 0 6px;font:600 11px/1 IBM Plex Mono,Consolas,monospace;letter-spacing:.14em;color:#064BEE">PERSPECTIVES ADMIN</p>' +
+    '<h1 style="margin:0 0 14px;font-size:22px;line-height:1.2;font-weight:600">Your sign-in link</h1>' +
+    '<p style="margin:0 0 22px;font-size:15px;line-height:24px;color:#4A5468">Click the button to open the Orvix Perspectives admin. The link works for 15 minutes and only in this browser session.</p>' +
+    `<a href="${safeLink}" style="display:inline-block;background:#48E2E2;color:#03072C;font-weight:600;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px">Sign in to the admin</a>` +
+    `<p style="margin:22px 0 0;font-size:12px;line-height:19px;color:#8A93A6;word-break:break-all">Or paste this address into your browser:<br><a href="${safeLink}" style="color:#064BEE">${safeLink}</a></p></td></tr>` +
+    '<tr><td style="padding:18px 28px 26px;font-size:12px;line-height:19px;color:#8A93A6;border-top:1px solid #E6EAF2">If you didn\'t ask for this, ignore this email. Nobody can sign in without the link.</td></tr>' +
+    "</table></td></tr></table></body></html>"
+  );
+}
+
 export async function sendLoginEmail(cfg, to, link, fetchImpl) {
   const text =
     `Sign in to the Orvix Perspectives admin: ${link}\n\n` +
     "This link works for 15 minutes. If you didn't ask for it, ignore this email.\n";
-  const html =
-    `<p>Sign in to the Orvix Perspectives admin: <a href="${escHtml(link)}">${escHtml(link)}</a></p>` +
-    "<p>This link works for 15 minutes. If you didn't ask for it, ignore this email.</p>";
+  const safe = escHtml(link);
+  const html = loginEmailHtml(cfg, safe);
   try {
     const res = await fetchImpl("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
@@ -466,6 +488,9 @@ export function checkCsrf(req, headerName = "X-Orvix-Admin") {
   const ct = (req.headers.get("content-type") || "").toLowerCase();
   if (!ct.startsWith("application/json")) {
     throw new HttpError(403, "Request blocked", `bad content-type ${ct}`);
+  }
+  if ((req.headers.get("sec-fetch-site") || "").toLowerCase() === "cross-site") {
+    throw new HttpError(403, "Request blocked", "cross-site request");
   }
   const origin = req.headers.get("origin");
   if (origin) {
@@ -868,7 +893,7 @@ async function handleLogin(req, context, cfg, { fetchImpl, nowMs, throttle }) {
 
   // Count every request against both keys, allowed address or not.
   const ipOk = throttleHit(throttle, `ip:${clientIp(req, context)}`, nowMs);
-  const emailOk = throttleHit(throttle, `email:${email}`, nowMs);
+  const emailOk = throttleHit(throttle, `email:${email}`, nowMs, 3);
   if (!cfg.admins.includes(email)) {
     console.warn(`[blog] login requested for non-admin address`);
     return ok;

@@ -117,6 +117,24 @@ def newsletter_drafts(post: dict) -> dict:
     return out
 
 
+def login_email_html(site: str, link: str) -> str:
+    """The sign-in email as netlify/functions/blog.mjs sends it (loginEmailHtml)."""
+    logo = f"{site.rstrip('/')}/images/orvix-logo.png"
+    return (
+        '<!doctype html><html><body style="margin:0;background:#F2F4F8;font-family:IBM Plex Sans,Arial,Helvetica,sans-serif;color:#03072C">'
+        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#F2F4F8"><tr><td align="center" style="padding:32px 16px">'
+        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px;background:#ffffff;border-radius:12px;overflow:hidden">'
+        f'<tr><td style="background:#03072C;padding:22px 28px"><img src="{logo}" width="96" alt="Orvix" style="display:block;width:96px;height:auto;border:0"></td></tr>'
+        '<tr><td style="padding:30px 28px 8px"><p style="margin:0 0 6px;font:600 11px/1 IBM Plex Mono,Consolas,monospace;letter-spacing:.14em;color:#064BEE">PERSPECTIVES ADMIN</p>'
+        '<h1 style="margin:0 0 14px;font-size:22px;line-height:1.2;font-weight:600">Your sign-in link</h1>'
+        '<p style="margin:0 0 22px;font-size:15px;line-height:24px;color:#4A5468">Click the button to open the Orvix Perspectives admin. The link works for 15 minutes and only in this browser session.</p>'
+        f'<a href="{link}" style="display:inline-block;background:#48E2E2;color:#03072C;font-weight:600;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px">Sign in to the admin</a>'
+        f'<p style="margin:22px 0 0;font-size:12px;line-height:19px;color:#8A93A6;word-break:break-all">Or paste this address into your browser:<br><a href="{link}" style="color:#064BEE">{link}</a></p></td></tr>'
+        "<tr><td style=\"padding:18px 28px 26px;font-size:12px;line-height:19px;color:#8A93A6;border-top:1px solid #E6EAF2\">If you didn't ask for this, ignore this email. Nobody can sign in without the link.</td></tr>"
+        "</table></td></tr></table></body></html>"
+    )
+
+
 def send_signin_email(to: str, link: str) -> bool:
     """Send the sign-in link with Brevo, as production does. False if not configured or it failed."""
     env = local_env()
@@ -130,8 +148,7 @@ def send_signin_email(to: str, link: str) -> bool:
         "to": [{"email": to}],
         "subject": "Your Orvix admin sign-in link",
         "textContent": text,
-        "htmlContent": (f'<p>Sign in to the Orvix Perspectives admin:</p><p><a href="{link}">Sign in</a></p>'
-                        "<p>This link works for 15 minutes. If you didn't ask for it, ignore this email.</p>"),
+        "htmlContent": login_email_html(env.get("SITE_URL") or "https://orvixnet.com", link),
     }
     req = urllib.request.Request("https://api.brevo.com/v3/smtp/email", data=json.dumps(body).encode(),
                                  headers={"api-key": key, "Content-Type": "application/json",
@@ -172,6 +189,8 @@ def load_headers() -> list[tuple[str, list[tuple[str, str]]]]:
 def matches(pattern: str, path: str) -> bool:
     if pattern.endswith("/*"):
         return path.startswith(pattern[:-1]) or path == pattern[:-2]
+    if pattern.endswith("*"):  # e.g. /.env*
+        return path.startswith(pattern[:-1])
     return path == pattern
 
 

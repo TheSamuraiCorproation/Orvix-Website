@@ -54,7 +54,7 @@ function linkTag(url, text) {
 function inline(s) {
   const links = [];
   const held = s.replace(MD_LINK, (whole, text, url) => {
-    if (!(url.startsWith('https://') || url.startsWith('http://') || url.startsWith('/'))) return whole;
+    if (!(url.startsWith('https://') || url.startsWith('http://') || (url.startsWith('/') && !url.startsWith('//') && !url.startsWith('/\\')))) return whole;
     links.push([text, url]);
     return '\u0000' + (links.length - 1) + '\u0000';
   });
@@ -121,7 +121,7 @@ const isBlockEl = (n) => BLOCK_TAGS.has(tagName(n));
 
 // What the renderer turns into a link (the editor's link box is stricter).
 function hrefRenderable(h) {
-  return typeof h === 'string' && (h.startsWith('https://') || h.startsWith('http://') || h.startsWith('/'));
+  return typeof h === 'string' && (h.startsWith('https://') || h.startsWith('http://') || (h.startsWith('/') && !h.startsWith('//') && !h.startsWith('/\\')));
 }
 // Keep a URL inside [text](url): no spaces or parentheses.
 function mdUrl(h) {

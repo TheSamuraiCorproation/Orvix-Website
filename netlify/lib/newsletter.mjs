@@ -29,7 +29,7 @@ const USER_AGENT = "orvix-site/1.0"; // Brevo's Cloudflare blocks some default a
 const LIST_ID_RE = /^[1-9]\d{0,9}$/;
 
 const escHtml = (s) =>
-  String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  String(s).replace(/[&<>"'{]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "{": "&#123;" })[c]);
 
 /**
  * Fill a template:

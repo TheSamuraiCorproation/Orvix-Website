@@ -39,7 +39,7 @@ def _link(m: re.Match) -> str:
     text, url = m.group(1), m.group(2)
     if url.startswith(("https://", "http://")):
         return f'<a href="{url}" target="_blank" rel="noopener noreferrer">{text}</a>'
-    if url.startswith("/"):
+    if url.startswith("/") and not url.startswith(("//", "/\\")):
         return f'<a href="{url}">{text}</a>'
     return m.group(0)
 

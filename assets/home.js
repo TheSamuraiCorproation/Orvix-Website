@@ -134,6 +134,17 @@
   if (!flow) return;
   var chips = flow.querySelectorAll('.fl-chip');
   var parts = flow.querySelectorAll('.fl-stage [data-phase]');
+  // a one-line explanation under the pointer, taken from the stage cards
+  var steps = document.querySelectorAll('.msteps > div');
+  flow.querySelectorAll('.fl-node').forEach(function (n) {
+    var step = steps[Number(n.dataset.phase)];
+    var text = step ? (step.querySelector('p') || {}).textContent : '';
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'fl-tip';
+    tip.textContent = text.trim();
+    n.appendChild(tip);
+  });
   function light(ph) {
     flow.classList.toggle('focus', ph !== null);
     Array.prototype.forEach.call(chips, function (c) { c.classList.toggle('on', c.dataset.phase === ph); });

@@ -235,14 +235,14 @@ describe("login flow", () => {
     assert.equal((await boom(loginReq("editor@orvixnet.com"))).status, 200);
   });
 
-  test("throttle stops the 6th send (per email and per IP)", async () => {
+  test("throttle: 3 sends per email, 5 per IP, per 15 minutes", async () => {
     const brevo = fakeBrevo();
     const handler = createHandler({ env: ENV, now: () => NOW, fetchImpl: brevo.fetchImpl, throttle: new Map() });
     for (let i = 0; i < 6; i++) {
       const res = await handler(loginReq("editor@orvixnet.com", { "x-nf-client-connection-ip": `10.0.0.${i}` }));
       assert.equal(res.status, 200);
     }
-    assert.equal(brevo.sent.length, 5);
+    assert.equal(brevo.sent.length, 3); // the email key stops the 4th, even from fresh IPs
 
     const brevo2 = fakeBrevo();
     const h2 = createHandler({ env: ENV, now: () => NOW, fetchImpl: brevo2.fetchImpl, throttle: new Map() });

@@ -185,4 +185,7 @@ def render(nodes: list[dict]) -> str | None:
             raise ValueError(f"section 3 forbids @type {n['@type']}")
     payload = {"@context": "https://schema.org", "@graph": nodes}
     body = json.dumps(payload, indent=1, ensure_ascii=False)
+    # JSON is valid with these escaped; a title like "</script>" can then never
+    # close the block and run as script on the page
+    body = body.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     return '<script type="application/ld+json">\n' + body + "\n</script>"

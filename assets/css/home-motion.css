@@ -337,3 +337,13 @@ html[dir="rtl"] #gap .cont{border-right:0;border-left:0;padding-right:0;padding-
 .bx{transform-origin:center;transition:background-color .35s,transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s ease}
 .bx:hover{transform:scale(1.035);z-index:3;box-shadow:0 30px 60px -24px rgba(0,0,0,.75),0 0 0 1px rgba(72,226,226,.55)}
 @media(prefers-reduced-motion:reduce){.bx:hover{transform:none}}
+
+/* ===== schematic: a short explanation on hover ===== */
+.fl-node{z-index:1}
+.fl-node:hover{z-index:5}
+.fl-tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,6px);width:230px;padding:10px 14px;border-radius:12px;
+  background:var(--ink);color:#fff;font-size:13px;line-height:19px;font-weight:400;text-align:center;letter-spacing:0;
+  box-shadow:0 16px 34px -16px rgba(3,7,44,.6);opacity:0;pointer-events:none;transition:opacity .25s,transform .35s cubic-bezier(.22,1,.36,1)}
+.fl-tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--ink)}
+.fl-node:hover .fl-tip{opacity:1;transform:translate(-50%,0)}
+.fl-node[data-phase="0"] .fl-tip,.fl-node[data-phase="3"] .fl-tip{width:210px}

@@ -5,7 +5,7 @@
 # _headers and _redirects.
 [build]
   publish = "."
-  command = "python -m tools.blog && python -m tools.seo build"
+  command = "node --test \"netlify/functions/*.test.mjs\" && python -m tools.blog && python -m tools.seo build"
 
 [build.environment]
   PYTHON_VERSION = "3.12"
