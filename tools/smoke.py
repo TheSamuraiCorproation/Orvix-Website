@@ -50,8 +50,7 @@ def _headers(msg) -> dict:
     """Header map; a repeated header (two CSPs on /admin/) keeps every value."""
     out = {}
     for k, v in msg.items():
-        out[k] = v if k not in out else out[k] + "
-" + v
+        out[k] = v if k not in out else out[k] + "\n" + v
     return out
 
 
@@ -80,8 +79,7 @@ def main(argv: list[str]) -> int:
             check("home blocks framing", h.get("X-Frame-Options", "").upper() == "DENY")
         if p == "/admin/":
             # the browser enforces every CSP header it gets; the admin one must forbid inline scripts
-            scripts = [d.strip() for csp in h.get("Content-Security-Policy", "").split("
-")
+            scripts = [d.strip() for csp in h.get("Content-Security-Policy", "").split("\n")
                        for d in csp.split(";") if d.strip().startswith("script-src")]
             check("admin CSP forbids inline scripts", "script-src 'self'" in scripts, " | ".join(scripts) or "no script-src")
             check("admin is no-store", "no-store" in h.get("Cache-Control", ""))
