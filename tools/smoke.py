@@ -41,9 +41,18 @@ def get(base: str, path: str, method: str = "GET", body: bytes | None = None, he
     opener = urllib.request.build_opener(NoRedirect)
     try:
         with opener.open(req, timeout=20) as r:
-            return r.status, dict(r.headers), r.read(200_000)
+            return r.status, _headers(r.headers), r.read(200_000)
     except urllib.error.HTTPError as e:
-        return e.code, dict(e.headers), e.read(200_000)
+        return e.code, _headers(e.headers), e.read(200_000)
+
+
+def _headers(msg) -> dict:
+    """Header map; a repeated header (two CSPs on /admin/) keeps every value."""
+    out = {}
+    for k, v in msg.items():
+        out[k] = v if k not in out else out[k] + "
+" + v
+    return out
 
 
 def main(argv: list[str]) -> int:
@@ -70,9 +79,11 @@ def main(argv: list[str]) -> int:
                 check("home carries HSTS", "Strict-Transport-Security" in h)
             check("home blocks framing", h.get("X-Frame-Options", "").upper() == "DENY")
         if p == "/admin/":
-            csp = h.get("Content-Security-Policy", "")
-            script = next((d.strip() for d in csp.split(";") if d.strip().startswith("script-src")), "")
-            check("admin CSP allows no inline scripts", script == "script-src 'self'", script or "no script-src")
+            # the browser enforces every CSP header it gets; the admin one must forbid inline scripts
+            scripts = [d.strip() for csp in h.get("Content-Security-Policy", "").split("
+")
+                       for d in csp.split(";") if d.strip().startswith("script-src")]
+            check("admin CSP forbids inline scripts", "script-src 'self'" in scripts, " | ".join(scripts) or "no script-src")
             check("admin is no-store", "no-store" in h.get("Cache-Control", ""))
             check("admin is noindex", "noindex" in h.get("X-Robots-Tag", ""))
 
