@@ -806,6 +806,50 @@ export function makeGitHub(gh, fetchImpl = fetch) {
       if (res.status === 404) return;
       if (!res.ok) await fail(res, `delete ${path}`);
     },
+
+    /**
+     * One commit touching several files (Git Data API), so a publish with a
+     * cover or a delete costs the site a single build. `changes` is
+     * [{path, content: Buffer | null}]; null removes the file. The branch
+     * must not have moved since `ref` was read, else 409 (reload, retry).
+     */
+    async commitFiles(changes, message) {
+      const api = `https://api.github.com/repos/${gh.repo}/git/`;
+      const jsonInit = (method, body) => ({
+        method,
+        headers: { ...headers(), "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const call = async (path, init, what) => {
+        const res = await request(api + path, init, what);
+        if (!res.ok) await fail(res, what);
+        return res.json();
+      };
+      const refName = `refs/heads/${gh.branch}`;
+      const head = await call(`ref/heads/${encodeURIComponent(gh.branch)}`, { headers: headers() }, "read branch");
+      const parent = head.object.sha;
+      const base = await call(`commits/${parent}`, { headers: headers() }, "read commit");
+      const tree = [];
+      for (const { path, content } of changes) {
+        if (content === null) {
+          tree.push({ path, mode: "100644", type: "blob", sha: null });
+          continue;
+        }
+        const blob = await call(
+          "blobs",
+          jsonInit("POST", { content: content.toString("base64"), encoding: "base64" }),
+          `upload ${path}`,
+        );
+        tree.push({ path, mode: "100644", type: "blob", sha: blob.sha });
+      }
+      const newTree = await call("trees", jsonInit("POST", { base_tree: base.tree.sha, tree }), "build tree");
+      const commit = await call(
+        "commits",
+        jsonInit("POST", { message, tree: newTree.sha, parents: [parent], author: committer, committer }),
+        "create commit",
+      );
+      await call(`${refName}`, jsonInit("PATCH", { sha: commit.sha, force: false }), "move branch");
+    },
   };
 }
 
@@ -880,12 +924,10 @@ async function savePost(store, slug, payload, email, nowMs) {
   else if (existing && existing.status === "published") verb = "unpublish";
   const message = `Blog: ${verb} ${slug} (${email})`;
 
-  if (coverBuf) {
-    const cur = await store.getFile(coverFile(slug), { withContent: false });
-    await store.putFile(coverFile(slug), coverBuf, message, cur?.sha);
-  }
   const content = Buffer.from(JSON.stringify(saved, null, 2) + "\n", "utf8");
-  await store.putFile(postPath(slug), content, message, existingFile?.sha);
+  const changes = [{ path: postPath(slug), content }];
+  if (coverBuf) changes.unshift({ path: coverFile(slug), content: coverBuf });
+  await store.commitFiles(changes, message);
   const firstPublish = saved.status === "published" && (!existing || existing.status !== "published");
   return { saved, firstPublish };
 }
@@ -895,8 +937,10 @@ async function deletePost(store, slug, email) {
   const file = await store.getFile(postPath(slug), { withContent: false });
   const cover = await store.getFile(coverFile(slug), { withContent: false });
   if (!file && !cover) throw new HttpError(404, "Not found");
-  if (cover) await store.deleteFile(coverFile(slug), cover.sha, message);
-  if (file) await store.deleteFile(postPath(slug), file.sha, message);
+  const changes = [];
+  if (cover) changes.push({ path: coverFile(slug), content: null });
+  if (file) changes.push({ path: postPath(slug), content: null });
+  await store.commitFiles(changes, message);
 }
 
 // ---------------------------------------------------------------- login handlers

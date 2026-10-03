@@ -110,7 +110,51 @@ function fakeGitHub(files = {}) {
     }
     return j(405, {});
   }
-  return { fetchImpl, store, calls };
+  // Git Data API: blobs, trees, commits, ref. Each commitFiles() moves the
+  // branch once; `commits` counts them so tests can assert one build per action.
+  const gitPrefix = "https://api.github.com/repos/TheSamuraiCorproation/Orvix-Website/git/";
+  const blobs = new Map();
+  const trees = new Map();
+  const commits = [];
+  let headSha = "head-0";
+  async function gitImpl(url, init = {}) {
+    const method = init.method || "GET";
+    const path = url.slice(gitPrefix.length);
+    const body = init.body ? JSON.parse(init.body) : null;
+    calls.push({ method, path, url, init, body });
+    assert.equal(init.headers.Authorization, "Bearer ghp_test");
+    const j = (status, obj) => new Response(JSON.stringify(obj), { status });
+    if (method === "GET" && path === "ref/heads/main") return j(200, { object: { sha: headSha } });
+    if (method === "GET" && path.startsWith("commits/")) return j(200, { tree: { sha: "tree-" + headSha } });
+    if (method === "POST" && path === "blobs") {
+      const sha = "blob-" + blobs.size;
+      blobs.set(sha, Buffer.from(body.content, "base64"));
+      return j(201, { sha });
+    }
+    if (method === "POST" && path === "trees") {
+      const sha = "tree-new-" + trees.size;
+      trees.set(sha, body.tree);
+      return j(201, { sha });
+    }
+    if (method === "POST" && path === "commits") {
+      const sha = "commit-" + commits.length;
+      commits.push({ sha, message: body.message, tree: trees.get(body.tree), parents: body.parents });
+      return j(201, { sha });
+    }
+    if (method === "PATCH" && path === "refs/heads/main") {
+      const c = commits.find((x) => x.sha === body.sha);
+      if (c.parents[0] !== headSha) return j(422, { message: "Update is not a fast forward" });
+      for (const e of c.tree) {
+        if (e.sha === null) store.delete(e.path);
+        else store.set(e.path, { content: blobs.get(e.sha), sha: "sha2-" + e.path });
+      }
+      headSha = c.sha;
+      return j(200, { object: { sha: headSha } });
+    }
+    return j(404, { message: "Not Found" });
+  }
+  const both = (url, init) => (url.startsWith(gitPrefix) ? gitImpl(url, init) : fetchImpl(url, init));
+  return { fetchImpl: both, store, calls, commits, moveHead: (sha) => { headSha = sha; } };
 }
 
 /** Fake Brevo endpoint recording sent emails. */
@@ -578,14 +622,14 @@ describe("handler with mocked GitHub", () => {
     assert.equal(out.post.cover, "/images/posts/my-first-post.webp");
     assert.equal(out.post.extra, undefined);
 
-    const puts = gh.calls.filter((c) => c.method === "PUT");
-    assert.deepEqual(puts.map((c) => c.path), ["images/posts/my-first-post.webp", "content/posts/my-first-post.json"]);
-    for (const p of puts) {
-      assert.equal(p.body.message, "Blog: publish my-first-post (editor@orvixnet.com)");
-      assert.equal(p.body.branch, "main");
-      assert.deepEqual(p.body.committer, { name: "Orvix blog", email: "blog@orvixnet.com" });
-      assert.equal(p.body.sha, undefined); // new files
-    }
+    // One commit carrying both files: a publish costs the site one build.
+    assert.equal(gh.commits.length, 1);
+    assert.equal(gh.commits[0].message, "Blog: publish my-first-post (editor@orvixnet.com)");
+    assert.deepEqual(gh.commits[0].tree.map((e) => e.path), ["images/posts/my-first-post.webp", "content/posts/my-first-post.json"]);
+    const commitCall = gh.calls.find((c) => c.method === "POST" && c.path === "commits");
+    assert.deepEqual(commitCall.body.committer, { name: "Orvix blog", email: "blog@orvixnet.com" });
+    assert.deepEqual(commitCall.body.author, { name: "Orvix blog", email: "blog@orvixnet.com" });
+    assert.equal(gh.calls.filter((c) => c.method === "PUT").length, 0);
     const stored = gh.store.get("content/posts/my-first-post.json").content.toString("utf8");
     assert.ok(stored.endsWith("}\n"));
     assert.ok(stored.includes('\n  "slug": "my-first-post"'));
@@ -599,9 +643,29 @@ describe("handler with mocked GitHub", () => {
     assert.equal(res2.status, 200, JSON.stringify(out2));
     assert.equal(out2.post.published, "2026-10-01");
     assert.equal(out2.post.cover, "/images/posts/my-first-post.webp");
-    const last = gh.calls.filter((c) => c.method === "PUT").at(-1);
-    assert.equal(last.body.sha, "sha2-content/posts/my-first-post.json");
-    assert.equal(last.body.message, "Blog: unpublish my-first-post (editor@orvixnet.com)");
+    assert.equal(gh.commits.length, 2);
+    assert.equal(gh.commits[1].message, "Blog: unpublish my-first-post (editor@orvixnet.com)");
+    assert.deepEqual(gh.commits[1].tree.map((e) => e.path), ["content/posts/my-first-post.json"]);
+  });
+
+  test("PUT when the branch moved underneath -> 409, nothing written", async () => {
+    const gh = fakeGitHub();
+    const handler = createHandler({ env: ENV, now: () => NOW, fetchImpl: gh.fetchImpl });
+    // Someone pushes between our ref read and our ref update.
+    const orig = gh.fetchImpl;
+    let armed = true;
+    const racing = async (url, init) => {
+      if (armed && init?.method === "POST" && url.endsWith("/git/commits")) { armed = false; gh.moveHead("head-other"); }
+      return orig(url, init);
+    };
+    const h2 = createHandler({ env: ENV, now: () => NOW, fetchImpl: racing });
+    const res = await h2(
+      req("/api/posts/my-first-post", { method: "PUT", headers: writeHeaders, body: { post: goodPost({ status: "published" }), cover_upload: null } }),
+    );
+    assert.equal(res.status, 409);
+    assert.match((await res.json()).error, /changed this post at the same moment/);
+    assert.ok(!gh.store.has("content/posts/my-first-post.json"));
+    void handler;
   });
 
   test("PUT validation failure -> 400 with a readable message and no commit", async () => {
@@ -616,7 +680,7 @@ describe("handler with mocked GitHub", () => {
     );
     assert.equal(res.status, 400);
     assert.match((await res.json()).error, /To publish, please fill in: English title/);
-    assert.equal(gh.calls.filter((c) => c.method === "PUT").length, 0);
+    assert.equal(gh.commits.length, 0);
   });
 
   test("GET /api/posts lists summaries newest first; GET one; DELETE", async () => {
@@ -646,9 +710,10 @@ describe("handler with mocked GitHub", () => {
     assert.deepEqual(await del.json(), { ok: true });
     assert.ok(!gh.store.has("content/posts/new.json"));
     assert.ok(!gh.store.has("images/posts/new.webp"));
-    const dels = gh.calls.filter((c) => c.method === "DELETE");
-    assert.equal(dels.length, 2);
-    assert.equal(dels[0].body.message, "Blog: delete new (editor@orvixnet.com)");
+    assert.equal(gh.calls.filter((c) => c.method === "DELETE").length, 0);
+    assert.equal(gh.commits.length, 1); // one commit removes both files
+    assert.equal(gh.commits[0].message, "Blog: delete new (editor@orvixnet.com)");
+    assert.deepEqual(gh.commits[0].tree.map((e) => [e.path, e.sha]), [["images/posts/new.webp", null], ["content/posts/new.json", null]]);
   });
 
   test("empty repo lists no posts", async () => {
