@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "22"
       - name: Blog API tests
-        run: node --test "netlify/functions/*.test.mjs"
+        run: node --test "netlify/tests/*.test.mjs"
       - name: Build blog pages, then the SEO gate
         run: |
           python -m tools.blog

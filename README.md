@@ -144,7 +144,7 @@ python -m tools.blog clean                                             # remove 
    - `GITHUB_TOKEN` (fine-grained: this repo, Contents read and write) and `GITHUB_REPO`
    - optionally `GITHUB_BRANCH` and `BLOG_COMMIT_EMAIL`
 
-Function tests: `node --test "netlify/functions/*.test.mjs"`.
+Function tests: `node --test "netlify/tests/*.test.mjs"`.
 
 ## Arabic (`ar/`)
 

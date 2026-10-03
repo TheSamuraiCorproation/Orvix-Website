@@ -17,7 +17,7 @@ import {
   readConfig,
   createHandler,
   HttpError,
-} from "./blog.mjs";
+} from "../functions/blog.mjs";
 
 // ---------------------------------------------------------------- fixtures
 
