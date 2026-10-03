@@ -197,7 +197,11 @@ def matches(pattern: str, path: str) -> bool:
 class Handler(http.server.SimpleHTTPRequestHandler):
     redirects = load_redirects()
     headers_rules = load_headers()
-    admin_emails: set[str] = set()  # set by --admin
+    admin_emails: set[str] = set()  # set by --admin; "@domain" entries allow the whole domain
+
+    @classmethod
+    def is_admin(cls, email: str) -> bool:
+        return "@" in email and (email in cls.admin_emails or email[email.rfind("@"):] in cls.admin_emails)
     secret = secrets.token_bytes(32)  # signs local login links and sessions
     COOKIE = "orvix_admin"  # production uses __Host-orvix_admin (needs https)
 
@@ -234,7 +238,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         except (ValueError, TypeError):
             return None
         email = (data.get("email") or "").lower()
-        if data.get("typ") != typ or data.get("exp", 0) < time.time() or email not in cls.admin_emails:
+        if data.get("typ") != typ or data.get("exp", 0) < time.time() or not cls.is_admin(email):
             return None
         return email
 
@@ -298,7 +302,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 email = ""
             # the link only works in the browser that asked (same rule as production)
             bind = secrets.token_urlsafe(16)
-            if email in self.admin_emails:
+            if self.is_admin(email):
                 token = self.sign({"typ": "login", "email": email, "iat": int(time.time()),
                                    "exp": int(time.time()) + 15 * 60, "nonce": secrets.token_urlsafe(16),
                                    "bind": hashlib.sha256(bind.encode()).hexdigest()})

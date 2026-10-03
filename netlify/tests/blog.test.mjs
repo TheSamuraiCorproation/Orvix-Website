@@ -15,6 +15,7 @@ import {
   parseRoute,
   isValidSlug,
   readConfig,
+  isAdmin,
   createHandler,
   HttpError,
 } from "../functions/blog.mjs";
@@ -446,6 +447,16 @@ describe("routing and slugs", () => {
     const c = readConfig(ENV);
     assert.equal(c.siteUrl, "https://orvixnet.com");
     assert.deepEqual(c.admins, ["editor@orvixnet.com", "owner@gmail.com"]);
+  });
+
+  test("an @domain entry admits every mailbox on that domain and nothing else", () => {
+    const c = readConfig({ ...ENV, ADMIN_EMAILS: "owner@gmail.com, @orvixnet.com" });
+    assert.equal(isAdmin(c, "owner@gmail.com"), true);
+    assert.equal(isAdmin(c, "anyone@orvixnet.com"), true);
+    assert.equal(isAdmin(c, "anyone@orvixnet.com.evil.example"), false);
+    assert.equal(isAdmin(c, "anyone@evil.example"), false);
+    assert.equal(isAdmin(c, "orvixnet.com"), false);
+    assert.equal(isAdmin(c, "other@gmail.com"), false);
     assert.equal(c.mail.fromName, "Orvix");
     assert.equal(c.github.branch, "main");
     assert.equal(c.github.commitEmail, "blog@orvixnet.com");

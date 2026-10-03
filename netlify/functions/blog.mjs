@@ -27,7 +27,8 @@
  *   SESSION_SECRET     at least 32 random characters; HMAC-SHA256 key for the
  *                      sign-in links and session cookies. Generate with e.g.
  *                      node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
- *   ADMIN_EMAILS       comma-separated editor emails allowed to sign in (any domain)
+ *   ADMIN_EMAILS       comma-separated editors allowed to sign in: full addresses, or
+ *                      "@orvixnet.com" to allow every mailbox on that domain
  *   SITE_URL           public site address, e.g. https://orvixnet.com (used in the emailed link)
  *   BREVO_API_KEY      Brevo transactional email API key (Brevo > SMTP & API > API keys)
  *   MAIL_FROM_EMAIL    sender address, must be a verified sender/domain in Brevo
@@ -400,11 +401,18 @@ export function getCookie(req, name) {
   return "";
 }
 
+/** Is this (lowercased) address on the admin list? "@domain" entries match the whole domain. */
+export function isAdmin(cfg, email) {
+  if (typeof email !== "string" || !email.includes("@")) return false;
+  const at = email.lastIndexOf("@");
+  return cfg.admins.includes(email) || cfg.admins.includes(email.slice(at));
+}
+
 /** Check the session cookie. Returns the lowercased email or throws HttpError(401). */
 export function authenticate(req, cfg, nowMs = Date.now()) {
   try {
     const claims = verifyToken(getCookie(req, SESSION_COOKIE), cfg.secret, "session", nowMs);
-    if (!cfg.admins.includes(claims.email)) throw new Error(`email not in ADMIN_EMAILS: ${claims.email}`);
+    if (!isAdmin(cfg, claims.email)) throw new Error(`email not in ADMIN_EMAILS: ${claims.email}`);
     return claims.email;
   } catch (err) {
     throw new HttpError(401, "Not signed in", err?.message || String(err));
@@ -909,7 +917,7 @@ async function handleLogin(req, context, cfg, { fetchImpl, nowMs, throttle }) {
   // Count every request against both keys, allowed address or not.
   const ipOk = throttleHit(throttle, `ip:${clientIp(req, context)}`, nowMs);
   const emailOk = throttleHit(throttle, `email:${email}`, nowMs, 3);
-  if (!cfg.admins.includes(email)) {
+  if (!isAdmin(cfg, email)) {
     console.warn(`[blog] login requested for non-admin address`);
     return ok;
   }
@@ -931,7 +939,7 @@ function handleVerify(req, cfg, nowMs) {
   const token = new URL(req.url).searchParams.get("token") || "";
   try {
     const claims = verifyToken(token, cfg.secret, "login", nowMs);
-    if (!cfg.admins.includes(claims.email)) throw new Error(`email not in ADMIN_EMAILS: ${claims.email}`);
+    if (!isAdmin(cfg, claims.email)) throw new Error(`email not in ADMIN_EMAILS: ${claims.email}`);
     // The link only works in the browser that requested it (a mail scanner or
     // a forwarded email has no cookie, so it gets nothing).
     const want = Buffer.from(String(claims.bind || ""));
