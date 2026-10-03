@@ -21,6 +21,7 @@ PAGES = [
     "/engagements/assurance-review/", "/industries/financial-services/",
     "/research/perspectives/", "/research/subscribe/", "/company/contact/",
     "/ar/company/contact/", "/admin/", "/sitemap.xml", "/robots.txt",
+    "/favicon.ico", "/favicon.svg", "/apple-touch-icon.png", "/site.webmanifest",
 ]
 REDIRECTS = {  # old address -> where it must land
     "/research/assurance-index/": "/research/maturity-model/",
