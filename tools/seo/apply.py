@@ -30,6 +30,7 @@ LEGACY = [
     r'<meta\s+name="robots"[^>]*>',
     r'<meta\s+name="theme-color"[^>]*>',
     r'<meta\s+name="referrer"[^>]*>',
+    r'<link\s+rel="(?:icon|apple-touch-icon|manifest)"[^>]*>',
     r'<link\s+rel="canonical"[^>]*>',
     r'<link\s+rel="alternate"\s+hreflang[^>]*>',
     r'<meta\s+property="og:[^>]*>',

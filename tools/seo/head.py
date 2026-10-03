@@ -84,6 +84,10 @@ def render(rel: str, page: dict, *, title: str, description: str,
     A(f'<meta name="twitter:image" content="{img}">')
 
     A(f'<meta name="theme-color" content="{THEME_COLOR}">')
+    A('<link rel="icon" href="/favicon.ico" sizes="48x48">')
+    A('<link rel="icon" href="/favicon.svg" type="image/svg+xml">')
+    A('<link rel="apple-touch-icon" href="/apple-touch-icon.png">')
+    A('<link rel="manifest" href="/site.webmanifest">')
     A('<meta name="referrer" content="strict-origin-when-cross-origin">')
 
     if not indexable and page.get("noindex_reason"):

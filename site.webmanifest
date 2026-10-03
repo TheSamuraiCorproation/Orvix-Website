@@ -1,0 +1,14 @@
+{
+  "name": "Orvix",
+  "short_name": "Orvix",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#03072C",
+  "background_color": "#03072C",
+  "display": "browser"
+}
