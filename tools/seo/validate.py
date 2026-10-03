@@ -78,7 +78,10 @@ def check(root: pathlib.Path) -> Report:
         s = p.read_text(encoding="utf-8")
         page = for_path(rel)
         en = urls.lang_of(rel) == "en"
-        say = r.error if en else r.warn
+        # Length rules are advisory on editorial pages: a post's title and summary
+        # are whatever the editor typed, and one short summary must not fail the
+        # whole site build.
+        say = r.error if en and not (page or {}).get("editorial") else r.warn
 
         if page is None:
             r.error(rel, "page-table", "page is not in tools/seo/pages.py")

@@ -380,7 +380,7 @@ def _add_posts() -> None:
     for p in ps:
         PAGES[f"research/perspectives/{p['slug']}/index.html"] = _p(
             "research-item", f"{p['title']['en']} | Orvix", p["summary"]["en"],
-            og_type="article", published=p["published"],
+            og_type="article", published=p["published"], editorial=True,
             og_image="https://orvixnet.com/assets/img/og/default.png")
     if ps:  # the listing is no longer empty: let Google index it
         listing = PAGES["research/perspectives/index.html"]
