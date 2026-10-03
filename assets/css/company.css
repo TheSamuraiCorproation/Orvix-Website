@@ -58,6 +58,18 @@
 .cmp .hero-ink > *:nth-child(3){animation-delay:.25s}
 .cmp .hero-ink > *:nth-child(4){animation-delay:.35s}
 .cmp .hero-ink > *:nth-child(5){animation-delay:.45s}
+/* About hero: the skyline sits behind a navy wash that stays solid on the text side */
+.cmp .hero-ink.hero-photo::before{content:"";position:absolute;inset:0;z-index:0;
+  background:var(--pg-hero,none) center/cover no-repeat;opacity:.55;
+  animation:cutIn 1.1s cubic-bezier(.2,.7,.2,1) both}
+.cmp .hero-ink.hero-photo::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,#03072C 0 34%,rgba(3,7,44,.78) 58%,rgba(3,7,44,.42) 100%),
+  linear-gradient(180deg,rgba(3,7,44,.2),rgba(3,7,44,.55))}
+@media(prefers-reduced-motion:reduce){.cmp .hero-ink.hero-photo::before{animation:none}}
+/* Leadership tiles until the portraits arrive: navy, the hero's cyan hatch, initials in cyan */
+.cmp .lead-ph{background:var(--ink);border-color:var(--ink)}
+.cmp .lead-ph::before{background-image:repeating-linear-gradient(45deg,rgba(72,226,226,.16) 0 2px,transparent 2px 30px);opacity:1}
+.cmp .lead-ph .lead-ph__label{position:absolute;inset:0;display:grid;place-items:center;z-index:1}
 @media (prefers-reduced-motion: reduce){.cmp *,.cmp *::before,.cmp *::after{animation:none !important;transition:none !important}}
 .cmp .chamfer{clip-path:polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)}
 .cmp .fact{display:grid;grid-template-columns:110px 1fr;gap:24px;align-items:baseline;

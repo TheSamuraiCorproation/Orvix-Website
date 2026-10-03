@@ -229,6 +229,7 @@ REPLACED 8 SEPTEMBER 2026 - REGIONAL RE-SHOOT (PLACEHOLDER SET)
     RESEARCH
     hero-case-studies.jpg   18678847  Dubai Creek, dhows against the towers
     hero-assurance-index.jpg 19965889 Abu Dhabi skyline from the water
+    hero-about.jpg           19965889 Abu Dhabi skyline from the water (same photo, About hero)
     hero-maturity-model.jpg 21038758  stepped towers, monochrome
     hero-perspectives.jpg    5387236  a notebook, a pen, one idea
     hero-readiness.jpg       8424482  a return being answered by hand

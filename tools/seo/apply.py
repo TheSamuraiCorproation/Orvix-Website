@@ -229,7 +229,7 @@ def process(root: pathlib.Path, rel: str) -> dict:
 LEADERSHIP = [
     ("Ziad Darras", "Vice President", "ziad-darras"),
     ("Daryl Simpson", "Chief Technology Officer", "daryl-simpson"),
-    ("Ada Mazurek", "Chief Marketing Officer", "ada-mazurek"),
+    # Chief Marketing Officer: name not confirmed by Orvix yet; page shows "A. M.", no Person node.
     ("Marwan Jaffal", "Chief Financial Officer", "marwan-jaffal"),
 ]
 
