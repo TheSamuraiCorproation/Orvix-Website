@@ -130,4 +130,31 @@
     });
     mo.observe(root, { attributes: true, attributeFilter: ['class'] });
   }
+
+  /* ---- phones: keep the contact button within reach --------------------- */
+
+  var headCta = doc.querySelector('#nav .nav-cta');
+  var path = location.pathname;
+  if (headCta && !/\/company\/contact\/?$/.test(path) && !/\/admin\//.test(path)) {
+    var fab = doc.createElement('a');
+    fab.className = 'cta-float';
+    fab.href = headCta.getAttribute('href');
+    fab.textContent = headCta.textContent;
+    doc.body.appendChild(fab);
+    var foot = doc.querySelector('footer');
+    var drawer = doc.getElementById('mob');
+    var floatOn = false, queued = false;
+    var syncFloat = function () {
+      queued = false;
+      var y = window.pageYOffset || root.scrollTop || 0;
+      var nearEnd = foot && foot.getBoundingClientRect().top < window.innerHeight - 60;
+      var on = y > 480 && !nearEnd && !(drawer && drawer.classList.contains('open'));
+      if (on !== floatOn) { floatOn = on; fab.classList.toggle('on', on); }
+    };
+    var queueFloat = function () { if (!queued) { queued = true; setTimeout(syncFloat, 60); } };
+    window.addEventListener('scroll', queueFloat, { passive: true });
+    window.addEventListener('resize', queueFloat);
+    doc.addEventListener('click', queueFloat);          // the burger opens and closes the drawer
+    syncFloat();
+  }
 })();

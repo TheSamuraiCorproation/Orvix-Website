@@ -347,3 +347,37 @@ html[dir="rtl"] #gap .cont{border-right:0;border-left:0;padding-right:0;padding-
 .fl-tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--ink)}
 .fl-node:hover .fl-tip{opacity:1;transform:translate(-50%,0)}
 .fl-node[data-phase="0"] .fl-tip,.fl-node[data-phase="3"] .fl-tip{width:210px}
+
+/* ---- phone review, 2026-10-05 ---- */
+/* closing band is dark: its eyebrow takes the dark-ground colour */
+.close .eyebrow{color:var(--cyan)}
+/* the giant ORVIX behind section 02 is cropped to two stray shapes on a phone */
+@media(max-width:900px){.ox .wm{display:none}}
+/* compass on one column: ring first, then the pillars in reading order 01-04
+   (the two side columns held 01+04 and 02+03) */
+@media(max-width:940px){
+  .method3 .mcolL,.method3 .mcolR{display:contents}
+  .method3 .ringwrap2{order:0}
+  .method3 .pill[data-a="1"]{order:1}.method3 .pill[data-a="2"]{order:2}
+  .method3 .pill[data-a="3"]{order:3}.method3 .pill[data-a="4"]{order:4}
+}
+/* the ring itself can be tapped: each quarter selects its pillar */
+.ringwrap2 svg{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+/* Arabic: the tile label moves to the left corner so it no longer sits on the right-aligned title */
+[dir=rtl] .bx .tag{right:auto;left:clamp(16px,1.8vw,24px)}
+
+/* ---- shorter home page on phones ---- */
+@media(max-width:640px){
+  /* eight engagements: one row to swipe instead of eight stacked screens; the
+     next card shows at the edge so the row reads as scrollable */
+  #eng .eng{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    background:none;border:0;margin-inline:calc(var(--gut) * -1);padding:2px var(--gut) 16px;scroll-padding-inline:var(--gut);
+    scrollbar-width:none}
+  #eng .eng::-webkit-scrollbar{display:none}
+  #eng .en{flex:0 0 84%;scroll-snap-align:start;border:1px solid var(--silver);padding:24px 20px;gap:14px}
+  /* the four method steps: two by two */
+  .msteps{grid-template-columns:1fr 1fr;gap:22px 14px}
+  .msteps>div{padding:0 2px}
+  .msteps p{font-size:12.5px;line-height:19px}
+}
+

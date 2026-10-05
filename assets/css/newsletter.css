@@ -31,9 +31,8 @@
 /* the preview: what a subscriber receives */
 .nl-prev{display:flex;justify-content:center}
 .nl-mail{width:100%;max-width:320px;background:#fff;border-radius:14px;overflow:hidden;color:var(--ink);
-  box-shadow:0 24px 48px -12px rgba(0,0,0,.55);transform:rotate(2deg);transition:transform .3s}
-[dir=rtl] .nl-mail{transform:rotate(-2deg)}
-.nl-card:hover .nl-mail{transform:rotate(0)}
+  box-shadow:0 24px 48px -12px rgba(0,0,0,.55);transition:transform .3s}
+.nl-card:hover .nl-mail{transform:translateY(-3px)}
 .nl-mail-top{background:var(--ink);padding:14px 18px;border-bottom:1px solid #1C2448}
 .nl-mail-top img{display:block;width:72px;height:auto}
 .nl-mail-cover{height:120px;background:url('/images/hero-perspectives.webp') center/cover}

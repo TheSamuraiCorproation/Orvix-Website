@@ -17,3 +17,21 @@
 .cmp .book-alt a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
 @media(max-width:700px){.cmp .book-cal{min-height:760px;margin-inline:calc(var(--gut) * -1)}
   .cmp .book-cal .calendly-inline-widget{height:760px}}
+
+/* Wide screens: the ink column is page-aligned on its outer side, which left
+   its text about 200px while the margin beside it sat empty. Give the text a
+   proper measure, and carry the brand hatch into that margin so the space
+   reads as intended rather than left over. */
+@media(min-width:1500px){
+  .cmp .contact-grid{grid-template-columns:calc((100% - var(--max))/2 + var(--gut) + 440px) minmax(0,1fr)!important}
+  .cmp .contact-grid>.band.ink h1{font-size:44px!important;line-height:46px!important}
+}
+@media(min-width:1101px){
+  .cmp .contact-grid>.band.ink{position:relative}
+  .cmp .contact-grid>.band.ink>*{position:relative}
+  .cmp .contact-grid>.band.ink::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(45deg,rgba(72,226,226,.14) 0 2px,transparent 2px 30px);
+    -webkit-mask-image:linear-gradient(90deg,#000,transparent 58%);mask-image:linear-gradient(90deg,#000,transparent 58%)}
+  [dir=rtl] .cmp .contact-grid>.band.ink::before{-webkit-mask-image:linear-gradient(270deg,#000,transparent 58%);mask-image:linear-gradient(270deg,#000,transparent 58%)}
+}
+

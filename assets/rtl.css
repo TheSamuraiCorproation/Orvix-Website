@@ -56,7 +56,7 @@ html[dir="rtl"] .rsh .mrow::before { left: auto; right: 13px; }
 html[dir="rtl"] .rsh .mpane { border-left: 0; border-right: 1px solid rgba(255, 255, 255, .11); }
 
 /* ---- the coverage map stays left-to-right --------------------------- */
-/* A map is geography, not text. Mirroring it would put New Jersey east of
+/* A map is geography, not text. Mirroring it would put New York east of
    Dubai, so the component keeps its direction and only its copy flips. */
 html[dir="rtl"] #coverage { direction: ltr; }
 html[dir="rtl"] #coverage .cvg-head,

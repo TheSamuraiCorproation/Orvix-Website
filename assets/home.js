@@ -116,6 +116,20 @@
     });
   });
 
+  // Tapping or clicking the ring picks the pillar in that quarter (01 top-left,
+  // then clockwise), so the diagram works by touch and not only from the cards.
+  svg.addEventListener('click', function (e) {
+    var r = svg.getBoundingClientRect();
+    var right = (e.clientX - r.left) > r.width / 2, low = (e.clientY - r.top) > r.height / 2;
+    var a = low ? (right ? '3' : '4') : (right ? '2' : '1');
+    activate(a, true);
+    // one column (phones): the pillar cards sit below the ring, so go to the one picked
+    if (window.matchMedia && window.matchMedia('(max-width: 940px)').matches) {
+      var card = pills.filter(function (p) { return p.dataset.a === a; })[0];
+      if (card && card.scrollIntoView) card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    }
+  });
+
   activate((pills.filter(function (p) { return p.classList.contains('on'); })[0] || pills[0]).dataset.a, false);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {

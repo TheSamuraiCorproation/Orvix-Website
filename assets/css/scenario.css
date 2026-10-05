@@ -1,0 +1,149 @@
+/* Illustrative scenario on the Case studies page.
+   One dark canvas: a route with six icon stations, one per deliverable of an
+   Assurance Review, that draws itself as a light travels along it. Beside it
+   the evidence ledger as a grid of cells (three systems against six artifact
+   types) that is examined, marked, assigned and sealed as the route advances.
+   Without JS the canvas shows the finished state and every caption is listed. */
+.scn{background:var(--mist)}
+.scn .eyebrow{color:var(--blue);margin-bottom:20px}
+.scn h2{max-width:22ch}
+.scn .lede{margin-top:20px}
+
+.scn-canvas{position:relative;margin-top:clamp(30px,4vw,52px);border-radius:22px;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(60% 80% at 100% 0%,rgba(6,75,238,.34),transparent 70%),
+    radial-gradient(50% 70% at 0% 100%,rgba(72,226,226,.13),transparent 70%),
+    var(--ink);
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.scn-canvas::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1.4px);background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.scn-road,.scn-led{position:relative;padding:clamp(22px,3vw,44px)}
+.scn-led{border-inline-start:1px solid rgba(255,255,255,.1)}
+
+/* ---- the route ---- */
+.scn-map{position:relative;aspect-ratio:620/280;margin:6px 0 64px}
+.scn-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+[dir=rtl] .scn-svg{transform:scaleX(-1)}
+.scn-svg path{fill:none;stroke-linecap:round}
+.scn-rail{stroke:rgba(255,255,255,.2);stroke-width:2;stroke-dasharray:3 9}
+.scn-done{stroke:var(--cyan);stroke-width:3;filter:drop-shadow(0 0 7px rgba(72,226,226,.55))}
+.scn-comet{fill:#fff;stroke:var(--cyan);stroke-width:3;filter:drop-shadow(0 0 9px rgba(72,226,226,1));display:none}
+.scn.js .scn-comet{display:block}
+
+.scn-stop{position:absolute;transform:translate(-50%,-50%);z-index:1;background:none;border:0;padding:0;margin:0;
+  font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+[dir=rtl] .scn-stop{transform:translate(50%,-50%)}
+.scn-ico{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;
+  background:#0B1242;border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.55);
+  transition:transform .45s cubic-bezier(.22,1,.36,1),background .35s,border-color .35s,color .35s,box-shadow .35s}
+.scn-ico svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.scn-stop.done .scn-ico{border-color:rgba(72,226,226,.7);color:var(--cyan)}
+.scn-stop.on .scn-ico{background:var(--cyan);border-color:var(--cyan);color:var(--ink);transform:scale(1.14) rotate(-4deg);
+  box-shadow:0 0 0 8px rgba(72,226,226,.14),0 18px 34px -14px rgba(72,226,226,.7)}
+.scn-stop:hover .scn-ico{border-color:var(--cyan);color:#fff}
+.scn-stop.on:hover .scn-ico{color:var(--ink)}
+.scn-stop:focus-visible{outline:none}
+.scn-stop:focus-visible .scn-ico{outline:2px solid #fff;outline-offset:4px}
+.scn-lab{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap;pointer-events:none}
+.scn-no{display:block;font-family:var(--m);font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.4)}
+.scn-nm{display:block;margin-top:3px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.55);transition:color .3s}
+.scn-stop.on .scn-nm,.scn-stop.done .scn-nm{color:#fff}
+
+/* ---- the caption for the active station: type on the canvas, no box ---- */
+.scn-caps{display:grid}
+.scn-cap{grid-area:1/1;max-width:54ch}
+.scn.js .scn-cap{visibility:hidden;opacity:0;transform:translateY(10px)}
+.scn.js .scn-cap.on{visibility:visible;opacity:1;transform:none;transition:opacity .5s .15s,transform .6s .15s cubic-bezier(.22,1,.36,1)}
+.scn:not(.js) .scn-caps{display:block}
+.scn:not(.js) .scn-cap+.scn-cap{margin-top:26px}
+.scn-k{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+[dir=rtl] .scn-k{letter-spacing:0;font-family:var(--f);font-weight:600;font-size:13px}
+.scn-cap h3{font-size:clamp(22px,2.5vw,32px);line-height:1.14;letter-spacing:-.02em;color:#fff;margin:10px 0 12px;font-weight:600}
+.scn-cap p{font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.72)}
+.scn-cap p+p{margin-top:12px;padding-inline-start:14px;border-inline-start:2px solid var(--cyan);color:rgba(255,255,255,.9)}
+
+/* ---- the ledger: three systems against six artifact types ---- */
+.scn-led-h{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.scn-led-h span{color:rgba(255,255,255,.4);margin-inline-start:8px}
+[dir=rtl] .scn-led-h{letter-spacing:0;font-family:var(--f);font-weight:600;font-size:13px}
+.scn-mx{position:relative;display:grid;grid-template-columns:minmax(84px,1.5fr) repeat(6,minmax(0,1fr));gap:8px;margin-top:10px;align-items:center}
+.scn-mx-col{position:relative;height:84px}
+.scn-mx-col span{position:absolute;bottom:6px;left:50%;transform-origin:0 100%;transform:rotate(-42deg);white-space:nowrap;
+  font-size:11.5px;color:rgba(255,255,255,.62)}
+[dir=rtl] .scn-mx-col span{left:auto;right:50%;transform-origin:100% 100%;transform:rotate(42deg)}
+.scn-mx-row{font-size:13px;line-height:1.3;color:rgba(255,255,255,.86);font-weight:500}
+.scn-c{position:relative;aspect-ratio:1;border-radius:9px;border:1.5px solid rgba(255,255,255,.16);
+  transition:background .5s,border-color .5s,box-shadow .5s,transform .5s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--d,0) * 45ms)}
+/* deliverable 2: every cell has been examined */
+.scn-c::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px;border-radius:50%;
+  background:rgba(255,255,255,.55);opacity:0;transition:opacity .4s;transition-delay:calc(var(--d,0) * 45ms)}
+.scn.ge2 .scn-c::before{opacity:1}
+.scn.ge3 .scn-c::before{opacity:0}
+/* deliverable 3: held, partial, absent */
+.scn.ge3 .scn-c.is-held{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 14px -4px rgba(72,226,226,.8)}
+.scn.ge3 .scn-c.is-part{border-color:#FFC45C;background:linear-gradient(135deg,#FFC45C 0 50%,rgba(255,196,92,.1) 50%)}
+.scn.ge3 .scn-c.is-abs{border-color:#FF8A8A;border-style:dashed;
+  background:linear-gradient(45deg,transparent 46%,#FF8A8A 46% 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,#FF8A8A 46% 54%,transparent 54%);
+  background-size:46% 46%;background-position:center;background-repeat:no-repeat}
+/* deliverable 4: each gap has an owner and a date (the ring) */
+.scn.ge4 .scn-c.is-part,.scn.ge4 .scn-c.is-abs{box-shadow:0 0 0 3px var(--ink),0 0 0 4.5px rgba(255,255,255,.85)}
+/* the scan that crosses the grid while it is being examined */
+.scn-mx::after{content:"";position:absolute;top:84px;bottom:-4px;width:46px;inset-inline-start:22%;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(72,226,226,.4),transparent)}
+.scn.at2 .scn-mx::after{animation:scnScan 1.5s ease-in-out 1}
+@keyframes scnScan{0%{opacity:0;inset-inline-start:20%}15%{opacity:1}85%{opacity:1}100%{opacity:0;inset-inline-start:calc(100% - 46px)}}
+
+.scn-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.62);
+  opacity:0;transition:opacity .5s}
+.scn.ge3 .scn-legend{opacity:1}
+.scn-legend span{display:inline-flex;align-items:center;gap:7px}
+.scn-legend i{width:13px;height:13px;border-radius:4px;border:1.5px solid;flex:none}
+.scn-legend .l-held i{background:var(--cyan);border-color:var(--cyan)}
+.scn-legend .l-part i{border-color:#FFC45C;background:linear-gradient(135deg,#FFC45C 0 50%,transparent 50%)}
+.scn-legend .l-abs i{border-color:#FF8A8A;border-style:dashed}
+.scn-legend .l-own{opacity:0;transition:opacity .5s}
+.scn.ge4 .scn-legend .l-own{opacity:1}
+.scn-legend .l-own i{border:0;box-shadow:0 0 0 1.5px rgba(255,255,255,.85);border-radius:5px;width:10px;height:10px;margin:0 2px}
+
+/* deliverable 5: the position in one line. deliverable 6: the pack is assembled */
+.scn-sum,.scn-seal{opacity:0;transform:translateY(8px);transition:opacity .6s .2s,transform .6s .2s cubic-bezier(.22,1,.36,1)}
+.scn.ge5 .scn-sum,.scn.ge6 .scn-seal{opacity:1;transform:none}
+.scn-sum{display:flex;gap:clamp(14px,2vw,26px);margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14)}
+.scn-sum div{font-size:12.5px;color:rgba(255,255,255,.6);min-width:58px}
+.scn-sum b{display:block;font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:600;letter-spacing:-.02em;color:#fff;
+  font-variant-numeric:tabular-nums;margin-bottom:5px}
+.scn-sum .n-held b{color:var(--cyan)}.scn-sum .n-part b{color:#FFC45C}.scn-sum .n-abs b{color:#FF8A8A}
+.scn-seal{display:flex;align-items:center;gap:12px;margin-top:18px}
+.scn-seal svg{width:32px;height:32px;flex:none;fill:none;stroke:var(--cyan);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.scn-seal b{font-size:15px;font-weight:600;color:#fff}
+
+.scn-note{margin-top:clamp(20px,2.6vw,28px);font-size:13.5px;line-height:1.6;color:var(--steel);max-width:74ch}
+.scn-note a{color:var(--signal);font-weight:500;white-space:nowrap}
+
+@media(max-width:980px){
+  .scn-canvas{grid-template-columns:1fr}
+  .scn-led{border-inline-start:0;border-top:1px solid rgba(255,255,255,.1)}
+}
+@media(max-width:640px){
+  .scn-canvas{border-radius:16px}
+  .scn-map{margin-bottom:54px}
+  .scn-ico{width:42px;height:42px;border-radius:13px}
+  .scn-ico svg{width:20px;height:20px}
+  .scn-no{font-size:9.5px}
+  .scn-nm{display:none;font-size:13px}
+  .scn-stop.on .scn-nm{display:block}
+  .scn-mx{gap:5px;grid-template-columns:minmax(76px,1.5fr) repeat(6,minmax(0,1fr))}
+  .scn-mx-row{font-size:12px}
+  .scn-c{border-radius:7px}
+  .scn-mx-col{height:92px}
+  .scn-mx::after{top:92px}
+  .scn-mx-col span{font-size:10.5px;transform:rotate(-62deg)}
+  [dir=rtl] .scn-mx-col span{transform:rotate(62deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  .scn-ico,.scn-c,.scn-c::before,.scn-seal,.scn-sum,.scn-legend{transition:none}
+  .scn.js .scn-cap.on{transition:none}
+  .scn.at2 .scn-mx::after{animation:none}
+}

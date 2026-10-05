@@ -150,3 +150,19 @@ input,select,textarea{font-size:16px!important}
 .cmp .band.ink h1,.cmp .band.ink.hero-ink h1{font-size:38px;line-height:41px}
 .ox h2.two .xline{font-size:1.35em}
 }
+
+/* Phones: "Talk to our team" stays within reach once the reader is past the
+   first screen. Built by assets/nav.js from the header button, so it carries
+   the page's own language and link. Hidden near the footer and while the
+   drawer is open. */
+.cta-float{display:none}
+@media (max-width:760px){
+.cta-float{display:block;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:50;
+  background:var(--signal,#064BEE);color:#fff;font-size:14px;font-weight:600;line-height:20px;padding:13px 20px;
+  box-shadow:0 16px 32px -12px rgba(6,75,238,.75),0 0 0 1px rgba(255,255,255,.14);
+  transform:translateY(96px);opacity:0;pointer-events:none;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .25s}
+.cta-float.on{transform:none;opacity:1;pointer-events:auto}
+}
+@media (prefers-reduced-motion:reduce){.cta-float{transition:none}}
+
