@@ -142,13 +142,16 @@
     fab.textContent = headCta.textContent;
     doc.body.appendChild(fab);
     var foot = doc.querySelector('footer');
-    var drawer = doc.getElementById('mob');
+    // NB: `mob` is the drawer element and `drawer` the function that opens
+    // it, both declared above. This block must not redeclare either: a
+    // `var drawer = ...` here would replace the function for the whole file
+    // and the burger's click handler would throw instead of opening.
     var floatOn = false, queued = false;
     var syncFloat = function () {
       queued = false;
       var y = window.pageYOffset || root.scrollTop || 0;
       var nearEnd = foot && foot.getBoundingClientRect().top < window.innerHeight - 60;
-      var on = y > 480 && !nearEnd && !(drawer && drawer.classList.contains('open'));
+      var on = y > 480 && !nearEnd && !(mob && mob.classList.contains('open'));
       if (on !== floatOn) { floatOn = on; fab.classList.toggle('on', on); }
     };
     var queueFloat = function () { if (!queued) { queued = true; setTimeout(syncFloat, 60); } };
