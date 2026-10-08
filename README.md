@@ -138,7 +138,8 @@ python -m tools.blog clean                                             # remove 
 1. **Brevo:** create an API key, and verify the sending domain by adding Brevo's SPF and DKIM records in Namecheap, so sign-in emails don't land in spam.
 2. **Set the Netlify environment variables:**
    - `SESSION_SECRET`: 32+ random characters. Generate it with `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`. Rotating it signs everyone out.
-   - `ADMIN_EMAILS`: the editors, comma-separated, any domain
+   - `ADMIN_EMAILS`: the editors, comma-separated: full addresses or `@domain` for every mailbox on that domain
+   - `ADMIN_DELIVER_TO` (optional): `admin=mailbox` pairs, comma-separated, to deliver an admin's sign-in email to another mailbox when their own is behind a filter that swallows it; the admin identity is unchanged
    - `SITE_URL`: `https://orvixnet.com`
    - `BREVO_API_KEY` and `MAIL_FROM_EMAIL` (a verified sender), plus optionally `MAIL_FROM_NAME`
    - `GITHUB_TOKEN` (fine-grained: this repo, Contents read and write) and `GITHUB_REPO`

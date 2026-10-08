@@ -29,6 +29,9 @@
  *                      node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
  *   ADMIN_EMAILS       comma-separated editors allowed to sign in: full addresses, or
  *                      "@orvixnet.com" to allow every mailbox on that domain
+ *   ADMIN_DELIVER_TO   optional "admin=mailbox" pairs, comma-separated: deliver that
+ *                      admin's sign-in email to another mailbox (for addresses behind a
+ *                      mail filter that swallows the link). The admin identity is unchanged.
  *   SITE_URL           public site address, e.g. https://orvixnet.com (used in the emailed link)
  *   BREVO_API_KEY      Brevo transactional email API key (Brevo > SMTP & API > API keys)
  *   MAIL_FROM_EMAIL    sender address, must be a verified sender/domain in Brevo
@@ -244,9 +247,15 @@ export function readConfig(env) {
     return null;
   }
   if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)) return null;
+  const deliverTo = {};
+  for (const pair of get("ADMIN_DELIVER_TO").split(",")) {
+    const [from, to] = pair.split("=").map((x) => x.trim().toLowerCase());
+    if (from && to && to.includes("@")) deliverTo[from] = to;
+  }
   return {
     secret,
     admins,
+    deliverTo,
     siteUrl,
     mail: { apiKey: brevoKey, fromEmail, fromName: get("MAIL_FROM_NAME") || "Orvix" },
     github: {
@@ -971,7 +980,7 @@ async function handleLogin(req, context, cfg, { fetchImpl, nowMs, throttle }) {
   }
   const token = createLoginToken(email, cfg.secret, nowMs, bind);
   const link = `${cfg.siteUrl}/api/login/verify?token=${encodeURIComponent(token)}`;
-  const sending = sendLoginEmail(cfg, email, link, fetchImpl);
+  const sending = sendLoginEmail(cfg, cfg.deliverTo[email] || email, link, fetchImpl);
   // Where the runtime supports it, finish sending after responding so the
   // response time does not reveal whether the address is an editor.
   if (typeof context?.waitUntil === "function") context.waitUntil(sending);

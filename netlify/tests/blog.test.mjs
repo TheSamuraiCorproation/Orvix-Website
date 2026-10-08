@@ -272,6 +272,18 @@ describe("login flow", () => {
     assert.equal(c.email, "owner@gmail.com");
   });
 
+  test("ADMIN_DELIVER_TO sends the link elsewhere; the identity stays the admin's", async () => {
+    const brevo = fakeBrevo();
+    const env = { ...ENV, ADMIN_DELIVER_TO: " Editor@orvixnet.com = editor.home@gmail.com , junk" };
+    const handler = createHandler({ env, now: () => NOW, fetchImpl: brevo.fetchImpl, throttle: new Map() });
+    await handler(loginReq("editor@orvixnet.com"));
+    assert.equal(brevo.sent.length, 1);
+    assert.deepEqual(brevo.sent[0].to, [{ email: "editor.home@gmail.com" }]);
+    assert.equal(verifyToken(linkToken(brevo.sent[0]), SECRET, "login", NOW).email, "editor@orvixnet.com");
+    await handler(loginReq("owner@gmail.com"));            // no override: unchanged
+    assert.deepEqual(brevo.sent[1].to, [{ email: "owner@gmail.com" }]);
+  });
+
   test("Brevo failure still returns 200", async () => {
     const brevo = fakeBrevo({ status: 500 });
     const handler = createHandler({ env: ENV, now: () => NOW, fetchImpl: brevo.fetchImpl, throttle: new Map() });
