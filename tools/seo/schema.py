@@ -38,8 +38,9 @@ GCC_STATES = [
 
 FORBIDDEN_TYPES = {"Review", "AggregateRating", "Certification"}
 
-# Section 1.4 blocker. Do not flip until the registered address is confirmed.
-SHIP_ORGANIZATION = False
+# Shipped 2026-10-08 without an address: section 1.4 held back the PostalAddress,
+# not the node. The address stays out until the registered address is confirmed.
+SHIP_ORGANIZATION = True
 
 ORG_ID = f"{urls.ORIGIN}/#organization"
 SITE_ID = f"{urls.ORIGIN}/#website"
@@ -75,9 +76,8 @@ def organization() -> dict:
             "url": f"{urls.ORIGIN}/company/contact/",
             "availableLanguage": ["en", "ar"],
         }],
-        # sameAs stays empty until the profiles are confirmed; a guessed URL
-        # here is worse than no node at all.
-        "sameAs": [],
+        # Only profiles the site itself links to (Contact page).
+        "sameAs": ["https://www.linkedin.com/company/orvixnet.com/"],
     }
 
 
