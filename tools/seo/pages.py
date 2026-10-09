@@ -165,12 +165,6 @@ PAGES: dict[str, dict] = {
         "A 6-week independent control assessment against ISO/IEC 42001 and NIST AI "
         "RMF, producing an evidence ledger and a date-sequenced closure plan.",
     ),
-    "engagements/data-residency-review/index.html": _p(
-        "engagement",
-        "Data Residency Review: Where Your Data Goes | Orvix",
-        "A 3–4 week engagement that maps where regulated data is stored, "
-        "processed, supported and backed up, against what your own regulator expects.",
-    ),
     "engagements/human-risk-and-impersonation-defense/index.html": _p(
         "engagement",
         "Impersonation Defence: Deepfake Review | Orvix",
@@ -194,6 +188,24 @@ PAGES: dict[str, dict] = {
         "Model Evaluation and AI Red Team | Orvix",
         "A 4–6 week engagement that measures an AI system against its stated "
         "purpose, then attacks the application around it. Results are reproducible.",
+    ),
+    "engagements/cloud-security-posture-assessment/index.html": _p(
+        "engagement",
+        "Cloud Security Posture Assessment | Orvix",
+        "Azure, AWS or Microsoft 365 assessed across identity, configuration, exposure, data protection, logging and resilience, with a ranked remediation roadmap.",
+        og_image="https://orvixnet.com/assets/img/og/default.png",
+    ),
+    "engagements/cybersecurity-maturity-and-risk-assessment/index.html": _p(
+        "engagement",
+        "Cybersecurity Maturity and Risk Assessment | Orvix",
+        "Your security program scored against NIST CSF 2.0, C2M2 and the CIS Controls, mapped to regional requirements, with a risk register and a roadmap.",
+        og_image="https://orvixnet.com/assets/img/og/default.png",
+    ),
+    "engagements/ot-industrial-cybersecurity-assessment/index.html": _p(
+        "engagement",
+        "OT and Industrial Cybersecurity Assessment | Orvix",
+        "Assets, IT/OT segmentation, remote access, legacy exposure and incident readiness in industrial environments, assessed passively against IEC 62443.",
+        og_image="https://orvixnet.com/assets/img/og/default.png",
     ),
 
     # ---- industries ---------------------------------------------------

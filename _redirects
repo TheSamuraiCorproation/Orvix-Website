@@ -15,8 +15,15 @@
 /netlify/*                  /404.html  404!
 /.env*                      /404.html  404!
 
+# Data Residency Review was replaced by the Cloud Security Posture Assessment (2026-10-09)
+/engagements/data-residency-review/            /engagements/cloud-security-posture-assessment/      301
+/engagements/data-residency-review             /engagements/cloud-security-posture-assessment/      301
+/ar/engagements/data-residency-review/         /ar/engagements/cloud-security-posture-assessment/   301
+/ar/engagements/data-residency-review          /ar/engagements/cloud-security-posture-assessment/   301
+
 # The blog admin API (netlify/functions/blog.mjs). Posts in content/ are only
 # ever read through it, never served as files (hidden above): drafts included.
+
 /api/*                      /.netlify/functions/blog/:splat  200
 
 # Old addresses. Engagement and industry pages used to live at
@@ -29,8 +36,8 @@
 /engagement/API_Discovery_and_Governance/                                                      /engagements/api-discovery-and-governance/  301
 /engagement/Assurance_Review/Assurance_Review.html                                             /engagements/assurance-review/  301
 /engagement/Assurance_Review/                                                                  /engagements/assurance-review/  301
-/engagement/Data_Residency_Review/Data_Residency_Review.html                                   /engagements/data-residency-review/  301
-/engagement/Data_Residency_Review/                                                             /engagements/data-residency-review/  301
+/engagement/Data_Residency_Review/Data_Residency_Review.html                                   /engagements/cloud-security-posture-assessment/  301
+/engagement/Data_Residency_Review/                                                             /engagements/cloud-security-posture-assessment/  301
 /engagement/Human_Risk_and_Impersonation_Defense/Human_Risk_and_Impersonation_Defense.html     /engagements/human-risk-and-impersonation-defense/  301
 /engagement/Human_Risk_and_Impersonation_Defense/                                              /engagements/human-risk-and-impersonation-defense/  301
 /engagement/Infrastructure_Design_Review/Infrastructure_Design_Review.html                     /engagements/infrastructure-design-review/  301
@@ -45,8 +52,8 @@
 /ar/engagement/API_Discovery_and_Governance/                                                   /ar/engagements/api-discovery-and-governance/  301
 /ar/engagement/Assurance_Review/Assurance_Review.html                                          /ar/engagements/assurance-review/  301
 /ar/engagement/Assurance_Review/                                                               /ar/engagements/assurance-review/  301
-/ar/engagement/Data_Residency_Review/Data_Residency_Review.html                                /ar/engagements/data-residency-review/  301
-/ar/engagement/Data_Residency_Review/                                                          /ar/engagements/data-residency-review/  301
+/ar/engagement/Data_Residency_Review/Data_Residency_Review.html                                /ar/engagements/cloud-security-posture-assessment/  301
+/ar/engagement/Data_Residency_Review/                                                          /ar/engagements/cloud-security-posture-assessment/  301
 /ar/engagement/Human_Risk_and_Impersonation_Defense/Human_Risk_and_Impersonation_Defense.html  /ar/engagements/human-risk-and-impersonation-defense/  301
 /ar/engagement/Human_Risk_and_Impersonation_Defense/                                           /ar/engagements/human-risk-and-impersonation-defense/  301
 /ar/engagement/Infrastructure_Design_Review/Infrastructure_Design_Review.html                  /ar/engagements/infrastructure-design-review/  301
