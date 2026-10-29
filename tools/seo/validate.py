@@ -18,6 +18,7 @@ import re
 from collections import defaultdict
 
 from . import schema, urls
+from .head import GA4_TAG
 from .pages import NOINDEX, for_path
 
 CONFIRM = re.compile(r"confirm\]", re.I)
@@ -113,6 +114,11 @@ def check(root: pathlib.Path) -> Report:
             n = len(d[0])
             if not (140 <= n <= 160):
                 say(rel, "description-length", f"{n} chars, must be 140-160")
+
+        # -- analytics: exactly one GA4 tag, the one head.py emits ------
+        n_ga = headonly.count(GA4_TAG)
+        if n_ga != 1:
+            r.error(rel, "ga4-tag", f"expected the GA4 tag once in <head>, found {n_ga}")
 
         # -- canonical -------------------------------------------------
         c = re.findall(r'<link\s+rel="canonical"\s+href="(.*?)"', s, re.I)
