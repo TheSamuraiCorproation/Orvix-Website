@@ -25,6 +25,12 @@ DEFAULT_OG_IMAGE = "/assets/img/og/default.png"
 
 LOCALE = {"en": "en_AE", "ar": "ar_AE"}
 
+# Google Analytics 4. The one place the measurement ID lives: every managed
+# page loads /assets/analytics.js with it. That script only reports from
+# orvixnet.com, so local runs and Netlify previews send nothing.
+GA4_ID = "G-0JW6W5F3EJ"
+GA4_TAG = f'<script src="/assets/analytics.js" data-ga4="{GA4_ID}" async></script>'
+
 
 def esc(s: str) -> str:
     """Escape for an HTML attribute value."""
@@ -89,6 +95,7 @@ def render(rel: str, page: dict, *, title: str, description: str,
     A('<link rel="apple-touch-icon" href="/apple-touch-icon.png">')
     A('<link rel="manifest" href="/site.webmanifest">')
     A('<meta name="referrer" content="strict-origin-when-cross-origin">')
+    A(GA4_TAG)
 
     if not indexable and page.get("noindex_reason"):
         A(f"<!-- noindex: {page['noindex_reason']} -->")

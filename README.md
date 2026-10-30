@@ -160,6 +160,15 @@ Function tests: `node --test "netlify/tests/*.test.mjs"`.
 - **Headings.** Each hero's small label sits inside its `<h1>`, so the heading carries the page topic for search while looking the same.
 - **Held back on purpose:** the Organization schema (waiting on the registered address), and noindex on the Assurance Index, the unreleased case studies and the empty listing pages. Each reason is in `pages.py`. Details: `tools/seo/README.md`.
 
+## Analytics: Google Analytics 4
+
+- **The measurement ID lives in one place:** `GA4_ID` in `tools/seo/head.py` (currently `G-0JW6W5F3EJ`). The SEO head puts `<script src="/assets/analytics.js" data-ga4="…" async>` on every public page, blog articles included. The admin, the newsletter templates and `404.html` are not tracked.
+- **Only orvixnet.com reports.** `assets/analytics.js` does nothing on localhost, Netlify deploy previews or branch deploys, so test visits stay out of the GA4 property.
+- **The security policy allows it.** `_headers` lets in Google's tag loader (`*.googletagmanager.com`) and its collection endpoints (`*.google-analytics.com`, `*.analytics.google.com`). Remove those if GA4 is ever removed; without them GA4 is blocked silently.
+- **Checked on every build:** `python -m tools.seo validate` fails any page whose `<head>` lacks the tag or carries it twice.
+- **To change the ID:** edit `GA4_ID`, then run `python -m tools.seo build`.
+- **Consent:** GA4 loads without a cookie banner today. If one is added, use Google's Consent Mode in `analytics.js` (default to denied until the visitor accepts).
+
 ## Other tools
 
 | Tool | Purpose |
