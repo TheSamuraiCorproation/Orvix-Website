@@ -19,7 +19,30 @@
 .pv-key__k{display:block;font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 [dir=rtl] .pv-key__k{letter-spacing:0;font-family:var(--f);font-size:12.5px;font-weight:600}
 .pv-key__st{font-size:clamp(19px,1.8vw,23px)!important;line-height:1.25!important;letter-spacing:-.015em;color:var(--ink)!important;font-weight:600;margin:0 0 10px!important}
-.pv-key p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0;max-width:34ch}
+.pv-key p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0;max-width:34ch;position:relative}
+/* hover: the column takes shape as a card */
+a.pv-key{display:block;text-decoration:none;color:inherit;overflow:hidden;isolation:isolate;
+  transition:background .35s ease,box-shadow .35s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+a.pv-key::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,#fff,var(--mist));opacity:0;transition:opacity .35s ease}
+.pv-key::before{transition:width .55s cubic-bezier(.22,1,.36,1)}
+.pv-key__wm{position:absolute;inset-inline-end:clamp(12px,2vw,28px);top:clamp(10px,1.6vw,22px);z-index:-1;font-family:var(--m);font-weight:500;
+  font-size:clamp(64px,7vw,104px);line-height:1;color:var(--ink);opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+.pv-key__k,.pv-key__st{position:relative;transition:color .3s ease}
+.pv-key__more{display:inline-flex;gap:6px;margin-top:16px;font-size:13.5px;font-weight:600;color:var(--signal);
+  opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+a.pv-key:hover,a.pv-key:focus-visible{box-shadow:0 26px 50px -30px rgba(3,7,44,.45);transform:translateY(-4px);outline:none}
+a.pv-key:hover::after,a.pv-key:focus-visible::after{opacity:1}
+a.pv-key:hover::before,a.pv-key:focus-visible::before{width:calc(100% - 2 * clamp(20px,2.6vw,36px))}
+a.pv-key:first-child:hover::before,a.pv-key:first-child:focus-visible::before{width:calc(100% - clamp(20px,2.6vw,36px))}
+a.pv-key:hover .pv-key__wm,a.pv-key:focus-visible .pv-key__wm{opacity:.06;transform:none}
+a.pv-key:hover .pv-key__st,a.pv-key:focus-visible .pv-key__st{color:var(--signal)!important}
+a.pv-key:hover .pv-key__k{color:var(--signal)}
+a.pv-key:hover .pv-key__more,a.pv-key:focus-visible .pv-key__more{opacity:1;transform:none}
+/* the first column was flush with the page edge; as a card it needs its own padding */
+a.pv-key:first-child{padding-inline-start:clamp(20px,2.6vw,36px)}
+a.pv-key:first-child::before{inset-inline-start:clamp(20px,2.6vw,36px)}
+@media(hover:none){.pv-key__more{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){a.pv-key,a.pv-key::after,.pv-key::before,.pv-key__wm,.pv-key__more{transition:none}}
 
 /* contents + body */
 .pv-main{padding-top:clamp(56px,7vw,96px)!important}
