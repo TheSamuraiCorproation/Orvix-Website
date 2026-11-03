@@ -9,14 +9,17 @@
 
 .pvn svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
-/* at a glance */
-.pv-glance{padding:0!important;margin-top:-56px;position:relative;z-index:2}
-.pv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.pv-card{background:var(--paper);border:1px solid var(--silver);border-radius:16px;padding:26px 24px;
-  box-shadow:0 22px 44px -28px rgba(3,7,44,.35)}
-.pv-card .ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(72,226,226,.14);color:var(--signal);margin-bottom:16px}
-.pv-card h3{font-size:17px;line-height:1.3;color:var(--ink);margin:0 0 8px;font-weight:600}
-.pv-card p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0}
+/* key commitments: one band, fine rules, no boxes */
+.pv-glance{padding:0!important;background:var(--paper);border-bottom:1px solid var(--silver)}
+.pv-keys{display:grid;grid-template-columns:repeat(3,1fr)}
+.pv-key{padding:clamp(28px,3.4vw,44px) clamp(20px,2.6vw,36px);border-inline-start:1px solid var(--silver);position:relative}
+.pv-key:first-child{border-inline-start:0;padding-inline-start:0}
+.pv-key::before{content:"";position:absolute;top:-1px;inset-inline-start:clamp(20px,2.6vw,36px);width:36px;height:2px;background:var(--cyan)}
+.pv-key:first-child::before{inset-inline-start:0}
+.pv-key__k{display:block;font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+[dir=rtl] .pv-key__k{letter-spacing:0;font-family:var(--f);font-size:12.5px;font-weight:600}
+.pv-key__st{font-size:clamp(19px,1.8vw,23px)!important;line-height:1.25!important;letter-spacing:-.015em;color:var(--ink)!important;font-weight:600;margin:0 0 10px!important}
+.pv-key p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0;max-width:34ch}
 
 /* contents + body */
 .pv-main{padding-top:clamp(56px,7vw,96px)!important}
@@ -72,9 +75,11 @@
 .pv-contact .btn{flex:none}
 
 @media(max-width:900px){
-  .pv-cards,.pv-rights{grid-template-columns:1fr}
+  .pv-keys,.pv-rights{grid-template-columns:1fr}
+  .pv-key{border-inline-start:0;border-top:1px solid var(--silver);padding-inline:0}
+  .pv-key:first-child{border-top:0}
+  .pv-key::before{inset-inline-start:0}
   .pv-grid{grid-template-columns:minmax(0,1fr)}
   .pv-tbl table{font-size:13.5px}
   .pv-toc{position:static}
-  .pv-glance{margin-top:-36px}
 }
