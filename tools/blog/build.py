@@ -76,7 +76,7 @@ def shell(lang: str) -> tuple[str, str, str]:
     head_end = s.find("</head>")
     body_start = s.find(">", s.find("<body")) + 1
     content = s.find('<div class="wwd rsh">', body_start)
-    footer = s.find("<footer>", content)
+    footer = s.find("<footer", content)
     deeper = lambda part: ATTR.sub(lambda m: f'{m.group(1)}="../{m.group(2)}"', part)
     head = deeper(s[:head_end])
     top = deeper(s[head_end:content])

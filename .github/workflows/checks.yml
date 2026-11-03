@@ -26,6 +26,7 @@ jobs:
           python -m tools.seo build
       - name: Generated markup has not drifted
         run: |
+          python -m tools.partials --check
           python -m tools.nav --check
           python -m tools.boundary --check
           python -m tools.insights --check

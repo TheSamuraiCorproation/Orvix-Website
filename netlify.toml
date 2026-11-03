@@ -1,11 +1,12 @@
 # Netlify site config. The repo root is the publish folder. The only build
 # work is the blog: tools/blog turns content/posts/*.json into article pages,
+# tools/partials stamps the shared nav, drawer and footer into every page,
 # then tools/seo adds their SEO head and refreshes the sitemap (and fails the
 # deploy if any page breaks the SEO rules). Headers and redirects stay in
 # _headers and _redirects.
 [build]
   publish = "."
-  command = "node --test \"netlify/tests/*.test.mjs\" && python -m tools.blog && python -m tools.seo build"
+  command = "node --test \"netlify/tests/*.test.mjs\" && python -m tools.blog && python -m tools.partials && python -m tools.seo build"
 
 [build.environment]
   PYTHON_VERSION = "3.12"

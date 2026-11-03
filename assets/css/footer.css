@@ -1,0 +1,17 @@
+/* Site footer: the markup is tools/partials/html/footer.*.html, stamped into
+   every page by tools/partials. These are its only rules, written to stand
+   on their own so the main, industry and engagement templates show the same
+   footer whatever their own base styles are. */
+.site-foot{background:#1B2233;color:#8A93A6;padding:64px 0 40px;font-size:13px;line-height:21px;font-weight:300}
+.site-foot__in{max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px)}
+.site-foot p,.site-foot h4,.site-foot ul{margin:0;padding:0}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:#48E2E2}
+.site-foot .brand{display:inline-block;line-height:0;margin:0}
+.site-foot .brand img{height:30px;width:auto;display:block}
+.site-foot .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.site-foot h4{color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.site-foot li{list-style:none;margin-bottom:9px}
+.site-foot .fbot{margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:800px){.site-foot .fgrid{grid-template-columns:1fr 1fr}}

@@ -40,7 +40,6 @@ section{padding:clamp(72px,10vw,148px) 0}
 /* wordmark (interim, typographic) */
 .brand{display:inline-block;line-height:0}
 .brand img{height:26px;width:auto;display:block}
-footer .brand img{height:30px}
 
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--ink);
@@ -254,14 +253,6 @@ font-size:clamp(17px,1.9vw,23px);line-height:1.35;color:var(--cyan);font-weight:
 line-height:17px;color:rgba(255,255,255,.4);max-width:30ch;text-align:right}
 @media(max-width:900px){.close-brief{display:none}}
 
-/* footer */
-footer{background:var(--graphite);color:var(--steel);padding:64px 0 40px;font-size:13px;line-height:21px}
-.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
-footer h4{color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
-footer li{list-style:none;margin-bottom:9px}
-footer a:hover{color:var(--cyan)}
-.fbot{margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:800px){.fgrid{grid-template-columns:1fr 1fr}}
 
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .js .rv.in{opacity:1;transform:none}

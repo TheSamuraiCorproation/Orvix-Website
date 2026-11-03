@@ -6,7 +6,6 @@
 /* wordmark (interim, typographic) */
 .brand{display:inline-block;line-height:0}
 .brand img{height:26px;width:auto;display:block}
-footer .brand img{height:30px}
 
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--ink);

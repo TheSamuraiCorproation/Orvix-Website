@@ -50,7 +50,7 @@ html{-webkit-text-size-adjust:100%}
 .zone,.pnum,.pz,.sub,.slot,.flag,.stg2,.loc,.tag,.k,.ph,.n,
 .cvg-key,.cvg-hint,.ph__brief,.xlab,.lead-mark__t,.ctafoot,
 .lvn,.mnext,.qreset,.jb,.ev,.num,
-.fgrid h4,.foot__grid h4,#mob h5,
+.site-foot h4,#mob h5,
 .brief b,.brief em,.hero-note b,.meta b,.note .slot,b .slot,
 .srow i,.here i,.form label,.cvg-tab span,.cvg-n span,
 .bhud span,.hud span,.k span,.cap .n,
@@ -61,7 +61,7 @@ table.clock th,table.offers th,
 .qs2 .bs button,.bs button.y,.bs button.m,.cvg-n span{font-size:12px!important}
 .qstick .hd span,.qp .hd span{font-size:12px!important}
 
-.lbl,.eyebrow,.slbl,.chip,.label,.fgrid h4,.foot__grid h4,
+.lbl,.eyebrow,.slbl,.chip,.label,.site-foot h4,
 .cvg-key,.xlab,.hero-note b,.mleg .s,.mleg .l,.mleg .c,
 .slbl{letter-spacing:.11em!important}
 

@@ -27,10 +27,11 @@ GitHub Actions runs all of these on every push and pull request to `main` (`.git
 | `python -m tools.seo validate` | a title, description, canonical, hreflang, schema or robots rule is broken |
 | `python -m tools.linkcheck` | an internal link, asset or `#anchor` is missing, or a hero preload doesn't match the hero photo |
 | `python -m tools.images --check` | a page references a `.jpg` that has a `.webp` copy |
+| `python -m tools.partials --check` | a page's nav, phone drawer or footer differs from `tools/partials/html/` |
 | `python -m tools.nav --check` | nav markup or the `nav.js` tag has drifted |
 | `python -m tools.boundary --check` | the Boundary band's script or stylesheet link has drifted |
 | `python -m tools.insights --check` | the Perspectives / Briefings / Evaluations listings are out of date |
-| `python -m tools.unify --check` | engagement or industry nav markup differs from the What-we-do template |
+| `python -m tools.unify --check` | engagement or industry chrome (breadcrumb, fonts, hero art, accent) has drifted |
 
 Each tool without `--check` applies its fix. They are all idempotent: running one twice changes nothing.
 
@@ -58,7 +59,10 @@ Each tool without `--check` applies its fix. They are all idempotent: running on
 - **Internal links** are relative and in the same directory form, exactly the URL the canonical, sitemap and hreflang tags declare. Never link to `…/index.html`: it works, but it gives the page a second address.
 - **Old addresses.** Engagement and industry pages used to live at `engagement/<Folder>/<Folder>.html` and `industries/<x>/<x>.html`. `_redirects` sends those to the new URLs with a 301. If a page ever moves again, add its old address there.
 
-## Styles: `assets/css/`
+## Shared parts: `tools/partials/`
+
+The top nav, the phone drawer and the footer exist once per language, in `tools/partials/html/` (`nav.en.html`, `nav.ar.html`, `drawer.*`, `footer.*`). **To change a menu or footer link, edit the partial, then run `python -m tools.partials`**: it writes the markup into every page, filling in the relative paths for the page's depth and pointing the language switch at the page's twin (or its nearest parent, when an article has no Arabic version). The Netlify build runs it too, and `--check` fails CI if any page was edited by hand. Never edit a nav or footer inside a page: the next build overwrites it.
+
 
 Every page links the shared stylesheets for its template. The only CSS left inside a page is its photo variables and, on a handful of pages, a few rules no other page uses. **To change the look, edit these files, never a page.**
 
@@ -68,6 +72,7 @@ Every page links the shared stylesheets for its template. The only CSS left insi
 | `company.css` | Company pages (after `main.css`) |
 | `engagement.css` / `industry.css` | Engagement pages / industry pages |
 | `engagement-nav.css` / `industry-nav.css` | Nav and hero geometry that match those templates to What we do |
+| `footer.css` | The footer, every page (one design on every template) |
 | `glow.css` | The glow ring on the "Talk to our team" button |
 | `mobile.css` | Phone refinements, every page |
 | `nav-panel.css` | Menu panels scroll inside a short window |

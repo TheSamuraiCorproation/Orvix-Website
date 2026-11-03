@@ -262,20 +262,6 @@ p.ph__brief,p.start__brief{display:none}
 p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:34ch;z-index:3;max-width:34ch;
   font-family:"IBM Plex Mono",'Plex Mono Fallback',monospace;font-size:11px;line-height:18px;color:#424560;text-align:right}
 
-/* ────────────────────────────── footer ───────────────────────────────── */
-.foot{background:var(--graphite);padding:calc(var(--u)*9) 0 calc(var(--u)*5)}
-.foot__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:calc(var(--u)*6)}
-.foot__about p{margin-top:calc(var(--u)*3);font-size:14px;line-height:23px;color:#767D91;max-width:34ch}
-.foot h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);
-  font-weight:600;margin-bottom:calc(var(--u)*2.5)}
-.foot ul{list-style:none;margin:0;padding:0}
-.foot li{margin-bottom:11px}
-.foot li a{color:#8A93A6;font-size:14px}
-.foot li a:hover{color:var(--cyan)}
-.foot__bar{margin-top:calc(var(--u)*8);padding-top:calc(var(--u)*3);border-top:1px solid rgba(217,222,231,.09);
-  display:flex;justify-content:space-between;gap:calc(var(--u)*4);flex-wrap:wrap}
-.foot__bar p{font-size:13px;color:var(--slate)}
-
 /* ─────────────────────────── scroll reveal ───────────────────────────── */
 .js .rv{opacity:0;transform:translateY(18px);
   transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
@@ -285,7 +271,6 @@ p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:
 @media (max-width:1180px){
   .menu{display:none}
   .navtoggle{display:inline-flex}
-  .foot__grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:1080px){
   .hero__copy{max-width:100%}
@@ -309,7 +294,6 @@ p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:
   .sec h2{font-size:27px;line-height:34px}
   .start h2{font-size:32px;line-height:38px;max-width:none}
   .check__q{grid-template-columns:1fr;gap:calc(var(--u)*2)}
-  .foot__grid{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -325,4 +309,3 @@ p.start__brief{position:absolute;right:var(--gut);bottom:calc(var(--u)*4);width:
 
 /* readable line length on wide screens (was up to ~145 characters a line) */
 .hero__sub{max-width:58ch}
-.foot__bar p{max-width:80ch}

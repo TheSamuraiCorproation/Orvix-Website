@@ -19,8 +19,9 @@ typography) was injected inline by earlier runs; it now lives in
 assets/css/engagement-nav.css and assets/css/industry-nav.css, so this only
 manages markup.
 
-Every fix here is structural. No page copy is touched: the nav is a shared
-component, the breadcrumb is chrome, and the hero art is decoration.
+Every fix here is structural. No page copy is touched: the breadcrumb is
+chrome and the hero art is decoration. The nav, drawer and footer themselves
+are shared components stamped by tools/partials.
 
     python -m tools.unify           # apply
     python -m tools.unify --check   # report what would change
@@ -32,7 +33,7 @@ import pathlib
 import re
 import sys
 
-from .donor import Donor, match_element
+from ..partials.apply import match_element
 from ..nav import apply as _nav
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -82,29 +83,7 @@ def lang_of(rel: str) -> str:
 
 
 # ---- nav ------------------------------------------------------------------
-
-def swap_nav(s: str, rel: str, d: Donor) -> str:
-    """Put the canonical nav and drawer in, whatever was there before."""
-    nav = d.nav_for(rel)
-
-    if '<nav id="nav">' in s:
-        i = s.find('<nav id="nav">')
-        s = s[:i] + nav + s[match_element(s, i, "nav"):]
-    else:
-        # the engagement template: <header class="nav"> ... </header>
-        m = re.search(r'<header class="nav">', s)
-        if not m:
-            return s
-        s = s[:m.start()] + nav + s[match_element(s, m.start(), "header"):]
-
-    if '<div class="mob" id="mob">' in s:
-        i = s.find('<div class="mob" id="mob">')
-        s = s[:i] + d.mob_for(rel) + s[match_element(s, i, "div"):]
-    else:
-        i = s.find("</nav>") + len("</nav>")
-        s = s[:i] + "\n" + d.mob_for(rel) + s[i:]
-    return s
-
+# The nav, drawer and footer markup itself is tools/partials' job now.
 
 def ensure_nav_js(s: str, rel: str) -> str:
     """The toggle script is shared (assets/nav.js). Drop any transplanted
@@ -174,43 +153,21 @@ def blue_eyebrow(s: str) -> str:
 
 
 # ---- Leadership is reachable, but not advertised in the nav ---------------
-# The page stays, keeps its URL and stays in the sitemap; the only way in is
-# the "Read bio" card on the About page, which is what was asked for.
-LEADERSHIP_HREF = "company/about/leadership/"
-
-
-def hide_leadership_nav(s: str) -> str:
-    """Drop the Leadership link from the header nav, the drawer and the footer.
-
-    The page itself is untouched: same URL, still in the sitemap, still linked
-    from every "Read bio" card on the About page. Those cards point at a
-    relative "leadership/#name" and are deliberately not matched.
-    """
-    href = re.escape(LEADERSHIP_HREF)
-    # the footer wraps its links in <li>; the nav dropdown and the drawer do
-    # not. Take the <li> where there is one so no empty bullet is left behind.
-    for pat in (
-        r'<li[^>]*>\s*<a[^>]*href="[^"]*' + href + r'"[^>]*>.*?</a>\s*</li>',
-        r'<a[^>]*href="[^"]*' + href + r'"[^>]*>.*?</a>',
-    ):
-        s = re.sub(pat, "", s, flags=re.S)
-    return s
+# Done in the partials (tools/partials/html): they carry no Leadership link.
+# The page keeps its URL and its sitemap entry; the way in is the "Read bio"
+# card on the About page. The old regex here also caught the Leadership
+# page's own language switch, which is why that page had none.
 
 # ---- driver ---------------------------------------------------------------
 
-def process(root: pathlib.Path, rel: str, donors: dict[str, Donor], check: bool) -> list[str]:
+def process(root: pathlib.Path, rel: str, check: bool) -> list[str]:
     p = root / rel
     s0 = p.read_text(encoding="utf-8")
     s = s0
     did = []
     eng, ind = is_engagement(rel), is_industry(rel)
-    d = donors[lang_of(rel)]
 
     if eng or ind:
-        before = s
-        s = swap_nav(s, rel, d)
-        if s != before:
-            did.append("nav")
         before = s
         s = ensure_nav_js(s, rel)
         if s != before:
@@ -231,11 +188,6 @@ def process(root: pathlib.Path, rel: str, donors: dict[str, Donor], check: bool)
             did.append("accent")
 
     before = s
-    s = hide_leadership_nav(s)
-    if s != before:
-        did.append("hide-leadership")
-
-    before = s
     s = drop_hero_art(s, rel)
     if s != before:
         did.append("hero-art")
@@ -246,11 +198,10 @@ def process(root: pathlib.Path, rel: str, donors: dict[str, Donor], check: bool)
 
 
 def run(root: pathlib.Path, check: bool = False) -> dict:
-    donors = {"en": Donor(root, "en"), "ar": Donor(root, "ar")}
     counts: dict[str, int] = {}
     touched = 0
     for rel in targets(root):
-        did = process(root, rel, donors, check)
+        did = process(root, rel, check)
         if did:
             touched += 1
         for k in did:
