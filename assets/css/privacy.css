@@ -1,0 +1,80 @@
+/* Privacy notice (company/privacy/). Corporate document layout: glance cards,
+   sticky contents, numbered sections, processor table, consent panel,
+   rights cards, contact band. Works in both directions (logical properties). */
+.pvn .hero .sub{max-width:62ch}
+.pv-upd{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:var(--m);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 14px}
+.pv-upd::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+[dir=rtl] .pv-upd{letter-spacing:0;font-family:var(--f);font-size:12.5px}
+
+.pvn svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* at a glance */
+.pv-glance{padding:0!important;margin-top:-56px;position:relative;z-index:2}
+.pv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pv-card{background:var(--paper);border:1px solid var(--silver);border-radius:16px;padding:26px 24px;
+  box-shadow:0 22px 44px -28px rgba(3,7,44,.35)}
+.pv-card .ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(72,226,226,.14);color:var(--signal);margin-bottom:16px}
+.pv-card h3{font-size:17px;line-height:1.3;color:var(--ink);margin:0 0 8px;font-weight:600}
+.pv-card p{font-size:14.5px;line-height:1.6;color:var(--slate);margin:0}
+
+/* contents + body */
+.pv-main{padding-top:clamp(56px,7vw,96px)!important}
+.pv-grid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.pv-toc{background:none;position:sticky;top:96px;border-inline-start:2px solid var(--silver);padding-inline-start:18px}
+.pv-toc b{display:block;font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:500;margin-bottom:14px}
+[dir=rtl] .pv-toc b{letter-spacing:0;font-family:var(--f);font-size:12.5px;font-weight:600}
+.pv-toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+.pv-toc li{counter-increment:t;margin:0 0 10px}
+.pv-toc a{display:flex;gap:10px;font-size:14px;line-height:1.4;color:var(--slate);text-decoration:none;transition:color .2s}
+.pv-toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--m);font-size:11px;color:var(--steel);padding-top:2px}
+.pv-toc a:hover{color:var(--signal)}
+
+.pv-sec{padding:0 0 clamp(40px,5vw,56px);margin:0 0 clamp(40px,5vw,56px);border-bottom:1px solid var(--silver);scroll-margin-top:96px}
+.pv-sec:last-child{border-bottom:0;margin-bottom:0}
+.pv-sec__hd{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.pv-sec__hd .ico{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--ink);color:var(--cyan);flex:none}
+.pv-sec__hd .n{display:block;font-family:var(--m);font-size:11px;letter-spacing:.14em;color:var(--steel);margin-bottom:2px}
+.pv-sec h2{font-size:clamp(22px,2.4vw,28px)!important;line-height:1.2;color:var(--ink);margin:0;max-width:none!important}
+.pv-sec p{font-size:16px;line-height:1.7;color:var(--slate);max-width:66ch;margin:0 0 14px}
+.pv-sec a{color:var(--signal);font-weight:500}
+
+/* consent panel */
+.pv-consent{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;margin-top:22px;
+  background:linear-gradient(135deg,#03072C,#0B1660);color:#fff;border-radius:16px;padding:22px 24px}
+.pv-consent b{display:block;font-size:16px;margin-bottom:4px}
+.pv-consent span{font-size:14px;color:rgba(255,255,255,.72)}
+.pvn button.cookie-reset{margin:0;background:var(--cyan);color:var(--ink)}
+.pvn button.cookie-reset:hover{background:#fff}
+
+/* processors table */
+.pv-tbl{overflow-x:auto;margin-top:8px;border:1px solid var(--silver);border-radius:14px}
+.pv-tbl table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:600px}
+.pv-tbl th{text-align:start;font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);
+  font-weight:500;background:var(--mist);padding:12px 16px;border-bottom:1px solid var(--silver)}
+[dir=rtl] .pv-tbl th{letter-spacing:0;font-family:var(--f);font-size:12.5px;font-weight:600}
+.pv-tbl td{padding:14px 16px;border-bottom:1px solid var(--silver);color:var(--slate);vertical-align:top;line-height:1.5}
+.pv-tbl tr:last-child td{border-bottom:0}
+.pv-tbl td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+
+/* rights */
+.pv-rights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.pv-right{border:1px solid var(--silver);border-radius:14px;padding:20px;background:var(--paper)}
+.pv-right .ico{color:var(--signal);margin-bottom:10px;display:block}
+.pv-right h3{font-size:15.5px;color:var(--ink);margin:0 0 6px;font-weight:600}
+.pv-right p{font-size:14px;line-height:1.55;margin:0}
+
+/* contact band */
+.pv-contact{background:var(--ink);color:#fff}
+.pv-contact .w{display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap}
+.pv-contact h2{color:#fff!important;margin:0 0 8px}
+.pv-contact p{color:rgba(255,255,255,.72);margin:0;max-width:52ch}
+.pv-contact .btn{flex:none}
+
+@media(max-width:900px){
+  .pv-cards,.pv-rights{grid-template-columns:1fr}
+  .pv-grid{grid-template-columns:minmax(0,1fr)}
+  .pv-tbl table{font-size:13.5px}
+  .pv-toc{position:static}
+  .pv-glance{margin-top:-36px}
+}
