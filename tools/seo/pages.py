@@ -356,6 +356,12 @@ PAGES: dict[str, dict] = {
         "Engineering and assurance roles at Orvix, for people who would rather "
         "build what matters and protect what matters than describe it in a deck.",
     ),
+    "company/privacy/index.html": _p(
+        "company",
+        "Privacy Notice | Orvix",
+        "What orvixnet.com collects, why, who processes it for us, how long it is kept, and how to ask for a copy, a correction or deletion of your information.",
+        og_image="https://orvixnet.com/assets/img/og/default.png",
+    ),
     "company/contact/index.html": _p(
         "company",
         "Contact Us: Start a Conversation | Orvix",
