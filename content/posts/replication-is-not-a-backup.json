@@ -1,0 +1,24 @@
+{
+  "slug": "replication-is-not-a-backup",
+  "status": "published",
+  "published": "2026-11-04",
+  "updated": "2026-11-04T06:56:25.016Z",
+  "author": "Orvix",
+  "title": {
+    "en": "Replication is not a backup",
+    "ar": ""
+  },
+  "summary": {
+    "en": "Why four copies of a dataset can share one fate, and what that means for a recovery commitment you have made to a regulator or a customer.",
+    "ar": ""
+  },
+  "body": {
+    "en": "Four copies tell you what was built for availability. A timed restore, with evidence behind it, tells you what holds.\n\n## The situation\n\nPicture a UAE financial services firm that keeps four copies of its core transaction data, and treat it as illustrative. Two sit in separate data centers. Two sit in a second cloud region. Replication runs continuously, and the failover test passes every quarter.\n\nThe infrastructure lead describes the data as protected, and the description is accurate. Then the firm signs a customer agreement, or answers a supervisory review, that commits it to recover within a stated time and lose no more than a stated amount of data. Nobody asks what the four copies have in common.\n\n## Where four copies share one fate\n\nReplication works by making copies agree. That is its purpose, and it is its limit. Whatever happens to the source reaches every replica, quickly and faithfully.\n\n- A deletion, mistaken or deliberate, is applied everywhere.\n- Ransomware encrypts the source, and the encrypted version replicates.\n- A faulty release or a bad migration writes corrupt data to every copy as a valid change.\n- A compromised administrator account reaches every copy that shares a control plane.\n\nFour copies with the same credentials, the same management plane and the same replication link are one copy, counted four times. The number looks like resilience. What the copies have in common is what decides whether it is.\n\n## What a backup does differently\n\nA backup is a copy that does not follow the source. It is separated in three ways.\n\n- **By time.** Earlier states are kept, so you can return to the moment before the event.\n- **By control.** It sits behind different credentials and a different administrative path.\n- **By mechanism.** It is immutable or offline, so no one can alter it until retention expires.\n\nReplication keeps you running. A backup lets you go back. Each answers a different question, and each needs its own evidence.\n\n## The commitment is the thing\n\nA recovery commitment is usually written as an outcome. It sits in a customer schedule, a regulatory filing or a board-approved resilience policy. Replication can honor it against hardware failure. It cannot honor it against a bad write, because after a deletion, a corruption or an attack, the recovery point of a replica is the present moment, and that is the one point you cannot use.\n\nThe commitment was made in terms of recovery. The architecture was built for failover. The distance between the two is rarely a failure of competence. It is what scale does to visibility, and it tends to surface in a meeting, when someone asks when you last restored this system from backup and how long it took.\n\n## Five checks before someone asks\n\n1. For each critical dataset, what is the oldest copy you can restore, and who can delete it?\n2. Do your backups share credentials, a management plane or a network path with production?\n3. Is at least one copy immutable or offline, with retention enforced where an administrator cannot override it?\n4. When did you last restore end to end, and how does the measured time compare with what you committed to?\n5. Does the restore test include identity, encryption keys and configuration, or only the data?\n\nThe last check is the one most often missed. A backup encrypted with keys held inside the system it protects is not isolated. It only looks that way.\n\n## Where we start\n\nWe do not sell a storage platform, so nothing rides on which technology you keep. Our [Infrastructure Design Review](https://orvixnet.com/engagements/infrastructure-design-review/) tests an architecture for resilience, data residency and cryptographic posture before the design is committed. It runs for four to six weeks and ends with target-state options and a migration sequence. Each recovery commitment is marked held, partial or absent, with the evidence behind it.\n\nFour copies is a claim. A timed restore from an isolated copy is evidence. [Talk to our team](https://orvixnet.com/company/contact/) to scope a review.",
+    "ar": ""
+  },
+  "cover": "/images/posts/replication-is-not-a-backup.webp",
+  "cover_alt": {
+    "en": "article title card : PRESPECTIVE - REPLICATION IS NOT A BACKUP -",
+    "ar": ""
+  }
+}
