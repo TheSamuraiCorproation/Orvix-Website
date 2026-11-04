@@ -57,6 +57,8 @@ def organization() -> dict:
         "@type": "Organization",
         "@id": ORG_ID,
         "name": "Orvix",
+        # The domain is orvixnet.com, so people also search "OrvixNet".
+        "alternateName": ["OrvixNet", "Orvix Net"],
         "url": urls.ORIGIN + "/",
         "logo": {
             "@type": "ImageObject",
@@ -88,6 +90,7 @@ def website() -> dict:
         "@id": SITE_ID,
         "url": urls.ORIGIN + "/",
         "name": "Orvix",
+        "alternateName": ["OrvixNet", "orvixnet.com"],
         "publisher": {"@id": ORG_ID},
         "inLanguage": ["en", "ar"],
     }

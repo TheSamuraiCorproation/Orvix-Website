@@ -39,7 +39,7 @@ PAGES: dict[str, dict] = {
     # ---- home ---------------------------------------------------------
     "index.html": _p(
         "home",
-        "AI Assurance and Cybersecurity in the GCC | Orvix",
+        "Orvix | AI Assurance and Cybersecurity in the GCC",
         "Independent AI assurance, cybersecurity and infrastructure engineering "
         "for banks, government bodies and operators across the GCC and wider MENA.",
     ),
