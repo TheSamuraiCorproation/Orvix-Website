@@ -31,10 +31,10 @@
 
   var ar = (document.documentElement.getAttribute('lang') || '').indexOf('ar') === 0;
   var T = ar ? {
-    text: 'نستخدم ملفات تعريف الارتباط التحليلية من Google لفهم كيفية استخدام الموقع، ولا نفعل ذلك إلا بموافقتك.',
+    text: 'نستخدم ملفات تعريف الارتباط التحليلية لفهم كيفية استخدام الموقع، ولا نفعل ذلك إلا بموافقتك.',
     more: 'اقرأ إشعار الخصوصية', accept: 'موافق', decline: 'رفض', href: '/ar/company/privacy/', label: 'خيارات ملفات تعريف الارتباط'
   } : {
-    text: 'We use Google analytics cookies to understand how the site is used, only if you agree.',
+    text: 'We use analytics cookies to understand how the site is used, only if you agree.',
     more: 'Read the privacy notice', accept: 'Accept', decline: 'Decline', href: '/company/privacy/', label: 'Cookie choice'
   };
 
