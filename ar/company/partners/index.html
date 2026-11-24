@@ -130,6 +130,26 @@
 .prow .mark .nm a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
 .prow .mark .nm a:hover{opacity:.75}
 .prow .mark .nm a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+/* more technology partners: compact cards. A logo that only exists in a
+   white version sits on a navy plate (.plate.dark) instead of being recoloured */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
+.pcard{border:1px solid var(--silver);display:flex;flex-direction:column;background:var(--paper)}
+.pcard .plate{height:96px;display:flex;align-items:center;padding:0 26px;border-bottom:1px solid var(--silver)}
+.pcard .plate.dark{background:var(--ink);border-bottom-color:var(--ink)}
+.pcard .plate a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
+.pcard .plate a:hover{opacity:.75}
+.pcard .plate a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.pcard .plate img{display:block;width:auto;max-width:100%}
+.pcard .pbody{padding:22px 26px 24px;display:flex;flex-direction:column;flex:1}
+.pcard .pgo{margin-top:auto;padding-top:14px;color:var(--signal);font-weight:500;text-decoration:none}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+/* strategic R&D partner */
+.rnd{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:56px;align-items:center}
+.rnd .rlogo a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
+.rnd .rlogo a:hover{opacity:.8}
+.rnd .rlogo a:focus-visible{outline:2px solid var(--cyan);outline-offset:6px}
+.rnd .rlogo img{display:block;width:100%;max-width:300px;height:auto}
+@media(max-width:860px){.rnd{grid-template-columns:1fr;gap:26px}}
 </style>
 <link rel="stylesheet" href="../../../assets/rtl.css">
 <script src="../../../assets/nav.js" defer></script>
@@ -334,7 +354,62 @@
             <a dir="auto" class="small" href="../../what-we-do/ai-cybersecurity/managed-detection-response/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">اطّلع على الخدمة المرتبطة ←</a>
           </div>
         </div>
+        <div class="pgrid rv">
+          <div class="pcard">
+            <div class="plate"><a href="https://www.xonasystems.com/" target="_blank" rel="noopener" aria-label="Xona website (opens in a new tab)"><img class="plogo" src="../../../assets/img/partners/xona.png" alt="Xona" height="32" loading="lazy"></a></div>
+            <div class="pbody">
+              <div dir="auto" class="small" style="color:var(--blue);margin-bottom:8px">الوصول الآمن عن بُعد إلى التقنية التشغيلية</div>
+              <h3 dir="auto" style="margin-bottom:8px">وصول إلى التقنية التشغيلية دون شبكة افتراضية خاصة</h3>
+              <p dir="auto" class="small" style="max-width:56ch">توفّر Xona وصولًا آمنًا عن بُعد إلى التقنية التشغيلية وأنظمة التحكم الصناعي عبر منصة ثقة صفرية تعمل من المتصفح، مع وصول قائم على الهوية بدل الشبكات الافتراضية الخاصة (VPN).</p>
+              <div class="mono" style="color:var(--steel);margin-top:16px">الأمن السيبراني للذكاء الاصطناعي</div>
+              <a dir="auto" class="small pgo" href="../../what-we-do/ai-cybersecurity/ot-security/">اطّلع على الخدمة المرتبطة ←</a>
+            </div>
+          </div>
+          <div class="pcard">
+            <div class="plate"><a href="https://www.gravitee.io/" target="_blank" rel="noopener" aria-label="Gravitee website (opens in a new tab)"><img class="plogo" src="../../../assets/img/partners/gravitee.png" alt="Gravitee" height="30" loading="lazy"></a></div>
+            <div class="pbody">
+              <div dir="auto" class="small" style="color:var(--blue);margin-bottom:8px">إدارة وكلاء الذكاء الاصطناعي وواجهات البرمجة</div>
+              <h3 dir="auto" style="margin-bottom:8px">حوكمة وكلاء الذكاء الاصطناعي وواجهات البرمجة</h3>
+              <p dir="auto" class="small" style="max-width:56ch">تؤمّن Gravitee وكلاء الذكاء الاصطناعي وواجهات البرمجة وتدفقات الأحداث وتراقبها وتحكمها على نطاق المؤسسة، من منصة إدارة واحدة.</p>
+              <div class="mono" style="color:var(--steel);margin-top:16px">الذكاء الاصطناعي التطبيقي والبيانات</div>
+              <a dir="auto" class="small pgo" href="../../engagements/api-discovery-and-governance/">اطّلع على المهمة المرتبطة ←</a>
+            </div>
+          </div>
+          <div class="pcard">
+            <div class="plate dark"><a href="https://hoxhunt.com/" target="_blank" rel="noopener" aria-label="Hoxhunt website (opens in a new tab)"><img class="plogo" src="../../../assets/img/partners/hoxhunt.svg" alt="Hoxhunt" height="32" loading="lazy"></a></div>
+            <div class="pbody">
+              <div dir="auto" class="small" style="color:var(--blue);margin-bottom:8px">إدارة المخاطر البشرية</div>
+              <h3 dir="auto" style="margin-bottom:8px">مخاطر بشرية يمكن قياسها</h3>
+              <p dir="auto" class="small" style="max-width:56ch">تؤتمت Hoxhunt التدريب التكيّفي على التصيّد والتوعية الأمنية والاستجابة لحوادث البريد الإلكتروني، بحيث يمكن قياس المخاطر السيبرانية البشرية وخفضها على مستوى القوى العاملة.</p>
+              <div class="mono" style="color:var(--steel);margin-top:16px">الأمن السيبراني للذكاء الاصطناعي</div>
+              <a dir="auto" class="small pgo" href="../../what-we-do/ai-cybersecurity/human-risk/">اطّلع على الخدمة المرتبطة ←</a>
+            </div>
+          </div>
+          <div class="pcard">
+            <div class="plate dark"><a href="https://identifai.net/" target="_blank" rel="noopener" aria-label="identifAI website (opens in a new tab)"><img class="plogo" src="../../../assets/img/partners/identifai.png" alt="identifAI" height="34" loading="lazy"></a></div>
+            <div class="pbody">
+              <div dir="auto" class="small" style="color:var(--blue);margin-bottom:8px">كشف التزييف العميق</div>
+              <h3 dir="auto" style="margin-bottom:8px">التمييز بين الوجه الحقيقي والمزيّف</h3>
+              <p dir="auto" class="small" style="max-width:56ch">تكشف identifAI الصور والفيديو والأصوات المولَّدة بالذكاء الاصطناعي في الوقت الفعلي، للفرق التي يتعيّن عليها التمييز بين وجه أو صوت حقيقي وآخر مزيّف.</p>
+              <div class="mono" style="color:var(--steel);margin-top:16px">الأمن السيبراني للذكاء الاصطناعي</div>
+              <a dir="auto" class="small pgo" href="../../engagements/human-risk-and-impersonation-defense/">اطّلع على المهمة المرتبطة ←</a>
+            </div>
+          </div>
+        </div>
         <p dir="auto" class="small rv" style="margin-top:14px;color:var(--steel)">الشعارات ملك لأصحابها، وتُستخدم بالصيغة التي تسمح بها إرشادات العلامة التجارية لكل شريك.</p>
+      </div>
+
+      <!-- strategic R&D partner -->
+      <div class="band ink" style="padding:56px max(var(--gut),calc((100% - var(--max))/2 + var(--gut)))">
+        <div class="rnd rv">
+          <div class="rlogo"><a href="https://www.thesamurai.com/" target="_blank" rel="noopener" aria-label="The SamurAI website (opens in a new tab)"><img src="../../../assets/img/partners/thesamurai.svg" alt="The SamurAI" width="300" height="95" loading="lazy"></a></div>
+          <div>
+            <div dir="auto" class="eyebrow tick" style="color:var(--cyan);margin-bottom:18px">شريك البحث والتطوير الاستراتيجي</div>
+            <h3 dir="auto" style="margin-bottom:10px;color:var(--paper)">مختبر للذكاء الاصطناعي وساحة اختبار</h3>
+            <p dir="auto" class="small" style="max-width:60ch;color:#C9D0DE">تُعدّ The SamurAI شريك أورفكس الاستراتيجي في البحث والتطوير: مختبرنا للذكاء الاصطناعي وساحة اختبارنا. وتصمّم The SamurAI أنظمة الذكاء الاصطناعي المؤسسية وتؤمّنها وتحكمها.</p>
+            <a dir="auto" class="small" href="https://www.thesamurai.com/" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:var(--cyan);font-weight:500;text-decoration:none">زيارة موقع The SamurAI ←</a>
+          </div>
+        </div>
       </div>
 
       <!-- the rest of the ecosystem -->
