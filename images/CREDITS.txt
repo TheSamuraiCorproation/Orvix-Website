@@ -306,11 +306,25 @@ REPLACED 28 SEPTEMBER 2026 - NO RELIGIOUS SUBJECT MATTER
 --------------------------------------------------------------------
 PARTNER LOGOS - assets/img/partners/
 --------------------------------------------------------------------
-    graphiant.svg   taken from the header of graphiant.com
-    expel.png       expel.com theme asset expel-logo-dark_nw.png
-    Both are the partners' trademarks, shown on Company > Partners (both
+    graphiant.svg       taken from the header of graphiant.com
+    expel.png           expel.com theme asset expel-logo-dark_nw.png
+    xona.png            supplied by Orvix (Nov 2026); transparent margin trimmed
+    gravitee.png        supplied by Orvix (Nov 2026); trimmed, resized to 900 px
+    hoxhunt.png         dark version supplied by Orvix (Nov 2026); trimmed,
+                        resized to 900 px
+    identifai-dark.png  made from the white logo supplied by Orvix (Nov 2026),
+                        the only version available (identifai.net also
+                        publishes white only). The colour alone was changed,
+                        white to Orvix navy #03072C, so it shows on a white
+                        page; shapes untouched, the "FIND ORIGIN" tagline
+                        lockup not used. Confirm with identifAI.
+    thesamurai.svg      thesamurai.com/logo-white.svg, identical to the file
+                        supplied by Orvix; shown on the navy R&D band
+    All are the partners' trademarks, shown on Company > Partners (both
     languages). Use is subject to each partner's brand guidelines; see
     BUILD_NOTES.txt item 2 on written permission.
+    A changed logo gets a new file name: /assets/img/* is cached by browsers
+    for 7 days (_headers), so reusing a name keeps the old picture on screen.
 
 --------------------------------------------------------------------
 ADDED 1 OCTOBER 2026 - ENGAGEMENT, CAREERS AND EVENTS PHOTO SLOTS

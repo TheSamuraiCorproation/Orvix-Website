@@ -130,19 +130,6 @@
 .prow .mark .nm a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
 .prow .mark .nm a:hover{opacity:.75}
 .prow .mark .nm a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
-/* more technology partners: compact cards. A logo that only exists in a
-   white version sits on a navy plate (.plate.dark) instead of being recoloured */
-.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
-.pcard{border:1px solid var(--silver);display:flex;flex-direction:column;background:var(--paper)}
-.pcard .plate{height:96px;display:flex;align-items:center;padding:0 26px;border-bottom:1px solid var(--silver)}
-.pcard .plate.dark{background:var(--ink);border-bottom-color:var(--ink)}
-.pcard .plate a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
-.pcard .plate a:hover{opacity:.75}
-.pcard .plate a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
-.pcard .plate img{display:block;width:auto;max-width:100%}
-.pcard .pbody{padding:22px 26px 24px;display:flex;flex-direction:column;flex:1}
-.pcard .pgo{margin-top:auto;padding-top:14px;color:var(--signal);font-weight:500;text-decoration:none}
-@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
 /* strategic R&D partner */
 .rnd{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:56px;align-items:center}
 .rnd .rlogo a{display:inline-block;line-height:0;border-radius:4px;transition:opacity .2s}
@@ -319,7 +306,7 @@
 
         <div class="prow chamfer rv">
           <div class="mark">
-            <div><div class="nm"><a href="https://www.graphiant.com/" target="_blank" rel="noopener" aria-label="Graphiant website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/graphiant.svg" alt="Graphiant" height="30"></a></div>
+            <div><div class="nm"><a href="https://www.graphiant.com/" target="_blank" rel="noopener" aria-label="Graphiant website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/graphiant.svg" alt="Graphiant" height="30" style="height:30px;width:auto"></a></div>
               <div class="small" style="color:var(--blue);margin-top:6px">Network as a service</div></div>
             <div class="mono" style="color:var(--steel);margin-top:24px">Advanced Infrastructure</div>
           </div>
@@ -342,7 +329,7 @@
 
         <div class="prow rv">
           <div class="mark">
-            <div><div class="nm"><a href="https://expel.com/" target="_blank" rel="noopener" aria-label="Expel website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/expel.png" alt="Expel" height="34"></a></div>
+            <div><div class="nm"><a href="https://expel.com/" target="_blank" rel="noopener" aria-label="Expel website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/expel.png" alt="Expel" height="34" style="height:34px;width:auto"></a></div>
               <div class="small" style="color:var(--blue);margin-top:6px">Managed detection and response</div></div>
             <div class="mono" style="color:var(--steel);margin-top:24px">AI Cybersecurity</div>
           </div>
@@ -362,46 +349,80 @@
             <a class="small" href="../../what-we-do/ai-cybersecurity/managed-detection-response/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">See the related service →</a>
           </div>
         </div>
-        <div class="pgrid rv">
-          <div class="pcard">
-            <div class="plate"><a href="https://www.xonasystems.com/" target="_blank" rel="noopener" aria-label="Xona website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/xona.png" alt="Xona" height="32" loading="lazy"></a></div>
-            <div class="pbody">
-              <div class="small" style="color:var(--blue);margin-bottom:8px">Secure remote access for OT</div>
-              <h3 style="margin-bottom:8px">OT access without a VPN</h3>
-              <p class="small" style="max-width:56ch">Xona provides secure remote access to operational technology and industrial control systems through a browser-based Zero Trust platform, with identity-based access in place of VPNs.</p>
-              <div class="mono" style="color:var(--steel);margin-top:16px">AI Cybersecurity</div>
-              <a class="small pgo" href="../../what-we-do/ai-cybersecurity/ot-security/">See the related service →</a>
-            </div>
+
+        <div class="prow rv">
+          <div class="mark">
+            <div><div class="nm"><a href="https://hoxhunt.com/" target="_blank" rel="noopener" aria-label="Hoxhunt website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/hoxhunt.png" alt="Hoxhunt" height="30" style="height:30px;width:auto"></a></div>
+              <div class="small" style="color:var(--blue);margin-top:6px">Human risk management</div></div>
+            <div class="mono" style="color:var(--steel);margin-top:24px">AI Cybersecurity</div>
           </div>
-          <div class="pcard">
-            <div class="plate"><a href="https://www.gravitee.io/" target="_blank" rel="noopener" aria-label="Gravitee website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/gravitee.png" alt="Gravitee" height="30" loading="lazy"></a></div>
-            <div class="pbody">
-              <div class="small" style="color:var(--blue);margin-bottom:8px">AI agent and API management</div>
-              <h3 style="margin-bottom:8px">Governance for AI agents and APIs</h3>
-              <p class="small" style="max-width:56ch">Gravitee secures, observes and governs AI agents, APIs and event streams at enterprise scale, from one management platform.</p>
-              <div class="mono" style="color:var(--steel);margin-top:16px">Applied AI &amp; Data</div>
-              <a class="small pgo" href="../../engagements/api-discovery-and-governance/">See the related engagement →</a>
-            </div>
+          <div class="mid">
+            <h3 style="margin-bottom:8px">Human risk you can measure</h3>
+            <p class="small" style="margin-bottom:16px;max-width:56ch">Hoxhunt automates adaptive phishing training, security awareness training and email incident response, so human cyber risk can be measured and reduced across the workforce.</p>
+            <div class="small" style="color:var(--ink);font-weight:500;margin-bottom:4px">Related Orvix work</div>
+            <p class="small" style="max-width:56ch">Orvix's Human Risk Defense builds verification into the approval path, so every high-value request is checked before it is acted on.</p>
           </div>
-          <div class="pcard">
-            <div class="plate dark"><a href="https://hoxhunt.com/" target="_blank" rel="noopener" aria-label="Hoxhunt website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/hoxhunt.svg" alt="Hoxhunt" height="32" loading="lazy"></a></div>
-            <div class="pbody">
-              <div class="small" style="color:var(--blue);margin-bottom:8px">Human risk management</div>
-              <h3 style="margin-bottom:8px">Human risk you can measure</h3>
-              <p class="small" style="max-width:56ch">Hoxhunt automates adaptive phishing training, security awareness training and email incident response, so human cyber risk can be measured and reduced across the workforce.</p>
-              <div class="mono" style="color:var(--steel);margin-top:16px">AI Cybersecurity</div>
-              <a class="small pgo" href="../../what-we-do/ai-cybersecurity/human-risk/">See the related service →</a>
-            </div>
+          <div class="side">
+            <div class="eyebrow" style="color:var(--steel);margin-bottom:10px">Where it fits</div>
+            <p class="small">Workforces that phishing reaches first · awareness programs that have to show a measurable result · email incident response at volume.</p>
+            <a class="small" href="../../what-we-do/ai-cybersecurity/human-risk/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">See the related service →</a>
           </div>
-          <div class="pcard">
-            <div class="plate dark"><a href="https://identifai.net/" target="_blank" rel="noopener" aria-label="identifAI website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/identifai.png" alt="identifAI" height="34" loading="lazy"></a></div>
-            <div class="pbody">
-              <div class="small" style="color:var(--blue);margin-bottom:8px">Deepfake detection</div>
-              <h3 style="margin-bottom:8px">Telling a real face from a fake</h3>
-              <p class="small" style="max-width:56ch">identifAI detects AI-generated images, video and synthetic voice in real time, for teams that have to tell a real face or voice from a fake one.</p>
-              <div class="mono" style="color:var(--steel);margin-top:16px">AI Cybersecurity</div>
-              <a class="small pgo" href="../../engagements/human-risk-and-impersonation-defense/">See the related engagement →</a>
-            </div>
+        </div>
+
+        <div class="prow rv">
+          <div class="mark">
+            <div><div class="nm"><a href="https://www.xonasystems.com/" target="_blank" rel="noopener" aria-label="Xona website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/xona.png" alt="Xona" height="30" style="height:30px;width:auto"></a></div>
+              <div class="small" style="color:var(--blue);margin-top:6px">Secure remote access for OT</div></div>
+            <div class="mono" style="color:var(--steel);margin-top:24px">AI Cybersecurity</div>
+          </div>
+          <div class="mid">
+            <h3 style="margin-bottom:8px">OT access without a VPN</h3>
+            <p class="small" style="margin-bottom:16px;max-width:56ch">Xona provides secure remote access to operational technology and industrial control systems through a browser-based Zero Trust platform. Access is tied to identity, in place of VPNs.</p>
+            <div class="small" style="color:var(--ink);font-weight:500;margin-bottom:4px">Related Orvix work</div>
+            <p class="small" style="max-width:56ch">Remote and privileged access is one of the areas Orvix's OT &amp; Industrial Cybersecurity Assessment examines, against IEC 62443.</p>
+          </div>
+          <div class="side">
+            <div class="eyebrow" style="color:var(--steel);margin-bottom:10px">Where it fits</div>
+            <p class="small">Energy, utilities and industrial operators · OT and ICS maintained by remote engineers and vendors · sites moving off VPN access.</p>
+            <a class="small" href="../../engagements/ot-industrial-cybersecurity-assessment/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">See the engagement →</a>
+          </div>
+        </div>
+
+        <div class="prow rv">
+          <div class="mark">
+            <div><div class="nm"><a href="https://identifai.net/" target="_blank" rel="noopener" aria-label="identifAI website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/identifai-dark.png" alt="identifAI" height="34" style="height:34px;width:auto"></a></div>
+              <div class="small" style="color:var(--blue);margin-top:6px">Deepfake detection</div></div>
+            <div class="mono" style="color:var(--steel);margin-top:24px">AI Cybersecurity</div>
+          </div>
+          <div class="mid">
+            <h3 style="margin-bottom:8px">Telling a real face from a fake</h3>
+            <p class="small" style="margin-bottom:16px;max-width:56ch">identifAI detects AI-generated images, video and synthetic voice in real time, for teams that have to tell a real face or voice from a fake one.</p>
+            <div class="small" style="color:var(--ink);font-weight:500;margin-bottom:4px">Related Orvix work</div>
+            <p class="small" style="max-width:56ch">Orvix's Human Risk &amp; Impersonation Defense tests the approval steps that rely on recognizing a person, under controlled deepfake and impersonation conditions.</p>
+          </div>
+          <div class="side">
+            <div class="eyebrow" style="color:var(--steel);margin-bottom:10px">Where it fits</div>
+            <p class="small">Payment release and vendor bank-detail changes · onboarding and helpdesk resets · executive requests by voice or video.</p>
+            <a class="small" href="../../engagements/human-risk-and-impersonation-defense/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">See the engagement →</a>
+          </div>
+        </div>
+
+        <div class="prow rv">
+          <div class="mark">
+            <div><div class="nm"><a href="https://www.gravitee.io/" target="_blank" rel="noopener" aria-label="Gravitee website (opens in a new tab)"><img class="plogo" src="../../assets/img/partners/gravitee.png" alt="Gravitee" height="28" style="height:28px;width:auto"></a></div>
+              <div class="small" style="color:var(--blue);margin-top:6px">AI agent and API management</div></div>
+            <div class="mono" style="color:var(--steel);margin-top:24px">Applied AI &amp; Data</div>
+          </div>
+          <div class="mid">
+            <h3 style="margin-bottom:8px">Governance for AI agents and APIs</h3>
+            <p class="small" style="margin-bottom:16px;max-width:56ch">Gravitee secures, observes and governs AI agents, APIs and event streams at enterprise scale, from one management platform.</p>
+            <div class="small" style="color:var(--ink);font-weight:500;margin-bottom:4px">Related Orvix work</div>
+            <p class="small" style="max-width:56ch">Orvix's API Discovery &amp; Governance finds every interface actually running, classifies it by data sensitivity and gives it an owner and a lifecycle.</p>
+          </div>
+          <div class="side">
+            <div class="eyebrow" style="color:var(--steel);margin-bottom:10px">Where it fits</div>
+            <p class="small">Organizations exposing APIs to partners and customers · teams putting AI agents into production · estates where interfaces outnumber their owners.</p>
+            <a class="small" href="../../engagements/api-discovery-and-governance/" style="display:inline-block;margin-top:14px;color:var(--signal);font-weight:500;text-decoration:none">See the engagement →</a>
           </div>
         </div>
         <p class="small rv" style="margin-top:14px;color:var(--steel)">Logos are each partner's own, used in the form their brand guidelines permit.</p>
